@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consent: Care of Dental Implants | All-On-8 Robust</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap"
+        rel="stylesheet">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+    <style>
+        :root {
+            --black: #000000;
+            --gray-dark: #222222;
+            --gray-mid: #555555;
+            --gray-light: #999999;
+            --gray-border: #cccccc;
+            --white: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'EB Garamond', serif;
+            background: #f4f4f4;
+            color: var(--black);
+            font-size: 11pt;
+            line-height: 1.5;
+            padding: 2rem 1rem;
+        }
+
+        .document {
+            max-width: 8.5in;
+            margin: 0 auto;
+            background: var(--white);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, .1);
+            position: relative;
+        }
+
+        /* ─── MASTHEAD ─────────────────────────────────────── */
+        .masthead {
+            padding: 2.5rem 3rem 1rem; 
+            display: flex;
+            justify-content: space-between;
+            align-items: center; 
+            gap: 2rem;
+        }
+
+        .brand-logo img {
+            width: 210px; 
+            max-width: 100%;
+            height: auto; 
+            filter: grayscale(100%);
+        }
+
+        .masthead-right {
+            text-align: right;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 7.5pt;
+            color: var(--gray-dark);
+            line-height: 1.5;
+        }
+
+        .masthead-right .doctors {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 13pt;
+            font-weight: 700;
+            color: var(--black);
+            margin-bottom: 0.8rem; 
+        }
+
+        /* ─── PREMIUM BRANDING ─────────────────────────────── */
+        .premium-product-band {
+            margin: 0.5rem 3rem 1.5rem; 
+            padding: 1.2rem 0;
+            text-align: center;
+            border-top: 6px double var(--black);
+            border-bottom: 6px double var(--black);
+        }
+
+        .premium-product-band .form-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 30pt; 
+            font-weight: 700;
+            letter-spacing: 4px; 
+            line-height: 1;
+        }
+
+        .premium-product-band .form-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 8pt;
+            font-weight: 700;
+            letter-spacing: 6px; 
+            text-transform: uppercase;
+        }
+
+        .title-band {
+            padding: 1.5rem 3rem;
+            text-align: center;
+        }
+
+        .title-band .form-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 20pt; 
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        /* ─── BODY & SECTIONS ────────────────────────────────── */
+        .body {
+            padding: 0 3rem 2.5rem;
+        }
+
+        section {
+            margin-bottom: 1.5rem;
+        }
+
+        .part-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.2rem;
+            margin-top: 2.5rem;
+        }
+
+        .part-number {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 7pt;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border: 1px solid var(--black);
+            padding: 0.3rem 0.6rem;
+        }
+
+        .part-rule {
+            flex-grow: 1;
+            height: 1px;
+            background: var(--black);
+        }
+
+        p {
+            font-size: 11pt;
+            color: var(--gray-dark);
+            margin-bottom: 0.8rem;
+            text-align: left;
+        }
+
+        h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 8.5pt;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--black);
+            margin: 1.5rem 0 0.8rem;
+            border-bottom: 1px solid var(--gray-border);
+        }
+
+        ul {
+            padding-left: 1.5rem;
+            margin-bottom: 1.2rem;
+        }
+
+        li {
+            font-size: 11pt;
+            margin-bottom: 0.3rem;
+            color: var(--gray-dark);
+        }
+
+        /* ─── FIELDS ─────────────────────────────────── */
+        .underline-box {
+            border-bottom: 1px solid var(--black);
+            display: inline-block;
+            min-width: 3.5in;
+            padding: 0 10px;
+        }
+
+        .initial-row {
+            display: flex;
+            align-items: flex-end;
+            gap: 1rem;
+            margin-top: 1rem;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 8pt;
+            font-weight: 700;
+        }
+
+        .initial-line {
+            width: 80px;
+            border-bottom: 1px solid var(--black);
+            min-height: 1.2rem;
+        }
+
+        /* ─── SIGNATURE ELEMENTS ─────────────────────────────── */
+        .signature-section {
+            page-break-inside: avoid;
+            margin-top: 3rem;
+        }
+
+        .sig-row {
+            display: flex;
+            gap: 3rem;
+            margin-bottom: 2rem;
+            align-items: flex-end;
+        }
+
+        .sig-block { flex: 1; }
+        .sig-block.narrow { flex: 0 0 2.2in; }
+
+        .sig-field {
+            border-top: 1px solid var(--black);
+            padding-top: 0.4rem;
+        }
+
+        .sig-field-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 7.5pt;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .sig-blank { min-height: 2.5rem; }
+
+        .fab {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--black);
+            color: var(--white);
+            padding: 0.9rem 1.6rem;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 8pt;
+            text-transform: uppercase;
+            cursor: pointer;
+            z-index: 1000;
+            border: none;
+        }
+
+        @media print {
+            .fab { display: none !important; }
+            body { background: white; padding: 0; }
+            .document { box-shadow: none; border: none; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <button id="downloadPdfBtn" class="fab">Download PDF</button>
+
+    <div class="document" id="pdf-content">
+
+        <div class="masthead">
+            <div class="masthead-left">
+                <div class="brand-logo"><img src="logo.svg" alt="Logo"></div>
+            </div>
+            <div class="masthead-right">
+                <div class="doctors">
+                    Dr. Sambhav Jain <span>DMD, MS</span><br>
+                    Dr. Arpana Gupta <span>DDS, MDS</span>
+                </div>
+                
+                <div class="contact-block">
+                    <strong>Email:</strong> info@bayareaimplantdentistry.com<br>
+                    <strong>Website:</strong> www.bayareaimplantdentistry.com
+                </div>
+                
+                <div class="contact-block">
+                    <strong>Main Office:</strong> 3381 Walnut Ave, Fremont, CA 94538<br>
+                    <strong>Phone:</strong> (510) 574-0496
+                </div>
+                
+                <div class="contact-block">
+                    <strong>SF Office:</strong> 4318 Geary Blvd, Suite 201, San Francisco, CA 94118<br>
+                    <strong>Phone:</strong> (415) 696-2922
+                </div>
+            </div>
+        </div>
+
+        <div class="premium-product-band">
+            <div class="form-title">ALL-ON-8 ROBUST</div>
+            <div class="form-label">Most Advanced Biomechanical Dental Implants Protocol</div>
+        </div>
+        
+        <div class="title-band">
+            <div class="form-title">Consent for Care of Dental Implants and Implant Restoration</div>
+        </div>
+
+        <div class="body">
+
+            <section>
+                <div class="part-header">
+                    <span class="part-number">Part 1</span>
+                    <span class="part-rule"></span>
+                </div>
+
+                <h3>Post Op/Check Ups</h3>
+                <p>After each implant surgery I am required to come back for the following post op/check up</p>
+                <ul>
+                    <li>1 week</li>
+                    <li>2 week</li>
+                    <li>1 month</li>
+                    <li>2 months</li>
+                    <li>3 months</li>
+                </ul>
+                <p>Or as directed by the doctors. If you do not come for your post op/checkups and any complications or failures happen. You will be made liable for the results. Should you abandon the implant treatment, an infection can occur which can compromise the implant and lead them to failure. If this is to happen, the doctors will not be held responsible.</p>
+                
+                <div class="initial-row">
+                    <span>Initial:</span>
+                    <div class="initial-line"></div>
+                </div>
+            </section>
+
+            <section>
+                <div class="part-header">
+                    <span class="part-number">Part 2</span>
+                    <span class="part-rule"></span>
+                </div>
+
+                <h3>Restoration of Dental Implants</h3>
+                <p>After my implant placement I, <span class="underline-box"></span>, am taking full responsibility to come back within 4-6 months to get the</p>
+                <ul>
+                    <li>Abutment and Crown</li>
+                    <li>Crowns</li>
+                    <li>Hybrid Denture</li>
+                    <li>Permanent Denture</li>
+                </ul>
+                <p>done by the doctors at the Center for Implant Dentistry, or, any other IMPLANT specialist, if needed</p>
+
+                <div class="initial-row">
+                    <span>Initial:</span>
+                    <div class="initial-line"></div>
+                </div>
+            </section>
+
+            <section>
+                <div class="part-header">
+                    <span class="part-number">Part 3</span>
+                    <span class="part-rule"></span>
+                </div>
+
+                <h3>Dental Implant Hygiene and Maintenance</h3>
+                <p>After finishing up with my implant restoration, I will be responsible to come back to the Center for Implant Dentistry for hygiene/maintenance/cleaning every three or six months (as per doctor’s recommendations). If I fail to do so, I am fully responsible for any failing of the implants/ Abscess/ Failing Crowns/ Prosthetics</p>
+
+                <div class="initial-row">
+                    <span>Initial:</span>
+                    <div class="initial-line"></div>
+                </div>
+            </section>
+
+            <section class="signature-section">
+                <div class="sig-row" style="margin-top:2rem;">
+                    <div class="sig-block">
+                        <div class="sig-blank"></div>
+                        <div class="sig-field"><div class="sig-field-label">Patient Signature</div></div>
+                    </div>
+                    <div class="sig-block narrow">
+                        <div class="sig-blank"></div>
+                        <div class="sig-field"><div class="sig-field-label">Date</div></div>
+                    </div>
+                </div>
+
+                <p>If not the patient, what is your relationship to the patient? <span class="underline-box"></span></p>
+
+                <div class="sig-row" style="margin-top:2rem;">
+                    <div class="sig-block">
+                        <div class="sig-blank"></div>
+                        <div class="sig-field"><div class="sig-field-label">Doctor Signature</div></div>
+                    </div>
+                    <div class="sig-block narrow">
+                        <div class="sig-blank"></div>
+                        <div class="sig-field"><div class="sig-field-label">Date</div></div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('downloadPdfBtn').addEventListener('click', function () {
+            const element = document.getElementById('pdf-content');
+            document.fonts.ready.then(function() {
+                const opt = {
+                    margin: [0.5, 0.5, 0.5, 0.5],
+                    filename: 'Dental_Implant_Care_Consent.pdf',
+                    image: { type: 'jpeg', quality: 1.0 },
+                    html2canvas: { scale: 4, useCORS: true, letterRendering: true, scrollY: 0 },
+                    jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' },
+                    pagebreak: { mode: ['css', 'legacy'] }
+                };
+
+                html2pdf().set(opt).from(element).toPdf().get('pdf').then(function (pdf) {
+                    var totalPages = pdf.internal.getNumberOfPages();
+                    var pageWidth = pdf.internal.pageSize.getWidth();
+                    var pageHeight = pdf.internal.pageSize.getHeight();
+                    for (var i = 1; i <= totalPages; i++) {
+                        pdf.setPage(i);
+                        var pageStr = 'Page ' + i + ' of ' + totalPages;
+                        pdf.setFontSize(7); 
+                        pdf.setTextColor(85, 85, 85); 
+                        pdf.setFont('helvetica', 'normal');
+                        var tw = pdf.getStringUnitWidth(pageStr) * 7 / 72;
+                        pdf.text(pageStr, pageWidth - tw - 0.5, pageHeight - 0.35);
+                    }
+                }).save();
+            });
+        });
+    </script>
+</body>
+</html>

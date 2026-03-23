@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMP Information Packet | All-On-8 Robust</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap"
+        rel="stylesheet">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+    <style>
+        :root {
+            --black: #000000;
+            --gray-dark: #222222;
+            --gray-mid: #555555;
+            --gray-light: #999999;
+            --gray-border: #cccccc;
+            --white: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'EB Garamond', serif;
+            background: #f4f4f4;
+            color: var(--black);
+            font-size: 11pt;
+            line-height: 1.6;
+            padding: 2rem 1rem;
+        }
+
+        /* ─── DOCUMENT SHELL ─────────────────────────────────── */
+        .document {
+            max-width: 8.5in;
+            margin: 0 auto;
+            background: var(--white);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, .1);
+            position: relative;
+        }
+
+        /* ─── MASTHEAD (LETTERHEAD) ──────────────────────────── */
+        .masthead {
+            padding: 2.5rem 3rem 1rem; 
+            display: flex;
+            justify-content: space-between;
+            align-items: center; 
+            gap: 2rem;
+        }
+
+        .masthead-left {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            flex: 1; 
+        }
+
+        .brand-logo img {
+            width: 210px; 
+            max-width: 100%;
+            height: auto; 
+            object-fit: contain;
+            object-position: left center;
+            filter: grayscale(100%);
+        }
+
+        .masthead-right {
+            text-align: right;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 7.5pt;
+            color: var(--gray-dark);
+            line-height: 1.5;
+            flex-shrink: 0;
+        }
+
+        .masthead-right .doctors {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 13pt;
+            font-weight: 700;
+            color: var(--black);
+            margin-bottom: 0.8rem; 
+            line-height: 1.2;
+        }
+
+        .masthead-right .doctors span {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 7pt;
+            font-weight: 500;
+            color: var(--gray-mid);
+            letter-spacing: 1px;
+            margin-left: 4px;
+        }
+
+        .masthead-right .contact-block {
+            margin-bottom: 0.6rem; 
+        }
+
+        .masthead-right strong {
+            color: var(--black);
+            font-weight: 600;
+        }
+
+        /* ─── PREMIUM PRODUCT BAND ───────────────────────────── */
+        .premium-product-band {
+            margin: 0.5rem 3rem 1.5rem; 
+            padding: 1.2rem 0;
+            text-align: center;
+            background: transparent;
+            page-break-inside: avoid;
+            border-top: 6px double var(--black);
+            border-bottom: 6px double var(--black);
+        }
+
+        .premium-product-band .form-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 30pt; 
+            font-weight: 700;
+            color: var(--black); 
+            letter-spacing: 4px; 
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .premium-product-band .bold-hyphen {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            margin: 0 4px;
+        }
+
+        .premium-product-band .form-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 8pt;
+            font-weight: 700;
+            letter-spacing: 6px; 
+            text-transform: uppercase;
+            color: var(--black); 
+        }
+
+        /* ─── DOCUMENT TITLE BAND ────────────────────────────── */
+        .title-band {
+            padding: 1rem 3rem;
+            text-align: center;
+        }
+
+        .title-band .form-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 20pt; 
+            font-weight: 700;
+            color: var(--black);
+            letter-spacing: 0.5px;
+            line-height: 1.2;
+            text-transform: uppercase;
+        }
+
+        /* ─── BODY & SECTIONS ────────────────────────────────── */
+        .body {
+            padding: 0 3rem 2.5rem;
+        }
+
+        section {
+            margin-bottom: 2rem;
+        }
+
+        .part-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.2rem;
+            margin-top: 2.5rem;
+        }
+
+        .part-number {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 7pt;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--black);
+            border: 1px solid var(--black);
+            padding: 0.3rem 0.6rem;
+            flex-shrink: 0;
+        }
+
+        .part-rule {
+            flex-grow: 1;
+            height: 1px;
+            background: var(--black);
+        }
+
+        h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 9pt;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--black);
+            margin: 1.5rem 0 0.8rem;
+            border-bottom: 1px solid var(--gray-border);
+            padding-bottom: 0.2rem;
+        }
+
+        p {
+            font-size: 11pt;
+            color: var(--gray-dark);
+            margin-bottom: 0.8rem;
+            text-align: left;
+        }
+
+        ul {
+            padding-left: 2rem;
+            margin-bottom: 1.2rem;
+        }
+
+        li {
+            font-size: 11pt;
+            color: var(--gray-dark);
+            margin-bottom: 0.6rem;
+        }
+
+        /* ─── SIGNATURE ELEMENTS ─────────────────────────────── */
+        .signature-section {
+            page-break-inside: avoid;
+            margin-top: 3rem;
+        }
+
+        .sig-row {
+            display: flex;
+            gap: 3rem;
+            margin-bottom: 2rem;
+            align-items: flex-end;
+        }
+
+        .sig-block { flex: 1; }
+        .sig-block.narrow { flex: 0 0 2in; }
+
+        .sig-field {
+            border-top: 1px solid var(--black);
+            padding-top: 0.4rem;
+        }
+
+        .sig-field-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 7.5pt;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .sig-blank { min-height: 2.5rem; }
+
+        /* ─── FOOTER ─────────────────────────────────────────── */
+        .doc-footer {
+            border-top: 2px solid var(--black);
+            margin: 0 3rem;
+            padding: 1rem 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-left {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 7.5pt;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* ─── DOWNLOAD BUTTON ────────────────────────────────── */
+        .fab {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--black);
+            color: var(--white);
+            border: 2px solid var(--black);
+            padding: 0.9rem 1.6rem;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 8pt;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            transition: all 0.2s;
+            z-index: 1000;
+        }
+
+        .fab:hover { background: var(--white); color: var(--black); }
+
+        @media print {
+            body { background: var(--white); padding: 0; }
+            .document { box-shadow: none; max-width: 100%; border: none; }
+            .fab { display: none !important; }
+            .body { padding: 0 2.5rem; }
+            .doc-footer { margin: 0 2.5rem; }
+            .masthead { padding: 2.5rem 2.5rem 1rem; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <button id="downloadPdfBtn" class="fab">Download PDF</button>
+
+    <div class="document" id="pdf-content">
+
+        <div class="masthead">
+            <div class="masthead-left">
+                <div class="brand-logo"><img src="logo.svg" alt="Logo"></div>
+            </div>
+            <div class="masthead-right">
+                <div class="doctors">Dr. Sambhav Jain <span>DMD, MS</span><br>Dr. Arpana Gupta <span>DDS, MDS</span></div>
+                <div class="contact-block"><strong>Email:</strong> info@bayareaimplantdentistry.com<br><strong>Website:</strong> www.bayareaimplantdentistry.com</div>
+                <div class="contact-block"><strong>Main Office:</strong> 3381 Walnut Ave, Fremont, CA 94538<br><strong>Phone:</strong> (510) 574-0496</div>
+                            <div class="contact-block">
+                    <strong>SF Office:</strong> 4318 Geary Blvd, Suite 201, San Francisco, CA 94118<br>
+                    <strong>Phone:</strong> (415) 696-2922
+                </div>
+            
+            </div>
+        </div>
+
+        <div class="premium-product-band">
+            <div class="form-title">ALL<span class="bold-hyphen">-</span>ON<span class="bold-hyphen">-</span>8 ROBUST</div>
+            <div class="form-label">Most Advanced Biomechanical Dental Implants Protocol</div>
+        </div>
+        
+        <div class="title-band">
+            <div class="form-title">Infused Bone Graft (BMP) Information Packet</div>
+        </div>
+
+        <div class="body">
+
+            <section>
+                <div class="part-header">
+                    <span class="part-number">Part 1</span>
+                    <span class="part-rule"></span>
+                </div>
+                <h3>Why is bone important for dental restoration?</h3>
+                <p>Teeth are anchored into the jaw in an area of bone called alveolar ridge. The alveolar ridge bone surrounds tooth roots to secure the teeth, and allows for normal tooth use such as chewing. Without enough alveolar ridge bone, the jaw cannot support either the natural teeth or dental implants.</p>
+                <p>There are many reasons why you may have lost bone in your jaw. For example, you may have had either a tooth knocked our and bone was lost with the tooth, or you may have periodontal (gum) disease. For whatever reason, you may not have enough bone in your jaws to anchor your natural teeth or support the successful placement of dental implants. If you have lost alveolar ridge none, and need to re-grow the bone to place to place dental implants your surgeon may recommend that you have a bone graft surgery. Infuse bone graft maybe an option.</p>
+            </section>
+
+            <section>
+                <div class="part-header">
+                    <span class="part-number">Part 2</span>
+                    <span class="part-rule"></span>
+                </div>
+                <h3>What is infuse bone graft?</h3>
+                <p>Infuse bone graft consists of two parts: a protein that is found in everyone’s body, plus a natural carrier for delivery. The protein ingredient in infuse bone graft is rhBMP-2 (recombinant (engineered) human bone morphogenetic protein 2), a synthetic version of a protein everyone’s body produces naturally in small amounts to regulate bone growth and healing. The natural carrier is made of material found in tendons. It releases the protein over time where it is placed, provides a scaffold and is absorbed and replaced by bone.</p>
+                <p>Using Infuse bone graft eliminates the need for a second surgery to “harvest” or remove surgically, bone from your body (“autogenous” bone) for placement at the oral surgery site. Autogenous bone harvests the risk of pain, complications, longer surgical time and more anesthesia. Choosing Infuse bone graft eliminates the need for the harvest surgery avoiding the pain and bodily harm associated with the bone harvest procedure where autogenous one is not typically used, infuse bone graft can also be used.</p>
+
+                <h3>How does infuse bone graft work?</h3>
+                <p>Infuse bone graft is surgically placed where new bone growth is needed. It attracts your body’s own bone building cells to the site and over time, new bone is formed. Bone grows where the infuse bone graft is placed, for predictable bone growth results.</p>
+            </section>
+
+            <section>
+                <div class="part-header">
+                    <span class="part-number">Part 3</span>
+                    <span class="part-rule"></span>
+                </div>
+                <h3>Who is infuse bone graft for and how will it fit into my doctors prescribed course of treatment?</h3>
+                <p>Infuse bone graft is now approved for two oral procedures: in sinus augmentation, and for localized alveolar ridge augmentation following tooth extraction. Infuse bone graft gives you and your surgeon a choice for growing bone where it is needed for the support of dental implants or other dental restoration. You and your doctor should discuss the benefits and risks of infused bone graft versus autogenous bone or other treatments.</p>
+                
+                <h3>Sinus Lift:</h3>
+                <p>A sinus augmentation or sinus lift is a surgical bone grafting procedure that is performed in then maxillary (upper jaw) sinus cavity (above the area that anchors your teeth) to prepare the patient for dental restoration. Some patients have such small amounts of existing bone in these areas that dental restoration simply cannot occur without sufficient formation of new bone. Your surgeon may feel that autogenous bone or infuse bone graft is needed to form the necessary bone in this area for reliable and functional dental restoration. In this case infuse bone graft or autogenous bone harvested from another site in your body may be placed into your upper jaw to promote bone growth in the floor of the sinus cavity to anchor the dental implants to allow for dental restoration.</p>
+
+                <h3>Ridge Augmentation:</h3>
+                <p>A localized alveolar ridge augmentation after tooth extraction, or “ridge augmentation”, involves placing infuse bone graft directly into the empty socket where a tooth’s roots used to be, to help create the natural shape of the gums and jaw that may have been lost following tooth extraction. Patients usually need a ridge augmentation procedure after losing one or more teeth, to prepare for a future dental restoration. Please discuss these procedures with your surgeon and whether infuse bone graft is right for you.</p>
+            </section>
+
+            <section>
+                <div class="part-header">
+                    <span class="part-number">Part 4</span>
+                    <span class="part-rule"></span>
+                </div>
+                <h3>Who should not receive it?</h3>
+                <p>Infuse bone graft should not be used if:</p>
+                <ul>
+                    <li>You are pregnant, or suspect that you might be pregnant</li>
+                    <li>You are hypersensitive (highly sensitive to bovine cow type I collagen or re-combinant human bone morphogenetic protein 2</li>
+                    <li>You have an infection near the area of the surgical incision</li>
+                    <li>You had a tumor removed from teeth area of the implantation site.</li>
+                    <li>You are being treated for cancer</li>
+                </ul>
+
+                <h3>What are some warning signs for using infuse bone graft?</h3>
+                <p>This product has not been tested in pregnant women to determine if it could harm a developing fetus. This product has also not been studied in nursing mother. It is not known if a woman who gets pregnant after receiving the product could have a second immune reaction to the BMP-2. BMP-2 is normally found in a developing fetus and an immune reaction to it may result in harm to the mother and-or the fetus. In a rabbit pregnancy study, no increase in the immune reaction to BMP-2 was observed. Women of childbearing age should no become pregnant for one year following treatment with the product women of childbearing age should be warned of potential risks to a fetus and should discuss other possible dental treatments with their doctor.</p>
+                
+                <h3>If I should become pregnant after having treatment with infuse bone graft, could there be problems for the fetus?</h3>
+                <p>This issue was not studied in human, however, in rabbit pregnancy study, an immune reaction to infuse bone graft developed by the mother crossed in to the first; the effect of this immune reaction on the fetus is unknown, in addition the rabbit study showed some bone formation abnormalities in a small number of rabbit fetuses tested; it is not known if these changes would disappear as the rabbit fetus continued to develop or at some time after birth.</p>
+            </section>
+
+            <section>
+                <div class="part-header">
+                    <span class="part-number">Part 5</span>
+                    <span class="part-rule"></span>
+                </div>
+                <h3>What are some precautions for using infuse bone graft?</h3>
+                <p>This product has not been tested:</p>
+                <ul>
+                    <li>In the lower jaw (mandible) or in extracted molar tooth site.</li>
+                    <li>In patients under 18 years of age whose facial bones are growing.</li>
+                    <li>To see if there are side effects by using it more than once in the same person</li>
+                    <li>In people with liver or kidney problems</li>
+                    <li>In people with bone weakening diseases</li>
+                    <li>In people with autoimmune (self-immunity) or immunosuppressive (decreased immunity) disease such as lupus or HIV/AIDS</li>
+                    <li>In people with immune deficiency (lacking immunity) due to other treatments, such as radiation therapy, chemotherapy, or steroid therapy.</li>
+                </ul>
+                <p>Although not seen in the studies performed by the sponsor, there is a possibility that too much bone may form at the implantation site (exuberant bone formation) or bone may form at a location away from the implantation site (ectopic bone formation).</p>
+
+                <h3>What the potential complications are of infuse bone graft?</h3>
+                <p>As with any surgery, surgical treatment to promote bone growth in the jaw is not without risk. A variety of complications related to surgery or the use of infuse bone graft can occur. These may occur individually or in a combination. Some of these may also need to have additional surgery to correct these complications. Some of the possible complications include:</p>
+                <ul>
+                    <li>Allergic reaction to the implant materials.</li>
+                    <li>Bleeding, which may require a blood transfusion</li>
+                    <li>Bone formation that is not normal, in excess or in unattended locations</li>
+                    <li>Damage to nearby tissues or nerves</li>
+                    <li>Death</li>
+                    <li>Fetal development complications</li>
+                    <li>Infection</li>
+                    <li>Pain or discomfort</li>
+                    <li>Respiratory (breathing) problemsScar formation or other problems with the surgical incisions</li>
+                    <li>(Short term) mild to severe swelling</li>
+                    <li>Side effects from anesthesia or the surgical approach</li>
+                    <li>Skin or irritation</li>
+                </ul>
+            </section>
+
+            <section>
+                <div class="part-header">
+                    <span class="part-number">Part 6</span>
+                    <span class="part-rule"></span>
+                </div>
+                <h3>What can I expect after surgery?</h3>
+                <p>Your doctor will have a specific recovery plan for you to follow after your procedure. It is important that you follow your doctor’s instructions carefully, so you can recover as quickly as possible and increase your chances of a successful outcome. Contact your doctor immediately if:</p>
+                <ul>
+                    <li>You get a fever</li>
+                    <li>You do not feel well after your surgery</li>
+                    <li>You experience pain</li>
+                    <li>You experience tenderness or swelling of the skin or surgery site</li>
+                    <li>You experience nausea or vomiting</li>
+                    <li>You experience anything else that is making you feel unwell even if it is not on the list</li>
+                </ul>
+
+                <h3>Are there clinical data for infuse bone graft?</h3>
+                <p>Multiple studies were conducted on approximately 312 patients who did not have enough bone in their upper jaw to place implants. These patients received either infuse bone graft of autogenous bone graft. Infuse bone graft grew bone without the need of a bone harvest procedure that is necessary for autogenous bone grafting. Both the infuse bone graft and the autogenous bone graft formed new bone that allowed for the placement of dental implants into patients who otherwise would not have been able to have implants placed. These implants were retained by the majority of patients for two years.</p>
+                <p>In the sinus lift clinical studies, most patients grew enough bone to place a dental implant regardless of whether they had autogenous bone or infuse bone graft. However, the patients who received autogenous bone graft had a higher success rate of dental implant placement without additional augmentation and a higher rate of significant adverse events, such as limping, pain, and infection. Complications were reported for both infuse bone graft and autogenous bone graft patients. Patients who received infuse bone graft had less complications than those patients who had autogenous bone graft. However one adverse event, face swelling, was reported more often in the infuse bone graft group.</p>
+            </section>
+
+            <section>
+                <div class="part-header">
+                    <span class="part-number">Part 7</span>
+                    <span class="part-rule"></span>
+                </div>
+                <h3>What are my bone grafting alternatives?</h3>
+                <p>Grafting options are different for different procedures. Before infuse bone graft, surgeons relied on autogenous bone harvesting from the patient’s own body for reliable and safe sinus lift procedures. In the sinus lift clinical studies comparing the safety and effectiveness of infuse bone graft to autogenous bone, most patients grew enough bone to place a dental implant regardless of whether they had autogenous bone or infuse bone graft. However, the patients who received autogenous bone graft had a higher success rate of dental implant placement without additional augmentation and a higher rate of significant adverse events, such as limping, pain, and infection.</p>
+                <p>Other grafting options are available. However, these options may not have been studied in the highest level of clinical trials as infuse bone graft has. These options include allograft (bone from human donor), xenograft (bone from another animal species, usually a cow) and synthetic or man-made grafting materials, all of which have their own considerations.</p>
+
+                <h3>Questions to ask your doctor</h3>
+                <ul>
+                    <li>Why do I need a bone graft (or bone augmentation)?</li>
+                    <li>Please describe the procedure to me.</li>
+                    <li>What medications will be prescribed?</li>
+                    <li>How long will my entire course of treatment take?</li>
+                    <li>Whom may I contact at your office if I have more questions? And how can I reach them?</li>
+                </ul>
+
+                <p><strong>Talk to your doctor:</strong> While this procedure is meant to provide you with information you need to make an informed decision about your treatment options, it is not intended to replace professional medical care or provide medical advice. If you have any questions about infuse bone graft, please call or see your doctor, who is the only one qualified to diagnose and treat your condition. As with any surgical procedure, you should find a surgeon that you are considering.</p>
+            </section>
+
+            <section class="signature-section">
+                <div class="sig-row">
+                    <div class="sig-block">
+                        <div class="sig-blank"></div>
+                        <div class="sig-field">
+                            <div class="sig-field-label">Patient Signature</div>
+                        </div>
+                    </div>
+                    <div class="sig-block narrow">
+                        <div class="sig-blank"></div>
+                        <div class="sig-field">
+                            <div class="sig-field-label">Date</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+        <div class="doc-footer">
+            <div class="footer-left">BMP Information Packet</div>
+            <div class="footer-right"></div>
+        </div>
+
+    </div>
+    <script>
+        document.getElementById('downloadPdfBtn').addEventListener('click', function () {
+            const element = document.getElementById('pdf-content');
+            document.fonts.ready.then(function() {
+                const opt = {
+                    margin: [0.5, 0.5, 0.65, 0.5],
+                    filename: 'BMP_Information_Packet.pdf',
+                    image: { type: 'jpeg', quality: 1.0 },
+                    html2canvas: { scale: 4, useCORS: true, letterRendering: true, scrollY: 0 },
+                    jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' },
+                    pagebreak: { mode: ['css', 'legacy'] }
+                };
+
+                const webFooter = document.querySelector('.doc-footer');
+                if(webFooter) webFooter.style.display = 'none';
+
+                html2pdf().set(opt).from(element).toPdf().get('pdf').then(function (pdf) {
+                    var totalPages = pdf.internal.getNumberOfPages();
+                    var pageWidth = pdf.internal.pageSize.getWidth();
+                    var pageHeight = pdf.internal.pageSize.getHeight();
+                    for (var i = 1; i <= totalPages; i++) {
+                        pdf.setPage(i);
+                        var pageStr = 'Page ' + i + ' of ' + totalPages;
+                        pdf.setFontSize(7); 
+                        pdf.setTextColor(85, 85, 85); 
+                        pdf.setFont('helvetica', 'normal');
+                        var tw = pdf.getStringUnitWidth(pageStr) * 7 / 72;
+                        pdf.text(pageStr, pageWidth - tw - 0.5, pageHeight - 0.35);
+                    }
+                }).save().then(function () {
+                    if(webFooter) webFooter.style.display = 'flex';
+                });
+            });
+        });
+    </script>
+</body>
+</html>

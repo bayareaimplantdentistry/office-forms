@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consent Form: Maxillary Sinus Grafting | All-On-8 Robust</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap"
+        rel="stylesheet">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+    <style>
+        :root {
+            --black: #000000;
+            --gray-dark: #222222;
+            --gray-mid: #555555;
+            --gray-light: #999999;
+            --gray-border: #cccccc;
+            --white: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'EB Garamond', serif;
+            background: #f4f4f4;
+            color: var(--black);
+            font-size: 10.5pt;
+            line-height: 1.5;
+            padding: 2rem 1rem;
+        }
+
+        .document {
+            max-width: 8.5in;
+            margin: 0 auto;
+            background: var(--white);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, .1);
+            position: relative;
+        }
+
+        /* ─── MASTHEAD ─────────────────────────────────────── */
+        .masthead {
+            padding: 2.5rem 3rem 1rem; 
+            display: flex;
+            justify-content: space-between;
+            align-items: center; 
+            gap: 2rem;
+        }
+
+        .brand-logo img {
+            width: 210px; 
+            max-width: 100%;
+            height: auto; 
+            filter: grayscale(100%);
+        }
+
+        .masthead-right {
+            text-align: right;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 7.5pt;
+            color: var(--gray-dark);
+            line-height: 1.5;
+        }
+
+        .masthead-right .doctors {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 13pt;
+            font-weight: 700;
+            color: var(--black);
+            margin-bottom: 0.8rem; 
+        }
+
+        /* ─── PREMIUM BRANDING ─────────────────────────────── */
+        .premium-product-band {
+            margin: 0.5rem 3rem 1.5rem; 
+            padding: 1.2rem 0;
+            text-align: center;
+            border-top: 6px double var(--black);
+            border-bottom: 6px double var(--black);
+        }
+
+        .premium-product-band .form-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 30pt; 
+            font-weight: 700;
+            letter-spacing: 4px; 
+            line-height: 1;
+        }
+
+        .premium-product-band .form-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 8pt;
+            font-weight: 700;
+            letter-spacing: 6px; 
+            text-transform: uppercase;
+        }
+
+        .title-band {
+            padding: 1.5rem 3rem;
+            text-align: center;
+        }
+
+        .title-band .form-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 18pt; 
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        /* ─── BODY & SECTIONS ────────────────────────────────── */
+        .body {
+            padding: 0 3rem 2.5rem;
+        }
+
+        section {
+            margin-bottom: 1.5rem;
+        }
+
+        .part-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.2rem;
+            margin-top: 2rem;
+        }
+
+        .part-number {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 7pt;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border: 1px solid var(--black);
+            padding: 0.3rem 0.6rem;
+        }
+
+        .part-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 14pt;
+            font-weight: 700;
+        }
+
+        .part-rule {
+            flex-grow: 1;
+            height: 1px;
+            background: var(--black);
+        }
+
+        p {
+            margin-bottom: 0.8rem;
+            text-align: left;
+        }
+
+        h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 8.5pt;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin: 1.5rem 0 0.8rem;
+            border-bottom: 1px solid var(--gray-border);
+        }
+
+        /* ─── DATA FIELDS ─────────────────────────────────── */
+        .info-grid {
+            border: 2px solid var(--black);
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .field-row {
+            display: flex;
+            align-items: flex-end;
+            margin-bottom: 1.2rem;
+        }
+
+        .field-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 8pt;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-right: 1rem;
+            white-space: nowrap;
+        }
+
+        .field-value {
+            flex-grow: 1;
+            border-bottom: 1px solid var(--black);
+            min-height: 1.4rem;
+        }
+
+        .underline-box {
+            border-bottom: 1px solid var(--black);
+            display: inline-block;
+            min-width: 3in;
+            padding: 0 10px;
+        }
+
+        /* ─── SIGNATURE ELEMENTS ─────────────────────────────── */
+        .signature-section {
+            page-break-inside: avoid;
+            margin-top: 3rem;
+        }
+
+        .sig-row {
+            display: flex;
+            gap: 3rem;
+            margin-bottom: 2rem;
+            align-items: flex-end;
+        }
+
+        .sig-block { flex: 1; }
+        .sig-block.narrow { flex: 0 0 2in; }
+
+        .sig-field {
+            border-top: 1px solid var(--black);
+            padding-top: 0.4rem;
+        }
+
+        .sig-field-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 7.5pt;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .sig-blank { min-height: 2.5rem; }
+
+        .fab {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--black);
+            color: var(--white);
+            padding: 0.9rem 1.6rem;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 8pt;
+            text-transform: uppercase;
+            cursor: pointer;
+            z-index: 1000;
+            border: none;
+        }
+
+        @media print {
+            .fab { display: none !important; }
+            body { background: white; padding: 0; }
+            .document { box-shadow: none; border: none; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <button id="downloadPdfBtn" class="fab">Download PDF</button>
+
+    <div class="document" id="pdf-content">
+
+        <div class="masthead">
+            <div class="masthead-left">
+                <div class="brand-logo"><img src="logo.svg" alt="Logo"></div>
+            </div>
+            <div class="masthead-right">
+                <div class="doctors">
+                    Dr. Sambhav Jain <span>DMD, MS</span><br>
+                    Dr. Arpana Gupta <span>DDS, MDS</span>
+                </div>
+                
+                <div class="contact-block">
+                    <strong>Email:</strong> info@bayareaimplantdentistry.com<br>
+                    <strong>Website:</strong> www.bayareaimplantdentistry.com
+                </div>
+                
+                <div class="contact-block">
+                    <strong>Main Office:</strong> 3381 Walnut Ave, Fremont, CA 94538<br>
+                    <strong>Phone:</strong> (510) 574-0496
+                </div>
+                
+                <div class="contact-block">
+                    <strong>SF Office:</strong> 4318 Geary Blvd, Suite 201, San Francisco, CA 94118<br>
+                    <strong>Phone:</strong> (415) 696-2922
+                </div>
+            </div>
+        </div>
+
+        <div class="premium-product-band">
+            <div class="form-title">ALL-ON-8 ROBUST</div>
+            <div class="form-label">Most Advanced Biomechanical Dental Implants Protocol</div>
+        </div>
+        
+        <div class="title-band">
+            <div class="form-title">Consent Form: augmentation grafting of the maxillary sinus</div>
+        </div>
+
+        <div class="body">
+
+            <section>
+                <div class="part-header">
+                    <span class="part-number">Part 1</span>
+                    <span class="part-title">Patient & Doctor Information</span>
+                    <span class="part-rule"></span>
+                </div>
+
+                <div class="info-grid">
+                    <div class="field-row">
+                        <span class="field-label">Patient Name</span>
+                        <div class="field-value"></div>
+                    </div>
+                    <div class="field-row">
+                        <span class="field-label">Doctor Name</span> Dr.Jain/ Dr.Gupta
+                        <div class="field-value"></div>
+                    </div>
+                </div>
+
+                <p>In order for me to make an informed decision about undergoing a procedure, I should have certain information about the proposed procedure, the associated risks, the alternatives and the consequences of not having it. The doctor has provided me with this information to my satisfaction. The following is a summary of this information. This form is meant to provide me with the information I need to make a good decision; it is not meant to alarm me.</p>
+            </section>
+
+            <section>
+                <div class="part-header">
+                    <span class="part-number">Part 2</span>
+                    <span class="part-title">Details of Consent</span>
+                    <span class="part-rule"></span>
+                </div>
+
+                <h3>Condition</h3>
+                <p>My doctor has explained the nature of my condition to me: Not enough bone to place a dental implant securely.</p>
+
+                <h3>Procedure - Augmentation grafting of the maxillary sinus</h3>
+                <p>My physician has proposed the following procedure to treat or diagnose my condition: Augmentation grafting of the maxillary sinus This means: Grafting of the maxillary sinus: implant a bone substitute material, freeze dried demineralized bone and/or hydroxyapatite into the floor of the sinus. The doctor will open the gum tissue, expose the bone, make a small opening in the bone, insert graft material in the maxillary sinus, and stitch the gum tissue closed. Healing usually takes 3 to 6 months, and dentures usually cannot be worn during the first few weeks. I should not smoke, drink heavily, use any drugs not prescribed by my doctor, should not blow my nose for at least 2 weeks and not heavily blow my nose for another 2 weeks.</p>
+                
+                <p>1. After a careful oral examination and study of my dental condition, the doctor has advised me that for future implant placement in the posterior maxillary region I need to have placement of bone in the area of my maxillary sinus. This bone when mature will be able to support dental implants. I hereby authorize the doctor and his authorized associates and assistants to treat my condition.</p>
+                <p>2. The procedure I choose to treat this condition is understood by me to be bone grafting into the maxillary sinus region. This bone graft could include materials of human, animal, plant or synthetic origin. I understand that the purpose of this procedure is to augment the volume of bone in my maxillary sinus(es) in order to provide enough support for the placement of dental implants in the future.</p>
+                <p>3. I understand that this is nonetheless an elective procedure, that such procedures are performed to improve function and that an alternative option, although less desirable, is to not undergo surgery and do nothing. I have also been advised that other alternative treatments to placement of dental implants include, but are not limited to, a bridge, a partial denture, full denture, or other options. I understand and choose to undergo maxillary sinus augmentation for the placement of root form implants into the maxillary sinus region in the future.</p>
+                <p>4. I understand that my gum tissue will surgically be opened to expose the bone. I understand that a small opening will be done in the bone to be able to place the graft material in the maxillary sinus. I understand that the gum tissue will then be stitched closed to permit healing for a period of 3 to 6 months. I understand that dentures usually cannot be worn during the first few weeks of the healing phase. I understand that there are inherent and potential risks in any treatment or procedure, and that such complications may require additional treatment, and that in this specific procedure the risks of surgery and anesthesia include, but are not limited to:</p>
+                
+                <p style="padding-left: 2rem;">A. Possible sinus membrane perforation.<br>
+                B. Infection requiring additional treatment or possible removal of the graft.<br>
+                C. Sinusitis, even though in many instances this technique will actually improve sinusitis if present. D. Post-operative swelling and pain.<br>
+                E. Tenderness and stiffness within the chewing muscles or neck area, and difficulty opening your mouth and speaking.<br>
+                F. Prolonged or heavy bleeding, formation of a hematoma (or blood clot) at the surgery site and bruising.<br>
+                G. Complications of local, sedative and general anesthetic agents: allergic reactions, nausea and vomiting, inflammation, infection or bruising at the injection site, headache and dizziness, life-threatening reactions including heart irregularities, heart attack, brain damage or death.<br>
+                H. Transient though on occasion permanent numbness of the lips, tongue, tooth, chin or gum.<br>
+                I. Transient though on occasion permanent increased tooth looseness or sensitivity to hot, cold, sweet or acidic foods.</p>
+
+                <p>5. I also understand that during the course of the procedure, unforeseen conditions may arise that necessitate an extension or alteration of the planned procedure contained herein. I therefore authorize and request that the doctor and his associates or assistants under his direction perform such procedure as found necessary and administer such drugs and treatments as required in their professional judgment.</p>
+                <p>6. I have had the opportunity to discuss with the doctor the planned surgical procedure, sinus elevation, and my postoperative responsibilities. I understand that following the procedure during the healing process I should not smoke, drink heavily, use any drugs not prescribed by my doctor, should not blow my nose for at least two weeks and thereafter not heavily blow my nose for an additional two weeks. I should take any antibiotics prescribed and use pain medication as needed. I should follow all the post operative instructions given to me verbally and/or written. If I experience an unusual amount of pain I should contact the doctor or his associates immediately, as it may signify a problem.</p>
+                <p>7. I understand that anesthesia given during surgery and certain prescription medications used after surgery cause drowsiness and impaired physical performance, and that such effect is increased by the use of alcohol, and that I must not operate a motor vehicle or any other hazardous equipment while taking these drugs. Further, I agree not to operate a motor vehicle or any other hazardous equipment for at least 48 hours after my release from surgery.</p>
+                <p>8. I understand no guarantee has been given to me that the proposed treatment will be curative and/or successful to my complete satisfaction. I also understand that due to individual patient differences and the imperfections of the art and science of surgery, there exists a risk of failure or necessity of additional treatment despite appropriate care.</p>
+                <p>9. I understand that after the bone in the sinus cavity has matured, that is after a period of 4 to 6 months after placement of the graft, dental implants should be placed in the area and later these implants should have artificial teeth placed in them. All this will provide adequate function and stimulus to the new bone so it does not undergo the resorption process expected when it has no chewing force stimulation.</p>
+                <p>10. I understand that the fee I am to be charged has been disclosed to me, is satisfactory to me, and includes no additional post-operative x-rays, injections or anesthetics that may later be necessary to correct any complications. I understand, that as a courtesy to me, the office staff will assist in the preparation and filing of necessary insurance claims should I be insured. However, I further understand that the agreement of the insurance company to pay for medical expenses is a contract between myself and the insurance company and in no way alleviates my responsibility to pay for services the provided. I understand that some and perhaps all of the services provided may not be covered or not considered reasonable and customary by my insurance company. I understand that I am responsible for paying all co-pays and deductibles at the time services are rendered and any and all costs that have not been paid for by my insurance within 45 days. Otherwise, all payments are due at the time services are rendered. All accounts not paid in full within 90 days shall accrue interest at the rate of 18% per annum. I understand that I will be fully liable for all collection costs, including court costs and attorney fees.</p>
+
+                <h3>Alternatives</h3>
+                <p>My physician has explained the following medically acceptable alternatives to be: A bridge, a partial denture, full denture, or other options. Also, I can seek specialized care somewhere else, or I can have nothing done.</p>
+
+                <h3>Consequences of not having procedure</h3>
+                <p>If I dont have the procedure, my condition may stay the same, improve, or get worse. It is the doctors opinion that the proposed procedure is a better option for me. If I dont have the procedure, the following may also happen: Not being able to get a dental implant.</p>
+
+                <h3>Other procedures</h3>
+                <p>During the course of the procedure, the doctor may discover other conditions that require an extension of the planned procedure, or a different procedure altogether. I request the doctor to do the procedures my doctor thinks are better to do at this sitting rather than later on.</p>
+
+                <h3>Risks</h3>
+                <p>The doctor will give his best professional care toward accomplishment of the desired results. The substantial and frequent risks and hazards of the proposed procedure are: The graft material not incorporating enough into the jaw, requiring other prosthetic measures. These are usually temporary. Uncommonly, these effects may persist. Uncommon risks also include: Stiffness of facial and jaw muscles; complications involving the sinuses, nasal cavity, sense of smell, infraorbital regions, and altered sensations of the upper cheek and eyes; sinus membrane perforation; nfection requiring additional treatment or graft removal; sinusitis, although this technique often improves sinusitis if present.</p>
+
+                <h3>Drugs, Medications, and Anesthesia</h3>
+                <p>Antibiotics, pain medication, and other medications may cause adverse reactions such as redness and swelling of tissues, pain, itching, drowsiness, nausea, vomiting, dizziness, lack of coordination, miscarriage, cardiac arrest, which can be increased by the effect of alcohol or other drugs, blood clot in the legs, heart, lungs or brain, low blood pressure, heart attack, stroke, paralysis, brain damage. Sometimes after injection of a local anesthetic, I may have prolonged numbness and/or irritation in the area of injection. If I use Nitrous Oxide, Atarax, Chloral hydrate, Xanax, or other sedative, possible risks include, but are not limited to, passing out, severe shock, and stopping breathing or heartbeat. I will arrange for someone to drive me home from the office after I have received sedation, and to have someone watch me closely for 10 hours after my dental appointment to observe for side effects such as difficulty breathing or passing out.</p>
+
+                <h3>Implant Database</h3>
+                <p>If a device is placed in my body, the doctor may give my name, dental information, social security number and other personal information to the device manufacturer for quality control purposes.</p>
+
+                <h3>No guarantee</h3>
+                <p>The practice of dentistry and surgery is not an exact science. Although good results are expected, the doctor has not given me any guarantee that the proposed treatment will be successful, will be to my complete satisfaction, or that it will last for any specific length of time. Due to individual patient differences, there is always a risk of failure, relapse, need for more treatment, or worsening of my present condition despite careful treatment. Occasionally, treated teeth may require extraction.</p>
+            </section>
+
+            <section>
+                <div class="part-header">
+                    <span class="part-number">Part 3</span>
+                    <span class="part-title">My Responsibility</span>
+                    <span class="part-rule"></span>
+                </div>
+                <p>I agree to cooperate completely with the doctors recommendations while under his/her care. If I dont fulfill my responsibility, my results could be affected. Success requires my long-term personal oral hygiene, mechanical plaque removal (daily brushing and flossing), completion of recommended dental therapy, periodic periodontal visits (dental clinic care), regular follow-up appointments and overall general health. There may be several follow-up clinical visits for the first year following surgery. It is my responsibility to see the doctor at least once a year for evaluation of implant performance and oral hygiene maintenance. I have provided as accurate and complete medical and personal history as possible, including those antibiotics, drugs, medications, and foods to which I am allergic. I will follow any and all instructions as explained and directed to me, and permit all required diagnostic procedures. I have had an opportunity to discuss my past medical and health history including any serious problems and/or injury with the doctor. Necessary Follow-up Care and Self-Care. Natural teeth and appliances should be maintained daily in a clean, hygienic manner. I should follow post-operative instructions given after surgery to ensure proper healing. I will need to come for appointments following the procedure so that my healing may be monitored and so that my doctor can evaluate and report on the outcome of the surgery upon completion of healing. I will not drink alcohol or take non-prescribed drugs during the treatment period. If sedation or general anesthesia is used I will not to operate a motor vehicle or hazardous device for at least 24 hours or more until full recovered from the effects of the anesthesia or drugs. I will let the doctors office know if I change my address so I can be contacted for any recalls.</p>
+            </section>
+
+            <section>
+                <div class="part-header">
+                    <span class="part-number">Part 4</span>
+                    <span class="part-title">Miscellaneous</span>
+                    <span class="part-rule"></span>
+                </div>
+                <h3>Photography</h3>
+                <p>I give permission for persons other than the doctors involved on my care and treatment to observe this operation (such as company representatives and dentists who are learning the procedure) and I consent to photography, filming, recording and x-rays of my oral and facial structures and the procedure, and their publication for educational and scientific purposes, provided my identity is not revealed. I give up all rights for compensation for publication of these records.</p>
+                
+                <h3>Miscellaneous</h3>
+                <p>If teeth are removed during treatment, they may be retained for training purposes and then disposed of sensitively.</p>
+
+                <h3>Fees</h3>
+                <p>I know the fee that I am to be charged. I am satisfied with it and know that it does not include additional post-operative x-rays, injections or anesthetics that may later be necessary to correct any complications. As a courtesy to me, the office staff will help prepare and file insurance claims should I be insured. However, the agreement of the insurance company to pay for medical expenses is a contract between myself and the insurance company and does not relieve my responsibility to pay for services provided. Some and perhaps all of the services provided may not be covered or not considered reasonable and customary by my insurance company. I am responsible for paying all co-pays and deductibles at the time services are rendered and all costs that have not been paid for by my insurance within 45 days. Otherwise, all payments are due at the time services are rendered. All accounts not paid in full within 90 days shall accrue interest at the rate of 18% per year. I will be liable for all collection costs, including court costs and attorney fees.</p>
+            </section>
+
+            <section class="signature-section">
+                <div class="part-header">
+                    <span class="part-number">Part 5</span>
+                    <span class="part-title">Signature</span>
+                    <span class="part-rule"></span>
+                </div>
+                <h3>Understanding</h3>
+                <p>I read and write English. I have read and understand this form. All blanks or statements requiring insertion or completion were filled in and inapplicable paragraphs, if any, were stricken before I signed. I have been encouraged to ask questions, and am satisfied with the answers. I have read this entire form. I give my informed consent for surgery and anesthesia. Someone at the doctors office has explained this form, my condition, the procedure, how the procedure could help me, things that can go wrong, and my other options, including not having anything done.</p>
+                <p>I want to have the procedure done. I authorize Dr. Jain/ Gupta or his designee (referred to in the rest of this form as the doctor) to perform the procedure listed in the title above. I know that I am free to withdraw from treatment at any time.</p>
+                
+                <div class="sig-row" style="margin-top:2rem;">
+                    <div class="sig-block">
+                        <div class="sig-blank"></div>
+                        <div class="sig-field"><div class="sig-field-label">Patient or Representative Signature</div></div>
+                    </div>
+                    <div class="sig-block narrow">
+                        <div class="sig-blank"></div>
+                        <div class="sig-field"><div class="sig-field-label">Date</div></div>
+                    </div>
+                </div>
+
+                <p>If not the patient, what is your relationship to the patient? <span class="underline-box"></span></p>
+                
+                <p style="font-style: italic; color: var(--gray-mid); margin-top: 2rem;">I have explained the condition, procedure, benefits, alternatives, and risks described on this form to the patient or representative.</p>
+
+                <div class="sig-row">
+                    <div class="sig-block">
+                        <div class="sig-blank"></div>
+                        <div class="sig-field"><div class="sig-field-label">Dentist Signature</div></div>
+                    </div>
+                    <div class="sig-block narrow">
+                        <div class="sig-blank"></div>
+                        <div class="sig-field"><div class="sig-field-label">Date</div></div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+    </div>
+
+    <script>
+        document.getElementById('downloadPdfBtn').addEventListener('click', function () {
+            const element = document.getElementById('pdf-content');
+            document.fonts.ready.then(function() {
+                const opt = {
+                    margin: [0.5, 0.5, 0.5, 0.5],
+                    filename: 'Maxillary_Sinus_Graft_Consent.pdf',
+                    image: { type: 'jpeg', quality: 1.0 },
+                    html2canvas: { scale: 4, useCORS: true, letterRendering: true, scrollY: 0 },
+                    jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' },
+                    pagebreak: { mode: ['css', 'legacy'] }
+                };
+
+                html2pdf().set(opt).from(element).toPdf().get('pdf').then(function (pdf) {
+                    var totalPages = pdf.internal.getNumberOfPages();
+                    var pageWidth = pdf.internal.pageSize.getWidth();
+                    var pageHeight = pdf.internal.pageSize.getHeight();
+                    for (var i = 1; i <= totalPages; i++) {
+                        pdf.setPage(i);
+                        var pageStr = 'Page ' + i + ' of ' + totalPages;
+                        pdf.setFontSize(7); 
+                        pdf.setTextColor(85, 85, 85); 
+                        pdf.setFont('helvetica', 'normal');
+                        var tw = pdf.getStringUnitWidth(pageStr) * 7 / 72;
+                        pdf.text(pageStr, pageWidth - tw - 0.5, pageHeight - 0.35);
+                    }
+                }).save();
+            });
+        });
+    </script>
+</body>
+</html>

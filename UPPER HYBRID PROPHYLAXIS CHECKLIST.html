@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hybrid Prophylaxis Checklist | All-On-8 Robust</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap"
+        rel="stylesheet">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+    <style>
+        :root {
+            --black: #000000;
+            --gray-dark: #222222;
+            --gray-mid: #555555;
+            --gray-light: #999999;
+            --gray-border: #cccccc;
+            --white: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'EB Garamond', serif;
+            background: #f4f4f4;
+            color: var(--black);
+            font-size: 11pt;
+            line-height: 1.35; /* Tighter line height for maximum space utilization */
+            padding: 1rem; 
+        }
+
+        /* ─── DOCUMENT SHELL ─────────────────────────────────── */
+        .document {
+            max-width: 8.5in;
+            margin: 0 auto;
+            background: var(--white);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, .1);
+            position: relative;
+        }
+
+        /* ─── MASTHEAD (LETTERHEAD) ──────────────────────────── */
+        .masthead {
+            padding: 1.5rem 2.5rem 0.5rem; /* Tightened padding */
+            display: flex;
+            justify-content: space-between;
+            align-items: center; 
+            gap: 1rem;
+        }
+
+        .masthead-left {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            flex: 1; 
+        }
+
+        .brand-logo img {
+            width: 190px; 
+            max-width: 100%;
+            height: auto; 
+            object-fit: contain;
+            object-position: left center;
+            filter: grayscale(100%);
+        }
+
+        .masthead-right {
+            text-align: right;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 7.5pt;
+            color: var(--gray-dark);
+            line-height: 1.3;
+            flex-shrink: 0;
+        }
+
+        .masthead-right .doctors {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 12pt;
+            font-weight: 700;
+            color: var(--black);
+            margin-bottom: 0.3rem; 
+            line-height: 1.1;
+        }
+
+        .masthead-right .doctors span {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 7pt;
+            font-weight: 500;
+            color: var(--gray-mid);
+            letter-spacing: 1px;
+            margin-left: 4px;
+        }
+
+        .masthead-right .contact-block {
+            margin-bottom: 0.2rem; 
+        }
+        
+        .masthead-right .contact-block:last-child {
+            margin-bottom: 0;
+        }
+
+        .masthead-right strong {
+            color: var(--black);
+            font-weight: 600;
+        }
+
+        /* ─── PREMIUM PRODUCT SHOWCASE ───────────────────────── */
+        .premium-product-band {
+            margin: 0.25rem 2.5rem 0.5rem; /* Tightened margins */
+            padding: 0.5rem 0; 
+            text-align: center;
+            background: transparent;
+            page-break-inside: avoid;
+            border-top: 4px double var(--black); 
+            border-bottom: 4px double var(--black); 
+        }
+
+        .premium-product-band .form-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 22pt; 
+            font-weight: 700;
+            color: var(--black); 
+            letter-spacing: 3px; 
+            line-height: 1;
+            margin-bottom: 0.2rem;
+        }
+
+        .premium-product-band .bold-hyphen {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            margin: 0 4px; 
+        }
+
+        .premium-product-band .form-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 7.5pt;
+            font-weight: 700;
+            letter-spacing: 4px; 
+            text-transform: uppercase;
+            color: var(--black); 
+        }
+
+        /* ─── DOCUMENT TITLE BAND ────────────────────────────── */
+        .title-band {
+            padding: 0.5rem 2.5rem 0.5rem; 
+            text-align: center;
+        }
+
+        .title-band .form-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 18pt; 
+            font-weight: 700;
+            color: var(--black);
+            letter-spacing: 0.5px;
+            line-height: 1.2;
+            text-transform: uppercase;
+        }
+
+        /* ─── BODY ───────────────────────────────────────────── */
+        .body {
+            padding: 0 2.5rem 1rem; 
+        }
+
+        /* ─── SECTIONS & TEXT ────────────────────────────────── */
+        section {
+            page-break-inside: auto; 
+            margin-bottom: 1rem;
+        }
+
+        .part-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 0.8rem;
+            margin-top: 1rem;
+            page-break-after: avoid;
+            page-break-inside: avoid;
+        }
+
+        .part-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 11pt;
+            font-weight: 700;
+            color: var(--black);
+            letter-spacing: 1px;
+            flex-shrink: 0;
+            text-transform: uppercase;
+        }
+
+        .part-rule {
+            flex-grow: 1;
+            height: 1px;
+            background: var(--black);
+        }
+
+        p {
+            font-size: 11pt;
+            color: var(--gray-dark);
+            margin-bottom: 0.5rem;
+            text-align: left;
+            page-break-inside: avoid;
+        }
+
+        ol {
+            padding-left: 1.5rem;
+            margin-bottom: 0.5rem;
+            font-size: 11pt;
+            counter-reset: item;
+        }
+
+        ol > li {
+            margin-bottom: 0.4rem; /* Tightened list spacing */
+            text-align: justify;
+            page-break-inside: auto;
+            list-style-type: none;
+            position: relative;
+        }
+
+        ol > li::before {
+            content: counter(item) ". ";
+            counter-increment: item;
+            font-weight: 700;
+            color: var(--black);
+            position: absolute;
+            left: -1.5rem;
+        }
+
+        .checkbox-group {
+            display: inline-flex;
+            gap: 1rem;
+            margin-left: 0.5rem;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 9pt;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .inline-blank {
+            display: inline-block;
+            border-bottom: 1px solid var(--black);
+            min-width: 100px;
+            margin: 0 5px;
+            vertical-align: bottom;
+            height: 1.1em;
+        }
+
+        .inline-blank-long {
+            display: inline-block;
+            border-bottom: 1px solid var(--black);
+            min-width: 250px;
+            margin: 0 5px;
+            vertical-align: bottom;
+            height: 1.1em;
+        }
+
+        .ruled-line {
+            border-bottom: 1px solid var(--black);
+            height: 1.4rem; /* Matching text line-height */
+            width: 100%;
+            margin-top: 0.2rem;
+        }
+
+        /* ─── SIGNATURE SECTION ──────────────────────────────── */
+        .signature-section {
+            page-break-inside: avoid; 
+            margin-top: 2rem;
+        }
+
+        .sig-row {
+            display: flex;
+            gap: 4rem;
+            align-items: flex-end;
+        }
+
+        .sig-block {
+            flex: 1;
+        }
+
+        .sig-field {
+            border-top: 1px solid var(--black);
+            padding-top: 0.4rem;
+            text-align: center;
+        }
+
+        .sig-field-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 7.5pt;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--black);
+        }
+
+        .sig-blank {
+            min-height: 2.5rem;
+        }
+
+        /* ─── FOOTER ─────────────────────────────────────────── */
+        .doc-footer {
+            border-top: 2px solid var(--black);
+            margin: 0 2.5rem;
+            padding: 0.8rem 0 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-left {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 7.5pt;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--black);
+        }
+
+        .footer-right {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 7.5pt;
+            color: var(--gray-dark);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* ─── DOWNLOAD BUTTON ────────────────────────────────── */
+        .fab {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--black);
+            color: var(--white);
+            border: 2px solid var(--black);
+            padding: 0.9rem 1.6rem;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 8pt;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            transition: all 0.2s;
+            z-index: 1000;
+        }
+
+        .fab:hover {
+            background: var(--white);
+            color: var(--black);
+        }
+
+        .fab svg {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+            flex-shrink: 0;
+        }
+
+        /* ─── PRINT ──────────────────────────────────────────── */
+        @media print {
+            body {
+                background: var(--white);
+                padding: 0;
+            }
+
+            .document {
+                box-shadow: none;
+                max-width: 100%;
+                border: none;
+            }
+
+            .fab {
+                display: none !important;
+            }
+
+            .body {
+                padding: 0 2.5rem;
+            }
+
+            .doc-footer {
+                margin: 0 2.5rem;
+            }
+
+            .masthead {
+                padding: 1.5rem 2.5rem 0.5rem;
+            }
+
+            .brand-logo img {
+                filter: grayscale(100%);
+                -webkit-filter: grayscale(100%);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <button id="downloadPdfBtn" class="fab">
+        <svg viewBox="0 0 24 24">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z" />
+        </svg>
+        Download PDF
+    </button>
+
+    <div class="document" id="pdf-content">
+
+        <div class="masthead">
+            <div class="masthead-left">
+                <div class="brand-logo">
+                    <img src="logo.svg" alt="Center for Implant Dentistry - Prestige Dental Group" onerror="this.outerHTML='<h2 style=\'font-family: Montserrat; font-weight: 700; color: #000; letter-spacing: 1px; font-size: 14pt; margin: 0;\'>CENTER FOR IMPLANT DENTISTRY<br><span style=\'font-size: 9pt; font-weight: 400; color: #555;\'>Prestige Dental Group</span></h2>'">
+                </div>
+            </div>
+
+            <div class="masthead-right">
+                <div class="doctors">
+                    Dr. Sambhav Jain <span>DMD, MS</span><br>
+                    Dr. Arpana Gupta <span>DDS, MDS</span>
+                </div>
+                
+                <div class="contact-block">
+                    <strong>Email:</strong> info@bayareaimplantdentistry.com<br>
+                    <strong>Website:</strong> www.bayareaimplantdentistry.com
+                </div>
+                
+                <div class="contact-block">
+                    <strong>Main Office:</strong> 3381 Walnut Ave, Fremont, CA 94538<br>
+                    <strong>Phone:</strong> (510) 574-0496
+                </div>
+                
+                <div class="contact-block">
+                    <strong>SF Office:</strong> 4318 Geary Blvd, Suite 201, San Francisco, CA 94118<br>
+                    <strong>Phone:</strong> (415) 696-2922
+                </div>
+            </div>
+        </div>
+
+        <div class="premium-product-band">
+            <div class="form-title">ALL<span class="bold-hyphen">-</span>ON<span class="bold-hyphen">-</span>8 ROBUST</div>
+            <div class="form-label">Most Advanced Biomechanical Dental Implants Protocol</div>
+        </div>
+        
+        <div class="title-band">
+            <div class="form-title">Hybrid Prophylaxis Clinical Form</div>
+        </div>
+
+        <div class="body">
+
+            <section>
+                <div class="part-header">
+                    <span class="part-title">UPPER HYBRID PROPHYLAXIS CHECKLIST</span>
+                    <span class="part-rule"></span>
+                </div>
+                <ol>
+                    <li>Existing oral hygiene &mdash; <div class="checkbox-group"><span>☐ Good</span> <span>☐ Fair</span> <span>☐ Poor</span></div></li>
+                    <li>calculus present <span class="inline-blank" style="width: 120px;"></span> none <span class="inline-blank" style="width: 80px;"></span></li>
+                    <li>All the x rays looks WNL.</li>
+                    <li>Bone level around implants-WNL <span class="inline-blank-long"></span>.</li>
+                    <li>soft tissue WNL--- Redness, puffiness,discomfort <span class="inline-blank-long"></span> along the hybrid WNL.</li>
+                    <li>Cleaning done with ultrasonic scaler, currettes and polished with prophy cup.</li>
+                    <li>superfloss done under the hybrid.</li>
+                    <li>All the access holes are closed and smooth.</li>
+                    <li>Bite checked WNL <span class="inline-blank" style="width: 80px;"></span> Adjusted <span class="inline-blank" style="width: 80px;"></span>.</li>
+                    <li>OHI given orally and showed how to do waterpik and hybrid cleaning brushes.</li>
+                </ol>
+            </section>
+
+            <section>
+                <div class="part-header">
+                    <span class="part-title">LOWER HYBRID PROPHYLAXIS CHECK LIST</span>
+                    <span class="part-rule"></span>
+                </div>
+                <ol>
+                    <li>Existing oral hygiene &mdash; <div class="checkbox-group"><span>☐ Good</span> <span>☐ Fair</span> <span>☐ Poor</span></div></li>
+                    <li>calculus present <span class="inline-blank" style="width: 120px;"></span> none <span class="inline-blank" style="width: 80px;"></span></li>
+                    <li>All the x rays looks WNL.</li>
+                    <li>Bone level around implants-WNL <span class="inline-blank-long"></span>.</li>
+                    <li>soft tissue WNL--- Redness, puffiness,discomfort <span class="inline-blank-long"></span> along the hybrid WNL.</li>
+                    <li>Cleaning done with ultrasonic scaler, currettes and polished with prophy cup.</li>
+                    <li>superfloss done under the hybrid.</li>
+                    <li>All the access holes are closed and smooth.</li>
+                    <li>Bite checked WNL <span class="inline-blank" style="width: 80px;"></span> Adjusted <span class="inline-blank" style="width: 80px;"></span>.</li>
+                    <li>OHI given orally and showed how to do waterpik and hybrid cleaning brushes.</li>
+                </ol>
+            </section>
+
+            <section style="margin-top: 1.5rem;">
+                <p style="font-weight: bold; font-family: 'Montserrat', sans-serif;">☐ Showed TEPE implant cleaning video</p>
+            </section>
+
+            <section style="margin-top: 1rem;">
+                <div style="display: flex; align-items: flex-end;">
+                    <strong style="font-family: 'Montserrat', sans-serif; font-size: 9pt; text-transform: uppercase; margin-right: 0.5rem;">NOTES:</strong>
+                    <div class="ruled-line" style="flex-grow: 1;"></div>
+                </div>
+                <div class="ruled-line"></div>
+                <div class="ruled-line"></div>
+            </section>
+
+            <section class="signature-section">
+                <div class="sig-row">
+                    <div class="sig-block">
+                        <div class="sig-blank"></div>
+                        <div class="sig-field">
+                            <div class="sig-field-label">Doctor Signature</div>
+                        </div>
+                    </div>
+                    <div class="sig-block">
+                        <div class="sig-blank"></div>
+                        <div class="sig-field">
+                            <div class="sig-field-label">Assistant Signature</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 1.5rem; font-family: 'Montserrat', sans-serif; font-size: 9pt; font-weight: 700; text-transform: uppercase;">
+                    Next Visit: <span style="margin-left: 0.5rem;">☐ 3 months</span> <span style="margin-left: 1rem;">☐ 6 months</span>
+                </div>
+            </section>
+
+        </div>
+
+
+    </div>
+    <script>
+        document.getElementById('downloadPdfBtn').addEventListener('click', function () {
+            const element = document.getElementById('pdf-content');
+
+            const btn = this;
+            btn.innerHTML = `<svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg> Generating…`;
+            btn.style.pointerEvents = 'none';
+
+            document.fonts.ready.then(function() {
+                const opt = {
+                    margin: [0.5, 0.5, 0.65, 0.5],
+                    filename: 'Hybrid_Prophylaxis_Checklist.pdf',
+                    image: { type: 'jpeg', quality: 1.0 },
+                    html2canvas: {
+                        scale: 4, 
+                        useCORS: true,
+                        letterRendering: true,
+                        scrollY: 0
+                    },
+                    jsPDF: {
+                        unit: 'in',
+                        format: 'letter',
+                        orientation: 'portrait'
+                    },
+                    pagebreak: { mode: ['css', 'legacy'] }
+                };
+
+                const webFooter = document.querySelector('.doc-footer');
+                if(webFooter) webFooter.style.display = 'none';
+
+                html2pdf().set(opt).from(element).toPdf().get('pdf').then(function (pdf) {
+                    var totalPages = pdf.internal.getNumberOfPages();
+                    var pageWidth = pdf.internal.pageSize.getWidth();
+                    var pageHeight = pdf.internal.pageSize.getHeight();
+
+                    for (var i = 1; i <= totalPages; i++) {
+                        pdf.setPage(i);
+
+                        var pageStr = 'Page ' + i + ' of ' + totalPages;
+                        pdf.setFontSize(7); 
+                        pdf.setTextColor(85, 85, 85); 
+                        pdf.setFont('helvetica', 'normal');
+                        var tw = pdf.getStringUnitWidth(pageStr) * 7 / 72;
+                        pdf.text(pageStr, pageWidth - tw - 0.5, pageHeight - 0.35);
+                    }
+                }).save().then(function () {
+                    if(webFooter) webFooter.style.display = 'flex';
+                    btn.innerHTML = `<svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg> Download PDF`;
+                    btn.style.pointerEvents = 'auto';
+                });
+            });
+        });
+    </script>
+</body>
+</html>

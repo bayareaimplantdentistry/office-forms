@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sinus Lift & Bone Graft Consent | All-On-8 Robust</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap"
+        rel="stylesheet">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+    <style>
+        :root {
+            --black: #000000;
+            --gray-dark: #222222;
+            --gray-mid: #555555;
+            --gray-light: #999999;
+            --gray-border: #cccccc;
+            --white: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'EB Garamond', serif;
+            background: #f4f4f4;
+            color: var(--black);
+            font-size: 11pt;
+            line-height: 1.6;
+            padding: 2rem 1rem;
+        }
+
+        /* ─── DOCUMENT SHELL ─────────────────────────────────── */
+        .document {
+            max-width: 8.5in;
+            margin: 0 auto;
+            background: var(--white);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, .1);
+            position: relative;
+        }
+
+        /* ─── MASTHEAD (LETTERHEAD) ──────────────────────────── */
+        .masthead {
+            padding: 2.5rem 3rem 1rem; 
+            display: flex;
+            justify-content: space-between;
+            align-items: center; 
+            gap: 2rem;
+        }
+
+        .masthead-left {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            flex: 1; 
+        }
+
+        .brand-logo img {
+            width: 210px; 
+            max-width: 100%;
+            height: auto; 
+            object-fit: contain;
+            object-position: left center;
+            filter: grayscale(100%);
+        }
+
+        .masthead-right {
+            text-align: right;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 7.5pt;
+            color: var(--gray-dark);
+            line-height: 1.5;
+            flex-shrink: 0;
+        }
+
+        .masthead-right .doctors {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 13pt;
+            font-weight: 700;
+            color: var(--black);
+            margin-bottom: 0.8rem; 
+            line-height: 1.2;
+        }
+
+        .masthead-right .doctors span {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 7pt;
+            font-weight: 500;
+            color: var(--gray-mid);
+            letter-spacing: 1px;
+            margin-left: 4px;
+        }
+
+        .masthead-right .contact-block {
+            margin-bottom: 0.6rem; 
+        }
+        
+        .masthead-right .contact-block:last-child {
+            margin-bottom: 0;
+        }
+
+        .masthead-right strong {
+            color: var(--black);
+            font-weight: 600;
+        }
+
+        /* ─── PREMIUM PRODUCT SHOWCASE (B&W PRINT OPTIMIZED) ─── */
+        .premium-product-band {
+            margin: 0.5rem 3rem 1.5rem; 
+            padding: 1.2rem 0; 
+            text-align: center;
+            background: transparent;
+            page-break-inside: avoid;
+            border-top: 6px double var(--black); 
+            border-bottom: 6px double var(--black); 
+        }
+
+        .premium-product-band .form-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 30pt; 
+            font-weight: 700;
+            color: var(--black); 
+            letter-spacing: 4px; 
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .premium-product-band .bold-hyphen {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            margin: 0 4px; 
+        }
+
+        .premium-product-band .form-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 8pt;
+            font-weight: 700;
+            letter-spacing: 6px; 
+            text-transform: uppercase;
+            color: var(--black); 
+        }
+
+        /* ─── DOCUMENT TITLE BAND ────────────────────────────── */
+        .title-band {
+            padding: 1.5rem 3rem;
+            text-align: center;
+        }
+
+        .title-band.sub-title {
+            padding-top: 0;
+            margin-top: 0.5rem;
+        }
+
+        .title-band .form-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 8pt;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gray-mid);
+            margin-bottom: 0.4rem;
+        }
+
+        .title-band .form-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 18pt; 
+            font-weight: 700;
+            color: var(--black);
+            letter-spacing: 0.5px;
+            line-height: 1.2;
+        }
+
+        /* ─── BODY ───────────────────────────────────────────── */
+        .body {
+            padding: 0 3rem 2.5rem;
+        }
+
+        /* ─── SECTIONS ───────────────────────────────────────── */
+        section {
+            margin-bottom: 2rem;
+            page-break-inside: avoid;
+        }
+
+        .part-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.2rem;
+            margin-top: 2.5rem;
+        }
+
+        .part-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 15pt;
+            font-weight: 700;
+            color: var(--black);
+            letter-spacing: 0.5px;
+            flex-shrink: 0;
+            text-transform: uppercase;
+        }
+
+        .part-rule {
+            flex-grow: 1;
+            height: 1px;
+            background: var(--black);
+        }
+
+        h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 8.5pt;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--black);
+            margin: 1.5rem 0 0.5rem;
+            padding-bottom: 0.2rem;
+            border-bottom: 1px solid var(--gray-border);
+            page-break-after: avoid;
+        }
+
+        p {
+            font-size: 11pt;
+            color: var(--gray-dark);
+            margin-bottom: 0.8rem;
+            text-align: left;
+            page-break-inside: avoid;
+        }
+
+        ol {
+            padding-left: 1.5rem;
+            margin-bottom: 1.2rem;
+            font-size: 11pt;
+            color: var(--gray-dark);
+        }
+        
+        ol > li {
+            margin-bottom: 1.5rem; 
+        }
+
+        ul {
+            padding-left: 1.5rem;
+            margin-bottom: 1.2rem;
+            font-size: 11pt;
+            color: var(--gray-dark);
+        }
+
+        li {
+            margin-bottom: 0.6rem;
+            text-align: left;
+            page-break-inside: avoid;
+        }
+        
+        ul.checkbox-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        li::marker {
+            font-weight: 700;
+            color: var(--black);
+        }
+        
+        .initial-box {
+            display: inline-block;
+            border-bottom: 1px solid var(--black);
+            width: 50px;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+        
+        .inline-blank {
+            display: inline-block;
+            border-bottom: 1px solid var(--black);
+            min-width: 150px;
+            margin: 0 5px;
+        }
+        
+        .inline-blank-long {
+             display: inline-block;
+            border-bottom: 1px solid var(--black);
+            min-width: 300px;
+            margin: 0 5px;
+        }
+
+        /* ─── INFO GRID ──────────────────────────────────────── */
+        .info-grid {
+            border: 2px solid var(--black);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            page-break-inside: avoid;
+        }
+
+        .field-row {
+            display: flex;
+            align-items: flex-end;
+            margin-bottom: 1.2rem;
+        }
+
+        .field-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .field-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 8pt;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--black);
+            margin-right: 1rem;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .field-value {
+            flex-grow: 1;
+            border-bottom: 1px solid var(--black);
+            min-height: 1.4rem;
+            padding: 0 0.5rem 0.1rem;
+            font-size: 12pt;
+            font-family: 'EB Garamond', serif;
+            color: var(--black);
+        }
+
+        /* ─── SIGNATURE SECTION ──────────────────────────────── */
+        .signature-section {
+            page-break-inside: avoid;
+            margin-top: 2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .sig-row {
+            display: flex;
+            gap: 3rem;
+            margin-bottom: 2rem;
+            align-items: flex-end;
+        }
+
+        .sig-block {
+            flex: 1;
+        }
+
+        .sig-block.narrow {
+            flex: 0 0 2.5in;
+        }
+
+        .sig-field {
+            border-top: 1px solid var(--black);
+            padding-top: 0.4rem;
+        }
+
+        .sig-field-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 7.5pt;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--black);
+        }
+
+        .sig-blank {
+            min-height: 2.5rem;
+        }
+
+        /* ─── FOOTER ─────────────────────────────────────────── */
+        .doc-footer {
+            border-top: 2px solid var(--black);
+            margin: 0 3rem;
+            padding: 1rem 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-left {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 7.5pt;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--black);
+        }
+
+        .footer-right {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 7.5pt;
+            color: var(--gray-dark);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* ─── DOWNLOAD BUTTON ────────────────────────────────── */
+        .fab {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--black);
+            color: var(--white);
+            border: 2px solid var(--black);
+            padding: 0.9rem 1.6rem;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 8pt;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            transition: all 0.2s;
+            z-index: 1000;
+        }
+
+        .fab:hover {
+            background: var(--white);
+            color: var(--black);
+        }
+
+        .fab svg {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+            flex-shrink: 0;
+        }
+
+        /* ─── PRINT ──────────────────────────────────────────── */
+        @media print {
+            body {
+                background: var(--white);
+                padding: 0;
+            }
+
+            .document {
+                box-shadow: none;
+                max-width: 100%;
+                border: none;
+            }
+
+            .fab {
+                display: none !important;
+            }
+
+            section,
+            .info-grid,
+            .signature-section {
+                page-break-inside: auto; 
+            }
+            
+            li {
+                page-break-inside: avoid;
+            }
+
+            h3,
+            .part-header {
+                page-break-after: avoid;
+            }
+
+            .body {
+                padding: 0 2.5rem;
+            }
+
+            .doc-footer {
+                margin: 0 2.5rem;
+            }
+
+            .masthead {
+                padding: 2.5rem 2.5rem 1rem;
+            }
+
+            .brand-logo img {
+                filter: grayscale(100%);
+                -webkit-filter: grayscale(100%);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <button id="downloadPdfBtn" class="fab">
+        <svg viewBox="0 0 24 24">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z" />
+        </svg>
+        Download PDF
+    </button>
+
+    <div class="document" id="pdf-content">
+
+        <div class="masthead">
+            <div class="masthead-left">
+                <div class="brand-logo">
+                    <img src="logo.svg" alt="Center for Implant Dentistry" onerror="this.outerHTML='<h2 style=\'font-family: Montserrat; font-weight: 700; color: #000; letter-spacing: 1px;\'>CENTER FOR IMPLANT DENTISTRY</h2>'">
+                </div>
+            </div>
+
+            <div class="masthead-right">
+                <div class="doctors">
+                    Dr. Sambhav Jain <span>DMD, MS</span><br>
+                    Dr. Arpana Gupta <span>DDS, MDS</span>
+                </div>
+                
+                <div class="contact-block">
+                    <strong>Email:</strong> info@bayareaimplantdentistry.com<br>
+                    <strong>Website:</strong> www.bayareaimplantdentistry.com
+                </div>
+                
+                <div class="contact-block">
+                    <strong>Main Office:</strong> 3381 Walnut Ave, Fremont, CA 94538<br>
+                    <strong>Phone:</strong> (510) 574-0496
+                </div>
+                
+                <div class="contact-block">
+                    <strong>SF Office:</strong> 4318 Geary Blvd, Suite 201, San Francisco, CA 94118<br>
+                    <strong>Phone:</strong> (415) 696-2922
+                </div>
+            </div>
+        </div>
+
+        <div class="premium-product-band">
+            <div class="form-title">ALL<span class="bold-hyphen">-</span>ON<span class="bold-hyphen">-</span>8 ROBUST</div>
+            <div class="form-label">Most Advanced Biomechanical Dental Implants Protocol</div>
+        </div>
+        
+        <div class="title-band sub-title">
+            <div class="form-label">Informed Consent Document</div>
+            <div class="form-title">Consent for Two-Stage Osseousintegrated Implant with Sinus-Lift/Bone Grafting Procedure</div>
+        </div>
+
+        <div class="body">
+
+            <div class="info-grid">
+                <div class="field-row">
+                    <span class="field-label">Patient Name</span>
+                    <span class="field-value"></span>
+                </div>
+                <div class="field-row">
+                    <span class="field-label">Date</span>
+                    <span class="field-value"></span>
+                </div>
+            </div>
+
+            <p style="font-weight: 600; text-align: center; margin-bottom: 2rem;">Please initial each paragraph after reading. If you have any questions, please ask your doctor BEFORE initialing.</p>
+
+            <p>You have the right to be given information about your proposed implant placement so that you are able to make the decision as to whether to proceed with surgery. What you are being asked to sign is confirmation that you have been given information on the nature of your proposed treatment, the known risks associated with it, and the possible alternative treatments.</p>
+
+            <ol>
+                <li>
+                    Dr. <span class="inline-blank"></span> has informed me of my diagnosis (condition), which is described as: <span class="inline-blank-long"></span>
+                </li>
+                
+                <li>
+                     The surgical procedure proposed to treat the above condition has been explained to me and I understand it to be: <span class="inline-blank-long"></span>
+                </li>
+                
+                <li>
+                     I understand that incisions will be placed inside my mouth in the upper jaw for the purpose of placing one or more endosteal root form structures (implants) in my jaw to serve as anchors for a missing tooth or teeth replacement or to stabilize a crown, bridge, or denture. I acknowledge that the doctor has explained the procedure, including the number and location of incisions and the type of implant to be used. I also understand that the crown, bridge, or denture that will later be attached to this implant(s) will be made and attached by Dr. <span class="inline-blank"></span> and that a separate charge will be made by that office.
+                </li>
+                
+                <li>
+                     In my case, I further understand that there is not enough natural jawbone in which to place the proposed implant and that a procedure called a "sinus lift" is planned. This involves opening the sinus cavity in my upper jaw and placing a bone graft in order to provide support for the implant. The graft may come from specially-prepared donated bone, or may be taken from my jaw, chin, skull, or hip, and may be supplemented with donated bone or bone substitute.
+                </li>
+                
+                <li>
+                     I understand the implant(s) must remain covered by gum tissue for at least six months or longer before they can be used, and that a second surgical procedure is required to uncover the top of the implant(s). No guarantee can be or has been given that the implant(s) will last for a specific time period. It has been explained that once inserted, the entire treatment plan must be followed and completed on schedule. If this is not done, the implant(s) may fail.
+                </li>
+
+                <li>
+                     I have been informed of possible alternative forms of treatment (if any), including: <span class="inline-blank-long"></span> I understand that other forms of treatment, or no treatment at all, are also choices, and the risks of those choices have been presented to me.
+                </li>
+
+                <li>
+                     My doctor has explained to me that there are certain inherent and potential risks and side effects in any surgical procedure and in this specific instance such risks include, but are not limited to, the following:
+
+                    <h3 style="margin-top: 1rem;">Risks of Implant Surgery</h3>
+                    <ul>
+                        <li>A. Post-operative discomfort and swelling that may require several days of at-home recuperation.</li>
+                        <li>B. Prolonged or heavy bleeding that may require additional treatment. Because the sinus is involved, some bleeding may be from the nose.</li>
+                        <li>C. Injury or damage to adjacent teeth or roots, possibly requiring root canal therapy, and occasionally loss of an injured tooth.</li>
+                        <li>D. Post-operative infection, including sinus infection, that may require additional treatment. In rare instances, an opening may develop between mouth and sinus.</li>
+                        <li>E. Stretching of the corners of the mouth that may cause cracking and bruising.</li>
+                        <li>F. Restricted mouth opening for several days due to swelling, muscle soreness, or stress on jaw joints (TMJ).</li>
+                        <li>G. Possible prolonged symptoms of sinusitis requiring medications and longer recovery time.</li>
+                        <li>H. Fracture of the jaw.</li>
+                        <li>I. Possible injury to nerve branches in the bone resulting in numbness, pain, or tingling of the lips, cheek, gums, or teeth. Lower jaw implants may cause numbness or pain in the chin or tongue (including loss of taste). These symptoms may persist for weeks, months, or rarely, may be permanent.</li>
+                    </ul>
+
+                    <h3>General Risks of Bone Grafting</h3>
+                    <ul>
+                        <li>A. Bleeding, swelling, or infection at the donor site requiring further treatment.</li>
+                        <li>B. Allergic or other adverse reaction to drugs used during or after the procedure.</li>
+                        <li>C. The need for additional or more extensive procedures to obtain sufficient bone for grafting.</li>
+                    </ul>
+
+                    <h3>Risks of Freeze-Dried, Demineralized or Other Banked Bone</h3>
+                    <p style="font-size: 11pt; margin-bottom: 0.5rem; margin-top:0;">When donated bone is used to supplement the patient's bone, additional risks include:</p>
+                    <ul>
+                        <li>A. Rejection of the donated graft material together with the entire graft.</li>
+                        <li>B. The remote chance of disease transmission from processed bone.</li>
+                    </ul>
+                </li>
+
+                <li>
+                     I understand that in my grafting procedure, the use of (autogenous, demineralized, etc.) <span class="inline-blank"></span> bone is expected to be taken from (note anatomic area) <span class="inline-blank"></span>, plus (other area) <span class="inline-blank"></span>.
+                </li>
+
+                <li style="list-style-type: none; margin-left: -1.5rem;">
+                    <h3>Anesthesia</h3>
+                    <p style="font-size: 11pt;">The anesthesia I have chosen for my surgery is (check one):</p>
+                    <ul class="checkbox-list">
+                        <li>☐ Local Anesthesia</li>
+                        <li>☐ Local Anesthesia with Nitrous Oxide/Oxygen Analgesia</li>
+                        <li>☐ Local Anesthesia with Oral Premedication</li>
+                        <li>☐ Local Anesthesia with Intravenous Sedation</li>
+                        <li>☐ General Anesthesia</li>
+                    </ul>
+                    <p style="font-size: 11pt;">Risks include: discomfort, swelling, bruising, infection, prolonged numbness, allergic reactions, inflammation at the IV site, nausea/vomiting, and rare but serious complications such as heart irregularities, heart attack, stroke, brain damage, or death.</p>
+
+                    <h3 style="margin-top: 1rem;">Your Obligations If IV Anesthesia Is Used</h3>
+                    <ul style="list-style-type: upper-alpha;">
+                        <li>You must be accompanied by a responsible adult to drive you home and stay with you until fully recovered (up to 24 hours).</li>
+                        <li>You must not drive, operate machinery, or sign documents for 24 hours.</li>
+                        <li>You must have nothing to eat or drink for six (6) hours before anesthesia. Failure to do so may be life-threatening.</li>
+                        <li>You must take prescribed medications as instructed, with only a small sip of water.</li>
+                    </ul>
+                </li>
+
+                <li>
+                     I understand that unforeseen conditions may require a change in or abandonment of the planned procedure. I authorize my doctor to make necessary adjustments.
+                </li>
+
+                <li>
+                     I understand my doctor makes no warranty or guarantee regarding the success or failure of the implant(s).
+                </li>
+
+                <li>
+                     I understand smoking is extremely detrimental to the success of implant surgery. I agree to cease all tobacco use for 2-3 weeks before and after surgery and to make strong efforts to quit entirely.
+                </li>
+
+                <li>
+                     I understand that a perfect result cannot be guaranteed.
+                </li>
+
+                <li>
+                     I understand that all encounters at this office (consultation, surgery, follow-ups, calls) may be recorded for training/documentation purposes.
+                </li>
+            </ol>
+
+            <section class="signature-section" style="margin-top: 3rem;">
+                <div class="part-header">
+                    <span class="part-title">Consent</span>
+                    <span class="part-rule"></span>
+                </div>
+                
+                <p>I certify that I speak, read, and write English, have read and fully understand this consent for surgery, that all blanks were filled in prior to signing, and that all my questions were answered to my satisfaction.</p>
+
+                <div class="sig-row" style="margin-top: 2rem;">
+                    <div class="sig-block">
+                        <div class="sig-blank"></div>
+                        <div class="sig-field">
+                            <div class="sig-field-label">Patient (or Legal Guardian) Signature</div>
+                        </div>
+                    </div>
+                    <div class="sig-block narrow">
+                        <div class="sig-blank"></div>
+                        <div class="sig-field">
+                            <div class="sig-field-label">Date</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sig-row">
+                    <div class="sig-block">
+                        <div class="sig-blank"></div>
+                        <div class="sig-field">
+                            <div class="sig-field-label">Doctor's Signature</div>
+                        </div>
+                    </div>
+                    <div class="sig-block narrow">
+                        <div class="sig-blank"></div>
+                        <div class="sig-field">
+                            <div class="sig-field-label">Date</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sig-row">
+                    <div class="sig-block">
+                        <div class="sig-blank"></div>
+                        <div class="sig-field">
+                            <div class="sig-field-label">Witness' Signature</div>
+                        </div>
+                    </div>
+                    <div class="sig-block narrow">
+                        <div class="sig-blank"></div>
+                        <div class="sig-field">
+                            <div class="sig-field-label">Date</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+    </div>
+    <script>
+        document.getElementById('downloadPdfBtn').addEventListener('click', function () {
+            const element = document.getElementById('pdf-content');
+
+            const btn = this;
+            btn.innerHTML = `<svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg> Generating…`;
+            btn.style.pointerEvents = 'none';
+
+            document.fonts.ready.then(function() {
+                const opt = {
+                    margin: [0.5, 0.5, 0.65, 0.5],
+                    filename: 'Sinus_Lift_Bone_Graft_Consent.pdf',
+                    image: { type: 'jpeg', quality: 1.0 },
+                    html2canvas: {
+                        scale: 4, 
+                        useCORS: true,
+                        letterRendering: true,
+                        scrollY: 0
+                    },
+                    jsPDF: {
+                        unit: 'in',
+                        format: 'letter',
+                        orientation: 'portrait'
+                    },
+                    pagebreak: { mode: ['css', 'legacy'] }
+                };
+
+                const webFooter = document.querySelector('.doc-footer');
+                if(webFooter) webFooter.style.display = 'none';
+
+                html2pdf().set(opt).from(element).toPdf().get('pdf').then(function (pdf) {
+                    var totalPages = pdf.internal.getNumberOfPages();
+                    var pageWidth = pdf.internal.pageSize.getWidth();
+                    var pageHeight = pdf.internal.pageSize.getHeight();
+
+                    for (var i = 1; i <= totalPages; i++) {
+                        pdf.setPage(i);
+
+                        var pageStr = 'Page ' + i + ' of ' + totalPages;
+                        pdf.setFontSize(7); 
+                        pdf.setTextColor(85, 85, 85); 
+                        pdf.setFont('helvetica', 'normal');
+                        var tw = pdf.getStringUnitWidth(pageStr) * 7 / 72;
+                        pdf.text(pageStr, pageWidth - tw - 0.5, pageHeight - 0.35);
+                    }
+                }).save().then(function () {
+                    if(webFooter) webFooter.style.display = 'flex';
+                    btn.innerHTML = `<svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg> Download PDF`;
+                    btn.style.pointerEvents = 'auto';
+                });
+            });
+        });
+    </script>
+</body>
+</html>

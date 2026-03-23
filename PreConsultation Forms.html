@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Pre-Consultation Form | All-On-8 Robust</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap"
+        rel="stylesheet">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+    <style>
+        :root {
+            --black: #000000;
+            --gray-dark: #222222;
+            --gray-mid: #555555;
+            --gray-light: #999999;
+            --gray-border: #cccccc;
+            --white: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'EB Garamond', serif;
+            background: #f4f4f4;
+            color: var(--black);
+            font-size: 10.65pt;
+            line-height: 1.36;
+            padding: 1.5rem 1rem;
+        }
+
+        .document {
+            max-width: 8.5in;
+            margin: 0 auto;
+            background: var(--white);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, .1);
+            position: relative;
+        }
+
+        /* ─── MASTHEAD ─────────────────────────────────────── */
+        .masthead {
+            padding: 1.45rem 2.3rem 0.85rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .brand-logo img {
+            width: 195px;
+            max-width: 100%;
+            height: auto;
+            filter: grayscale(100%);
+        }
+
+        .masthead-right {
+            text-align: right;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 7.3pt;
+            color: var(--gray-dark);
+            line-height: 1.45;
+        }
+
+        .masthead-right .doctors {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 12.2pt;
+            font-weight: 700;
+            color: var(--black);
+            margin-bottom: 0.55rem;
+        }
+
+        /* ─── PREMIUM BRANDING ─────────────────────────────── */
+        .premium-product-band {
+            margin: 0.4rem 2.3rem 0.9rem;
+            padding: 0.95rem 0;
+            text-align: center;
+            border-top: 5px double var(--black);
+            border-bottom: 5px double var(--black);
+        }
+
+        .premium-product-band .form-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 25pt;
+            font-weight: 700;
+            letter-spacing: 3.5px;
+            line-height: 1;
+        }
+
+        .premium-product-band .bold-hyphen {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            margin: 0 3px;
+        }
+
+        .premium-product-band .form-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 8pt;
+            font-weight: 700;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            margin-top: 0.3rem;
+        }
+
+        /* ─── TITLE BAND ───────────────────────────────────── */
+        .title-band {
+            padding: 0.65rem 2.3rem 1rem;
+            text-align: center;
+        }
+
+        .title-band .form-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 17pt;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+        }
+
+        /* ─── BODY ───────────────────────────────────────────── */
+        .body {
+            padding: 0 2.3rem 1.6rem;
+        }
+
+        .field-row {
+            display: flex;
+            align-items: flex-end;
+            margin-bottom: 0.85rem;
+            gap: 0.7rem;
+        }
+
+        .field-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 8pt;
+            font-weight: 700;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        .field-line {
+            border-bottom: 1px solid var(--black);
+            flex-grow: 1;
+            min-height: 1.15rem;
+        }
+
+        .question-block {
+            margin-bottom: 1.1rem;
+        }
+
+        .question-text {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 9.8pt;
+            font-weight: 700;
+            margin-bottom: 0.65rem;
+            color: var(--black);
+        }
+
+        .options-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.55rem 1.4rem;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.65rem;
+            font-size: 10.4pt;
+        }
+
+        .checkbox-box {
+            width: 14px;
+            height: 14px;
+            border: 1px solid var(--black);
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .text-area-line {
+            border-bottom: 1px solid var(--gray-border);
+            height: 1.35rem;
+            margin-top: 0.9rem;
+        }
+
+        /* ─── SIGNATURE ──────────────────────────────────────── */
+        .sig-section {
+            margin-top: 1.8rem;
+            page-break-inside: avoid;
+            display: flex;
+            gap: 2rem;
+        }
+
+        .sig-block {
+            flex: 1;
+        }
+
+        .sig-line {
+            border-top: 1px solid var(--black);
+            padding-top: 0.3rem;
+        }
+
+        .sig-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 7.2pt;
+            font-weight: 700;
+            letter-spacing: 1.4px;
+            text-transform: uppercase;
+        }
+
+        /* ─── DOWNLOAD BUTTON ────────────────────────────────── */
+        .fab {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--black);
+            color: var(--white);
+            border: 2px solid var(--black);
+            padding: 0.9rem 1.6rem;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 8pt;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            z-index: 1000;
+        }
+
+        .fab:hover { background: var(--white); color: var(--black); }
+
+        @media print {
+            .fab { display: none !important; }
+            body { background: white; padding: 0; }
+            .document { box-shadow: none; border: none; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <button id="downloadPdfBtn" class="fab">Download PDF</button>
+
+    <div class="document" id="pdf-content">
+
+        <div class="masthead">
+            <div class="masthead-left">
+                <div class="brand-logo"><img src="logo.svg" alt="Logo"></div>
+            </div>
+            <div class="masthead-right">
+                <div class="doctors">
+                    Dr. Sambhav Jain <span>DMD, MS</span><br>
+                    Dr. Arpana Gupta <span>DDS, MDS</span>
+                </div>
+                
+                <div class="contact-block">
+                    <strong>Email:</strong> info@bayareaimplantdentistry.com<br>
+                    <strong>Website:</strong> www.bayareaimplantdentistry.com
+                </div>
+                
+                <div class="contact-block">
+                    <strong>Main Office:</strong> 3381 Walnut Ave, Fremont, CA 94538<br>
+                    <strong>Phone:</strong> (510) 574-0496
+                </div>
+                
+                <div class="contact-block">
+                    <strong>SF Office:</strong> 4318 Geary Blvd, Suite 201, San Francisco, CA 94118<br>
+                    <strong>Phone:</strong> (415) 696-2922
+                </div>
+            </div>
+        </div>
+
+        <div class="premium-product-band">
+            <div class="form-title">ALL<span class="bold-hyphen">-</span>ON<span class="bold-hyphen">-</span>8 ROBUST</div>
+            <div class="form-label">Most Advanced Biomechanical Dental Implants Protocol</div>
+        </div>
+
+        <div class="title-band">
+            <div class="form-title">Patient Pre-Consultation Form</div>
+        </div>
+
+        <div class="body">
+
+            <div class="field-row">
+                <span class="field-label">Patient Name:</span>
+                <div class="field-line"></div>
+            </div>
+
+            <div class="question-block">
+                <p class="question-text">What brings you to explore Center for Implant Dentistry today?</p>
+                <div class="options-grid">
+                    <div class="checkbox-item"><div class="checkbox-box"></div> I'm ready to move forward with a permanent dental implant solution</div>
+                    <div class="checkbox-item"><div class="checkbox-box"></div> I've been researching and comparing my options</div>
+                    <div class="checkbox-item"><div class="checkbox-box"></div> My dentist recommended I explore implants</div>
+                    <div class="checkbox-item"><div class="checkbox-box"></div> I'd like to learn what's possible for my situation</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <p class="question-text">What matters most to you in your dental restoration? (Check all that apply)</p>
+                <div class="options-grid">
+                    <div class="checkbox-item"><div class="checkbox-box"></div> Natural appearance and confidence</div>
+                    <div class="checkbox-item"><div class="checkbox-box"></div> Eating comfort and function</div>
+                    <div class="checkbox-item"><div class="checkbox-box"></div> Long-term value and durability</div>
+                    <div class="checkbox-item"><div class="checkbox-box"></div> Quick treatment completion</div>
+                    <div class="checkbox-item"><div class="checkbox-box"></div> Minimal maintenance required</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <p class="question-text">Which treatment approach sounds most appealing to you?</p>
+                <div class="checkbox-item" style="margin-bottom:0.4rem;"><div class="checkbox-box"></div> Comprehensive full-arch solution (All-on-X)</div>
+                <div class="checkbox-item" style="margin-bottom:0.4rem;"><div class="checkbox-box"></div> Targeted replacement of specific teeth</div>
+                <div class="checkbox-item"><div class="checkbox-box"></div> I'd value the doctor's recommendation based on my needs</div>
+            </div>
+
+            <div class="question-block">
+                <p class="question-text">If considering a full-arch treatment, which level of treatment best fits your priorities?</p>
+                <div class="checkbox-item" style="margin-bottom:0.4rem;"><div class="checkbox-box"></div> Essential restoration (All-on-4) – efficient and reliable</div>
+                <div class="checkbox-item" style="margin-bottom:0.4rem;"><div class="checkbox-box"></div> Enhanced stability (All-on-6) – added support and strength</div>
+                <div class="checkbox-item" style="margin-bottom:0.4rem;"><div class="checkbox-box"></div> Premium support (All-on-8) – maximum durability and longevity</div>
+                <div class="checkbox-item"><div class="checkbox-box"></div> I would like to understand the differences before deciding</div>
+            </div>
+
+            <div class="question-block">
+                <p class="question-text">When would be ideal for you to complete your treatment?</p>
+                <div class="options-grid">
+                    <div class="checkbox-item"><div class="checkbox-box"></div> As soon as possible – I'm ready</div>
+                    <div class="checkbox-item"><div class="checkbox-box"></div> Within the next 1-2 months</div>
+                    <div class="checkbox-item"><div class="checkbox-box"></div> Within 3-6 months</div>
+                    <div class="checkbox-item"><div class="checkbox-box"></div> I'm planning ahead for next year</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <p class="question-text">To help us present the most relevant options, which investment range feels comfortable for your dental health? (Per arch)</p>
+                <div class="options-grid">
+                    <div class="checkbox-item"><div class="checkbox-box"></div> I'm exploring what's possible</div>
+                    <div class="checkbox-item"><div class="checkbox-box"></div> Up to $15,000</div>
+                    <div class="checkbox-item"><div class="checkbox-box"></div> $15,000 – $20,000</div>
+                    <div class="checkbox-item"><div class="checkbox-box"></div> $20,000 – $25,000</div>
+                    <div class="checkbox-item"><div class="checkbox-box"></div> Quality is my priority over cost</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <p class="question-text">Have you consulted with other implant specialists?</p>
+                <div class="options-grid">
+                    <div class="checkbox-item"><div class="checkbox-box"></div> You're my first consultation</div>
+                    <div class="checkbox-item"><div class="checkbox-box"></div> I've had 1-2 other consultations</div>
+                    <div class="checkbox-item"><div class="checkbox-box"></div> I've researched multiple options</div>
+                </div>
+                <div class="field-row" style="margin-top:0.9rem;">
+                    <span class="field-label" style="text-transform:none; font-weight:500;">If yes, what was most helpful about those consultations?</span>
+                </div>
+                <div class="text-area-line"></div>
+            </div>
+
+            <div class="question-block">
+                <p class="question-text">How do you plan to pay for your treatment?</p>
+                <div class="options-grid">
+                    <div class="checkbox-item"><div class="checkbox-box"></div> Pay in full</div>
+                    <div class="checkbox-item"><div class="checkbox-box"></div> Partial payment + financing</div>
+                    <div class="checkbox-item"><div class="checkbox-box"></div> Full financing / monthly payments</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <p class="question-text">Do you have a co-signer who can assist if needed?</p>
+                <div style="display:flex; gap:1.4rem; margin-top:0.4rem;">
+                    <div class="checkbox-item"><div class="checkbox-box"></div> Yes</div>
+                    <div class="checkbox-item"><div class="checkbox-box"></div> No</div>
+                    <div class="checkbox-item"><div class="checkbox-box"></div> Possibly</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <p class="question-text">What's your estimated credit score range?</p>
+                <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(110px,1fr)); gap:0.55rem 1.2rem; margin-top:0.4rem;">
+                    <div class="checkbox-item"><div class="checkbox-box"></div> Below 600</div>
+                    <div class="checkbox-item"><div class="checkbox-box"></div> 600-649</div>
+                    <div class="checkbox-item"><div class="checkbox-box"></div> 650-699</div>
+                    <div class="checkbox-item"><div class="checkbox-box"></div> 700-749</div>
+                    <div class="checkbox-item"><div class="checkbox-box"></div> 750+</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <p class="question-text">Do you have any specific concerns, expectations, or questions for the doctor?</p>
+                <div class="text-area-line"></div>
+                <div class="text-area-line"></div>
+            </div>
+
+            <div class="sig-section">
+                <div class="sig-block">
+                    <div class="sig-line"></div>
+                    <span class="sig-label">Patient Signature</span>
+                </div>
+                <div class="sig-block" style="flex:0 0 2in;">
+                    <div class="sig-line"></div>
+                    <span class="sig-label">Date</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('downloadPdfBtn').addEventListener('click', function () {
+            const element = document.getElementById('pdf-content');
+            document.fonts.ready.then(() => {
+                const opt = {
+                    margin: [0.35, 0.35, 0.35, 0.35],
+                    filename: 'All-On-8_Patient_Pre-Consultation_Form.pdf',
+                    image: { type: 'jpeg', quality: 0.98 },
+                    html2canvas: { 
+                        scale: 3, 
+                        useCORS: true, 
+                        letterRendering: true,
+                        scrollX: 0,
+                        scrollY: 0
+                    },
+                    jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+                };
+                html2pdf().set(opt).from(element).save();
+            });
+        });
+    </script>
+</body>
+</html>

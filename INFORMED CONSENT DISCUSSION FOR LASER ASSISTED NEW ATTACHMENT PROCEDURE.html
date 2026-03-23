@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LANAP Informed Consent | All-On-8 Robust</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap"
+        rel="stylesheet">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+    <style>
+        :root {
+            --black: #000000;
+            --gray-dark: #222222;
+            --gray-mid: #555555;
+            --gray-light: #999999;
+            --gray-border: #cccccc;
+            --white: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'EB Garamond', serif;
+            background: #f4f4f4;
+            color: var(--black);
+            font-size: 11pt;
+            line-height: 1.5;
+            padding: 2rem 1rem;
+        }
+
+        /* ─── DOCUMENT SHELL ─────────────────────────────────── */
+        .document {
+            max-width: 8.5in;
+            margin: 0 auto;
+            background: var(--white);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, .1);
+            position: relative;
+        }
+
+        /* ─── MASTHEAD (LETTERHEAD) ──────────────────────────── */
+        .masthead {
+            padding: 2.5rem 3rem 1rem; 
+            display: flex;
+            justify-content: space-between;
+            align-items: center; 
+            gap: 2rem;
+        }
+
+        .masthead-left {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            flex: 1; 
+        }
+
+        .brand-logo img {
+            width: 210px; 
+            max-width: 100%;
+            height: auto; 
+            object-fit: contain;
+            filter: grayscale(100%);
+        }
+
+        .masthead-right {
+            text-align: right;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 7.5pt;
+            color: var(--gray-dark);
+            line-height: 1.5;
+            flex-shrink: 0;
+        }
+
+        .masthead-right .doctors {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 13pt;
+            font-weight: 700;
+            color: var(--black);
+            margin-bottom: 0.8rem; 
+            line-height: 1.2;
+        }
+
+        .masthead-right .contact-block {
+            margin-bottom: 0.6rem; 
+        }
+
+        .masthead-right strong {
+            color: var(--black);
+            font-weight: 600;
+        }
+
+        /* ─── PREMIUM PRODUCT BAND ───────────────────────────── */
+        .premium-product-band {
+            margin: 0.5rem 3rem 1.5rem; 
+            padding: 1.2rem 0;
+            text-align: center;
+            background: transparent;
+            page-break-inside: avoid;
+            border-top: 6px double var(--black);
+            border-bottom: 6px double var(--black);
+        }
+
+        .premium-product-band .form-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 30pt; 
+            font-weight: 700;
+            color: var(--black); 
+            letter-spacing: 4px; 
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .premium-product-band .bold-hyphen {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            margin: 0 4px;
+        }
+
+        .premium-product-band .form-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 8pt;
+            font-weight: 700;
+            letter-spacing: 6px; 
+            text-transform: uppercase;
+            color: var(--black); 
+        }
+
+        /* ─── DOCUMENT TITLE BAND ────────────────────────────── */
+        .title-band {
+            padding: 1.5rem 3rem;
+            text-align: center;
+        }
+
+        .title-band .form-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 16pt; 
+            font-weight: 700;
+            color: var(--black);
+            letter-spacing: 0.5px;
+            line-height: 1.1;
+            text-transform: uppercase;
+        }
+
+        /* ─── BODY & SECTIONS ────────────────────────────────── */
+        .body {
+            padding: 0 3rem 2.5rem;
+        }
+
+        section {
+            margin-bottom: 1.5rem;
+        }
+
+        .part-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.2rem;
+            margin-top: 2rem;
+        }
+
+        .part-number {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 7pt;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--black);
+            border: 1px solid var(--black);
+            padding: 0.3rem 0.6rem;
+            flex-shrink: 0;
+        }
+
+        .part-rule {
+            flex-grow: 1;
+            height: 1px;
+            background: var(--black);
+        }
+
+        p {
+            font-size: 11pt;
+            color: var(--gray-dark);
+            margin-bottom: 1rem;
+            text-align: left;
+        }
+
+        h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 9pt;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--black);
+            margin: 1.5rem 0 0.8rem;
+            padding-bottom: 0.2rem;
+            border-bottom: 1px solid var(--gray-border);
+        }
+
+        ul {
+            padding-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+            color: var(--gray-dark);
+        }
+
+        .checkbox-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .square-box {
+            width: 18px;
+            height: 18px;
+            border: 1px solid var(--black);
+            flex-shrink: 0;
+            margin-top: 3px;
+        }
+
+        /* ─── SIGNATURE ELEMENTS ─────────────────────────────── */
+        .signature-section {
+            page-break-inside: avoid;
+            margin-top: 3rem;
+        }
+
+        .sig-row {
+            display: flex;
+            gap: 3rem;
+            margin-bottom: 2rem;
+            align-items: flex-end;
+        }
+
+        .sig-block { flex: 1; }
+        .sig-block.narrow { flex: 0 0 2.2in; }
+
+        .sig-field {
+            border-top: 1px solid var(--black);
+            padding-top: 0.4rem;
+        }
+
+        .sig-field-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 7.5pt;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .sig-blank { min-height: 2.5rem; }
+
+        /* ─── DOWNLOAD BUTTON ────────────────────────────────── */
+        .fab {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--black);
+            color: var(--white);
+            border: 2px solid var(--black);
+            padding: 0.9rem 1.6rem;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 8pt;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            z-index: 1000;
+            transition: all 0.2s;
+        }
+
+        .fab:hover { background: var(--white); color: var(--black); }
+
+        @media print {
+            body { background: var(--white); padding: 0; }
+            .document { box-shadow: none; max-width: 100%; border: none; }
+            .fab { display: none !important; }
+            .body { padding: 0 2.5rem; }
+            .masthead { padding: 2.5rem 2.5rem 1rem; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <button id="downloadPdfBtn" class="fab">Download PDF</button>
+
+    <div class="document" id="pdf-content">
+
+        <div class="masthead">
+            <div class="masthead-left">
+                <div class="brand-logo"><img src="logo.svg" alt="Logo"></div>
+            </div>
+
+            <div class="masthead-right">
+                <div class="doctors">
+                    Dr. Sambhav Jain <span>DMD, MS</span><br>
+                    Dr. Arpana Gupta <span>DDS, MDS</span>
+                </div>
+                
+                <div class="contact-block">
+                    <strong>Email:</strong> info@bayareaimplantdentistry.com<br>
+                    <strong>Website:</strong> www.bayareaimplantdentistry.com
+                </div>
+                
+                <div class="contact-block">
+                    <strong>Main Office:</strong> 3381 Walnut Ave, Fremont, CA 94538<br>
+                    <strong>Phone:</strong> (510) 574-0496
+                </div>
+                
+                <div class="contact-block">
+                    <strong>SF Office:</strong> 4318 Geary Blvd, Suite 201, San Francisco, CA 94118<br>
+                    <strong>Phone:</strong> (415) 696-2922
+                </div>
+            </div>
+        </div>
+
+        <div class="premium-product-band">
+            <div class="form-title">ALL<span class="bold-hyphen">-</span>ON<span class="bold-hyphen">-</span>8 ROBUST</div>
+            <div class="form-label">Most Advanced Biomechanical Dental Implants Protocol</div>
+        </div>
+        
+        <div class="title-band">
+            <div class="form-title">INFORMED CONSENT DISCUSSION FOR LASER ASSISTED NEW ATTACHMENT PROCEDURE (LANAP/WPT)</div>
+        </div>
+
+        <div class="body">
+
+            <section>
+                <div class="part-header">
+                    <span class="part-number">Part 1</span>
+                    <span class="part-rule"></span>
+                </div>
+                <h3>Diagnosis</h3>
+                <p>Doctor and staff have provided me with literature describing the LANAP procedure which I have read. I understand LANAP includes bite adjustment and may require the use of a bit guard. I understand I may ask the Doctor any question I may have before consenting to LANAP.</p>
+                <p>You should be aware that corrective periodontal surgical procedures can be negatively affected by medical conditions, dietary and nutritional problems, smoking, alcohol consumption clenching and grinding of the teeth, inadequate oral hygiene and medications you may be taking.</p>
+            </section>
+
+            <section>
+                <div class="part-header">
+                    <span class="part-number">Part 2</span>
+                    <span class="part-rule"></span>
+                </div>
+                <h3>1. ALTERNATIVE THERAPIES</h3>
+                <p>Doctor has previously explained to me alternatives, benefits, and potential complications of treatments for my periodontal disease as follows:</p>
+                <p><strong>PERIODONTAL FLAP/SURGERY:</strong> After local anesthesia injections, flap surgery involves surgically cutting my gum tissues. After the gums are flapped and surgically lifted away from my teeth, the underlying diseased gum tissue is scooped out, teeth roots scraped, diseased bone trimmed and/or grafted and the flap of gum tissue sutured closed.</p>
+                <p><strong>NON-SURGICAL ROOT PLANING ALONE:</strong> After local anesthetic injections of my gums, root surfaces are scraped and deep cleaned (planed) to remove bacterial plaque containing tartar (calculus) deposits on my teeth roots.</p>
+            </section>
+
+            <section>
+                <div class="part-header">
+                    <span class="part-number">Part 3</span>
+                    <span class="part-rule"></span>
+                </div>
+                <h3>2. THERAPEUTIC BENEFITS</h3>
+                <p>Periodontal therapy is designed to eliminate or substantially reduce periodontal diseased gum pockets to help control or prevent future periodontal disease progression. LANAP reduces periodontal gum pocket depth by helping:</p>
+                <ul>
+                    <li>The dentist to have improved visualization of the laser-detached gum pocket soft tissue linings to aid scaling and root planning for removal of tartar (calculus) deposits (root cleaning);</li>
+                    <li>Reattachment of the laser treated gum tissues to the roots by promoting growth of new bone and/or root surfaces.</li>
+                </ul>
+                <p>LANAP treatments are generally less painful than flap surgical procedures and in doctor’s opinion have greater predictability for reattachment of gum tissue and bone growth. Thus, LANAP helps promote long term periodontal health.</p>
+            </section>
+
+            <section>
+                <div class="part-header">
+                    <span class="part-number">Part 4</span>
+                    <span class="part-rule"></span>
+                </div>
+                <h3>3. COMPLICATIONS</h3>
+                <p>Non-surgical scaling and root planning alone may not prove successful in eliminating or substantially reducing deeper pockets thereby necessitating flap surgery or LANAP for further periodontal pocket depth reduction.</p>
+                <p>Periodontal surgery treatment risks include post-operative bleeding, infection, swelling, sinusitis, and on rare occasions in surgeries close to facial nerves persistent numbness and/or pain, bruxism, tooth sensitivity, allergic response to medication.</p>
+                <p>LANAP post-surgical complications, if any, are usually milder, less severe and not as long lasting as potential conventional periodontal flap surgery complications. LANAP, as with all periodontal procedures, may not be entirely successful in gum pocket reduction or new attachment. Success is not guaranteed. Nonetheless, LANAP research demonstrates in almost 90% of LANAP treated patients no LANAP retreatment was necessary within the first 5 years post-operatively.</p>
+            </section>
+
+            <section>
+                <div class="part-header">
+                    <span class="part-number">Part 5</span>
+                    <span class="part-rule"></span>
+                </div>
+                <h3>4. NON-TREATMENT RISKS</h3>
+                <p>Doing nothing can worsen my periodontal disease including:</p>
+                <p>Where no treatment is undertaken, further gum and bone degeneration of the supporting tissue can continue, increasing the severity of, and/or adding to, the problems presently suffered by the patient to include:</p>
+                <ul>
+                    <li>Loss of teeth due to traumatic occlusion and/or loss of vertical bone support.</li>
+                    <li>Infections / abscesses in the gums and bone.</li>
+                    <li>Tartar/calculus buildup causing loss of vertical bone support.</li>
+                </ul>
+                <p>Where only groups of teeth are missing:</p>
+                <ul>
+                    <li>None replacement of teeth – in areas where excessive chewing forces exist – may cause pronounced loss of bone and gum disease around the remaining teeth.</li>
+                    <li>Lost teeth require replacement with costly implants, crowns, bridges or removable partial/complete dentures.</li>
+                </ul>
+            </section>
+
+            <section>
+                <div class="part-header">
+                    <span class="part-number">Part 6</span>
+                    <span class="part-rule"></span>
+                </div>
+                <h3>5. PATIENT COMPLIANCE</h3>
+                <p>I agree to follow Doctor’s written pre & post-operative instructions, to perform post-surgical oral hygiene and to take medications given or prescribed. I also agree to schedule regular periodontal maintenance visits quarterly or as my dentist and/or hygienist may recommend to aid in maintaining my periodontal health.</p>
+                <p>I certify that I have had an opportunity to read and fully understand the terms and words within the above consent and the explanation referred to or made, and that all blanks or statements requiring insertion or completion were filled in and inapplicable paragraphs, if any, were stricken before I signed. I also state I read and write English. I consent to photographs of my oral and facial structures and their publication for educational and scientific purposes.</p>
+            </section>
+
+            <section class="signature-section">
+                <div class="part-header">
+                    <span class="part-number">Part 7</span>
+                    <span class="part-rule"></span>
+                </div>
+                <p>I confirm with my signature that:</p>
+                <ul>
+                    <li>My dentist has discussed the above information with me.</li>
+                    <li>I have had the chance to ask questions.</li>
+                    <li>I read and write English</li>
+                    <li>All of my questions have been answered to my satisfaction.</li>
+                    <li>I do hereby consent to the treatment described in this form.</li>
+                </ul>
+
+                <div class="checkbox-row" style="margin-top: 2rem;">
+                    <div class="square-box"></div>
+                    <p>I have been given the opportunity to ask questions and give my consent for the proposed treatment as described above.</p>
+                </div>
+
+                <div class="checkbox-row">
+                    <div class="square-box"></div>
+                    <p>I refuse to give my consent for the proposed treatment(s) as described above and understand the potential consequences associated with this refusal.</p>
+                </div>
+
+                <div class="sig-row" style="margin-top: 3rem;">
+                    <div class="sig-block">
+                        <div class="sig-blank"></div>
+                        <div class="sig-field">
+                            <div class="sig-field-label">Patient Signature</div>
+                        </div>
+                    </div>
+                    <div class="sig-block narrow">
+                        <div class="sig-blank"></div>
+                        <div class="sig-field">
+                            <div class="sig-field-label">Date</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sig-row">
+                    <div class="sig-block">
+                        <div class="sig-blank"></div>
+                        <div class="sig-field">
+                            <div class="sig-field-label">Doctor Signature</div>
+                        </div>
+                    </div>
+                    <div class="sig-block narrow">
+                        <div class="sig-blank"></div>
+                        <div class="sig-field">
+                            <div class="sig-field-label">Date</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('downloadPdfBtn').addEventListener('click', function () {
+            const element = document.getElementById('pdf-content');
+            document.fonts.ready.then(function() {
+                const opt = {
+                    margin: [0.5, 0.5, 0.5, 0.5],
+                    filename: 'LANAP_Informed_Consent.pdf',
+                    image: { type: 'jpeg', quality: 1.0 },
+                    html2canvas: { scale: 3, useCORS: true, letterRendering: true, scrollY: 0 },
+                    jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' },
+                    pagebreak: { mode: ['css', 'legacy'] }
+                };
+
+                html2pdf().set(opt).from(element).toPdf().get('pdf').then(function (pdf) {
+                    var totalPages = pdf.internal.getNumberOfPages();
+                    var pageWidth = pdf.internal.pageSize.getWidth();
+                    var pageHeight = pdf.internal.pageSize.getHeight();
+                    for (var i = 1; i <= totalPages; i++) {
+                        pdf.setPage(i);
+                        var pageStr = 'Page ' + i + ' of ' + totalPages;
+                        pdf.setFontSize(7); 
+                        pdf.setTextColor(85, 85, 85); 
+                        pdf.setFont('helvetica', 'normal');
+                        var tw = pdf.getStringUnitWidth(pageStr) * 7 / 72;
+                        pdf.text(pageStr, pageWidth - tw - 0.5, pageHeight - 0.35);
+                    }
+                }).save();
+            });
+        });
+    </script>
+</body>
+</html>

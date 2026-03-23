@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Health Questionnaire | All-On-8 Robust</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap"
+        rel="stylesheet">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+    <style>
+        :root {
+            --black: #000000;
+            --gray-dark: #222222;
+            --gray-mid: #555555;
+            --gray-light: #999999;
+            --gray-border: #cccccc;
+            --white: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'EB Garamond', serif;
+            background: #f4f4f4;
+            color: var(--black);
+            font-size: 10pt;
+            line-height: 1.4;
+            padding: 2rem 1rem;
+        }
+             .masthead-right .doctors {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 13pt;
+            font-weight: 700;
+            color: var(--black);
+            margin-bottom: 0.8rem; 
+            line-height: 1.2;
+        }
+
+        .document {
+            max-width: 8.5in;
+            margin: 0 auto;
+            background: var(--white);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, .1);
+            position: relative;
+        }
+
+        /* ─── MASTHEAD ─────────────────────────────────────── */
+        .masthead {
+            padding: 2rem 3rem 1rem; 
+            display: flex;
+            justify-content: space-between;
+            align-items: center; 
+            gap: 2rem;
+        }
+
+        .brand-logo img {
+            width: 210px; 
+            max-width: 100%;
+            height: auto; 
+            filter: grayscale(100%);
+        }
+
+        .masthead-right {
+            text-align: right;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 7.5pt;
+            color: var(--gray-dark);
+            line-height: 1.4;
+        }
+
+        .masthead-right .clinic-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 12pt;
+            font-weight: 700;
+            color: var(--black);
+            margin-bottom: 0.4rem; 
+        }
+
+        /* ─── PREMIUM BRANDING ─────────────────────────────── */
+        .premium-product-band {
+            margin: 0.5rem 3rem 1.2rem; 
+            padding: 1rem 0;
+            text-align: center;
+            border-top: 6px double var(--black);
+            border-bottom: 6px double var(--black);
+        }
+
+        .premium-product-band .form-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 28pt; 
+            font-weight: 700;
+            letter-spacing: 4px; 
+            line-height: 1;
+        }
+
+        .premium-product-band .form-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 8pt;
+            font-weight: 700;
+            letter-spacing: 6px; 
+            text-transform: uppercase;
+        }
+
+        .title-band {
+            padding: 1rem 3rem;
+            text-align: center;
+        }
+
+        .title-band .form-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 18pt; 
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        /* ─── BODY ───────────────────────────────────────────── */
+        .body {
+            padding: 0 3rem 2rem;
+        }
+
+        section {
+            margin-bottom: 1.2rem;
+        }
+
+        .part-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .part-number {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 7pt;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border: 1px solid var(--black);
+            padding: 0.2rem 0.5rem;
+            flex-shrink: 0;
+        }
+
+        .part-rule {
+            flex-grow: 1;
+            height: 1px;
+            background: var(--black);
+        }
+
+        /* ─── FORM FIELDS ─────────────────────────────────── */
+        .field-row {
+            display: flex;
+            align-items: flex-end;
+            margin-bottom: 0.8rem;
+            gap: 0.8rem;
+        }
+
+        .field-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 8pt;
+            font-weight: 700;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        .field-line {
+            border-bottom: 1px solid var(--black);
+            flex-grow: 1;
+            min-height: 1.2rem;
+        }
+
+        /* ─── QUESTION STYLING ─────────────────────────────── */
+        .question-block {
+            margin-bottom: 0.6rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+        }
+
+        .q-num {
+            font-weight: 700;
+            width: 25px;
+        }
+
+        .yn-box {
+            display: flex;
+            gap: 1rem;
+            margin-left: auto;
+            padding-left: 1rem;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .checkbox-square {
+            width: 12px;
+            height: 12px;
+            border: 1px solid var(--black);
+        }
+
+        /* ─── CONDITIONS GRID ───────────────────────────────── */
+        .conditions-container {
+            border: 1px solid var(--black);
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+
+        .conditions-header {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 8pt;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .conditions-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            column-gap: 2rem;
+        }
+
+        .condition-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #eee;
+            padding: 0.3rem 0;
+            font-size: 9pt;
+        }
+
+        /* ─── SIGNATURE ELEMENTS ─────────────────────────────── */
+        .sig-section {
+            page-break-inside: avoid;
+            margin-top: 2rem;
+        }
+
+        .sig-row {
+            display: grid;
+            grid-template-columns: 1fr 120px 1fr 120px;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .sig-block {
+            border-top: 1px solid var(--black);
+            padding-top: 0.4rem;
+        }
+
+        .sig-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 7pt;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        /* ─── DOWNLOAD BUTTON ────────────────────────────────── */
+        .fab {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--black);
+            color: var(--white);
+            padding: 0.8rem 1.4rem;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 8pt;
+            text-transform: uppercase;
+            cursor: pointer;
+            z-index: 1000;
+            border: none;
+        }
+
+        @media print {
+            .fab { display: none !important; }
+            body { background: white; padding: 0; }
+            .document { box-shadow: none; border: none; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <button id="downloadPdfBtn" class="fab">Download PDF</button>
+
+    <div class="document" id="pdf-content">
+
+        <div class="masthead">
+            <div class="masthead-left">
+                <div class="brand-logo"><img src="logo.svg" alt="Logo"></div>
+            </div>
+            <div class="masthead-right">
+                <div class="doctors">
+                    Dr. Sambhav Jain <span>DMD, MS</span><br>
+                    Dr. Arpana Gupta <span>DDS, MDS</span>
+                </div>
+                
+                <div class="contact-block">
+                    <strong>Email:</strong> info@bayareaimplantdentistry.com<br>
+                    <strong>Website:</strong> www.bayareaimplantdentistry.com
+                </div>
+                
+                <div class="contact-block">
+                    <strong>Main Office:</strong> 3381 Walnut Ave, Fremont, CA 94538<br>
+                    <strong>Phone:</strong> (510) 574-0496
+                </div>
+                
+                <div class="contact-block">
+                    <strong>SF Office:</strong> 4318 Geary Blvd, Suite 201, San Francisco, CA 94118<br>
+                    <strong>Phone:</strong> (415) 696-2922
+                </div>
+            </div>
+        </div>
+
+        <div class="premium-product-band">
+            <div class="form-title">ALL-ON-8 ROBUST</div>
+            <div class="form-label">Most Advanced Biomechanical Dental Implants Protocol</div>
+        </div>
+        
+        <div class="title-band">
+            <div class="form-title">Medical Health Questionnaire</div>
+        </div>
+
+        <div class="body">
+
+            <section>
+                <div class="part-header">
+                    <span class="part-number">Part 1</span>
+                    <span class="part-rule"></span>
+                </div>
+                <div class="field-row">
+                    <span class="field-label">Patient Name:</span><div class="field-line"></div>
+                    <span class="field-label">Birth Date:</span><div class="field-line"></div>
+                    <span class="field-label">Chart #</span><div class="field-line" style="flex-grow:0; width: 80px;"></div>
+                </div>
+                <div class="field-row">
+                    <span class="field-label">Current Address:</span><div class="field-line"></div>
+                    <span class="field-label">Zip:</span><div class="field-line" style="flex-grow:0; width: 100px;"></div>
+                    <span class="field-label">Phone #</span><div class="field-line"></div>
+                </div>
+                <div class="field-row">
+                    <span class="field-label">Emergency Contact:</span><div class="field-line"></div>
+                    <span class="field-label">Number:</span><div class="field-line"></div>
+                </div>
+                <div class="field-row">
+                    <span class="field-label">Pharmacy Name and Phone Number/Location:</span><div class="field-line"></div>
+                </div>
+                <div class="field-row">
+                    <span class="field-label">Height</span><div class="field-line"></div>
+                    <span class="field-label">Weight</span><div class="field-line"></div>
+                </div>
+            </section>
+
+            <section>
+                <div class="part-header">
+                    <span class="part-number">Part 2</span>
+                    <span class="part-rule"></span>
+                </div>
+                
+                <div class="question-block">
+                    <span class="q-num">1.</span>
+                    <span>Are you in good health?</span>
+                    <div class="yn-box">
+                        <div class="checkbox-item"><div class="checkbox-square"></div> Yes</div>
+                        <div class="checkbox-item"><div class="checkbox-square"></div> No</div>
+                    </div>
+                </div>
+
+                <div class="field-row">
+                    <span class="q-num">2.</span>
+                    <span>Your last physical was on (date)</span><div class="field-line"></div>
+                </div>
+
+                <div class="question-block">
+                    <span class="q-num">3.</span>
+                    <span>Are you now under the care of a physician?</span>
+                    <div class="yn-box">
+                        <div class="checkbox-item"><div class="checkbox-square"></div> Yes</div>
+                        <div class="checkbox-item"><div class="checkbox-square"></div> No</div>
+                    </div>
+                </div>
+                <div class="field-row" style="margin-left: 25px;">
+                    <span>A. If so, what is the condition being treated?</span><div class="field-line"></div>
+                </div>
+
+                <div class="field-row">
+                    <span class="q-num">4.</span>
+                    <span>Name and telephone number of physician</span><div class="field-line"></div>
+                </div>
+
+                <div class="question-block">
+                    <span class="q-num">5.</span>
+                    <span>Have you had any serious illness, operation or been hospitalized?</span>
+                    <div class="yn-box">
+                        <div class="checkbox-item"><div class="checkbox-square"></div> Yes</div>
+                        <div class="checkbox-item"><div class="checkbox-square"></div> No</div>
+                    </div>
+                </div>
+                <div class="field-row" style="margin-left: 25px;">
+                    <span>A. If yes, what was the problem and when?</span><div class="field-line"></div>
+                </div>
+
+                <div class="question-block">
+                    <span class="q-num">6.</span>
+                    <span>Do you drink alcoholic beverages?</span>
+                    <div class="yn-box">
+                        <div class="checkbox-item"><div class="checkbox-square"></div> Yes</div>
+                        <div class="checkbox-item"><div class="checkbox-square"></div> No</div>
+                    </div>
+                </div>
+
+                <div class="question-block">
+                    <span class="q-num">7.</span>
+                    <span>Have you used any recreational drugs in the last six months?</span>
+                    <div class="yn-box">
+                        <div class="checkbox-item"><div class="checkbox-square"></div> Yes</div>
+                        <div class="checkbox-item"><div class="checkbox-square"></div> No</div>
+                    </div>
+                </div>
+
+                <div class="question-block">
+                    <span class="q-num">8.</span>
+                    <span>History of drug abuse?</span>
+                    <div class="yn-box">
+                        <div class="checkbox-item"><div class="checkbox-square"></div> Yes</div>
+                        <div class="checkbox-item"><div class="checkbox-square"></div> No</div>
+                    </div>
+                </div>
+
+                <div class="question-block">
+                    <span class="q-num">9.</span>
+                    <span>History alcohol abuse?</span>
+                    <div class="yn-box">
+                        <div class="checkbox-item"><div class="checkbox-square"></div> Yes</div>
+                        <div class="checkbox-item"><div class="checkbox-square"></div> No</div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="conditions-container">
+                <div class="conditions-header">Have you had or do you currently have any of the following conditions:</div>
+                <div class="conditions-grid">
+                    <div>
+                        <div class="condition-item"><span>Heart Condition</span> <div class="yn-box"><span>Yes</span> <span>No</span></div></div>
+                        <div class="condition-item"><span>High Blood Pressure</span> <div class="yn-box"><span>___</span> <span>___</span></div></div>
+                        <div class="condition-item"><span>Low Blood Pressure</span> <div class="yn-box"><span>___</span> <span>___</span></div></div>
+                        <div class="condition-item"><span>Angina/Chest Pain</span> <div class="yn-box"><span>___</span> <span>___</span></div></div>
+                        <div class="condition-item"><span>Fainting</span> <div class="yn-box"><span>___</span> <span>___</span></div></div>
+                        <div class="condition-item"><span>Irregular Heart Beat</span> <div class="yn-box"><span>___</span> <span>___</span></div></div>
+                        <div class="condition-item"><span>Heart Attack</span> <div class="yn-box"><span>___</span> <span>___</span></div></div>
+                        <div class="condition-item"><span>Heart Bypass</span> <div class="yn-box"><span>___</span> <span>___</span></div></div>
+                        <div class="condition-item"><span>Heart Pacemaker</span> <div class="yn-box"><span>___</span> <span>___</span></div></div>
+                        <div class="condition-item"><span>Stroke</span> <div class="yn-box"><span>___</span> <span>___</span></div></div>
+                        <div class="condition-item"><span>Rheumatic Fever</span> <div class="yn-box"><span>___</span> <span>___</span></div></div>
+                        <div class="condition-item"><span>Heart Valve Damage</span> <div class="yn-box"><span>___</span> <span>___</span></div></div>
+                        <div class="condition-item"><span>Anemia</span> <div class="yn-box"><span>___</span> <span>___</span></div></div>
+                        <div class="condition-item"><span>Liver Disease</span> <div class="yn-box"><span>___</span> <span>___</span></div></div>
+                        <div class="condition-item"><span>Hepatitis (circle one: A B C)</span> <div class="yn-box"><span>___</span> <span>___</span></div></div>
+                        <div class="condition-item"><span>Breathing/Lung Condition</span> <div class="yn-box"><span>___</span> <span>___</span></div></div>
+                        <div class="condition-item"><span>Asthma</span> <div class="yn-box"><span>___</span> <span>___</span></div></div>
+                        <div class="condition-item"><span>Allergies/Hay Fever</span> <div class="yn-box"><span>___</span> <span>___</span></div></div>
+                        <div class="condition-item"><span>Emphysema</span> <div class="yn-box"><span>___</span> <span>___</span></div></div>
+                        <div class="condition-item"><span>Breathing Difficulties</span> <div class="yn-box"><span>___</span> <span>___</span></div></div>
+                        <div class="condition-item"><span>Snoring/Sleep Apnea</span> <div class="yn-box"><span>___</span> <span>___</span></div></div>
+                        <div class="condition-item"><span>Tuberculosis</span> <div class="yn-box"><span>___</span> <span>___</span></div></div>
+                    </div>
+                    <div>
+                        <div class="condition-item"><span>Immunosuppressed/Blood Disease</span> <div class="yn-box"><span>Yes</span> <span>No</span></div></div>
+                        <div class="condition-item"><span>HIV Positive</span> <div class="yn-box"><span>___</span> <span>___</span></div></div>
+                        <div class="condition-item"><span>Aids</span> <div class="yn-box"><span>___</span> <span>___</span></div></div>
+                        <div class="condition-item"><span>Sexually Transmitted Disease</span> <div class="yn-box"><span>___</span> <span>___</span></div></div>
+                        <div class="condition-item"><span>Delay in Healing</span> <div class="yn-box"><span>___</span> <span>___</span></div></div>
+                        <div class="condition-item"><span>Organ Condition/Disease</span> <div class="yn-box"><span>___</span> <span>___</span></div></div>
+                        <div class="condition-item"><span>Pancreas/Diabetes</span> <div class="yn-box"><span>___</span> <span>___</span></div></div>
+                        <div class="condition-item"><span>Kidney/Dialysis</span> <div class="yn-box"><span>___</span> <span>___</span></div></div>
+                        <div class="condition-item"><span>Eyes/Glaucoma</span> <div class="yn-box"><span>___</span> <span>___</span></div></div>
+                        <div class="condition-item"><span>Thyroid</span> <div class="yn-box"><span>___</span> <span>___</span></div></div>
+                        <div class="condition-item"><span>Neurologic/Epilepsy</span> <div class="yn-box"><span>___</span> <span>___</span></div></div>
+                        <div class="condition-item"><span>Cancer (Location: ____________)</span> <div class="yn-box"><span>___</span> <span>___</span></div></div>
+                        <div class="condition-item"><span>Surgery</span> <div class="yn-box"><span>___</span> <span>___</span></div></div>
+                        <div class="condition-item"><span>Radiation Treatment</span> <div class="yn-box"><span>___</span> <span>___</span></div></div>
+                        <div class="condition-item"><span>Chemo Therapy</span> <div class="yn-box"><span>___</span> <span>___</span></div></div>
+                        <div class="condition-item"><span>Joint Condition</span> <div class="yn-box"><span>___</span> <span>___</span></div></div>
+                        <div class="condition-item"><span>Clicking/Pain in jaw joints when eating</span> <div class="yn-box"><span>___</span> <span>___</span></div></div>
+                        <div class="condition-item"><span>Arthritis</span> <div class="yn-box"><span>___</span> <span>___</span></div></div>
+                        <div class="condition-item"><span>Artificial Knee Replacement</span> <div class="yn-box"><span>___</span> <span>___</span></div></div>
+                        <div class="condition-item"><span>Artificial Hip Replacement</span> <div class="yn-box"><span>___</span> <span>___</span></div></div>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <div class="part-header">
+                    <span class="part-number">Part 3</span>
+                    <span class="part-rule"></span>
+                </div>
+                
+                <div class="question-block">
+                    <span class="q-num">11.</span>
+                    <span>Have you had abnormal bleeding associated with previous extractions, surgery or trauma?</span>
+                    <div class="yn-box">
+                        <div class="checkbox-item"><div class="checkbox-square"></div> Yes</div>
+                        <div class="checkbox-item"><div class="checkbox-square"></div> No</div>
+                    </div>
+                </div>
+                <div class="question-block" style="margin-left: 25px;">
+                    <span class="q-num">A.</span>
+                    <span>Do you bruise easily?</span>
+                    <div class="yn-box">
+                        <div class="checkbox-item"><div class="checkbox-square"></div> Yes</div>
+                        <div class="checkbox-item"><div class="checkbox-square"></div> No</div>
+                    </div>
+                </div>
+                <div class="question-block" style="margin-left: 25px;">
+                    <span class="q-num">B.</span>
+                    <span>Have you ever required a blood transfusion?</span>
+                    <div class="yn-box">
+                        <div class="checkbox-item"><div class="checkbox-square"></div> Yes</div>
+                        <div class="checkbox-item"><div class="checkbox-square"></div> No</div>
+                    </div>
+                </div>
+                <div class="field-row" style="margin-left: 25px;">
+                    <span>If yes, explain circumstances</span><div class="field-line"></div>
+                </div>
+
+                <div class="question-block">
+                    <span class="q-num">12.</span>
+                    <span>Have you had surgery or x-ray treatment for a tumor, growth or other condition in your mouth or lips?</span>
+                    <div class="yn-box">
+                        <div class="checkbox-item"><div class="checkbox-square"></div> Yes</div>
+                        <div class="checkbox-item"><div class="checkbox-square"></div> No</div>
+                    </div>
+                </div>
+                <div class="field-row" style="margin-left: 25px;">
+                    <span>If yes, date</span><div class="field-line"></div>
+                </div>
+
+                <div class="question-block">
+                    <span class="q-num">13.</span>
+                    <span>Are you taking any drug or medicine?</span>
+                    <div class="yn-box">
+                        <div class="checkbox-item"><div class="checkbox-square"></div> Yes</div>
+                        <div class="checkbox-item"><div class="checkbox-square"></div> No</div>
+                    </div>
+                </div>
+                <div class="field-row" style="margin-left: 25px;">
+                    <span>If yes, list all medication(s)</span><div class="field-line"></div>
+                </div>
+
+                <p style="margin-top: 1rem; font-weight: 700;">14. Are you taking any of the following?</p>
+                <div class="conditions-grid" style="margin-left: 25px;">
+                    <div class="condition-item"><span>A. Antibiotics or sulfa drugs</span> <div class="yn-box"><span>Yes</span> <span>No</span></div></div>
+                    <div class="condition-item"><span>B. Anticoagulants (blood thinners)</span> <div class="yn-box"><span>Yes</span> <span>No</span></div></div>
+                    <div class="condition-item"><span>C. Medicine for high blood pressure</span> <div class="yn-box"><span>Yes</span> <span>No</span></div></div>
+                    <div class="condition-item"><span>D. Cortisone (steroids)</span> <div class="yn-box"><span>Yes</span> <span>No</span></div></div>
+                    <div class="condition-item"><span>E. Tranquilizers</span> <div class="yn-box"><span>Yes</span> <span>No</span></div></div>
+                    <div class="condition-item"><span>F. Aspirin</span> <div class="yn-box"><span>Yes</span> <span>No</span></div></div>
+                    <div class="condition-item"><span>G. Insulin, Tolbutamide</span> <div class="yn-box"><span>Yes</span> <span>No</span></div></div>
+                    <div class="condition-item"><span>H. Digitalis or drugs for heart problems</span> <div class="yn-box"><span>Yes</span> <span>No</span></div></div>
+                    <div class="condition-item"><span>I. Nitroglycerin</span> <div class="yn-box"><span>Yes</span> <span>No</span></div></div>
+                </div>
+                <div class="field-row" style="margin-left: 25px;">
+                    <span>J. Other</span><div class="field-line"></div>
+                </div>
+            </section>
+
+            <section>
+                <div class="part-header">
+                    <span class="part-number">Part 4</span>
+                    <span class="part-rule"></span>
+                </div>
+                <p style="font-weight: 700;">15. Are you allergic or have you reacted adversely to:</p>
+                <div class="conditions-grid" style="margin-left: 25px;">
+                    <div class="condition-item"><span>A. Penicillin or other antibiotics</span> <div class="yn-box"><span>Yes</span> <span>No</span></div></div>
+                    <div class="condition-item"><span>B. Latex</span> <div class="yn-box"><span>Yes</span> <span>No</span></div></div>
+                    <div class="condition-item"><span>C. Aspirin</span> <div class="yn-box"><span>Yes</span> <span>No</span></div></div>
+                    <div class="condition-item"><span>D. Local anesthetic</span> <div class="yn-box"><span>Yes</span> <span>No</span></div></div>
+                    <div class="condition-item"><span>E. Barbiturates, codeine, sedatives, sleeping pills</span> <div class="yn-box"><span>Yes</span> <span>No</span></div></div>
+                    <div class="condition-item"><span>F. Iodine</span> <div class="yn-box"><span>Yes</span> <span>No</span></div></div>
+                    <div class="condition-item"><span>G. Sulfa drugs</span> <div class="yn-box"><span>Yes</span> <span>No</span></div></div>
+                </div>
+                <div class="field-row" style="margin-left: 25px;">
+                    <span>H. Other</span><div class="field-line"></div>
+                </div>
+
+                <div class="question-block">
+                    <span class="q-num">16.</span>
+                    <span>Have you had any adverse reaction associates with previous dental treatment?</span>
+                    <div class="yn-box">
+                        <div class="checkbox-item"><div class="checkbox-square"></div> Yes</div>
+                        <div class="checkbox-item"><div class="checkbox-square"></div> No</div>
+                    </div>
+                </div>
+                <div class="field-row" style="margin-left: 25px;">
+                    <span>If yes, explain</span><div class="field-line"></div>
+                </div>
+
+                <div class="question-block">
+                    <span class="q-num">17.</span>
+                    <span>Have you had any adverse reaction associated with previous medical problems?</span>
+                    <div class="yn-box">
+                        <div class="checkbox-item"><div class="checkbox-square"></div> Yes</div>
+                        <div class="checkbox-item"><div class="checkbox-square"></div> No</div>
+                    </div>
+                </div>
+                <div class="field-row" style="margin-left: 25px;">
+                    <span>If yes, explain</span><div class="field-line"></div>
+                </div>
+            </section>
+
+            <section>
+                <div class="part-header">
+                    <span class="part-number">Part 5</span>
+                    <span class="part-rule"></span>
+                </div>
+                <p style="font-weight: 700; text-transform: uppercase; margin-bottom: 0.5rem;">Woman Only - Items 18-20:</p>
+                <div class="question-block">
+                    <span class="q-num">18.</span>
+                    <span>Are you pregnant?</span>
+                    <div class="yn-box">
+                        <div class="checkbox-item"><div class="checkbox-square"></div> Yes</div>
+                        <div class="checkbox-item"><div class="checkbox-square"></div> No</div>
+                    </div>
+                </div>
+                <div class="question-block">
+                    <span class="q-num">19.</span>
+                    <span>Are you nursing?</span>
+                    <div class="yn-box">
+                        <div class="checkbox-item"><div class="checkbox-square"></div> Yes</div>
+                        <div class="checkbox-item"><div class="checkbox-square"></div> No</div>
+                    </div>
+                </div>
+                <div class="question-block">
+                    <span class="q-num">20.</span>
+                    <span>Are you taking birth control medication?</span>
+                    <div class="yn-box">
+                        <div class="checkbox-item"><div class="checkbox-square"></div> Yes</div>
+                        <div class="checkbox-item"><div class="checkbox-square"></div> No</div>
+                    </div>
+                </div>
+
+                <div class="question-block">
+                    <span class="q-num">21.</span>
+                    <span>Mental health problems?</span>
+                    <div class="yn-box">
+                        <div class="checkbox-item"><div class="checkbox-square"></div> Yes</div>
+                        <div class="checkbox-item"><div class="checkbox-square"></div> No</div>
+                    </div>
+                </div>
+
+                <div class="question-block">
+                    <span class="q-num">22.</span>
+                    <span>Have you had any disease, serious illness/surgery condition or problem not listed above?</span>
+                    <div class="yn-box">
+                        <div class="checkbox-item"><div class="checkbox-square"></div> Yes</div>
+                        <div class="checkbox-item"><div class="checkbox-square"></div> No</div>
+                    </div>
+                </div>
+                <div class="field-row" style="margin-left: 25px;">
+                    <span>If yes, explain</span><div class="field-line"></div>
+                </div>
+
+                <div class="question-block">
+                    <span class="q-num">23.</span>
+                    <span>Have you been on any IV Bisphosphonates for chemotherapy, i.e., Zometa, or Oral Bisphosphonates in the last 5 years for osteoporosis, i.e., Fosamax or Actonel, etc.?</span>
+                    <div class="yn-box">
+                        <div class="checkbox-item"><div class="checkbox-square"></div> Yes</div>
+                        <div class="checkbox-item"><div class="checkbox-square"></div> No</div>
+                    </div>
+                </div>
+                <div class="field-row" style="margin-left: 25px;">
+                    <span>If yes, explain</span><div class="field-line"></div>
+                </div>
+            </section>
+
+            <section class="sig-section">
+                <div class="part-header">
+                    <span class="part-number">Acknowledgement</span>
+                    <span class="part-rule"></span>
+                </div>
+                <p>I have filled out this health questionnaire completely. I have advised the doctor of all medical problems of which I am aware.</p>
+                <div class="sig-row">
+                    <div class="sig-block"><span class="sig-label">Patient/Guardian Signature</span></div>
+                    <div class="sig-block"><span class="sig-label">Date</span></div>
+                    <div class="sig-block"><span class="sig-label">Doctor Signature</span></div>
+                    <div class="sig-block"><span class="sig-label">Date</span></div>
+                </div>
+                <p style="margin-top: 1rem; font-style: italic;">I have reviewed the Patients health history form above.</p>
+            </section>
+
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('downloadPdfBtn').addEventListener('click', function () {
+            const element = document.getElementById('pdf-content');
+            document.fonts.ready.then(function() {
+                const opt = {
+                    margin: [0.3, 0.3, 0.3, 0.3],
+                    filename: 'Medical_Health_Questionnaire.pdf',
+                    image: { type: 'jpeg', quality: 1.0 },
+                    html2canvas: { scale: 3, useCORS: true, letterRendering: true, scrollY: 0 },
+                    jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' },
+                    pagebreak: { mode: ['css', 'legacy'] }
+                };
+                html2pdf().set(opt).from(element).save();
+            });
+        });
+    </script>
+</body>
+</html>

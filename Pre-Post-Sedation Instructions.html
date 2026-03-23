@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sedation Instructions | All-On-8 Robust</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap"
+        rel="stylesheet">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+    <style>
+        :root {
+            --black: #000000;
+            --gray-dark: #222222;
+            --gray-mid: #555555;
+            --gray-light: #999999;
+            --gray-border: #cccccc;
+            --white: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+                .masthead-right .doctors {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 13pt;
+            font-weight: 700;
+            color: var(--black);
+            margin-bottom: 0.8rem; 
+            line-height: 1.2;
+        }
+        body {
+            font-family: 'EB Garamond', serif;
+            background: #f4f4f4;
+            color: var(--black);
+            font-size: 11pt;
+            line-height: 1.5;
+            padding: 2rem 1rem;
+        }
+
+        .document {
+            max-width: 8.5in;
+            margin: 0 auto;
+            background: var(--white);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, .1);
+            position: relative;
+        }
+
+        /* ─── MASTHEAD ─────────────────────────────────────── */
+        .masthead {
+            padding: 2.5rem 3rem 1rem; 
+            display: flex;
+            justify-content: space-between;
+            align-items: center; 
+            gap: 2rem;
+        }
+
+        .brand-logo img {
+            width: 210px; 
+            max-width: 100%;
+            height: auto; 
+            filter: grayscale(100%);
+        }
+
+        .masthead-right {
+            text-align: right;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 7.5pt;
+            color: var(--gray-dark);
+            line-height: 1.5;
+        }
+
+        .masthead-right .clinic-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 14pt;
+            font-weight: 700;
+            color: var(--black);
+            margin-bottom: 0.6rem; 
+            text-transform: uppercase;
+        }
+
+        /* ─── PREMIUM BRANDING ─────────────────────────────── */
+        .premium-product-band {
+            margin: 0.5rem 3rem 1.5rem; 
+            padding: 1.2rem 0;
+            text-align: center;
+            border-top: 6px double var(--black);
+            border-bottom: 6px double var(--black);
+        }
+
+        .premium-product-band .form-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 28pt; 
+            font-weight: 700;
+            letter-spacing: 4px; 
+            line-height: 1;
+        }
+
+        .premium-product-band .form-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 8pt;
+            font-weight: 700;
+            letter-spacing: 6px; 
+            text-transform: uppercase;
+        }
+
+        /* ─── BODY & SECTIONS ────────────────────────────────── */
+        .body {
+            padding: 0 3rem 2.5rem;
+        }
+
+        section {
+            margin-bottom: 1.5rem;
+        }
+
+        .part-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.2rem;
+            margin-top: 2rem;
+        }
+
+        .part-number {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 7pt;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border: 1px solid var(--black);
+            padding: 0.3rem 0.6rem;
+            flex-shrink: 0;
+        }
+
+        .part-rule {
+            flex-grow: 1;
+            height: 1px;
+            background: var(--black);
+        }
+
+        h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 9pt;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--black);
+            margin: 1.5rem 0 1rem;
+            border-bottom: 1px solid var(--gray-border);
+            padding-bottom: 0.3rem;
+        }
+
+        p {
+            font-size: 11pt;
+            color: var(--gray-dark);
+            margin-bottom: 1rem;
+            text-align: left;
+        }
+
+        ul {
+            padding-left: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        li {
+            font-size: 11pt;
+            color: var(--gray-dark);
+            margin-bottom: 0.8rem;
+        }
+
+        /* ─── FOOTER ─────────────────────────────────────────── */
+        .doc-footer {
+            border-top: 2px solid var(--black);
+            margin: 0 3rem;
+            padding: 1.5rem 0 2rem;
+            text-align: center;
+        }
+
+        .footer-slogan {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 8pt;
+            font-weight: 600;
+            letter-spacing: 1px;
+            color: var(--gray-dark);
+        }
+
+        /* ─── DOWNLOAD BUTTON ────────────────────────────────── */
+        .fab {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--black);
+            color: var(--white);
+            border: 2px solid var(--black);
+            padding: 0.9rem 1.6rem;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 8pt;
+            text-transform: uppercase;
+            cursor: pointer;
+            z-index: 1000;
+            transition: all 0.2s;
+        }
+
+        .fab:hover { background: var(--white); color: var(--black); }
+
+        @media print {
+            body { background: var(--white); padding: 0; }
+            .document { box-shadow: none; max-width: 100%; border: none; }
+            .fab { display: none !important; }
+            .body { padding: 0 2.5rem; }
+            .masthead { padding: 2.5rem 2.5rem 1rem; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <button id="downloadPdfBtn" class="fab">
+        Download PDF
+    </button>
+
+    <div class="document" id="pdf-content">
+
+        <div class="masthead">
+            <div class="masthead-left">
+                <div class="brand-logo"><img src="logo.svg" alt="Logo"></div>
+            </div>
+
+            <div class="masthead-right">
+                              <div class="doctors">
+                    Dr. Sambhav Jain <span>DMD, MS</span><br>
+                    Dr. Arpana Gupta <span>DDS, MDS</span>
+                </div>
+                
+                <div class="contact-block">
+                    <strong>Email:</strong> info@bayareaimplantdentistry.com<br>
+                    <strong>Website:</strong> www.bayareaimplantdentistry.com
+                </div>
+                
+                <div class="contact-block">
+                    <strong>Main Office:</strong> 3381 Walnut Ave, Fremont, CA 94538<br>
+                    <strong>Phone:</strong> (510) 574-0496
+                </div>
+                
+                <div class="contact-block">
+                    <strong>SF Office:</strong> 4318 Geary Blvd, Suite 201, San Francisco, CA 94118<br>
+                    <strong>Phone:</strong> (415) 696-2922
+                </div>
+            </div>
+        </div>
+
+        <div class="premium-product-band">
+            <div class="form-title">ALL-ON-8 ROBUST</div>
+            <div class="form-label">Most Advanced Biomechanical Dental Implants Protocol</div>
+        </div>
+
+        <div class="body">
+
+            <section>
+                <div class="part-header">
+                    <span class="part-number">Pre-Op</span>
+                    <span class="part-rule"></span>
+                </div>
+                <h3>INSTRUCTIONS PRIOR TO SEDATION</h3>
+                <ul>
+                    <li>Do not eat any solid food for eight (8) hours prior to your appointment. A light meal (e.g., jelly, toast) is allowed up to six (6) hours before, and clear liquids (e.g., water, apple juice) may be consumed up to two (2) hours before treatment. For morning appointments, avoid all food and liquids after midnight.</li>
+                    <li>Take all regular medications (e.g., for high blood pressure, antibiotics) as prescribed by your physician, using only a small sip of water. This also applies to any medications prescribed by our office.</li>
+                    <li>A responsible adult must accompany you during your dental appointment and be available to drive you home afterward.</li>
+                    <li>Please wear loose-fitting clothing and low-heeled shoes. Short or loose sleeves are recommended to allow placement of monitors such as the blood pressure cuff.</li>
+                    <li>Avoid wearing jewelry and watches, as they can interfere with monitoring equipment. Also, remove nail polish, as it may affect the pulse oximeter placed on your finger.</li>
+                    <li>If you experience cold or flu symptoms (such as stuffy nose, sore throat, cough, sinus drainage, or fever), call our office immediately. Your appointment may need to be rescheduled.</li>
+                    <li>If the patient is under 18 years old, a parent or legal guardian must sign the consent form and be present during the appointment.</li>
+                    <li>Do not wear contact lenses on the day of your sedation. If necessary, bring your lens case and cleaning solution, as lenses should be removed before the procedure to prevent eye irritation during sedation.</li>
+                </ul>
+            </section>
+
+            <section>
+                <div class="part-header">
+                    <span class="part-number">Post-Op</span>
+                    <span class="part-rule"></span>
+                </div>
+                <h3>POST-OPERATIVE INSTRUCTIONS AFTER SEDATION</h3>
+                <ul>
+                    <li>You must have a responsible adult stay with you after your procedure until you are fully awake, alert, and able to care for yourself. This recovery period may take up to 24 hours. During this time, do not drive, use machinery, or handle complex devices, and avoid making important personal or business decisions. You will not be allowed to leave alone using public transportation (bus, train) or taxi/Uber. A trusted person must take you home.</li>
+                    <li>Once you are home, rest is essential. Please take the rest of the day off and avoid any physical or mental strain. A responsible adult must remain with you throughout the first 24 hours to ensure your safety and well-being.</li>
+                    <li>Nausea or vomiting may occur after sedation — this is normal. To reduce discomfort, stick to a light, soft diet such as jelly, soup, or pasta. Eat small portions and focus on drinking plenty of fluids during the first 24 hours. Avoid heavy, greasy, or spicy foods.</li>
+                    <li>Do not consume alcohol for at least 24 hours after your procedure. Alcohol can interfere with the sedation medications still in your body and may cause serious side effects.</li>
+                    <li>If you have any questions or concerns, please don't hesitate to call our office. Thank you for trusting us with your care — we are here to support your smooth and safe recovery.</li>
+                </ul>
+            </section>
+
+        </div>
+        
+
+
+    </div>
+    <script>
+        document.getElementById('downloadPdfBtn').addEventListener('click', function () {
+            const element = document.getElementById('pdf-content');
+            document.fonts.ready.then(function() {
+                const opt = {
+                    margin: [0.5, 0.5, 0.5, 0.5],
+                    filename: 'Sedation_Instructions.pdf',
+                    image: { type: 'jpeg', quality: 1.0 },
+                    html2canvas: { scale: 4, useCORS: true, letterRendering: true, scrollY: 0 },
+                    jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' },
+                    pagebreak: { mode: ['css', 'legacy'] }
+                };
+                html2pdf().set(opt).from(element).save();
+            });
+        });
+    </script>
+</body>
+</html>

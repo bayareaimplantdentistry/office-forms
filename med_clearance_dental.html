@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Clearance Form | All-On-8 Robust</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap"
+        rel="stylesheet">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+    <style>
+        :root {
+            --black: #000000;
+            --gray-dark: #222222;
+            --gray-mid: #555555;
+            --gray-light: #999999;
+            --gray-border: #cccccc;
+            --white: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'EB Garamond', serif;
+            background: #f4f4f4;
+            color: var(--black);
+            font-size: 10.7pt;
+            line-height: 1.36;
+            padding: 1.5rem 1rem;
+        }
+
+        .document {
+            max-width: 8.5in;
+            margin: 0 auto;
+            background: var(--white);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, .1);
+            position: relative;
+        }
+
+        /* ─── MASTHEAD ─────────────────────────────────────── */
+        .masthead {
+            padding: 1.45rem 2.3rem 0.85rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .brand-logo img {
+            width: 195px;
+            max-width: 100%;
+            height: auto;
+            filter: grayscale(100%);
+        }
+
+        .masthead-right {
+            text-align: right;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 7.3pt;
+            color: var(--gray-dark);
+            line-height: 1.45;
+        }
+
+        .masthead-right .doctors {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 12.2pt;
+            font-weight: 700;
+            color: var(--black);
+            margin-bottom: 0.55rem;
+        }
+
+        /* ─── PREMIUM BRANDING ─────────────────────────────── */
+        .premium-product-band {
+            margin: 0.4rem 2.3rem 0.9rem;
+            padding: 0.95rem 0;
+            text-align: center;
+            border-top: 5px double var(--black);
+            border-bottom: 5px double var(--black);
+        }
+
+        .premium-product-band .form-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 25pt;
+            font-weight: 700;
+            letter-spacing: 3.5px;
+            line-height: 1;
+        }
+
+        .premium-product-band .bold-hyphen {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            margin: 0 3px;
+        }
+
+        .premium-product-band .form-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 8pt;
+            font-weight: 700;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            margin-top: 0.3rem;
+        }
+
+        /* ─── TITLE BAND ───────────────────────────────────── */
+        .title-band {
+            padding: 0.65rem 2.3rem 1rem;
+            text-align: center;
+        }
+
+        .title-band .form-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 17pt;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+        }
+
+        /* ─── BODY ───────────────────────────────────────────── */
+        .body {
+            padding: 0 2.3rem 1.6rem;
+        }
+
+        .field-row {
+            display: flex;
+            align-items: flex-end;
+            margin-bottom: 0.85rem;
+            gap: 0.7rem;
+        }
+
+        .field-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 8pt;
+            font-weight: 700;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        .field-line {
+            border-bottom: 1px solid var(--black);
+            flex-grow: 1;
+            min-height: 1.15rem;
+        }
+
+        /* Treatment Grid */
+        .treatment-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.65rem;
+            margin: 1rem 0 1.4rem;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-size: 10.4pt;
+        }
+
+        .checkbox-box {
+            width: 13px;
+            height: 13px;
+            border: 1px solid var(--black);
+            flex-shrink: 0;
+        }
+
+        /* Considerations */
+        .considerations-section {
+            margin-top: 1.4rem;
+            border: 1px solid var(--gray-border);
+            padding: 1.1rem;
+        }
+
+        .consideration-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 0.95rem;
+            gap: 1rem;
+        }
+
+        .yn-group {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 8pt;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        /* Signature */
+        .sig-section {
+            margin-top: 2rem;
+            page-break-inside: avoid;
+        }
+
+        .sig-row {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 1.1rem;
+            align-items: flex-end;
+        }
+
+        .sig-block { flex: 1; }
+
+        .sig-field {
+            border-top: 1px solid var(--black);
+            padding-top: 0.35rem;
+        }
+
+        .sig-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 7.2pt;
+            font-weight: 700;
+            letter-spacing: 1.4px;
+            text-transform: uppercase;
+        }
+
+        /* ─── DOWNLOAD BUTTON ────────────────────────────────── */
+        .fab {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--black);
+            color: var(--white);
+            border: 2px solid var(--black);
+            padding: 0.9rem 1.6rem;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 8pt;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            z-index: 1000;
+        }
+
+        .fab:hover { background: var(--white); color: var(--black); }
+
+        @media print {
+            .fab { display: none !important; }
+            body { background: white; padding: 0; }
+            .document { box-shadow: none; border: none; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <button id="downloadPdfBtn" class="fab">Download PDF</button>
+
+    <div class="document" id="pdf-content">
+
+        <div class="masthead">
+            <div class="masthead-left">
+                <div class="brand-logo"><img src="logo.svg" alt="Logo"></div>
+            </div>
+            <div class="masthead-right">
+                <div class="doctors">
+                    Dr. Sambhav Jain <span>DMD, MS</span><br>
+                    Dr. Arpana Gupta <span>DDS, MDS</span>
+                </div>
+                
+                <div class="contact-block">
+                    <strong>Email:</strong> info@bayareaimplantdentistry.com<br>
+                    <strong>Website:</strong> www.bayareaimplantdentistry.com
+                </div>
+                
+                <div class="contact-block">
+                    <strong>Main Office:</strong> 3381 Walnut Ave, Fremont, CA 94538<br>
+                    <strong>Phone:</strong> (510) 574-0496
+                </div>
+                
+                <div class="contact-block">
+                    <strong>SF Office:</strong> 4318 Geary Blvd, Suite 201, San Francisco, CA 94118<br>
+                    <strong>Phone:</strong> (415) 696-2922
+                </div>
+            </div>
+        </div>
+
+        <div class="premium-product-band">
+            <div class="form-title">ALL<span class="bold-hyphen">-</span>ON<span class="bold-hyphen">-</span>8 ROBUST</div>
+            <div class="form-label">Most Advanced Biomechanical Dental Implants Protocol</div>
+        </div>
+        
+        <div class="title-band">
+            <div class="form-title">Medical Clearance for Dental Treatment</div>
+        </div>
+
+        <div class="body">
+
+            <div class="field-row">
+                <span class="field-label">Date:</span>
+                <div class="field-line"></div>
+                <span class="field-label">Attn:</span>
+                <div class="field-line"></div>
+            </div>
+
+            <div class="field-row">
+                <span class="field-label">Patient:</span>
+                <div class="field-line"></div>
+                <span class="field-label">Birthdate:</span>
+                <div class="field-line" style="flex-grow:0; width: 145px;"></div>
+            </div>
+
+            <div class="field-row" style="margin-top: 1.1rem;">
+                <span class="field-label">Dear Dr.</span>
+                <div class="field-line"></div>
+            </div>
+
+            <p style="margin-top: 1rem;">Our mutual patient, <span style="display:inline-block; width: 235px; border-bottom:1px solid var(--black);"></span> is scheduled for dental treatment.</p>
+            
+            <p style="margin-top: 1.3rem; font-weight: 700;">Treatment may include:</p>
+            <div class="treatment-grid">
+                <div class="checkbox-item"><div class="checkbox-box"></div> Cleaning (simple or deep)</div>
+                <div class="checkbox-item"><div class="checkbox-box"></div> Root Canal Therapy</div>
+                <div class="checkbox-item"><div class="checkbox-box"></div> Radiographs</div>
+                <div class="checkbox-item"><div class="checkbox-box"></div> Nitrous oxide</div>
+                <div class="checkbox-item"><div class="checkbox-box"></div> Fillings, Crowns, Bridges</div>
+                <div class="checkbox-item"><div class="checkbox-box"></div> Local anesthetic (with epinephrine)</div>
+                <div class="checkbox-item"><div class="checkbox-box"></div> Extraction (simple or surgical)</div>
+                <div class="checkbox-item"><div class="checkbox-box"></div> Other</div>
+            </div>
+
+            <div class="field-row" style="margin-top: 1.4rem;">
+                <span class="field-label">The patient has indicated the following medical conditions:</span>
+            </div>
+            <div class="field-line" style="margin-bottom: 1.3rem;"></div>
+
+            <p>Please evaluate this patient's medical history and advise us of any special considerations that should be made.</p>
+
+            <div class="considerations-section">
+                <div class="consideration-row">
+                    <span class="field-label">Antibiotic prophylaxis:</span>
+                    <div class="yn-group">Yes &nbsp; No</div>
+                </div>
+                <div class="field-row" style="margin-left: 18px;">
+                    <span class="field-label">Type of antibiotic allowed/recommended:</span>
+                    <div class="field-line"></div>
+                </div>
+
+                <div class="consideration-row" style="margin-top: 1.2rem;">
+                    <span class="field-label">Interruption of anticoagulants:</span>
+                    <div class="yn-group">Yes &nbsp; No</div>
+                </div>
+                <div class="field-row" style="margin-left: 18px;">
+                    <span class="field-label">How long before and after treatment:</span>
+                    <div class="field-line"></div>
+                </div>
+
+                <div class="consideration-row" style="margin-top: 1.2rem;">
+                    <span class="field-label">Anesthetic restrictions:</span>
+                    <div class="yn-group">Yes &nbsp; No</div>
+                </div>
+                <div class="consideration-row" style="margin-left: 18px;">
+                    <span class="field-label">Is Epinephrine OK?</span>
+                    <div class="yn-group">Yes &nbsp; No</div>
+                </div>
+
+                <div class="field-row" style="margin-top: 1.3rem;">
+                    <span class="field-label">Type of pain medication allowed/recommended:</span>
+                    <div class="field-line"></div>
+                </div>
+
+                <div class="field-row" style="margin-top: 1.1rem;">
+                    <span class="field-label">Any additional comments:</span>
+                </div>
+                <div class="field-line"></div>
+            </div>
+
+            <section class="sig-section">
+                <div class="sig-row">
+                    <div class="sig-block">
+                        <div class="sig-field"><span class="sig-label">Physician Name (please print)</span></div>
+                    </div>
+                </div>
+                <div class="sig-row">
+                    <div class="sig-block">
+                        <div class="sig-field"><span class="sig-label">Physician Signature</span></div>
+                    </div>
+                    <div class="sig-block" style="flex: 0 0 2in;">
+                        <div class="sig-field"><span class="sig-label">Date</span></div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('downloadPdfBtn').addEventListener('click', function () {
+            const element = document.getElementById('pdf-content');
+            document.fonts.ready.then(() => {
+                const opt = {
+                    margin: [0.35, 0.35, 0.35, 0.35],
+                    filename: 'All-On-8_Medical_Clearance_Form.pdf',
+                    image: { type: 'jpeg', quality: 0.98 },
+                    html2canvas: { 
+                        scale: 3, 
+                        useCORS: true, 
+                        letterRendering: true,
+                        scrollX: 0,
+                        scrollY: 0
+                    },
+                    jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+                };
+                html2pdf().set(opt).from(element).save();
+            });
+        });
+    </script>
+</body>
+</html>

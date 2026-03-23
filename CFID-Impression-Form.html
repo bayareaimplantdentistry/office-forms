@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Impression Form | All-On-8 Robust</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap"
+        rel="stylesheet">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+    <style>
+        :root {
+            --black: #000000;
+            --gray-dark: #222222;
+            --gray-mid: #555555;
+            --gray-light: #999999;
+            --gray-border: #cccccc;
+            --white: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'EB Garamond', serif;
+            background: #f4f4f4;
+            color: var(--black);
+            font-size: 11pt;
+            line-height: 1.5;
+            padding: 2rem 1rem;
+        }
+
+        .document {
+            max-width: 8.5in;
+            margin: 0 auto;
+            background: var(--white);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, .1);
+            position: relative;
+        }
+
+        /* ─── MASTHEAD ─────────────────────────────────────── */
+        .masthead {
+            padding: 2.5rem 3rem 1rem; 
+            display: flex;
+            justify-content: space-between;
+            align-items: center; 
+            gap: 2rem;
+        }
+
+        .brand-logo img {
+            width: 210px; 
+            max-width: 100%;
+            height: auto; 
+            filter: grayscale(100%);
+        }
+
+        .masthead-right {
+            text-align: right;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 7.5pt;
+            color: var(--gray-dark);
+            line-height: 1.5;
+        }
+
+        .masthead-right .doctors {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 13pt;
+            font-weight: 700;
+            color: var(--black);
+            margin-bottom: 0.8rem; 
+            line-height: 1.2;
+        }
+
+        .masthead-right .doctors span {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 7pt;
+            font-weight: 500;
+            color: var(--gray-mid);
+            letter-spacing: 1px;
+            margin-left: 4px;
+        }
+
+        /* ─── PREMIUM BRANDING ─────────────────────────────── */
+        .premium-product-band {
+            margin: 0.5rem 3rem 1.5rem; 
+            padding: 1.2rem 0;
+            text-align: center;
+            border-top: 6px double var(--black);
+            border-bottom: 6px double var(--black);
+        }
+
+        .premium-product-band .form-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 30pt; 
+            font-weight: 700;
+            letter-spacing: 4px; 
+            line-height: 1;
+        }
+
+        .premium-product-band .form-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 8pt;
+            font-weight: 700;
+            letter-spacing: 6px; 
+            text-transform: uppercase;
+        }
+
+        .title-band {
+            padding: 1rem 3rem;
+            text-align: center;
+        }
+
+        .title-band .form-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 18pt; 
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* ─── BODY CONTENT ─────────────────────────────────── */
+        .body {
+            padding: 0 3rem 2.5rem;
+        }
+
+        section {
+            margin-bottom: 1.5rem;
+        }
+
+        .part-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.2rem;
+            margin-top: 1.5rem;
+        }
+
+        .part-number {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 7pt;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border: 1px solid var(--black);
+            padding: 0.3rem 0.6rem;
+        }
+
+        .part-rule {
+            flex-grow: 1;
+            height: 1px;
+            background: var(--black);
+        }
+
+        .form-row {
+            display: flex;
+            align-items: flex-end;
+            margin-bottom: 1rem;
+            gap: 1rem;
+        }
+
+        .field-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 8pt;
+            font-weight: 700;
+            text-transform: uppercase;
+            flex-shrink: 0;
+        }
+
+        .field-line {
+            border-bottom: 1px solid var(--black);
+            flex-grow: 1;
+            min-height: 1.2rem;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .checkbox-square {
+            width: 14px;
+            height: 14px;
+            border: 1px solid var(--black);
+            flex-shrink: 0;
+        }
+
+        .checkbox-text {
+            font-size: 11pt;
+        }
+
+        /* ─── SIGNATURE & NOTES ────────────────────────────── */
+        .sig-section {
+            margin-top: 2rem;
+            page-break-inside: avoid;
+        }
+
+        .sig-row {
+            display: flex;
+            gap: 3rem;
+            margin-top: 3rem;
+            align-items: flex-end;
+        }
+
+        .sig-block {
+            flex: 1;
+            border-top: 1px solid var(--black);
+            padding-top: 0.4rem;
+        }
+
+        .sig-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 7.5pt;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .notes-area {
+            margin-top: 2rem;
+            border-bottom: 1px solid var(--black);
+            min-height: 2.5rem;
+        }
+
+        .delivery-note {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 9pt;
+            margin-top: 1.5rem;
+            text-transform: uppercase;
+            text-align: center;
+            border: 1px solid var(--black);
+            padding: 0.5rem;
+        }
+
+        /* ─── DOWNLOAD BUTTON ────────────────────────────────── */
+        .fab {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--black);
+            color: var(--white);
+            border: 2px solid var(--black);
+            padding: 0.9rem 1.6rem;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 8pt;
+            text-transform: uppercase;
+            cursor: pointer;
+            z-index: 1000;
+        }
+
+        @media print {
+            .fab { display: none !important; }
+            body { background: white; padding: 0; }
+            .document { box-shadow: none; max-width: 100%; border: none; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <button id="downloadPdfBtn" class="fab">Download PDF</button>
+
+    <div class="document" id="pdf-content">
+
+        <div class="masthead">
+            <div class="masthead-left">
+                <div class="brand-logo"><img src="logo.svg" alt="Logo"></div>
+            </div>
+            <div class="masthead-right">
+                <div class="doctors">
+                    Dr. Sambhav Jain <span>DMD, MS</span><br>
+                    Dr. Arpana Gupta <span>DDS, MDS</span>
+                </div>
+                
+                <div class="contact-block">
+                    <strong>Email:</strong> info@bayareaimplantdentistry.com<br>
+                    <strong>Website:</strong> www.bayareaimplantdentistry.com
+                </div>
+                
+                <div class="contact-block">
+                    <strong>Main Office:</strong> 3381 Walnut Ave, Fremont, CA 94538<br>
+                    <strong>Phone:</strong> (510) 574-0496
+                </div>
+                
+                <div class="contact-block">
+                    <strong>SF Office:</strong> 4318 Geary Blvd, Suite 201, San Francisco, CA 94118<br>
+                    <strong>Phone:</strong> (415) 696-2922
+                </div>
+            </div>
+        </div>
+
+        <div class="premium-product-band">
+            <div class="form-title">ALL-ON-8 ROBUST</div>
+            <div class="form-label">Most Advanced Biomechanical Dental Implants Protocol</div>
+        </div>
+        
+        <div class="title-band">
+            <div class="form-title">IMPRESSION FORM FOR IMPLANT BRIDGES AND CROWN</div>
+        </div>
+
+        <div class="body">
+
+            <section>
+                <div class="part-header">
+                    <span class="part-number">Part 1</span>
+                    <span class="part-rule"></span>
+                </div>
+                <div class="form-row">
+                    <span class="field-label">Implant no</span><div class="field-line"></div>
+                    <span class="field-label">Tooth no</span><div class="field-line"></div>
+                </div>
+                <div class="checkbox-item">
+                    <div class="checkbox-square"></div>
+                    <span class="checkbox-text">soft tissue healing with in normal limit. (WNL)</span>
+                </div>
+                <div class="checkbox-item">
+                    <div class="checkbox-square"></div>
+                    <span class="checkbox-text">screw retained temporary(SRT)/healing collars removed.</span>
+                </div>
+            </section>
+
+            <section>
+                <div class="part-header">
+                    <span class="part-number">Part 2</span>
+                    <span class="part-rule"></span>
+                </div>
+                <div class="form-row">
+                    <span class="field-label">Anesthesia given</span><div class="field-line" style="flex-grow:0; width:60px;"></div>
+                    <span class="checkbox-text">2% lidocaine with 1:1000,000 epi administered BI/LI #</span><div class="field-line" style="flex-grow:0; width:50px;"></div><span class="checkbox-text">IAN.</span>
+                </div>
+                <div class="form-row">
+                    <div class="field-line" style="flex-grow:0; width:60px;"></div>
+                    <span class="checkbox-text">4% septocaine with 1:1000,000 epi administered BI/LI #</span><div class="field-line" style="flex-grow:0; width:50px;"></div><span class="checkbox-text">IAN.</span>
+                </div>
+            </section>
+
+            <section>
+                <div class="part-header">
+                    <span class="part-number">Part 3</span>
+                    <span class="part-rule"></span>
+                </div>
+                <div class="form-row">
+                    <span class="checkbox-text">Impression coping/scan body placed screwed to 15N, 20N, 25N Torque, Size of coping/scan body</span><div class="field-line"></div>
+                </div>
+                <div class="checkbox-item"><div class="checkbox-square"></div><span class="checkbox-text">X rays taken to check seating of copings/Scan body.</span></div>
+                <div class="checkbox-item"><div class="checkbox-square"></div><span class="checkbox-text">Customize impression coping to capture emergence profile.</span></div>
+                <div class="checkbox-item"><div class="checkbox-square"></div><span class="checkbox-text">Impression coping screw access hole close with cotton and wax.</span></div>
+                <div class="checkbox-item"><div class="checkbox-square"></div><span class="checkbox-text">Impression tray tried.</span></div>
+                <div class="checkbox-item"><div class="checkbox-square"></div><span class="checkbox-text">Impression copings splinted with primotec for bridge impression.</span></div>
+                <div class="checkbox-item"><div class="checkbox-square"></div><span class="checkbox-text">Open tray &nbsp;&nbsp;&nbsp; Closed tray impression taken.</span></div>
+                <div class="checkbox-item"><div class="checkbox-square"></div><span class="checkbox-text">full arch /sectional heavy body impression taken.</span></div>
+                <div class="checkbox-item"><div class="checkbox-square"></div><span class="checkbox-text">Opposite full arch/sectional salginot impression taken.</span></div>
+            </section>
+
+            <section>
+                <div class="part-header">
+                    <span class="part-number">Part 4</span>
+                    <span class="part-rule"></span>
+                </div>
+                <div class="form-row">
+                    <span class="checkbox-text">Digital trios impression taken</span>
+                    <span class="checkbox-text">upper</span><div class="checkbox-square"></div>
+                    <span class="checkbox-text">lower</span><div class="checkbox-square"></div>
+                    <span class="checkbox-text">emergence profile</span><div class="checkbox-square"></div>
+                </div>
+                <div class="form-row">
+                    <span class="checkbox-text">scan body</span><div class="checkbox-square"></div>
+                    <span class="checkbox-text">bite taken.</span><div class="checkbox-square"></div>
+                </div>
+                <div class="checkbox-item"><div class="checkbox-square"></div><span class="checkbox-text">Healing collars/ Screw retained temporary placed back tight to 15N torque. Access-hole closed with closed with cotton and composite.</span></div>
+                <div class="checkbox-item"><div class="checkbox-square"></div><span class="checkbox-text">Bite taken &nbsp;&nbsp;&nbsp; Bite with healing collars.</span></div>
+                <div class="form-row">
+                    <span class="field-label">Shade taken</span><div class="field-line"></div>
+                    <span class="checkbox-text">Showed and confirm with patient.</span>
+                </div>
+                <div class="delivery-note">Delivery after 2weeks</div>
+            </section>
+
+            <section class="sig-section">
+                <div class="sig-row">
+                    <div class="sig-block">
+                        <div class="sig-label">Assistant</div>
+                    </div>
+                    <div class="sig-block">
+                        <div class="sig-label">Doctor’s Signature</div>
+                    </div>
+                </div>
+                <div style="margin-top: 2rem;">
+                    <div class="field-label">NOTES:</div>
+                    <div class="notes-area"></div>
+                    <div class="notes-area"></div>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('downloadPdfBtn').addEventListener('click', function () {
+            const element = document.getElementById('pdf-content');
+            document.fonts.ready.then(function() {
+                const opt = {
+                    margin: [0.5, 0.5, 0.5, 0.5],
+                    filename: 'Impression_Form_Implant.pdf',
+                    image: { type: 'jpeg', quality: 1.0 },
+                    html2canvas: { scale: 4, useCORS: true },
+                    jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+                };
+                html2pdf().set(opt).from(element).save();
+            });
+        });
+    </script>
+</body>
+</html>

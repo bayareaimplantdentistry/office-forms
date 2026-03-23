@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post-Op Instructions | All-On-8 Robust</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap"
+        rel="stylesheet">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+    <style>
+        :root {
+            --black: #000000;
+            --gray-dark: #222222;
+            --gray-mid: #555555;
+            --gray-light: #999999;
+            --gray-border: #cccccc;
+            --white: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'EB Garamond', serif;
+            background: #f4f4f4;
+            color: var(--black);
+            font-size: 10.75pt;
+            line-height: 1.36;
+            padding: 1.5rem 1rem;
+        }
+
+        .document {
+            max-width: 8.5in;
+            margin: 0 auto;
+            background: var(--white);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, .1);
+            position: relative;
+        }
+
+        /* ─── MASTHEAD ─────────────────────────────────────── */
+        .masthead {
+            padding: 1.45rem 2.3rem 0.85rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .brand-logo img {
+            width: 195px;
+            max-width: 100%;
+            height: auto;
+            filter: grayscale(100%);
+        }
+
+        .masthead-right {
+            text-align: right;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 7.3pt;
+            color: var(--gray-dark);
+            line-height: 1.45;
+        }
+
+        .masthead-right .doctors {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 12.2pt;
+            font-weight: 700;
+            color: var(--black);
+            margin-bottom: 0.55rem;
+        }
+
+        /* ─── PREMIUM BRANDING ─────────────────────────────── */
+        .premium-product-band {
+            margin: 0.4rem 2.3rem 1rem;
+            padding: 0.95rem 0;
+            text-align: center;
+            border-top: 5px double var(--black);
+            border-bottom: 5px double var(--black);
+        }
+
+        .premium-product-band .form-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 25pt;
+            font-weight: 700;
+            letter-spacing: 3.5px;
+            line-height: 1;
+        }
+
+        .premium-product-band .form-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 8pt;
+            font-weight: 700;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            margin-top: 0.3rem;
+        }
+
+        /* ─── MAIN TITLE ───────────────────────────────────── */
+        .title-band {
+            padding: 0.85rem 2.3rem 1.05rem;
+            text-align: center;
+        }
+
+        .title-band .form-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 16.5pt;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* ─── BODY & SECTIONS ────────────────────────────────── */
+        .body {
+            padding: 0 2.3rem 1.8rem;
+        }
+
+        section {
+            margin-bottom: 1.05rem;
+        }
+
+        .part-header {
+            display: flex;
+            align-items: center;
+            gap: 0.9rem;
+            margin-bottom: 0.8rem;
+            margin-top: 1.15rem;
+        }
+
+        .part-number {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 7pt;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border: 1px solid var(--black);
+            padding: 0.25rem 0.55rem;
+            flex-shrink: 0;
+        }
+
+        .part-rule {
+            flex-grow: 1;
+            height: 1px;
+            background: var(--black);
+        }
+
+        h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 9.1pt;
+            font-weight: 700;
+            letter-spacing: 1.3px;
+            text-transform: uppercase;
+            color: var(--black);
+            margin: 0.95rem 0 0.55rem;
+            border-bottom: 1px solid var(--gray-border);
+            padding-bottom: 0.15rem;
+        }
+
+        p {
+            font-size: 10.75pt;
+            color: var(--gray-dark);
+            margin-bottom: 0.65rem;
+        }
+
+        ul {
+            padding-left: 1.75rem;
+            margin-bottom: 0.8rem;
+        }
+
+        li {
+            font-size: 10.75pt;
+            color: var(--gray-dark);
+            margin-bottom: 0.32rem;
+        }
+
+        /* ─── DOWNLOAD BUTTON ────────────────────────────────── */
+        .fab {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--black);
+            color: var(--white);
+            border: 2px solid var(--black);
+            padding: 0.9rem 1.6rem;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 8pt;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            z-index: 1000;
+        }
+
+        .fab:hover { background: var(--white); color: var(--black); }
+
+        @media print {
+            .fab { display: none !important; }
+            body { background: white; padding: 0; }
+            .document { box-shadow: none; border: none; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <button id="downloadPdfBtn" class="fab">Download PDF</button>
+
+    <div class="document" id="pdf-content">
+
+        <div class="masthead">
+            <div class="masthead-left">
+                <div class="brand-logo"><img src="logo.svg" alt="Logo"></div>
+            </div>
+            <div class="masthead-right">
+                <div class="doctors">
+                    Dr. Sambhav Jain <span>DMD, MS</span><br>
+                    Dr. Arpana Gupta <span>DDS, MDS</span>
+                </div>
+                
+                <div class="contact-block">
+                    <strong>Email:</strong> info@bayareaimplantdentistry.com<br>
+                    <strong>Website:</strong> www.bayareaimplantdentistry.com
+                </div>
+                
+                <div class="contact-block">
+                    <strong>Main Office:</strong> 3381 Walnut Ave, Fremont, CA 94538<br>
+                    <strong>Phone:</strong> (510) 574-0496
+                </div>
+                
+                <div class="contact-block">
+                    <strong>SF Office:</strong> 4318 Geary Blvd, Suite 201, San Francisco, CA 94118<br>
+                    <strong>Phone:</strong> (415) 696-2922
+                </div>
+            </div>
+        </div>
+
+        <div class="premium-product-band">
+            <div class="form-title">ALL-ON-8 ROBUST</div>
+            <div class="form-label">Most Advanced Biomechanical Dental Implants Protocol</div>
+        </div>
+        
+        <div class="title-band">
+            <div class="form-title">Post-Operative Instructions for Implants</div>
+        </div>
+
+        <div class="body">
+
+            <section>
+                <div class="part-header">
+                    <span class="part-number">Introduction</span>
+                    <span class="part-rule"></span>
+                </div>
+                <p>Please follow these instructions as closely as possible. They are designed to help you heal quickly, and comfortably, with minimal side effects. If you experience any complications, please call our office, or the respective doctor’s cell number which is located above. They will return your call as soon as possible, usually within thirty minutes.</p>
+            </section>
+
+            <section>
+                <div class="part-header">
+                    <span class="part-number">Part 1</span>
+                    <span class="part-rule"></span>
+                </div>
+                <h3>FOR THE REMAINDER OF THE DAY:</h3>
+                <ul>
+                    <li>Do not spit. Use a tissue to wipe your mouth as needed, or swallow your saliva.</li>
+                    <li>Do not use a drinking straw. Drink straight from the cup.</li>
+                    <li>Do not smoke</li>
+                    <li>Keep fingers and tongue away from the surgical area</li>
+                </ul>
+                <p>Spitting, the use of a straw, smoking, and poking can dislodge the blood clot that is forming, and will cause bleeding from the area. Also, smoking can increase the chances of an infection.</p>
+            </section>
+
+            <section>
+                <div class="part-header">
+                    <span class="part-number">Part 2</span>
+                    <span class="part-rule"></span>
+                </div>
+                <h3>FOR BLEEDING:</h3>
+                <p>Some minor bleeding is expected after implant surgery. It will usually subside quickly, and stop within an hour or two after surgery. A little oozing is normal and may persist for several hours. Upper implants may occasionally trigger some bleeding from the nose, this is normal and will stop quickly.</p>
+                <ul>
+                    <li>Keep gauze on the surgical area with some pressure for 30 to 45 minutes.</li>
+                    <li>Remove the gauze after 30 to 45 minutes and replace it with a new piece of gauze if you are still bleeding.</li>
+                    <li>It is important to make sure the gauze is directly on the surgical site.</li>
+                    <li>Firm pressure for another hour should stop the bleeding.</li>
+                </ul>
+                <p>If you find that this is not working after your third attempt, use a moistened tea bag instead or the gauze. The tannic acid in tea will help to form a clot and stop the bleeding. If all else fails, call the office or the doctors.</p>
+            </section>
+
+            <section>
+                <div class="part-header">
+                    <span class="part-number">Part 3</span>
+                    <span class="part-rule"></span>
+                </div>
+                <h3>FOR SWELLING:</h3>
+                <p>Most patients will experience some swelling after surgery in the mouth. It may be mild or severe, and is different for every patient. The swelling will get bigger for the first 24 to 48 hours before it starts to go away. It may last for several days to one week. Some bruising may also develop on the face.</p>
+                <ul>
+                    <li>Use an ice pack on the cheek or face next to the surgical site.</li>
+                    <li>Keep it on for 15 to 20 minutes, the off for 10 minutes, and repeat until you go to sleep.</li>
+                    <li>Start again the next day.</li>
+                    <li>Sleep with your head elevated slightly above the heart. This will bring the swelling down quicker.</li>
+                </ul>
+            </section>
+
+            <section>
+                <div class="part-header">
+                    <span class="part-number">Part 4</span>
+                    <span class="part-rule"></span>
+                </div>
+                <h3>EATING:</h3>
+                <p>You may eat soft foods as soon as the anesthetic wears off. Try not to chew directly on the surgical site. You may resume a regular diet as soon as you feel up to it. Please stay well nourished, and well hydrated, you will heal faster.</p>
+
+                <h3>RINSING:</h3>
+                <p>You may start sensing today, gently with some warm salty water every few hours. Do not use alcohol-containing mouth rinses for a few days.</p>
+            </section>
+
+            <section>
+                <div class="part-header">
+                    <span class="part-number">Part 5</span>
+                    <span class="part-rule"></span>
+                </div>
+                <h3>MEDICATIONS:</h3>
+                <p>You were probably given one or more prescriptions for medications. Take all medications with a full glass of water, and as directed on the bottle. Call us if you experience severe nausea, diarrhea, or cannot swallow your pills.</p>
+                <ul>
+                    <li><strong>Antibiotics:</strong> continue until the bottle is empty. Do not quit halfway.</li>
+                    <li><strong>Pain Medicine:</strong> Continue as necessary remember that narcotics can make you drowsy, so no driving, operating machinery, or alcoholic beverages while you are taking them</li>
+                    <li><strong>Mouth Rinse:</strong> Peridex or Periogard. Swish with one-half ounce for 30 seconds, and spit it out, two times per day.</li>
+                </ul>
+            </section>
+
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('downloadPdfBtn').addEventListener('click', function () {
+            const element = document.getElementById('pdf-content');
+            document.fonts.ready.then(() => {
+                const opt = {
+                    margin: [0.35, 0.35, 0.35, 0.35],
+                    filename: 'All-On-8_PostOp_Instructions.pdf',
+                    image: { type: 'jpeg', quality: 0.98 },
+                    html2canvas: { 
+                        scale: 3, 
+                        useCORS: true, 
+                        letterRendering: true,
+                        scrollX: 0,
+                        scrollY: 0
+                    },
+                    jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+                };
+                html2pdf().set(opt).from(element).save();
+            });
+        });
+    </script>
+</body>
+</html>

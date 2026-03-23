@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consent Form: Dental Implant(s) | All-On-8 Robust</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap"
+        rel="stylesheet">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+    <style>
+        :root {
+            --black: #000000;
+            --gray-dark: #222222;
+            --gray-mid: #555555;
+            --gray-light: #999999;
+            --gray-border: #cccccc;
+            --white: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'EB Garamond', serif;
+            background: #f4f4f4;
+            color: var(--black);
+            font-size: 11pt;
+            line-height: 1.6;
+            padding: 2rem 1rem;
+        }
+
+        /* ─── DOCUMENT SHELL ─────────────────────────────────── */
+        .document {
+            max-width: 8.5in;
+            margin: 0 auto;
+            background: var(--white);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, .1);
+            position: relative;
+        }
+
+        /* ─── MASTHEAD (LETTERHEAD) ──────────────────────────── */
+        .masthead {
+            padding: 2.5rem 3rem 1rem; 
+            display: flex;
+            justify-content: space-between;
+            align-items: center; 
+            gap: 2rem;
+        }
+
+        .masthead-left {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            flex: 1; 
+        }
+
+        .brand-logo img {
+            width: 210px; 
+            max-width: 100%;
+            height: auto; 
+            object-fit: contain;
+            object-position: left center;
+            filter: grayscale(100%);
+        }
+
+        .masthead-right {
+            text-align: right;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 7.5pt;
+            color: var(--gray-dark);
+            line-height: 1.5;
+            flex-shrink: 0;
+        }
+
+        .masthead-right .doctors {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 13pt;
+            font-weight: 700;
+            color: var(--black);
+            margin-bottom: 0.8rem; 
+            line-height: 1.2;
+        }
+
+        .masthead-right .doctors span {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 7pt;
+            font-weight: 500;
+            color: var(--gray-mid);
+            letter-spacing: 1px;
+            margin-left: 4px;
+        }
+
+        .masthead-right .contact-block {
+            margin-bottom: 0.6rem; 
+        }
+        
+        .masthead-right .contact-block:last-child {
+            margin-bottom: 0;
+        }
+
+        .masthead-right strong {
+            color: var(--black);
+            font-weight: 600;
+        }
+
+        /* ─── PREMIUM PRODUCT SHOWCASE (B&W PRINT OPTIMIZED) ─── */
+        .premium-product-band {
+            margin: 0.5rem 3rem 1.5rem; 
+            padding: 1.2rem 0; /* Creates space inside the double lines */
+            text-align: center;
+            background: transparent;
+            page-break-inside: avoid;
+            border-top: 6px double var(--black); /* 2 lines above */
+            border-bottom: 6px double var(--black); /* 2 lines below */
+        }
+
+        .premium-product-band .form-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 30pt; 
+            font-weight: 700;
+            color: var(--black); 
+            letter-spacing: 4px; 
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Forces the hyphens to use thick Montserrat font */
+        .premium-product-band .bold-hyphen {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            margin: 0 4px; /* Slight breathing room around the hyphen */
+        }
+
+        .premium-product-band .form-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 8pt;
+            font-weight: 700;
+            letter-spacing: 6px; 
+            text-transform: uppercase;
+            color: var(--black); 
+        }
+
+        /* ─── DOCUMENT TITLE BAND ────────────────────────────── */
+        .title-band {
+            padding: 1.5rem 3rem;
+            text-align: center;
+        }
+
+        .title-band.sub-title {
+            padding-top: 0;
+            margin-top: 0.5rem;
+        }
+
+        .title-band .form-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 7pt;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gray-mid);
+            margin-bottom: 0.4rem;
+        }
+
+        .title-band .form-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 20pt; 
+            font-weight: 700;
+            color: var(--black);
+            letter-spacing: 0.5px;
+            line-height: 1.1;
+        }
+
+        /* ─── BODY ───────────────────────────────────────────── */
+        .body {
+            padding: 0 3rem 2.5rem;
+        }
+
+        /* ─── SECTIONS ───────────────────────────────────────── */
+        section {
+            margin-bottom: 2rem;
+            page-break-inside: avoid;
+        }
+
+        .part-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.2rem;
+            margin-top: 2.5rem;
+        }
+
+        .part-number {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 7pt;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--black);
+            border: 1px solid var(--black);
+            padding: 0.3rem 0.6rem;
+            flex-shrink: 0;
+        }
+
+        .part-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 15pt;
+            font-weight: 700;
+            color: var(--black);
+            letter-spacing: 0.5px;
+            flex-shrink: 0;
+        }
+
+        .part-rule {
+            flex-grow: 1;
+            height: 1px;
+            background: var(--black);
+        }
+
+        h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 8pt;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--black);
+            margin: 1.5rem 0 0.5rem;
+            padding-bottom: 0.2rem;
+            border-bottom: 1px solid var(--gray-border);
+            page-break-after: avoid;
+        }
+
+        p {
+            font-size: 11pt;
+            color: var(--gray-dark);
+            margin-bottom: 0.8rem;
+            text-align: left;
+            page-break-inside: avoid;
+        }
+
+        ol {
+            padding-left: 2rem;
+            margin-bottom: 1.2rem;
+        }
+
+        li {
+            font-size: 11pt;
+            color: var(--gray-dark);
+            margin-bottom: 0.8rem;
+            text-align: left;
+            page-break-inside: avoid;
+        }
+
+        li::marker {
+            font-weight: 700;
+            color: var(--black);
+        }
+
+        /* ─── INFO GRID ──────────────────────────────────────── */
+        .info-grid {
+            border: 2px solid var(--black);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            page-break-inside: avoid;
+        }
+
+        .field-row {
+            display: flex;
+            align-items: flex-end;
+            margin-bottom: 1.2rem;
+        }
+
+        .field-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .field-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 8pt;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--black);
+            margin-right: 1rem;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .field-value {
+            flex-grow: 1;
+            border-bottom: 1px solid var(--black);
+            min-height: 1.4rem;
+            padding: 0 0.5rem 0.1rem;
+            font-size: 12pt;
+            font-family: 'EB Garamond', serif;
+            color: var(--black);
+        }
+
+        /* ─── SIGNATURE SECTION ──────────────────────────────── */
+        .signature-section {
+            page-break-inside: avoid;
+        }
+
+        .sig-row {
+            display: flex;
+            gap: 3rem;
+            margin-bottom: 2rem;
+            align-items: flex-end;
+        }
+
+        .sig-block {
+            flex: 1;
+        }
+
+        .sig-block.narrow {
+            flex: 0 0 2.5in;
+        }
+
+        .sig-field {
+            border-top: 1px solid var(--black);
+            padding-top: 0.4rem;
+        }
+
+        .sig-field-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 7.5pt;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--black);
+        }
+
+        .sig-blank {
+            min-height: 2.5rem;
+        }
+
+        .relationship-row {
+            display: flex;
+            align-items: flex-end;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .relationship-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 8pt;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--black);
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .relationship-line {
+            flex-grow: 1;
+            border-bottom: 1px solid var(--black);
+            min-height: 1.4rem;
+        }
+
+        .dentist-note {
+            font-style: italic;
+            font-size: 10pt;
+            color: var(--gray-mid);
+            margin-bottom: 1rem;
+        }
+
+        /* ─── FOOTER ─────────────────────────────────────────── */
+        .doc-footer {
+            border-top: 2px solid var(--black);
+            margin: 0 3rem;
+            padding: 1rem 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-left {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 7.5pt;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--black);
+        }
+
+        .footer-right {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 7.5pt;
+            color: var(--gray-dark);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* ─── DOWNLOAD BUTTON ────────────────────────────────── */
+        .fab {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--black);
+            color: var(--white);
+            border: 2px solid var(--black);
+            padding: 0.9rem 1.6rem;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 8pt;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            transition: all 0.2s;
+            z-index: 1000;
+        }
+
+        .fab:hover {
+            background: var(--white);
+            color: var(--black);
+        }
+
+        .fab svg {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+            flex-shrink: 0;
+        }
+
+        /* ─── PRINT ──────────────────────────────────────────── */
+        @media print {
+            body {
+                background: var(--white);
+                padding: 0;
+            }
+
+            .document {
+                box-shadow: none;
+                max-width: 100%;
+                border: none;
+            }
+
+            .fab {
+                display: none !important;
+            }
+
+            section,
+            .info-grid,
+            .signature-section {
+                page-break-inside: avoid;
+            }
+
+            h3,
+            .part-header {
+                page-break-after: avoid;
+            }
+
+            .body {
+                padding: 0 2.5rem;
+            }
+
+            .doc-footer {
+                margin: 0 2.5rem;
+            }
+
+            .masthead {
+                padding: 2.5rem 2.5rem 1rem;
+            }
+
+            .brand-logo img {
+                filter: grayscale(100%);
+                -webkit-filter: grayscale(100%);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <button id="downloadPdfBtn" class="fab">
+        <svg viewBox="0 0 24 24">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z" />
+        </svg>
+        Download PDF
+    </button>
+
+    <div class="document" id="pdf-content">
+
+        <div class="masthead">
+            <div class="masthead-left">
+                <div class="brand-logo">
+                    <img src="logo.svg" alt="Logo">
+                </div>
+            </div>
+
+            <div class="masthead-right">
+                <div class="doctors">
+                    Dr. Sambhav Jain <span>DMD, MS</span><br>
+                    Dr. Arpana Gupta <span>DDS, MDS</span>
+                </div>
+                
+                <div class="contact-block">
+                    <strong>Email:</strong> info@bayareaimplantdentistry.com<br>
+                    <strong>Website:</strong> www.bayareaimplantdentistry.com
+                </div>
+                
+                <div class="contact-block">
+                    <strong>Main Office:</strong> 3381 Walnut Ave, Fremont, CA 94538<br>
+                    <strong>Phone:</strong> (510) 574-0496
+                </div>
+                
+                <div class="contact-block">
+                    <strong>SF Office:</strong> 4318 Geary Blvd, Suite 201, San Francisco, CA 94118<br>
+                    <strong>Phone:</strong> (415) 696-2922
+                </div>
+            </div>
+        </div>
+
+        <div class="premium-product-band">
+            <div class="form-title">ALL<span class="bold-hyphen">-</span>ON<span class="bold-hyphen">-</span>8 ROBUST</div>
+            <div class="form-label">Most Advanced Biomechanical Dental Implants Protocol</div>
+        </div>
+        
+        <div class="title-band sub-title">
+            <div class="form-label">Informed Consent Document</div>
+            <div class="form-title">Consent Form: Dental implant(s)</div>
+        </div>
+
+        <div class="body">
+
+            <section>
+                <div class="part-header">
+                    <span class="part-number">Part 1</span>
+                    <span class="part-title">Patient &amp; Doctor Information</span>
+                    <span class="part-rule"></span>
+                </div>
+
+                <div class="info-grid">
+                    <div class="field-row">
+                        <span class="field-label">Patient Name</span>
+                        <span class="field-value"></span>
+                    </div>
+                    <div class="field-row">
+                        <span class="field-label">Doctor Name</span>
+                        <span class="field-value">Dr. Jain/ Dr. Gupta</span>
+                    </div>
+                </div>
+
+                <p>In order for me to make an informed decision about undergoing a procedure, I should have certain information about the proposed procedure, the associated risks, the alternatives and the consequences of not having it. The doctor has provided me with this information to my satisfaction. The following is a summary of this information. This form is meant to provide me with the information I need to make a good decision; it is not meant to alarm me.</p> <br/>
+            </section>
+
+            <section>
+                <div class="part-header">
+                    <span class="part-number">Part 2</span>
+                    <span class="part-title">Details of Consent</span>
+                    <span class="part-rule"></span>
+                </div>
+
+                <h3>Condition</h3>
+                <p>My doctor has explained the nature of my condition to me: Missing tooth or teeth.</p>
+
+                <h3>Procedure — Dental Implant</h3>
+                <p>My physician has proposed the following procedure to treat or diagnose my condition: Dental implant This means: Surgically place an implant into the supporting jawbone.</p>
+                <p>While we believe that patients have a right to be informed about any treatment, the law requires extensive disclosure of the risks of surgery and anesthesia, many of which are extremely unlikely to occur, but can be alarming for the patient. Please feel free to the doctor about the frequency of any risks or complications disclosed herein that might apply to you based on our clinical experience and that of other oral surgeons and implantologists.</p>
+
+                <ol>
+                    <li>After a careful oral examination and study of my dental condition, the doctor has advised me that my missing tooth or teeth may be replaced with artificial teeth supported by an implant. I hereby authorize and direct the doctor and his authorized associates and assistants to treat my condition.</li>
+                    <li>The procedure I choose to treat this condition is understood by me to be the placement of root form implant(s). Additional treatment procedures may include a bone graft including materials of human, animal or plant origin. I understand that the purpose of this procedure is to allow me to have more functional artificial teeth by the implants providing support, anchorage and retention for these teeth.</li>
+                    <li>I understand that this is nonetheless an elective procedure, that such procedures are performed to improve function and that an alternative option, although less desirable, is to not undergo surgery and do nothing. I have also been advised that other alternative treatments done for patients in my condition include, but are not limited to, a bridge, a partial denture, full denture, or other options. I understand and choose to undergo the placement of root form implant(s).</li>
+                    <li>I understand that my gum tissue will surgically be opened to expose the bone and that implants will be placed immediately by tapping or threading them into holes that have been drilled into my jaw bone. I understand that the gum tissue will then be stitched closed over or around the implant to permit healing for a period of 3 to 6 months. I understand that dentures usually cannot be worn during the first few weeks of the healing phase. I understand that the implants placed will be integrated in 3 to 9 months time, depending on my personal healing ability.</li>
+                    <li>I also understand that during the course of the procedure, unforeseen conditions may arise that necessitate an extension or alteration of the planned procedure contained herein. I therefore authorize and request that the doctor and his associates or assistants under his direction perform such procedure as found necessary and administer such drugs and treatments as required in their professional judgment.</li>
+                    <li>I have had the opportunity to discuss with the doctor the planned surgical procedure, implant placement, and my postoperative responsibilities. I understand that following the procedure during the healing process I should not smoke, drink heavily, use any drugs not prescribed by my doctor, should not blow my nose for at least two weeks and thereafter not heavily blow my nose for an additional two weeks. I should take any antibiotics prescribed and use pain medication as needed. If I experience an unusual amount of pain I should contact the doctor or his associates immediately, as it may signify a problem.</li>
+                    <li>I understand that anesthesia given during surgery and certain prescription medications used after surgery cause drowsiness and impaired physical performance, and that such effect is increased by the use of alcohol, and that I must not operate a motor vehicle or any other hazardous equipment while taking these drugs. Further, I agree not to operate a motor vehicle or any other hazardous equipment for at least 48 hours after my release from surgery.</li>
+                    <li>I understand no guarantee has been given to me that the proposed treatment will be curative and/or successful to my complete satisfaction. I also understand that due to individual patient differences and the imperfections of the art and science of surgery, there exists a risk of failure or necessity of additional treatment despite appropriate care. I have been advised that the placement of root form implants has shown long term success rates. However, I understand that such disclosure is not to imply that I personally can expect such a favorable long-term result and that there will be no refund of fees from the surgeon or restorative dentist in the event of complications requiring additional surgery to salvage the implant or failure requiring removal of part or all of the implant. I further understand that should removal be required, the doctor will remove the implant at no additional cost. However, should I elect to have another doctor remove the implant, I am solely responsible for all costs and fees incurred in doing so and hereby release the doctor from any such costs and fees imposed by the other doctor.</li>
+                </ol>
+
+                <h3>Alternatives</h3>
+                <p>My physician has explained the following medically acceptable alternatives to be: A bridge, a partial denture, full denture, or other options. Also, I can seek specialized care somewhere else, or I can have nothing done.</p>
+
+                <h3>Consequences of not having procedure</h3>
+                <p>If I dont have the procedure, my condition may stay the same, improve, or get worse. It is the doctors opinion that the proposed procedure is a better option for me. If I dont have the procedure, the following may also happen: Further loss of supporting tissues or bone. A gap in the teeth.</p>
+
+                <h3>Other procedures</h3>
+                <p>During the course of the procedure, the doctor may discover other conditions that require an extension of the planned procedure, or a different procedure altogether. I request the doctor to do the procedures my doctor thinks are better to do at this sitting rather than later on.</p>
+
+                <h3>Risks</h3>
+                <p>The doctor will give his best professional care toward accomplishment of the desired results. The substantial and frequent risks and hazards of the proposed procedure are: Restricted mouth opening; gum shrinkage; clicking or pain of the temporomandibular joints (jaw joints) tooth sensitivity to hot or cold for days up to months; loose teeth; food lodging between the teeth requiring flossing for removal; and unesthetic exposure of crown margins of teeth in the surgery area These are usually temporary. Uncommonly, these effects may persist. Uncommon risks also include: Interference with speech sounds; permanent nerve injury possibly requiring nerve graft surgery. There will be no refund of fees from the surgeon or restorative dentist in the event of complications requiring additional surgery to salvage the implant or failure requiring removal of part or all of the implant. Should removal be required, the doctor will remove the implant at no additional cost. If I have someone else remove the implant, I am responsible for all costs and fees and will not ask the doctor to pay for it.</p>
+
+                <h3>Drugs, Medications, and Anesthesia</h3>
+                <p>Antibiotics, pain medication, and other medications may cause adverse reactions such as redness and swelling of tissues, pain, itching, drowsiness, nausea, vomiting, dizziness, lack of coordination, miscarriage, cardiac arrest, which can be increased by the effect of alcohol or other drugs, blood clot in the legs, heart, lungs or brain, low blood pressure, heart attack, stroke, paralysis, brain damage. Sometimes after injection of a local anesthetic, I may have prolonged numbness and/or irritation in the area of injection. If I use Nitrous Oxide, Atarax, Chloral hydrate, Xanax, or other sedative, possible risks include, but are not limited to, passing out, severe shock, and stopping breathing or heartbeat. I will arrange for someone to drive me home from the office after I have received sedation, and to have someone watch me closely for 10 hours after my dental appointment to observe for side effects such as difficulty breathing or passing out.</p>
+
+                <h3>Implant Database</h3>
+                <p>If a device is placed in my body, the doctor may give my name, dental information, social security number and other personal information to the device manufacturer for quality control purposes.</p>
+
+                <h3>No guarantee</h3>
+                <p>The practice of dentistry and surgery is not an exact science. Although good results are expected, the doctor has not given me any guarantee that the proposed treatment will be successful, will be to my complete satisfaction, or that it will last for any specific length of time. Due to individual patient differences, there is always a risk of failure, relapse, need for more treatment, or worsening of my present condition despite careful treatment. Occasionally, treated teeth may require extraction.</p>
+            </section>
+
+            <section>
+                <div class="part-header">
+                    <span class="part-number">Part 3</span>
+                    <span class="part-title">My Responsibility</span>
+                    <span class="part-rule"></span>
+                </div>
+
+                <p>I agree to cooperate completely with the doctors recommendations while under his/her care. If I dont fulfill my responsibility, my results could be affected.</p>
+                <p>Success requires my long-term personal oral hygiene, mechanical plaque removal (daily brushing and flossing), completion of recommended dental therapy, periodic periodontal visits (dental clinic care), regular follow-up appointments and overall general health.</p>
+                <p>There may be several follow-up clinical visits for the first year following surgery. It is my responsibility to see the doctor at least once a year for evaluation of implant performance and oral hygiene maintenance.</p>
+                <p>I have provided as accurate and complete medical and personal history as possible, including those antibiotics, drugs, medications, and foods to which I am allergic. I will follow any and all instructions as explained and directed to me, and permit all required diagnostic procedures. I have had an opportunity to discuss my past medical and health history including any serious problems and/or injury with the doctor.</p>
+                <p>Necessary Follow-up Care and Self-Care. Natural teeth and appliances should be maintained daily in a clean, hygienic manner. I should follow post-operative instructions given after surgery to ensure proper healing. I will need to come for appointments following the procedure so that my healing may be monitored and so that my doctor can evaluate and report on the outcome of the surgery upon completion of healing.</p>
+                <p>I will not drink alcohol or take non-prescribed drugs during the treatment period. If sedation or general anesthesia is used I will not to operate a motor vehicle or hazardous device for at least 24 hours or more until full recovered from the effects of the anesthesia or drugs.</p>
+                <p>I will let the doctors office know if I change my address so I can be contacted for any recalls.</p>
+            </section>
+
+            <section>
+                <div class="part-header">
+                    <span class="part-number">Part 4</span>
+                    <span class="part-title">Miscellaneous</span>
+                    <span class="part-rule"></span>
+                </div>
+
+                <h3>Photography</h3>
+                <p>I give permission for persons other than the doctors involved on my care and treatment to observe this operation (such as company representatives and dentists who are learning the procedure) and I consent to photography, filming, recording and x-rays of my oral and facial structures and the procedure, and their publication for educational and scientific purposes, provided my identity is not revealed. I give up all rights for compensation for publication of these records.</p>
+
+                <h3>Miscellaneous</h3>
+                <p>If teeth are removed during treatment, they may be retained for training purposes and then disposed of sensitively.</p>
+
+                <h3>Fees</h3>
+                <p>I know the fee that I am to be charged. I am satisfied with it and know that it does not include additional post-operative x-rays, injections or anesthetics that may later be necessary to correct any complications. As a courtesy to me, the office staff will help prepare and file insurance claims should I be insured. However, the agreement of the insurance company to pay for medical expenses is a contract between myself and the insurance company and does not relieve my responsibility to pay for services provided. Some and perhaps all of the services provided may not be covered or not considered reasonable and customary by my insurance company. I am responsible for paying all co-pays and deductibles at the time services are rendered and all costs that have not been paid for by my insurance within 45 days. Otherwise, all payments are due at the time services are rendered. All accounts not paid in full within 90 days shall accrue interest at the rate of 18% per year. I will be liable for all collection costs, including court costs and attorney fees.</p>
+            </section>
+
+            <section class="signature-section">
+                <div class="part-header">
+                    <span class="part-number">Part 5</span>
+                    <span class="part-title">Signature</span>
+                    <span class="part-rule"></span>
+                </div>
+
+                <h3>Understanding</h3>
+                <p>I read and write English. I have read and understand this form. All blanks or statements requiring insertion or completion were filled in and inapplicable paragraphs, if any, were stricken before I signed.</p>
+                <p>I have been encouraged to ask questions, and am satisfied with the answers. I have read this entire form. I give my informed consent for surgery and anesthesia. Someone at the doctors office has explained this form, my condition, the procedure, how the procedure could help me, things that can go wrong, and my other options, including not having anything done.</p>
+                <p>I want to have the procedure done.I authorize Dr. Jain/Gupta or his designee (referred to in the rest of this form as the doctor) to perform the procedure listed in the title above.</p>
+                <p>I know that I am free to withdraw from treatment at any time.</p>
+
+                <br>
+
+                <div class="sig-row" style="margin-top:1.5rem;">
+                    <div class="sig-block">
+                        <div class="sig-blank"></div>
+                        <div class="sig-field">
+                            <div class="sig-field-label">Patient or Representative Signature</div>
+                        </div>
+                    </div>
+                    <div class="sig-block narrow">
+                        <div class="sig-blank"></div>
+                        <div class="sig-field">
+                            <div class="sig-field-label">Date</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relationship-row">
+                    <span class="relationship-label">If not the patient, what is your relationship to the patient?</span>
+                    <span class="relationship-line"></span>
+                </div>
+
+                <p class="dentist-note">I have explained the condition, procedure, benefits, alternatives, and risks described on this form to the patient or representative.</p>
+
+                <div class="sig-row" style="margin-top:1rem;">
+                    <div class="sig-block">
+                        <div class="sig-blank"></div>
+                        <div class="sig-field">
+                            <div class="sig-field-label">Dentist Signature</div>
+                        </div>
+                    </div>
+                    <div class="sig-block narrow">
+                        <div class="sig-blank"></div>
+                        <div class="sig-field">
+                            <div class="sig-field-label">Date</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+        <div class="doc-footer">
+            <div>
+                <div class="footer-left"></div>
+            </div>
+            <div class="footer-right" id="web-page-note"></div>
+        </div>
+
+    </div>
+    <script>
+        document.getElementById('downloadPdfBtn').addEventListener('click', function () {
+            const element = document.getElementById('pdf-content');
+
+            const btn = this;
+            btn.innerHTML = `<svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg> Generating…`;
+            btn.style.pointerEvents = 'none';
+
+            // Wrap PDF generation in fonts.ready to ensure text formatting is finalized
+            document.fonts.ready.then(function() {
+                const opt = {
+                    margin: [0.5, 0.5, 0.65, 0.5],
+                    filename: 'Consent_Form_Dental_Implants.pdf',
+                    image: { type: 'jpeg', quality: 1.0 },
+                    html2canvas: {
+                        scale: 4, 
+                        useCORS: true,
+                        letterRendering: true,
+                        scrollY: 0
+                    },
+                    jsPDF: {
+                        unit: 'in',
+                        format: 'letter',
+                        orientation: 'portrait'
+                    },
+                    pagebreak: { mode: ['css', 'legacy'] }
+                };
+
+                const webFooter = document.querySelector('.doc-footer');
+                if(webFooter) webFooter.style.display = 'none';
+
+                html2pdf().set(opt).from(element).toPdf().get('pdf').then(function (pdf) {
+                    var totalPages = pdf.internal.getNumberOfPages();
+                    var pageWidth = pdf.internal.pageSize.getWidth();
+                    var pageHeight = pdf.internal.pageSize.getHeight();
+
+                    for (var i = 1; i <= totalPages; i++) {
+                        pdf.setPage(i);
+
+                        // Right: page number ONLY (smaller size)
+                        var pageStr = 'Page ' + i + ' of ' + totalPages;
+                        pdf.setFontSize(7); 
+                        pdf.setTextColor(85, 85, 85); 
+                        pdf.setFont('helvetica', 'normal');
+                        var tw = pdf.getStringUnitWidth(pageStr) * 7 / 72;
+                        pdf.text(pageStr, pageWidth - tw - 0.5, pageHeight - 0.35);
+                    }
+                }).save().then(function () {
+                    // Restore the web footer and reset button
+                    if(webFooter) webFooter.style.display = 'flex';
+                    btn.innerHTML = `<svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg> Download PDF`;
+                    btn.style.pointerEvents = 'auto';
+                });
+            });
+        });
+    </script>
+</body>
+</html>

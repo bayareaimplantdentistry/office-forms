@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Implant Crown & Hybrid Denture Consent | All-On-8 Robust</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap"
+        rel="stylesheet">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+    <style>
+        :root {
+            --black: #000000;
+            --gray-dark: #222222;
+            --gray-mid: #555555;
+            --gray-light: #999999;
+            --gray-border: #cccccc;
+            --white: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'EB Garamond', serif;
+            background: #f4f4f4;
+            color: var(--black);
+            font-size: 11pt;
+            line-height: 1.5;
+            padding: 2rem 1rem;
+        }
+
+        /* ─── DOCUMENT SHELL ─────────────────────────────────── */
+        .document {
+            max-width: 8.5in;
+            margin: 0 auto;
+            background: var(--white);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, .1);
+            position: relative;
+        }
+
+        /* ─── MASTHEAD (LETTERHEAD) ──────────────────────────── */
+        .masthead {
+            padding: 2.5rem 3rem 1rem; 
+            display: flex;
+            justify-content: space-between;
+            align-items: center; 
+            gap: 2rem;
+        }
+
+        .masthead-left {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            flex: 1; 
+        }
+
+        .brand-logo img {
+            width: 210px; 
+            max-width: 100%;
+            height: auto; 
+            object-fit: contain;
+            object-position: left center;
+            filter: grayscale(100%);
+        }
+
+        .masthead-right {
+            text-align: right;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 7.5pt;
+            color: var(--gray-dark);
+            line-height: 1.5;
+            flex-shrink: 0;
+        }
+
+        .masthead-right .doctors {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 13pt;
+            font-weight: 700;
+            color: var(--black);
+            margin-bottom: 0.8rem; 
+            line-height: 1.2;
+        }
+
+        .masthead-right .doctors span {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 7pt;
+            font-weight: 500;
+            color: var(--gray-mid);
+            letter-spacing: 1px;
+            margin-left: 4px;
+        }
+
+        .masthead-right .contact-block {
+            margin-bottom: 0.6rem; 
+        }
+
+        .masthead-right strong {
+            color: var(--black);
+            font-weight: 600;
+        }
+
+        /* ─── PREMIUM PRODUCT BAND ───────────────────────────── */
+        .premium-product-band {
+            margin: 0.5rem 3rem 1.5rem; 
+            padding: 1.2rem 0;
+            text-align: center;
+            background: transparent;
+            page-break-inside: avoid;
+            border-top: 6px double var(--black);
+            border-bottom: 6px double var(--black);
+        }
+
+        .premium-product-band .form-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 30pt; 
+            font-weight: 700;
+            color: var(--black); 
+            letter-spacing: 4px; 
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .premium-product-band .bold-hyphen {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            margin: 0 4px;
+        }
+
+        .premium-product-band .form-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 8pt;
+            font-weight: 700;
+            letter-spacing: 6px; 
+            text-transform: uppercase;
+            color: var(--black); 
+        }
+
+        /* ─── DOCUMENT TITLE BAND ────────────────────────────── */
+        .title-band {
+            padding: 1rem 3rem;
+            text-align: center;
+        }
+
+        .title-band .form-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 20pt; 
+            font-weight: 700;
+            color: var(--black);
+            letter-spacing: 0.5px;
+            line-height: 1.2;
+            text-transform: uppercase;
+        }
+
+        /* ─── BODY & SECTIONS ────────────────────────────────── */
+        .body {
+            padding: 0 3rem 2.5rem;
+        }
+
+        section {
+            margin-bottom: 1.5rem;
+        }
+
+        .part-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.2rem;
+            margin-top: 2rem;
+        }
+
+        .part-number {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 7pt;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--black);
+            border: 1px solid var(--black);
+            padding: 0.3rem 0.6rem;
+            flex-shrink: 0;
+        }
+
+        .part-rule {
+            flex-grow: 1;
+            height: 1px;
+            background: var(--black);
+        }
+
+        h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 9pt;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--black);
+            margin: 1.5rem 0 0.8rem;
+            border-bottom: 1px solid var(--gray-border);
+            padding-bottom: 0.2rem;
+        }
+
+        p {
+            font-size: 11pt;
+            color: var(--gray-dark);
+            margin-bottom: 1rem;
+            text-align: left;
+        }
+
+        /* ─── CHECKBOX STYLING ───────────────────────────────── */
+        .option-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .checkbox-square {
+            width: 16px;
+            height: 16px;
+            border: 1px solid var(--black);
+            flex-shrink: 0;
+            margin-top: 4px;
+        }
+
+        /* ─── SIGNATURE ELEMENTS ─────────────────────────────── */
+        .signature-section {
+            page-break-inside: avoid;
+            margin-top: 3rem;
+        }
+
+        .sig-row {
+            display: flex;
+            gap: 3rem;
+            margin-bottom: 2rem;
+            align-items: flex-end;
+        }
+
+        .sig-block { flex: 1; }
+        .sig-block.narrow { flex: 0 0 2in; }
+
+        .sig-field {
+            border-top: 1px solid var(--black);
+            padding-top: 0.4rem;
+        }
+
+        .sig-field-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 7.5pt;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .sig-blank { min-height: 2.5rem; }
+
+        /* ─── FOOTER ─────────────────────────────────────────── */
+        .doc-footer {
+            border-top: 2px solid var(--black);
+            margin: 0 3rem;
+            padding: 1rem 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-left {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 7.5pt;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* ─── DOWNLOAD BUTTON ────────────────────────────────── */
+        .fab {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--black);
+            color: var(--white);
+            border: 2px solid var(--black);
+            padding: 0.9rem 1.6rem;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 8pt;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            transition: all 0.2s;
+            z-index: 1000;
+        }
+
+        .fab:hover { background: var(--white); color: var(--black); }
+
+        @media print {
+            body { background: var(--white); padding: 0; }
+            .document { box-shadow: none; max-width: 100%; border: none; }
+            .fab { display: none !important; }
+            .body { padding: 0 2.5rem; }
+            .doc-footer { margin: 0 2.5rem; }
+            .masthead { padding: 2.5rem 2.5rem 1rem; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <button id="downloadPdfBtn" class="fab">
+        Download PDF
+    </button>
+
+    <div class="document" id="pdf-content">
+
+        <div class="masthead">
+            <div class="masthead-left">
+                <div class="brand-logo">
+                    <img src="logo.svg" alt="Logo">
+                </div>
+            </div>
+
+            <div class="masthead-right">
+                <div class="doctors">
+                    Dr. Sambhav Jain <span>DMD, MS</span><br>
+                    Dr. Arpana Gupta <span>DDS, MDS</span>
+                </div>
+                
+                <div class="contact-block">
+                    <strong>Email:</strong> info@bayareaimplantdentistry.com<br>
+                    <strong>Website:</strong> www.bayareaimplantdentistry.com
+                </div>
+                
+                <div class="contact-block">
+                    <strong>Main Office:</strong> 3381 Walnut Ave, Fremont, CA 94538<br>
+                    <strong>Phone:</strong> (510) 574-0496
+                </div>
+            </div>
+        </div>
+
+        <div class="premium-product-band">
+            <div class="form-title">ALL<span class="bold-hyphen">-</span>ON<span class="bold-hyphen">-</span>8 ROBUST</div>
+            <div class="form-label">Most Advanced Biomechanical Dental Implants Protocol</div>
+        </div>
+        
+        <div class="title-band">
+            <div class="form-title">Implant Crown & Hybrid Denture Consent Form</div>
+        </div>
+
+        <div class="body">
+
+            <section>
+                <div class="part-header">
+                    <span class="part-number">Part 1</span>
+                    <span class="part-rule"></span>
+                </div>
+                <p>The purpose of dental implant(s) is to provide stability, support, and/or retention for a crown, fixed bridge, fixed denture or removable denture in the absence of natural teeth. Based upon thorough examination and discussion, I request the fabrication of an implant prosthesis. I approve any future modification in prosthetic design, materials or treatment if, in the doctor’s professional judgment, it is in my best interest.</p>
+
+                <h3>PROSTHETIC DESIGN OPTIONS</h3>
+                <div class="option-row">
+                    <div class="checkbox-square"></div>
+                    <p>Fixed – Similar to natural teeth in color and size</p>
+                </div>
+                <div class="option-row">
+                    <div class="checkbox-square"></div>
+                    <p>Fixed – Longer and/or larger than natural teeth, and of similar color</p>
+                </div>
+                <div class="option-row">
+                    <div class="checkbox-square"></div>
+                    <p>Fixed – Longer and/or larger than teeth, with tooth color and pink to replace the missing gum.</p>
+                </div>
+                <div class="option-row">
+                    <div class="checkbox-square"></div>
+                    <p>Temporary hybrid denture, later to be replaced by titanium bar reinforced precision hybrid denture.</p>
+                </div>
+                <div class="option-row">
+                    <div class="checkbox-square"></div>
+                    <p>Removable – Supported by Implants</p>
+                </div>
+                <div class="option-row">
+                    <div class="checkbox-square"></div>
+                    <p>Removable – Supported by implants and gums</p>
+                </div>
+            </section>
+
+            <section>
+                <div class="part-header">
+                    <span class="part-number">Part 2</span>
+                    <span class="part-rule"></span>
+                </div>
+                <p>I have been informed and afforded the time to fully understand the purpose and the nature of the implant restorative procedure. I understand what is necessary to accomplish the restoration of the implant previously inserted into or onto the bone and under the gum. Alternatives to this treatment have been explained. I have tried or considered these methods, but I desire an implant prosthesis to help secure the replacement of my missing teeth.</p>
+                
+                <p>The entire procedure has been fully explained, including the benefits and possible risks, not asked for, nor have I received from anyone a guarantee of the outcome of this procedure.</p>
+                
+                <p>The possible risks and complications for fixed prosthesis include: compromised appearance and/or lack of support of the lip(s) and cheek(s) as a result of inadequate bone; air escaping underneath the prosthesis while talking which may adversely affect speech and/or food entrapment underneath the prosthesis since space in necessary for homecare of the implants.</p>
+                
+                <p>The possible risks for removable prosthesis include: sore gums, food entrapment, wearing of attachments, replacement of attachment components, and initial problems with speech.</p>
+            </section>
+
+            <section>
+                <div class="part-header">
+                    <span class="part-number">Part 3</span>
+                    <span class="part-rule"></span>
+                </div>
+                <p>Excessive forces as grinding or clenching my teeth, on the implant(s) may lead to loosening and/or fracture of the retaining screws or cement; fracture of the porcelain, metal or acrylic on the prosthesis : loosening and/or fracture of the implant(s); and/or loss of bone around the implant(s). Any of these may cause loss of the implant(s). Additional treatment and associated costs will be involved should this occur, including, but not limited to occlusal guards.</p>
+
+                <p>I understand that if nothing is done any of the following could occur: loss of bone, gum tissue inflammation, infection, sensitivity, loosening of teeth followed by necessity of extraction. Also possible are temporomandibular joint, haw problems, headaches, referred pains to the back of the neck and facial muscles and fatigues muscles when chewing. In addition, I am aware that if nothing is done at the present time, future bone loss may cause the inability to place implant(s) at a later date due to changes in oral or medical condition(s).</p>
+            </section>
+
+            <section>
+                <div class="part-header">
+                    <span class="part-number">Part 4</span>
+                    <span class="part-rule"></span>
+                </div>
+                <p>It has been explained that in some instances implant(s) fail and much be removed. I have been informed and understand that the practice of dentistry is not an exact science; therefore, I understand there are no guarantees or assurances as to the outcome of treatment results.</p>
+                
+                <p>Follow-up care for the implants and prosthesis is extremely important to the success. It will be necessary to return to the office at regular intervals for examination and service. It has been made clear that failure on my part to keep my mouth, implant post(s) and prosthesis thoroughly clean may jeopardize the success of my implant(s). I realize that unforeseen long-term factors may necessitate additional surgery, modification of the implant(s) or even surgical removal of the implant(s).</p>
+                
+                <p>I also understand that I will be financially responsible for long-term maintenance and/or any modifications required, including but not limited to cleaning, attachment replacements, x-rays, and examinations.</p>
+            </section>
+
+            <section>
+                <div class="part-header">
+                    <span class="part-number">Part 5</span>
+                    <span class="part-rule"></span>
+                </div>
+                <p>To my knowledge, I have given an accurate report of my physical and mental health history. I understand that excessive smoking, alcohol, or blood sugar may effect gum healing and may limit the success of the implants(s) and restoration. I will report any significant change in my health should it occur.</p>
+                
+                <p>I consent to photography, filming, recording, x-rays, and additional professional staffs observing the procedure to be performed for the advancement of implant dentistry, provided my identity is not revealed. I agree to notify the doctor’s office of any and all changed to my address and/or telephone number within a reasonable time frame (two to four weeks), so future follow-up care may be established.</p>
+                
+                <p>If an unforeseen condition arises in the course of treatment which calls for the performance of procedures in addition to or different from the now contemplated, I further authorize and direct my doctor, associate, or assistant to do whatever they deem necessary and advisable under the circumstances, including the decision not to proceed with the implant restoration.</p>
+            </section>
+
+            <section class="signature-section">
+                <div class="sig-row">
+                    <div class="sig-block">
+                        <div class="sig-blank"></div>
+                        <div class="sig-field">
+                            <div class="sig-field-label">Signature of Patient or Guardian</div>
+                        </div>
+                    </div>
+                    <div class="sig-block narrow">
+                        <div class="sig-blank"></div>
+                        <div class="sig-field">
+                            <div class="sig-field-label">Date</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sig-row">
+                    <div class="sig-block">
+                        <div class="sig-blank"></div>
+                        <div class="sig-field">
+                            <div class="sig-field-label">If not the patient, what is your relationship to patient</div>
+                        </div>
+                    </div>
+                    <div class="sig-block narrow">
+                        <div class="sig-blank"></div>
+                        <div class="sig-field">
+                            <div class="sig-field-label">Date</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sig-row">
+                    <div class="sig-block">
+                        <div class="sig-blank"></div>
+                        <div class="sig-field">
+                            <div class="sig-field-label">Signature of Doctor</div>
+                        </div>
+                    </div>
+                    <div class="sig-block narrow">
+                        <div class="sig-blank"></div>
+                        <div class="sig-field">
+                            <div class="sig-field-label">Date</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+        <div class="doc-footer">
+            <div class="footer-left">Implant Crown & Hybrid Denture Consent</div>
+            <div class="footer-right"></div>
+        </div>
+
+    </div>
+    <script>
+        document.getElementById('downloadPdfBtn').addEventListener('click', function () {
+            const element = document.getElementById('pdf-content');
+            document.fonts.ready.then(function() {
+                const opt = {
+                    margin: [0.5, 0.5, 0.5, 0.5],
+                    filename: 'Implant_Restoration_Consent.pdf',
+                    image: { type: 'jpeg', quality: 1.0 },
+                    html2canvas: { scale: 4, useCORS: true, letterRendering: true, scrollY: 0 },
+                    jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' },
+                    pagebreak: { mode: ['css', 'legacy'] }
+                };
+
+                const webFooter = document.querySelector('.doc-footer');
+                if(webFooter) webFooter.style.display = 'none';
+
+                html2pdf().set(opt).from(element).toPdf().get('pdf').then(function (pdf) {
+                    var totalPages = pdf.internal.getNumberOfPages();
+                    var pageWidth = pdf.internal.pageSize.getWidth();
+                    var pageHeight = pdf.internal.pageSize.getHeight();
+                    for (var i = 1; i <= totalPages; i++) {
+                        pdf.setPage(i);
+                        var pageStr = 'Page ' + i + ' of ' + totalPages;
+                        pdf.setFontSize(7); 
+                        pdf.setTextColor(85, 85, 85); 
+                        pdf.setFont('helvetica', 'normal');
+                        var tw = pdf.getStringUnitWidth(pageStr) * 7 / 72;
+                        pdf.text(pageStr, pageWidth - tw - 0.5, pageHeight - 0.35);
+                    }
+                }).save().then(function () {
+                    if(webFooter) webFooter.style.display = 'flex';
+                });
+            });
+        });
+    </script>
+</body>
+</html>

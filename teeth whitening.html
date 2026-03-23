@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teeth Whitening Consent | All-On-8 Robust</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap"
+        rel="stylesheet">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+    <style>
+        :root {
+            --black: #000000;
+            --gray-dark: #222222;
+            --gray-mid: #555555;
+            --gray-light: #999999;
+            --gray-border: #cccccc;
+            --white: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'EB Garamond', serif;
+            background: #f4f4f4;
+            color: var(--black);
+            font-size: 11pt;
+            line-height: 1.6;
+            padding: 2rem 1rem;
+        }
+
+        /* ─── DOCUMENT SHELL ─────────────────────────────────── */
+        .document {
+            max-width: 8.5in;
+            margin: 0 auto;
+            background: var(--white);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, .1);
+            position: relative;
+        }
+
+        /* ─── MASTHEAD (LETTERHEAD) ──────────────────────────── */
+        .masthead {
+            padding: 2.5rem 3rem 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center; 
+            gap: 2rem;
+        }
+
+        .masthead-left {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            flex: 1; 
+        }
+
+        .brand-logo img {
+            width: 280px; 
+            max-width: 100%;
+            height: auto; 
+            object-fit: contain;
+            object-position: left center;
+            filter: grayscale(100%);
+        }
+        
+        .masthead-sub-logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 7.5pt;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: var(--gray-mid);
+            margin-top: 0.5rem;
+            text-transform: uppercase;
+        }
+
+        .masthead-right {
+            text-align: right;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 7.5pt;
+            color: var(--gray-dark);
+            line-height: 1.5;
+            flex-shrink: 0;
+        }
+
+        .masthead-right .doctors {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 13pt;
+            font-weight: 700;
+            color: var(--black);
+            margin-bottom: 0.8rem; 
+            line-height: 1.2;
+        }
+
+        .masthead-right .doctors span {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 7pt;
+            font-weight: 500;
+            color: var(--gray-mid);
+            letter-spacing: 1px;
+            margin-left: 4px;
+        }
+
+        .masthead-right .contact-block {
+            margin-bottom: 0.6rem; 
+        }
+        
+        .masthead-right .contact-block:last-child {
+            margin-bottom: 0;
+        }
+
+        .masthead-right strong {
+            color: var(--black);
+            font-weight: 600;
+        }
+
+        /* ─── PREMIUM PRODUCT SHOWCASE ───────────────────────── */
+        .premium-product-band {
+            margin: 0.5rem 3rem 1.5rem;
+            padding: 1.2rem 0;
+            text-align: center;
+            background: transparent;
+            page-break-inside: avoid;
+            border-top: 6px double var(--black); 
+            border-bottom: 6px double var(--black); 
+        }
+
+        .premium-product-band .form-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 30pt; 
+            font-weight: 700;
+            color: var(--black); 
+            letter-spacing: 4px; 
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .premium-product-band .bold-hyphen {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            margin: 0 4px; 
+        }
+
+        .premium-product-band .form-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 8pt;
+            font-weight: 700;
+            letter-spacing: 6px; 
+            text-transform: uppercase;
+            color: var(--black); 
+        }
+
+        /* ─── DOCUMENT TITLE BAND ────────────────────────────── */
+        .title-band {
+            padding: 1.5rem 3rem;
+            text-align: center;
+        }
+
+        .title-band.sub-title {
+            padding-top: 0;
+            margin-top: 0.5rem;
+        }
+
+        .title-band .form-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 8pt;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gray-mid);
+            margin-bottom: 0.4rem;
+        }
+
+        .title-band .form-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 22pt; 
+            font-weight: 700;
+            color: var(--black);
+            letter-spacing: 0.5px;
+            line-height: 1.1;
+        }
+
+        /* ─── BODY ───────────────────────────────────────────── */
+        .body {
+            padding: 0 3rem 2.5rem;
+        }
+
+        /* ─── SECTIONS & TEXT PREVENTING CUTTING ──────────────── */
+        section {
+            margin-bottom: 2rem; 
+            page-break-inside: auto; 
+        }
+
+        .part-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.2rem;
+            margin-top: 2.5rem;
+            page-break-after: avoid;
+            page-break-inside: avoid;
+        }
+
+        .part-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 15pt;
+            font-weight: 700;
+            color: var(--black);
+            letter-spacing: 0.5px;
+            flex-shrink: 0;
+            text-transform: uppercase;
+        }
+
+        .part-rule {
+            flex-grow: 1;
+            height: 1px;
+            background: var(--black);
+        }
+
+        h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 8.5pt;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--black);
+            margin: 1.5rem 0 0.5rem;
+            padding-bottom: 0.2rem;
+            border-bottom: 1px solid var(--gray-border);
+            page-break-after: avoid; 
+            page-break-inside: avoid;
+        }
+
+        p {
+            font-size: 11pt;
+            color: var(--gray-dark);
+            margin-bottom: 0.8rem;
+            text-align: left;
+            page-break-inside: avoid; 
+        }
+
+        ul {
+            padding-left: 1.5rem;
+            margin-bottom: 1.2rem;
+            font-size: 11pt;
+        }
+
+        li {
+            font-size: 11pt;
+            color: var(--gray-dark);
+            margin-bottom: 0.6rem;
+            text-align: left;
+            page-break-inside: avoid; 
+        }
+
+        li::marker {
+            font-weight: 700;
+            color: var(--black);
+        }
+
+        /* ─── SIGNATURE SECTION ──────────────────────────────── */
+        .signature-section {
+            page-break-inside: avoid; 
+            margin-top: 2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .sig-row {
+            display: flex;
+            gap: 3rem;
+            margin-bottom: 2rem;
+            align-items: flex-end;
+        }
+
+        .sig-block {
+            flex: 1;
+        }
+
+        .sig-block.narrow {
+            flex: 0 0 2.5in;
+        }
+
+        .sig-field {
+            border-top: 1px solid var(--black);
+            padding-top: 0.4rem;
+        }
+
+        .sig-field-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 7.5pt;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--black);
+        }
+
+        .sig-blank {
+            min-height: 2.5rem;
+        }
+
+        /* ─── FOOTER ─────────────────────────────────────────── */
+        .doc-footer {
+            border-top: 2px solid var(--black);
+            margin: 0 3rem;
+            padding: 1rem 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-left {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 7.5pt;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--black);
+        }
+
+        .footer-right {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 7.5pt;
+            color: var(--gray-dark);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* ─── DOWNLOAD BUTTON ────────────────────────────────── */
+        .fab {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--black);
+            color: var(--white);
+            border: 2px solid var(--black);
+            padding: 0.9rem 1.6rem;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 8pt;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            transition: all 0.2s;
+            z-index: 1000;
+        }
+
+        .fab:hover {
+            background: var(--white);
+            color: var(--black);
+        }
+
+        .fab svg {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+            flex-shrink: 0;
+        }
+
+        /* ─── PRINT ──────────────────────────────────────────── */
+        @media print {
+            body {
+                background: var(--white);
+                padding: 0;
+            }
+
+            .document {
+                box-shadow: none;
+                max-width: 100%;
+                border: none;
+            }
+
+            .fab {
+                display: none !important;
+            }
+
+            .body {
+                padding: 0 2.5rem;
+            }
+
+            .doc-footer {
+                margin: 0 2.5rem;
+            }
+
+            .masthead {
+                padding: 2.5rem 2.5rem 1rem;
+            }
+
+            .brand-logo img {
+                filter: grayscale(100%);
+                -webkit-filter: grayscale(100%);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <button id="downloadPdfBtn" class="fab">
+        <svg viewBox="0 0 24 24">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z" />
+        </svg>
+        Download PDF
+    </button>
+
+    <div class="document" id="pdf-content">
+
+        <div class="masthead">
+            <div class="masthead-left">
+                <div class="brand-logo">
+                    <img src="logo.svg" alt="Center for Implant Dentistry" onerror="this.outerHTML='<h2 style=\'font-family: Montserrat; font-weight: 700; color: #000; letter-spacing: 1px; font-size: 16pt; margin: 0;\'>CENTER FOR IMPLANT DENTISTRY</h2>'">
+                </div>
+                
+            </div>
+
+            <div class="masthead-right">
+                              <div class="doctors">
+                    Dr. Sambhav Jain <span>DMD, MS</span><br>
+                    Dr. Arpana Gupta <span>DDS, MDS</span>
+                </div>
+                
+                <div class="contact-block">
+                    <strong>Email:</strong> info@bayareaimplantdentistry.com<br>
+                    <strong>Website:</strong> www.bayareaimplantdentistry.com
+                </div>
+                
+                <div class="contact-block">
+                    <strong>Main Office:</strong> 3381 Walnut Ave, Fremont, CA 94538<br>
+                    <strong>Phone:</strong> (510) 574-0496
+                </div>
+                
+                <div class="contact-block">
+                    <strong>SF Office:</strong> 4318 Geary Blvd, Suite 201, San Francisco, CA 94118<br>
+                    <strong>Phone:</strong> (415) 696-2922
+                </div>
+            </div>
+        </div>
+
+        <div class="premium-product-band">
+            <div class="form-title">ALL<span class="bold-hyphen">-</span>ON<span class="bold-hyphen">-</span>8 ROBUST</div>
+            <div class="form-label">Most Advanced Biomechanical Dental Implants Protocol</div>
+        </div>
+        
+        <div class="title-band sub-title">
+            <div class="form-title"> Consent : Tooth Whitening</div>
+        </div>
+
+        <div class="body">
+
+            <section>
+                <h3>Purpose</h3>
+                <p>This consent form is intended to help you understand the benefits, procedure, and possible risks of professional chairside tooth whitening performed at Center for Implant Dentistry, Fremont. Please read carefully and ask any questions before proceeding.</p>
+
+                <h3>Procedure</h3>
+                <p>Our in-office whitening treatment uses a hydrogen peroxide-based gel designed to safely and effectively lighten the color of your teeth.</p>
+                <ul>
+                    <li>The gel will be applied in three (3) 15-minute sessions during your visit.</li>
+                    <li>A cheek retractor will be used to keep your mouth open, and a protective barrier will cover your gums.</li>
+                    <li>We will record your tooth shade before and after the procedure.</li>
+                </ul>
+                <p>Our whitening system delivers maximum results in minimal time with careful control to reduce tooth sensitivity.</p>
+
+                <h3>Possible Risks & Side Effects</h3>
+                <p>While whitening is safe and effective, some patients may experience temporary side effects:</p>
+                <ul>
+                    <li><strong>Tooth Sensitivity:</strong> Mild to moderate sensitivity can occur during or after treatment. Inform us if you already have sensitive teeth.</li>
+                    <li><strong>Gum or Soft Tissue Irritation:</strong> Occasionally, whitening gel may contact the gums or lips, causing slight irritation or whitening of the tissue. This typically resolves within 24 hours.</li>
+                    <li><strong>Existing Dental Work:</strong> Crowns, veneers, fillings, and bonding do not whiten and may appear darker after your natural teeth lighten. If needed, we can discuss replacement options to match your new shade.</li>
+                </ul>
+
+                <h3>Treatment Expectations</h3>
+                <p>Results vary depending on your natural tooth color, diet, and previous dental history.</p>
+                <ul>
+                    <li>Some discolorations (e.g., from tetracycline stains, fluorosis, or deep enamel defects) may not respond completely.</li>
+                    <li>No whitening result can be guaranteed.</li>
+                    <li>You must avoid staining substances for 48 hours after treatment - including coffee, tea, red wine, tobacco, and foods with strong colorants (e.g., tomato sauce, curry).</li>
+                </ul>
+
+                <h3>Contraindications</h3>
+                <p>Whitening treatment is not recommended for:</p>
+                <ul>
+                    <li>Pregnant or breastfeeding women</li>
+                    <li>Individuals under 18 years of age</li>
+                    <li>People with allergies to peroxide or similar ingredients</li>
+                </ul>
+            </section>
+
+            <section class="signature-section">
+                <div class="part-header" style="margin-top: 0;">
+                    <span class="part-title">Patient Acknowledgment</span>
+                    <span class="part-rule"></span>
+                </div>
+                
+                <p>I have read and understood this informed consent form. I have had the opportunity to ask questions and receive satisfactory answers. I understand the potential risks, benefits, and limitations of chairside whitening. I give my consent to proceed with treatment at Center for Implant Dentistry, Fremont, CA.</p>
+
+                <div class="sig-row" style="margin-top: 3rem;">
+                    <div class="sig-block">
+                        <div class="sig-blank"></div>
+                        <div class="sig-field">
+                            <div class="sig-field-label">Patient's Name (Printed)</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sig-row">
+                    <div class="sig-block">
+                        <div class="sig-blank"></div>
+                        <div class="sig-field">
+                            <div class="sig-field-label">Patient's Signature</div>
+                        </div>
+                    </div>
+                    <div class="sig-block narrow">
+                        <div class="sig-blank"></div>
+                        <div class="sig-field">
+                            <div class="sig-field-label">Date</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sig-row" style="margin-top: 3rem;">
+                    <div class="sig-block">
+                        <div class="sig-blank"></div>
+                        <div class="sig-field">
+                            <div class="sig-field-label">Doctor's Name (Printed)</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sig-row">
+                    <div class="sig-block">
+                        <div class="sig-blank"></div>
+                        <div class="sig-field">
+                            <div class="sig-field-label">Doctor's Signature</div>
+                        </div>
+                    </div>
+                    <div class="sig-block narrow">
+                        <div class="sig-blank"></div>
+                        <div class="sig-field">
+                            <div class="sig-field-label">Date</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+
+    </div>
+    <script>
+        document.getElementById('downloadPdfBtn').addEventListener('click', function () {
+            const element = document.getElementById('pdf-content');
+
+            const btn = this;
+            btn.innerHTML = `<svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg> Generating…`;
+            btn.style.pointerEvents = 'none';
+
+            document.fonts.ready.then(function() {
+                const opt = {
+                    margin: [0.5, 0.5, 0.65, 0.5],
+                    filename: 'Teeth_Whitening_Consent.pdf',
+                    image: { type: 'jpeg', quality: 1.0 },
+                    html2canvas: {
+                        scale: 4, 
+                        useCORS: true,
+                        letterRendering: true,
+                        scrollY: 0
+                    },
+                    jsPDF: {
+                        unit: 'in',
+                        format: 'letter',
+                        orientation: 'portrait'
+                    },
+                    pagebreak: { mode: ['css', 'legacy'] }
+                };
+
+                const webFooter = document.querySelector('.doc-footer');
+                if(webFooter) webFooter.style.display = 'none';
+
+                html2pdf().set(opt).from(element).toPdf().get('pdf').then(function (pdf) {
+                    var totalPages = pdf.internal.getNumberOfPages();
+                    var pageWidth = pdf.internal.pageSize.getWidth();
+                    var pageHeight = pdf.internal.pageSize.getHeight();
+
+                    for (var i = 1; i <= totalPages; i++) {
+                        pdf.setPage(i);
+
+                        var pageStr = 'Page ' + i + ' of ' + totalPages;
+                        pdf.setFontSize(7); 
+                        pdf.setTextColor(85, 85, 85); 
+                        pdf.setFont('helvetica', 'normal');
+                        var tw = pdf.getStringUnitWidth(pageStr) * 7 / 72;
+                        pdf.text(pageStr, pageWidth - tw - 0.5, pageHeight - 0.35);
+                    }
+                }).save().then(function () {
+                    if(webFooter) webFooter.style.display = 'flex';
+                    btn.innerHTML = `<svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg> Download PDF`;
+                    btn.style.pointerEvents = 'auto';
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dental Registration Form | All-On-8 Robust</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap"
+        rel="stylesheet">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+    <style>
+        :root {
+            --black: #000000;
+            --gray-dark: #222222;
+            --gray-mid: #555555;
+            --gray-light: #999999;
+            --gray-border: #cccccc;
+            --white: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'EB Garamond', serif;
+            background: #f4f4f4;
+            color: var(--black);
+            font-size: 11pt;
+            line-height: 1.6;
+            padding: 2rem 1rem;
+        }
+
+        /* ─── DOCUMENT SHELL ─────────────────────────────────── */
+        .document {
+            max-width: 8.5in;
+            margin: 0 auto;
+            background: var(--white);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, .1);
+            position: relative;
+        }
+
+        /* ─── MASTHEAD (LETTERHEAD) ──────────────────────────── */
+        .masthead {
+            padding: 2.5rem 3rem 1rem; 
+            display: flex;
+            justify-content: space-between;
+            align-items: center; 
+            gap: 2rem;
+            page-break-inside: avoid;
+        }
+
+        .masthead-left {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            flex: 1; 
+        }
+
+        .brand-logo img {
+            width: 210px; 
+            max-width: 100%;
+            height: auto; 
+            object-fit: contain;
+            object-position: left center;
+            filter: grayscale(100%);
+        }
+
+        .masthead-right {
+            text-align: right;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 7.5pt;
+            color: var(--gray-dark);
+            line-height: 1.5;
+            flex-shrink: 0;
+        }
+
+        .masthead-right .doctors {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 13pt;
+            font-weight: 700;
+            color: var(--black);
+            margin-bottom: 0.8rem; 
+            line-height: 1.2;
+        }
+
+        .masthead-right .doctors span {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 7pt;
+            font-weight: 500;
+            color: var(--gray-mid);
+            letter-spacing: 1px;
+            margin-left: 4px;
+        }
+
+        .masthead-right .contact-block {
+            margin-bottom: 0.6rem; 
+        }
+        
+        .masthead-right .contact-block:last-child {
+            margin-bottom: 0;
+        }
+
+        .masthead-right strong {
+            color: var(--black);
+            font-weight: 600;
+        }
+
+        /* ─── PREMIUM PRODUCT SHOWCASE ───────────────────────── */
+        .premium-product-band {
+            margin: 0.5rem 3rem 1.5rem; 
+            padding: 1.2rem 0; 
+            text-align: center;
+            background: transparent;
+            border-top: 6px double var(--black); 
+            border-bottom: 6px double var(--black); 
+            page-break-inside: avoid;
+        }
+
+        .premium-product-band .form-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 30pt; 
+            font-weight: 700;
+            color: var(--black); 
+            letter-spacing: 4px; 
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .premium-product-band .bold-hyphen {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            margin: 0 4px; 
+        }
+
+        .premium-product-band .form-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 8pt;
+            font-weight: 700;
+            letter-spacing: 6px; 
+            text-transform: uppercase;
+            color: var(--black); 
+        }
+
+        /* ─── DOCUMENT TITLE BAND ────────────────────────────── */
+        .title-band {
+            padding: 1.5rem 3rem;
+            text-align: center;
+            page-break-inside: avoid;
+        }
+
+        .title-band.sub-title {
+            padding-top: 0;
+            margin-top: 0.5rem;
+        }
+
+        .title-band .form-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 7pt;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gray-mid);
+            margin-bottom: 0.4rem;
+        }
+
+        .title-band .form-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 20pt; 
+            font-weight: 700;
+            color: var(--black);
+            letter-spacing: 0.5px;
+            line-height: 1.1;
+        }
+
+        /* ─── BODY & SECTIONS ────────────────────────────────── */
+        .body {
+            padding: 0 3rem 2.5rem;
+        }
+
+        section {
+            margin-bottom: 2rem;
+        }
+
+        .part-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.2rem;
+            margin-top: 2.5rem;
+            page-break-inside: avoid !important;
+            page-break-after: avoid !important;
+        }
+
+        .part-number {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 7pt;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--black);
+            border: 1px solid var(--black);
+            padding: 0.3rem 0.6rem;
+            flex-shrink: 0;
+        }
+
+        .part-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 15pt;
+            font-weight: 700;
+            color: var(--black);
+            letter-spacing: 0.5px;
+            flex-shrink: 0;
+        }
+
+        .part-rule {
+            flex-grow: 1;
+            height: 1px;
+            background: var(--black);
+        }
+
+        h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 8pt;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--black);
+            margin: 1.5rem 0 0.5rem;
+            padding-bottom: 0.2rem;
+            border-bottom: 1px solid var(--gray-border);
+            page-break-inside: avoid !important;
+            page-break-after: avoid !important;
+        }
+
+        /* ─── INFO GRID & ROWS ───────────────────────────────── */
+        .info-grid {
+            border: 2px solid var(--black);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .field-row {
+            display: flex;
+            align-items: flex-end;
+            margin-bottom: 1.2rem;
+            page-break-inside: avoid !important; /* Prevents row cropping */
+        }
+
+        .field-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .field-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 8pt;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--black);
+            margin-right: 1rem;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .field-value {
+            flex-grow: 1;
+            border-bottom: 1px solid var(--black);
+            min-height: 1.4rem;
+            padding: 0 0.5rem 0.1rem;
+            font-size: 12pt;
+            font-family: 'EB Garamond', serif;
+            color: var(--black);
+        }
+
+        .checkbox-grid {
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 1rem; 
+            margin-bottom: 1.5rem; 
+            padding-left: 1rem; 
+            font-family: 'Montserrat', sans-serif; 
+            font-size: 8pt; 
+            font-weight: 600; 
+            color: var(--black);
+            page-break-inside: avoid !important; /* Prevents checkboxes splitting */
+        }
+
+        /* ─── SIGNATURE SECTION ──────────────────────────────── */
+        .sig-row {
+            display: flex;
+            gap: 3rem;
+            margin-bottom: 2rem;
+            align-items: flex-end;
+            page-break-inside: avoid !important; /* Prevents signature cropping */
+        }
+
+        .sig-block {
+            flex: 1;
+        }
+
+        .sig-block.narrow {
+            flex: 0 0 2.5in;
+        }
+
+        .sig-field {
+            border-top: 1px solid var(--black);
+            padding-top: 0.4rem;
+        }
+
+        .sig-field-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 7.5pt;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--black);
+        }
+
+        .sig-blank {
+            min-height: 2.5rem;
+        }
+
+        /* ─── FOOTER ─────────────────────────────────────────── */
+        .doc-footer {
+            border-top: 2px solid var(--black);
+            margin: 0 3rem;
+            padding: 1rem 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            page-break-inside: avoid;
+        }
+
+        .footer-left {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 7.5pt;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--black);
+        }
+
+        .footer-right {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 7.5pt;
+            color: var(--gray-dark);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* ─── DOWNLOAD BUTTON ────────────────────────────────── */
+        .fab {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--black);
+            color: var(--white);
+            border: 2px solid var(--black);
+            padding: 0.9rem 1.6rem;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 8pt;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            transition: all 0.2s;
+            z-index: 1000;
+        }
+
+        .fab:hover {
+            background: var(--white);
+            color: var(--black);
+        }
+
+        .fab svg {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+            flex-shrink: 0;
+        }
+
+        /* ─── PRINT ──────────────────────────────────────────── */
+        @media print {
+            body {
+                background: var(--white);
+                padding: 0;
+            }
+
+            .document {
+                box-shadow: none;
+                max-width: 100%;
+                border: none;
+            }
+
+            .fab {
+                display: none !important;
+            }
+
+            .body {
+                padding: 0 2.5rem;
+            }
+
+            .doc-footer {
+                margin: 0 2.5rem;
+            }
+
+            .masthead {
+                padding: 2.5rem 2.5rem 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <button id="downloadPdfBtn" class="fab">
+        <svg viewBox="0 0 24 24">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z" />
+        </svg>
+        Download PDF
+    </button>
+
+    <div class="document" id="pdf-content">
+
+        <div class="masthead">
+            <div class="masthead-left">
+                <div class="brand-logo">
+                    <img src="logo.svg" alt="Logo">
+                </div>
+            </div>
+
+            <div class="masthead-right">
+                <div class="doctors">
+                    Dr. Sambhav Jain <span>DMD, MS</span><br>
+                    Dr. Arpana Gupta <span>DDS, MDS</span>
+                </div>
+                
+                <div class="contact-block">
+                    <strong>Email:</strong> info@bayareaimplantdentistry.com<br>
+                    <strong>Website:</strong> www.bayareaimplantdentistry.com
+                </div>
+                
+                <div class="contact-block">
+                    <strong>Main Office:</strong> 3381 Walnut Ave, Fremont, CA 94538<br>
+                    <strong>Phone:</strong> (510) 574-0496
+                </div>
+                
+                <div class="contact-block">
+                    <strong>SF Office:</strong> 4318 Geary Blvd, Suite 201, San Francisco, CA 94118<br>
+                    <strong>Phone:</strong> (415) 696-2922
+                </div>
+            </div>
+        </div>
+
+        <div class="premium-product-band">
+            <div class="form-title">ALL<span class="bold-hyphen">-</span>ON<span class="bold-hyphen">-</span>8 ROBUST</div>
+            <div class="form-label">Most Advanced Biomechanical Dental Implants Protocol</div>
+        </div>
+        
+        <div class="title-band sub-title">
+            <div class="form-label">Patient Record & Information</div>
+            <div class="form-title">Dental Registration Form</div>
+        </div>
+
+        <div class="body">
+
+            <section>
+                <div class="part-header" style="margin-top: 0;">
+                    <span class="part-number">Part 1</span>
+                    <span class="part-title">Personal Information</span>
+                    <span class="part-rule"></span>
+                </div>
+
+                <div class="info-grid">
+                    <div class="field-row">
+                        <span class="field-label">Name</span>
+                        <span class="field-value"></span>
+                    </div>
+
+                    <div class="field-row">
+                        <span class="field-label">Marital Status</span>
+                        <span class="field-value" style="flex-grow: 0; width: 100px; font-family: 'Montserrat', sans-serif; font-size: 9pt; font-weight: 600; padding-bottom: 0;">S &nbsp;&nbsp; M &nbsp;&nbsp; W &nbsp;&nbsp; D</span>
+                        <span class="field-label" style="margin-left: 1.5rem;">Birthdate</span>
+                        <span class="field-value"></span>
+                        <span class="field-label" style="margin-left: 1.5rem;">Age</span>
+                        <span class="field-value" style="flex-grow: 0; width: 80px;"></span>
+                    </div>
+
+                    <div class="field-row">
+                        <span class="field-label">E-mail</span>
+                        <span class="field-value"></span>
+                    </div>
+
+                    <div class="field-row">
+                        <span class="field-label">Employer</span>
+                        <span class="field-value"></span>
+                        <span class="field-label" style="margin-left: 1.5rem;">Occupation</span>
+                        <span class="field-value"></span>
+                    </div>
+
+                    <div class="field-row">
+                        <span class="field-label">If student, name of school</span>
+                        <span class="field-value"></span>
+                    </div>
+
+                    <div class="field-row">
+                        <span class="field-label">Cell Phone #</span>
+                        <span class="field-value">( &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; )</span>
+                        <span class="field-label" style="margin-left: 1.5rem;">Home Phone #</span>
+                        <span class="field-value">( &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; )</span>
+                    </div>
+
+                    <div class="field-row">
+                        <span class="field-label">Best # to Call</span>
+                        <span class="field-value"></span>
+                        <span class="field-label" style="margin-left: 1.5rem;">Are you ok to communicate through text?</span>
+                        <span class="field-value" style="flex-grow: 0; width: 80px;"></span>
+                    </div>
+
+                    <div class="field-row">
+                        <span class="field-label">Home Address</span>
+                        <span class="field-value"></span>
+                    </div>
+
+                    <div class="field-row">
+                        <span class="field-label">City</span>
+                        <span class="field-value"></span>
+                        <span class="field-label" style="margin-left: 1.5rem;">State</span>
+                        <span class="field-value" style="flex-grow: 0; width: 80px;"></span>
+                        <span class="field-label" style="margin-left: 1.5rem;">Zip</span>
+                        <span class="field-value" style="flex-grow: 0; width: 120px;"></span>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <div class="part-header">
+                    <span class="part-number">Part 2</span>
+                    <span class="part-title">In Case of an Emergency</span>
+                    <span class="part-rule"></span>
+                </div>
+
+                <div class="info-grid">
+                    <div class="field-row">
+                        <span class="field-label">Name</span>
+                        <span class="field-value"></span>
+                    </div>
+                    
+                    <div class="field-row">
+                        <span class="field-label">Phone</span>
+                        <span class="field-value" style="flex-grow: 0; width: 180px;">( &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; )</span>
+                        <span class="field-label" style="margin-left: 1.5rem;">Relationship</span>
+                        <span class="field-value"></span>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <div class="part-header">
+                    <span class="part-number">Part 3</span>
+                    <span class="part-title">Insurance Information</span>
+                    <span class="part-rule"></span>
+                </div>
+
+                <h3 style="margin-top: 0;">Primary Insurance</h3>
+                <div class="info-grid" style="margin-top: 0.5rem; margin-bottom: 1.5rem;">
+                    <div class="field-row">
+                        <span class="field-label">Policy Holder Name</span>
+                        <span class="field-value"></span>
+                    </div>
+                    <div class="field-row">
+                        <span class="field-label">Insurance Company Name</span>
+                        <span class="field-value"></span>
+                    </div>
+                </div>
+
+                <h3>Secondary Insurance</h3>
+                <div class="info-grid" style="margin-top: 0.5rem;">
+                    <div class="field-row">
+                        <span class="field-label">Policy Holder Name</span>
+                        <span class="field-value"></span>
+                    </div>
+                    <div class="field-row">
+                        <span class="field-label">Insurance Company Name</span>
+                        <span class="field-value"></span>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <div class="part-header">
+                    <span class="part-number">Part 4</span>
+                    <span class="part-title">Questionnaire</span>
+                    <span class="part-rule"></span>
+                </div>
+
+                <div class="info-grid">
+                    <div class="field-row">
+                        <span class="field-label" style="margin-bottom: 0.5rem;">How did you hear about us?</span>
+                    </div>
+                    
+                    <div class="checkbox-grid">
+                        <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;"><input type="checkbox" style="appearance: none; -webkit-appearance: none; width: 14px; height: 14px; border: 1px solid var(--black); border-radius: 2px; cursor: pointer;"> Yelp</label>
+                        <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;"><input type="checkbox" style="appearance: none; -webkit-appearance: none; width: 14px; height: 14px; border: 1px solid var(--black); border-radius: 2px; cursor: pointer;"> Social Media (Facebook/Instagram/YouTube)</label>
+                        <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;"><input type="checkbox" style="appearance: none; -webkit-appearance: none; width: 14px; height: 14px; border: 1px solid var(--black); border-radius: 2px; cursor: pointer;"> Google Ads/Search</label>
+                        <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;"><input type="checkbox" style="appearance: none; -webkit-appearance: none; width: 14px; height: 14px; border: 1px solid var(--black); border-radius: 2px; cursor: pointer;"> Website</label>
+                        <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;"><input type="checkbox" style="appearance: none; -webkit-appearance: none; width: 14px; height: 14px; border: 1px solid var(--black); border-radius: 2px; cursor: pointer;"> Newspaper/Radio</label>
+                        <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;"><input type="checkbox" style="appearance: none; -webkit-appearance: none; width: 14px; height: 14px; border: 1px solid var(--black); border-radius: 2px; cursor: pointer;"> Referral (Doctor/Patient)</label>
+                        <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;"><input type="checkbox" style="appearance: none; -webkit-appearance: none; width: 14px; height: 14px; border: 1px solid var(--black); border-radius: 2px; cursor: pointer;"> Mail Ads</label>
+                    </div>
+                    
+                    <div class="field-row">
+                        <span class="field-label">Others:</span>
+                        <span class="field-value"></span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="signature-section">
+                <div class="part-header" style="margin-top: 3rem;">
+                    <span class="part-number">Part 5</span>
+                    <span class="part-title">Authorization</span>
+                    <span class="part-rule"></span>
+                </div>
+
+                <div class="sig-row" style="margin-top:2rem;">
+                    <div class="sig-block">
+                        <div class="sig-blank"></div>
+                        <div class="sig-field">
+                            <div class="sig-field-label">Patient Signature</div>
+                        </div>
+                    </div>
+                    <div class="sig-block narrow">
+                        <div class="sig-blank"></div>
+                        <div class="sig-field">
+                            <div class="sig-field-label">Date</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+        
+        <div class="doc-footer">
+            <div>
+                <div class="footer-left"></div>
+            </div>
+            <div class="footer-right" id="web-page-note"></div>
+        </div>
+
+    </div>
+    
+    <script>
+        // Checkbox tick mark logic
+        document.querySelectorAll('input[type="checkbox"]').forEach(box => {
+            box.addEventListener('change', function() {
+                if(this.checked) {
+                    this.style.backgroundColor = 'var(--black)';
+                } else {
+                    this.style.backgroundColor = 'transparent';
+                }
+            });
+        });
+
+        document.getElementById('downloadPdfBtn').addEventListener('click', function () {
+            const element = document.getElementById('pdf-content');
+
+            const btn = this;
+            btn.innerHTML = `<svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg> Generating…`;
+            btn.style.pointerEvents = 'none';
+
+            // Wrap PDF generation in fonts.ready to ensure text formatting is finalized
+            document.fonts.ready.then(function() {
+                const opt = {
+                    margin: [0.5, 0.5, 0.65, 0.5],
+                    filename: 'Dental_Registration_Form.pdf',
+                    image: { type: 'jpeg', quality: 1.0 },
+                    html2canvas: {
+                        scale: 4, 
+                        useCORS: true,
+                        letterRendering: true,
+                        scrollY: 0
+                    },
+                    jsPDF: {
+                        unit: 'in',
+                        format: 'letter',
+                        orientation: 'portrait'
+                    },
+                    // Forces the library to respect the CSS rules on specific classes
+                    pagebreak: { 
+                        mode: ['css', 'legacy'], 
+                        avoid: ['.field-row', '.part-header', 'h3', '.sig-row', '.checkbox-grid']
+                    }
+                };
+
+                const webFooter = document.querySelector('.doc-footer');
+                if(webFooter) webFooter.style.display = 'none';
+
+                html2pdf().set(opt).from(element).toPdf().get('pdf').then(function (pdf) {
+                    var totalPages = pdf.internal.getNumberOfPages();
+                    var pageWidth = pdf.internal.pageSize.getWidth();
+                    var pageHeight = pdf.internal.pageSize.getHeight();
+
+                    for (var i = 1; i <= totalPages; i++) {
+                        pdf.setPage(i);
+
+                        // Right: page number ONLY (smaller size)
+                        var pageStr = 'Page ' + i + ' of ' + totalPages;
+                        pdf.setFontSize(7); 
+                        pdf.setTextColor(85, 85, 85); 
+                        pdf.setFont('helvetica', 'normal');
+                        var tw = pdf.getStringUnitWidth(pageStr) * 7 / 72;
+                        pdf.text(pageStr, pageWidth - tw - 0.5, pageHeight - 0.35);
+                    }
+                }).save().then(function () {
+                    // Restore the web footer and reset button
+                    if(webFooter) webFooter.style.display = 'flex';
+                    btn.innerHTML = `<svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg> Download PDF`;
+                    btn.style.pointerEvents = 'auto';
+                });
+            });
+        });
+    </script>
+</body>
+</html>

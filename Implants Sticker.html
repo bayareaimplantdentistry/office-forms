@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Implant Sticker Tracking | All-On-8 Robust</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap"
+        rel="stylesheet">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+    <style>
+        :root {
+            --black: #000000;
+            --gray-dark: #222222;
+            --gray-mid: #555555;
+            --gray-light: #999999;
+            --gray-border: #cccccc;
+            --white: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'EB Garamond', serif;
+            background: #f4f4f4;
+            color: var(--black);
+            font-size: 11pt;
+            line-height: 1.35;
+            padding: 1.5rem 1rem;
+        }
+
+        .document {
+            max-width: 8.5in;
+            margin: 0 auto;
+            background: var(--white);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, .1);
+            position: relative;
+        }
+
+        /* ─── MASTHEAD ─────────────────────────────────────── */
+        .masthead {
+            padding: 1.4rem 2.2rem 0.8rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .brand-logo img {
+            width: 195px;
+            max-width: 100%;
+            height: auto;
+            filter: grayscale(100%);
+        }
+
+        .masthead-right {
+            text-align: right;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 7.3pt;
+            color: var(--gray-dark);
+            line-height: 1.45;
+        }
+
+        .masthead-right .doctors {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 12.5pt;
+            font-weight: 700;
+            color: var(--black);
+            margin-bottom: 0.6rem;
+        }
+
+        /* ─── PREMIUM BRANDING ─────────────────────────────── */
+        .premium-product-band {
+            margin: 0.4rem 2.2rem 1rem;
+            padding: 0.9rem 0;
+            text-align: center;
+            border-top: 5px double var(--black);
+            border-bottom: 5px double var(--black);
+        }
+
+        .premium-product-band .form-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 26pt;
+            font-weight: 700;
+            letter-spacing: 3px;
+            line-height: 1;
+        }
+
+        .premium-product-band .form-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 8pt;
+            font-weight: 700;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            margin-top: 0.3rem;
+        }
+
+        /* ─── BODY ───────────────────────────────────────────── */
+        .body {
+            padding: 0 2.2rem 2rem;
+        }
+
+        .header-info {
+            margin-bottom: 1.6rem;
+        }
+
+        .field-row {
+            display: flex;
+            align-items: flex-end;
+            margin-bottom: 0.95rem;
+            gap: 1.3rem;
+        }
+
+        .field-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 8.4pt;
+            font-weight: 700;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        .field-line {
+            border-bottom: 1px solid var(--black);
+            flex-grow: 1;
+            min-height: 1.3rem;
+        }
+
+        .selection-box {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 9.2pt;
+            font-weight: 600;
+            color: var(--gray-dark);
+        }
+
+        /* ─── STICKER GRID ───────────────────────────────────── */
+        .sticker-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 0.8rem;
+            table-layout: fixed;
+        }
+
+        .sticker-table th,
+        .sticker-table td {
+            border: 1px solid var(--black);
+            padding: 0.45rem 0.35rem;
+            font-size: 8pt;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        .sticker-table th {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            background: #f9f9f9;
+            text-align: left;
+            width: 125px;
+        }
+
+        .sticker-cell {
+            height: 3.3rem;
+            background: #fff;
+        }
+
+        .options-cell {
+            font-size: 7.4pt;
+            color: var(--gray-mid);
+            line-height: 1.55;
+        }
+
+        /* Compact sticker rows (the two big sticker areas) */
+        .sticker-table tr:nth-child(3) th,
+        .sticker-table tr:nth-child(7) th {
+            height: 4.8rem;
+        }
+
+        /* ─── DOWNLOAD BUTTON ────────────────────────────────── */
+        .fab {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--black);
+            color: var(--white);
+            padding: 0.9rem 1.6rem;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 8pt;
+            text-transform: uppercase;
+            cursor: pointer;
+            z-index: 1000;
+            border: none;
+        }
+
+        @media print {
+            .fab { display: none !important; }
+            body { background: white; padding: 0; }
+            .document { box-shadow: none; border: none; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <button id="downloadPdfBtn" class="fab">Download PDF</button>
+
+    <div class="document" id="pdf-content">
+
+        <div class="masthead">
+            <div class="masthead-left">
+                <div class="brand-logo"><img src="logo.svg" alt="Logo"></div>
+            </div>
+            <div class="masthead-right">
+                <div class="doctors">
+                    Dr. Sambhav Jain <span>DMD, MS</span><br>
+                    Dr. Arpana Gupta <span>DDS, MDS</span>
+                </div>
+                
+                <div class="contact-block">
+                    <strong>Email:</strong> info@bayareaimplantdentistry.com<br>
+                    <strong>Website:</strong> www.bayareaimplantdentistry.com
+                </div>
+                
+                <div class="contact-block">
+                    <strong>Main Office:</strong> 3381 Walnut Ave, Fremont, CA 94538<br>
+                    <strong>Phone:</strong> (510) 574-0496
+                </div>
+                
+                <div class="contact-block">
+                    <strong>SF Office:</strong> 4318 Geary Blvd, Suite 201, San Francisco, CA 94118<br>
+                    <strong>Phone:</strong> (415) 696-2922
+                </div>
+            </div>
+        </div>
+
+        <div class="premium-product-band">
+            <div class="form-title">ALL-ON-8 ROBUST</div>
+            <div class="form-label">Most Advanced Biomechanical Dental Implants Protocol</div>
+        </div>
+
+        <div class="body">
+
+            <div class="header-info">
+                <div class="field-row">
+                    <span class="field-label">Patient Name:</span>
+                    <div class="field-line"></div>
+                    <span class="field-label">Date:</span>
+                    <div class="field-line" style="flex-grow:0; width: 165px;"></div>
+                </div>
+
+                <div class="field-row">
+                    <span class="field-label">Bone Graft:</span>
+                    <div class="field-line"></div>
+                    <span class="field-label">Implant System:</span>
+                    <span class="selection-box">Neodent &nbsp;/&nbsp; Blue Sky Bio</span>
+                </div>
+
+                <div class="field-row" style="justify-content: center; margin-top: 1.1rem;">
+                    <span class="selection-box" style="font-size: 11pt; letter-spacing: 2px;">UPPER &nbsp;&nbsp;/&nbsp;&nbsp; LOWER</span>
+                </div>
+            </div>
+
+            <table class="sticker-table">
+                <tbody>
+                    <tr>
+                        <th>Tooth No.</th>
+                        <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                    </tr>
+                    <tr>
+                        <th>Torque Implant</th>
+                        <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                    </tr>
+                    <tr>
+                        <th>Implant Sticker</th>
+                        <td class="sticker-cell"></td><td class="sticker-cell"></td><td class="sticker-cell"></td><td class="sticker-cell"></td><td class="sticker-cell"></td><td class="sticker-cell"></td><td class="sticker-cell"></td>
+                    </tr>
+                    <tr>
+                        <th>MUA Torque</th>
+                        <td class="options-cell">15N / 20N / 25N / 30N</td>
+                        <td class="options-cell">15N / 20N / 25N / 30N</td>
+                        <td class="options-cell">15N / 20N / 25N / 30N</td>
+                        <td class="options-cell">15N / 20N / 25N / 30N</td>
+                        <td class="options-cell">15N / 20N / 25N / 30N</td>
+                        <td class="options-cell">15N / 20N / 25N / 30N</td>
+                        <td class="options-cell">15N / 20N / 25N / 30N</td>
+                    </tr>
+                    <tr>
+                        <th>Abutment Degree</th>
+                        <td class="options-cell">0° / 17° / 30°</td>
+                        <td class="options-cell">0° / 17° / 30°</td>
+                        <td class="options-cell">0° / 17° / 30°</td>
+                        <td class="options-cell">0° / 17° / 30°</td>
+                        <td class="options-cell">0° / 17° / 30°</td>
+                        <td class="options-cell">0° / 17° / 30°</td>
+                        <td class="options-cell">0° / 17° / 30°</td>
+                    </tr>
+                    <tr>
+                        <th>Collar Height</th>
+                        <td class="options-cell">0.8 / 1.5 / 2.5 / 3.5</td>
+                        <td class="options-cell">0.8 / 1.5 / 2.5 / 3.5</td>
+                        <td class="options-cell">0.8 / 1.5 / 2.5 / 3.5</td>
+                        <td class="options-cell">0.8 / 1.5 / 2.5 / 3.5</td>
+                        <td class="options-cell">0.8 / 1.5 / 2.5 / 3.5</td>
+                        <td class="options-cell">0.8 / 1.5 / 2.5 / 3.5</td>
+                        <td class="options-cell">0.8 / 1.5 / 2.5 / 3.5</td>
+                    </tr>
+                    <tr>
+                        <th>Abutment Sticker</th>
+                        <td class="sticker-cell"></td><td class="sticker-cell"></td><td class="sticker-cell"></td><td class="sticker-cell"></td><td class="sticker-cell"></td><td class="sticker-cell"></td><td class="sticker-cell"></td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('downloadPdfBtn').addEventListener('click', function () {
+            const element = document.getElementById('pdf-content');
+            document.fonts.ready.then(() => {
+                const opt = {
+                    margin: [0.35, 0.35, 0.35, 0.35],
+                    filename: 'All-On-8_Implant_Sticker_Tracking.pdf',
+                    image: { type: 'jpeg', quality: 0.98 },
+                    html2canvas: { 
+                        scale: 3, 
+                        useCORS: true, 
+                        letterRendering: true,
+                        scrollX: 0,
+                        scrollY: 0
+                    },
+                    jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+                };
+
+                html2pdf().set(opt).from(element).save();
+            });
+        });
+    </script>
+</body>
+</html>

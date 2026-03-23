@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COVID-19 Health Screening Form | All-On-8 Robust</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap"
+        rel="stylesheet">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+    <style>
+        :root {
+            --black: #000000;
+            --gray-dark: #222222;
+            --gray-mid: #555555;
+            --gray-light: #999999;
+            --gray-border: #cccccc;
+            --white: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'EB Garamond', serif;
+            background: #f4f4f4;
+            color: var(--black);
+            font-size: 10.7pt;
+            line-height: 1.36;
+            padding: 1.5rem 1rem;
+        }
+
+        .document {
+            max-width: 8.5in;
+            margin: 0 auto;
+            background: var(--white);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, .1);
+            position: relative;
+        }
+
+        /* ─── MASTHEAD ─────────────────────────────────────── */
+        .masthead {
+            padding: 1.45rem 2.3rem 0.85rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .brand-logo img {
+            width: 195px;
+            max-width: 100%;
+            height: auto;
+            filter: grayscale(100%);
+        }
+
+        .masthead-right {
+            text-align: right;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 7.3pt;
+            color: var(--gray-dark);
+            line-height: 1.45;
+        }
+
+        .masthead-right .doctors {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 12.2pt;
+            font-weight: 700;
+            color: var(--black);
+            margin-bottom: 0.55rem;
+        }
+
+        /* ─── PREMIUM BRANDING ─────────────────────────────── */
+        .premium-product-band {
+            margin: 0.4rem 2.3rem 0.9rem;
+            padding: 0.95rem 0;
+            text-align: center;
+            border-top: 5px double var(--black);
+            border-bottom: 5px double var(--black);
+        }
+
+        .premium-product-band .form-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 25pt;
+            font-weight: 700;
+            letter-spacing: 3.5px;
+            line-height: 1;
+        }
+
+        .premium-product-band .bold-hyphen {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            margin: 0 3px;
+        }
+
+        .premium-product-band .form-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 8pt;
+            font-weight: 700;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            margin-top: 0.3rem;
+        }
+
+        /* ─── TITLE BAND ───────────────────────────────────── */
+        .title-band {
+            padding: 0.65rem 2.3rem 1rem;
+            text-align: center;
+        }
+
+        .title-band .form-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 17pt;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+        }
+
+        /* ─── BODY & SECTIONS ────────────────────────────────── */
+        .body {
+            padding: 0 2.3rem 1.6rem;
+        }
+
+        section {
+            margin-bottom: 1.05rem;
+            page-break-inside: avoid;
+        }
+
+        .part-header {
+            display: flex;
+            align-items: center;
+            gap: 0.9rem;
+            margin-bottom: 0.75rem;
+            margin-top: 1.1rem;
+        }
+
+        .part-number {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 7pt;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border: 1px solid var(--black);
+            padding: 0.25rem 0.55rem;
+            flex-shrink: 0;
+        }
+
+        .part-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 13.5pt;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            flex-shrink: 0;
+        }
+
+        .part-rule {
+            flex-grow: 1;
+            height: 1px;
+            background: var(--black);
+        }
+
+        p {
+            font-size: 10.7pt;
+            color: var(--gray-dark);
+            margin-bottom: 0.65rem;
+        }
+
+        /* ─── QUESTIONNAIRE TABLE ────────────────────────────── */
+        .question-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            table-layout: fixed;
+        }
+
+        .question-table th,
+        .question-table td {
+            border: 1px solid var(--black);
+            padding: 0.35rem 0.55rem;
+            font-size: 9.1pt;
+            vertical-align: middle;
+        }
+
+        .question-table th {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 7.8pt;
+            font-weight: 700;
+            text-transform: uppercase;
+            background: #f9f9f9;
+            text-align: center;
+        }
+
+        .question-table td.num-cell {
+            width: 5%;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .question-table td.question-cell {
+            width: 72%;
+        }
+
+        .question-table td.checkbox-cell {
+            width: 9%;
+            text-align: center;
+            font-size: 15pt;
+        }
+
+        .question-table td.date-cell {
+            font-size: 8.5pt;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        /* ─── SIGNATURE SECTION ──────────────────────────────── */
+        .signature-section {
+            page-break-inside: avoid;
+        }
+
+        .sig-row {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 1.2rem;
+            align-items: flex-end;
+        }
+
+        .sig-block {
+            flex: 1;
+        }
+
+        .sig-block.narrow {
+            flex: 0 0 2.3in;
+        }
+
+        .sig-blank {
+            min-height: 2.1rem;
+            border-bottom: 1px solid var(--black);
+        }
+
+        .sig-field-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 7.2pt;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-top: 0.2rem;
+        }
+
+        /* ─── FOOTER ─────────────────────────────────────────── */
+        .doc-footer {
+            border-top: 2px solid var(--black);
+            margin: 0 2.3rem;
+            padding: 0.8rem 0 1.4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 7.3pt;
+        }
+
+        /* ─── DOWNLOAD BUTTON ────────────────────────────────── */
+        .fab {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--black);
+            color: var(--white);
+            border: 2px solid var(--black);
+            padding: 0.9rem 1.6rem;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 8pt;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            z-index: 1000;
+        }
+
+        .fab:hover { background: var(--white); color: var(--black); }
+
+        @media print {
+            .fab { display: none !important; }
+            body { background: white; padding: 0; }
+            .document { box-shadow: none; border: none; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <button id="downloadPdfBtn" class="fab">
+        <svg viewBox="0 0 24 24" width="16" height="16">
+            <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" fill="currentColor"/>
+        </svg>
+        Download PDF
+    </button>
+
+    <div class="document" id="pdf-content">
+
+        <div class="masthead">
+            <div class="masthead-left">
+                <div class="brand-logo"><img src="logo.svg" alt="Logo"></div>
+            </div>
+            <div class="masthead-right">
+                <div class="doctors">
+                    Dr. Sambhav Jain <span>DMD, MS</span><br>
+                    Dr. Arpana Gupta <span>DDS, MDS</span>
+                </div>
+                
+                <div class="contact-block">
+                    <strong>Email:</strong> info@bayareaimplantdentistry.com<br>
+                    <strong>Website:</strong> www.bayareaimplantdentistry.com
+                </div>
+                
+                <div class="contact-block">
+                    <strong>Main Office:</strong> 3381 Walnut Ave, Fremont, CA 94538<br>
+                    <strong>Phone:</strong> (510) 574-0496
+                </div>
+                
+                <div class="contact-block">
+                    <strong>SF Office:</strong> 4318 Geary Blvd, Suite 201, San Francisco, CA 94118<br>
+                    <strong>Phone:</strong> (415) 696-2922
+                </div>
+            </div>
+        </div>
+
+        <div class="premium-product-band">
+            <div class="form-title">ALL<span class="bold-hyphen">-</span>ON<span class="bold-hyphen">-</span>8 ROBUST</div>
+            <div class="form-label">Most Advanced Biomechanical Dental Implants Protocol</div>
+        </div>
+
+        <div class="title-band">
+            <div class="form-title">COVID-19 Health Screening Form</div>
+        </div>
+
+        <div class="body">
+
+            <section>
+                <div class="part-header">
+                    <span class="part-number">Part 1</span>
+                    <span class="part-title">Important Disclosures</span>
+                    <span class="part-rule"></span>
+                </div>
+                <p>This patient disclosure form seeks information from you that we must consider before making treatment decisions in the circumstance of the COVID-19 virus.</p>
+                <p>A weak or compromised immune system (including, but not limited to, conditions like diabetes, asthma, COPD, cancer treatment, radiation, chemotherapy, and any prior or current disease or medical condition), can put you at greater risk for contracting COVID-19.</p>
+                <p>Please disclose to us any condition that compromises your immune system and understand that we may ask you to consider rescheduling treatment after discussing any such conditions with us.</p>
+                <p>It is also important that you disclose to this office any indication of having been exposed to COVID-19, or whether you have experienced any signs or symptoms associated with the COVID-19 virus.</p>
+            </section>
+
+            <section>
+                <div class="part-header">
+                    <span class="part-number">Part 2</span>
+                    <span class="part-title">Health Questionnaire</span>
+                    <span class="part-rule"></span>
+                </div>
+
+                <table class="question-table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Question</th>
+                            <th>Yes</th>
+                            <th>No</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="num-cell">1.</td>
+                            <td class="question-cell">Have you been fully vaccinated for COVID-19? (If someone is fully vaccinated, they have received both doses of a COVID19 -vaccine, and it has been 14 days since their second dose.) If YES, skip to question 12. You do not need to answer questions 2-11.</td>
+                            <td class="checkbox-cell">☐</td>
+                            <td class="checkbox-cell">☐</td>
+                        </tr>
+                        <tr>
+                            <td class="num-cell">2.</td>
+                            <td class="question-cell">Do you have a fever or above normal temperature?</td>
+                            <td class="checkbox-cell">☐</td>
+                            <td class="checkbox-cell">☐</td>
+                        </tr>
+                        <tr>
+                            <td class="num-cell">3.</td>
+                            <td class="question-cell">Have you experienced shortness of breath or had trouble breathing?</td>
+                            <td class="checkbox-cell">☐</td>
+                            <td class="checkbox-cell">☐</td>
+                        </tr>
+                        <tr>
+                            <td class="num-cell">4.</td>
+                            <td class="question-cell">Do you have a dry cough?</td>
+                            <td class="checkbox-cell">☐</td>
+                            <td class="checkbox-cell">☐</td>
+                        </tr>
+                        <tr>
+                            <td class="num-cell">5.</td>
+                            <td class="question-cell">Do you have a runny nose?</td>
+                            <td class="checkbox-cell">☐</td>
+                            <td class="checkbox-cell">☐</td>
+                        </tr>
+                        <tr>
+                            <td class="num-cell">6.</td>
+                            <td class="question-cell">Have you recently lost or had a reduction in your sense of smell?</td>
+                            <td class="checkbox-cell">☐</td>
+                            <td class="checkbox-cell">☐</td>
+                        </tr>
+                        <tr>
+                            <td class="num-cell">7.</td>
+                            <td class="question-cell">Do you have a sore throat?</td>
+                            <td class="checkbox-cell">☐</td>
+                            <td class="checkbox-cell">☐</td>
+                        </tr>
+                        <tr>
+                            <td class="num-cell">8.</td>
+                            <td class="question-cell">Have you been in contact with someone who has tested positive for COVID-19? If yes, what was the date?</td>
+                            <td class="checkbox-cell">☐</td>
+                            <td class="checkbox-cell">☐</td>
+                        </tr>
+                        <tr>
+                            <td class="num-cell">9.</td>
+                            <td class="question-cell">Have you tested positive for COVID-19? If yes, what date did you test positive?</td>
+                            <td class="checkbox-cell">☐</td>
+                            <td class="checkbox-cell">☐</td>
+                        </tr>
+                        <tr>
+                            <td class="num-cell">10.</td>
+                            <td class="question-cell">Have you been tested for COVID-19 and are awaiting results?</td>
+                            <td class="checkbox-cell">☐</td>
+                            <td class="checkbox-cell">☐</td>
+                        </tr>
+                        <tr>
+                            <td class="num-cell">11.</td>
+                            <td class="question-cell">If you have COVID-19, how long have you been free of symptoms?</td>
+                            <td colspan="2" class="date-cell">Provide Date:</td>
+                        </tr>
+                        <tr>
+                            <td class="num-cell">12.</td>
+                            <td class="question-cell">Have you traveled outside the United States by air or cruise ship in the past 14 days?</td>
+                            <td class="checkbox-cell">☐</td>
+                            <td class="checkbox-cell">☐</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section class="signature-section">
+                <div class="part-header">
+                    <span class="part-number">Part 3</span>
+                    <span class="part-title">Acknowledgment &amp; Signatures</span>
+                    <span class="part-rule"></span>
+                </div>
+
+                <p>I fully understand and acknowledge the above information, risks and cautions regarding a compromised immune system and have disclosed to my provider any conditions in my health history which may result in a compromised immune system.</p>
+                <p>By signing this document, I acknowledge that the answers I have provided above are true and accurate.</p>
+
+                <div class="sig-row" style="margin-top:1.2rem;">
+                    <div class="sig-block">
+                        <div class="sig-blank"></div>
+                        <div class="sig-field-label">Print Patient Name</div>
+                    </div>
+                    <div class="sig-block narrow">
+                        <div class="sig-blank"></div>
+                        <div class="sig-field-label">Date</div>
+                    </div>
+                </div>
+
+                <div class="sig-row">
+                    <div class="sig-block">
+                        <div class="sig-blank"></div>
+                        <div class="sig-field-label">Patient Signature (parent if minor)</div>
+                    </div>
+                    <div class="sig-block">
+                        <div class="sig-blank"></div>
+                        <div class="sig-field-label">Witness</div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+        <div class="doc-footer">
+            <div class="footer-left"></div>
+            <div class="footer-right" id="web-page-note"></div>
+        </div>
+
+    </div>
+
+    <script>
+        document.getElementById('downloadPdfBtn').addEventListener('click', function () {
+            const element = document.getElementById('pdf-content');
+            const btn = this;
+            btn.innerHTML = `<svg viewBox="0 0 24 24" width="16" height="16"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z" fill="currentColor"/></svg> Generating…`;
+            btn.style.pointerEvents = 'none';
+
+            document.fonts.ready.then(() => {
+                const opt = {
+                    margin: [0.35, 0.35, 0.35, 0.35],
+                    filename: 'All-On-8_COVID-19_Screening_Form.pdf',
+                    image: { type: 'jpeg', quality: 0.98 },
+                    html2canvas: { 
+                        scale: 3, 
+                        useCORS: true, 
+                        letterRendering: true,
+                        scrollX: 0,
+                        scrollY: 0
+                    },
+                    jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' },
+                    pagebreak: { mode: ['css', 'legacy'] }
+                };
+
+                const webFooter = document.querySelector('.doc-footer');
+                if (webFooter) webFooter.style.display = 'none';
+
+                html2pdf().set(opt).from(element).toPdf().get('pdf').then(function (pdf) {
+                    var totalPages = pdf.internal.getNumberOfPages();
+                    var pageWidth = pdf.internal.pageSize.getWidth();
+                    var pageHeight = pdf.internal.pageSize.getHeight();
+
+                    for (var i = 1; i <= totalPages; i++) {
+                        pdf.setPage(i);
+                        var pageStr = 'Page ' + i + ' of ' + totalPages;
+                        pdf.setFontSize(7);
+                        pdf.setTextColor(85, 85, 85);
+                        pdf.setFont('helvetica', 'normal');
+                        var tw = pdf.getStringUnitWidth(pageStr) * 7 / 72;
+                        pdf.text(pageStr, pageWidth - tw - 0.5, pageHeight - 0.35);
+                    }
+                }).save().then(function () {
+                    if (webFooter) webFooter.style.display = 'flex';
+                    btn.innerHTML = `<svg viewBox="0 0 24 24" width="16" height="16"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" fill="currentColor"/></svg> Download PDF`;
+                    btn.style.pointerEvents = 'auto';
+                });
+            });
+        });
+    </script>
+</body>
+</html>

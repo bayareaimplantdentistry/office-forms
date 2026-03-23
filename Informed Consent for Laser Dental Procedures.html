@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informed Consent: Laser Procedures | All-On-8 Robust</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap"
+        rel="stylesheet">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+    <style>
+        :root {
+            --black: #000000;
+            --gray-dark: #222222;
+            --gray-mid: #555555;
+            --gray-light: #999999;
+            --gray-border: #cccccc;
+            --white: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'EB Garamond', serif;
+            background: #f4f4f4;
+            color: var(--black);
+            font-size: 11pt;
+            line-height: 1.5;
+            padding: 2rem 1rem;
+        }
+
+        .document {
+            max-width: 8.5in;
+            margin: 0 auto;
+            background: var(--white);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, .1);
+            position: relative;
+        }
+
+        /* ─── MASTHEAD ─────────────────────────────────────── */
+        .masthead {
+            padding: 2.5rem 3rem 1rem; 
+            display: flex;
+            justify-content: space-between;
+            align-items: center; 
+            gap: 2rem;
+        }
+
+        .brand-logo img {
+            width: 210px; 
+            max-width: 100%;
+            height: auto; 
+            filter: grayscale(100%);
+        }
+
+        .masthead-right {
+            text-align: right;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 7.5pt;
+            color: var(--gray-dark);
+            line-height: 1.5;
+        }
+
+        .masthead-right .doctors {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 12pt;
+            font-weight: 700;
+            color: var(--black);
+            margin-bottom: 0.6rem; 
+        }
+
+        /* ─── PREMIUM BRANDING ─────────────────────────────── */
+        .premium-product-band {
+            margin: 0.5rem 3rem 1.5rem; 
+            padding: 1.2rem 0;
+            text-align: center;
+            border-top: 6px double var(--black);
+            border-bottom: 6px double var(--black);
+        }
+
+        .premium-product-band .form-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 28pt; 
+            font-weight: 700;
+            letter-spacing: 4px; 
+            line-height: 1;
+        }
+
+        .premium-product-band .form-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 8pt;
+            font-weight: 700;
+            letter-spacing: 6px; 
+            text-transform: uppercase;
+        }
+
+        .title-band {
+            padding: 1rem 3rem;
+            text-align: center;
+        }
+
+        .title-band .form-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 20pt; 
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        /* ─── BODY & SECTIONS ────────────────────────────────── */
+        .body {
+            padding: 0 3rem 2.5rem;
+        }
+
+        section {
+            margin-bottom: 1.5rem;
+        }
+
+        .part-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.2rem;
+            margin-top: 2rem;
+        }
+
+        .part-number {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 7pt;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border: 1px solid var(--black);
+            padding: 0.3rem 0.6rem;
+            flex-shrink: 0;
+        }
+
+        .part-rule {
+            flex-grow: 1;
+            height: 1px;
+            background: var(--black);
+        }
+
+        h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 9pt;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--black);
+            margin: 1.5rem 0 0.8rem;
+            border-bottom: 1px solid var(--gray-border);
+            padding-bottom: 0.2rem;
+        }
+
+        p {
+            font-size: 11pt;
+            color: var(--gray-dark);
+            margin-bottom: 1rem;
+            text-align: left;
+        }
+
+        ul {
+            padding-left: 2rem;
+            margin-bottom: 1.2rem;
+        }
+
+        li {
+            font-size: 11pt;
+            color: var(--gray-dark);
+            margin-bottom: 0.6rem;
+        }
+
+        .underline-box {
+            border-bottom: 1px solid var(--black);
+            display: inline-block;
+            min-width: 3in;
+            padding: 0 10px;
+        }
+
+        /* ─── SIGNATURE ELEMENTS ─────────────────────────────── */
+        .signature-section {
+            page-break-inside: avoid;
+            margin-top: 3rem;
+        }
+
+        .sig-row {
+            display: flex;
+            gap: 3rem;
+            margin-bottom: 2rem;
+            align-items: flex-end;
+        }
+
+        .sig-block { flex: 1; }
+        .sig-block.narrow { flex: 0 0 2in; }
+
+        .sig-field {
+            border-top: 1px solid var(--black);
+            padding-top: 0.4rem;
+        }
+
+        .sig-field-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 7.5pt;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .sig-blank { min-height: 2.5rem; }
+
+        /* ─── DOWNLOAD BUTTON ────────────────────────────────── */
+        .fab {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--black);
+            color: var(--white);
+            border: 2px solid var(--black);
+            padding: 0.9rem 1.6rem;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 8pt;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            z-index: 1000;
+        }
+
+        .fab:hover { background: var(--white); color: var(--black); }
+
+        @media print {
+            body { background: var(--white); padding: 0; }
+            .document { box-shadow: none; max-width: 100%; border: none; }
+            .fab { display: none !important; }
+            .body { padding: 0 2.5rem; }
+            .masthead { padding: 2.5rem 2.5rem 1rem; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <button id="downloadPdfBtn" class="fab">
+        Download PDF
+    </button>
+
+    <div class="document" id="pdf-content">
+
+        <div class="masthead">
+            <div class="masthead-left">
+                <div class="brand-logo"><img src="logo.svg" alt="Logo"></div>
+            </div>
+
+            <div class="masthead-right">
+                <div class="doctors">
+                    Dr. Sambhav Jain <span>DMD, MS</span><br>
+                    Dr. Arpana Gupta <span>DDS, MDS</span>
+                </div>
+                
+                <div class="contact-block">
+                    <strong>Email:</strong> info@bayareaimplantdentistry.com<br>
+                    <strong>Website:</strong> www.bayareaimplantdentistry.com
+                </div>
+                
+                <div class="contact-block">
+                    <strong>Main Office:</strong> 3381 Walnut Ave, Fremont, CA 94538<br>
+                    <strong>Phone:</strong> (510) 574-0496
+                </div>
+                
+                <div class="contact-block">
+                    <strong>SF Office:</strong> 4318 Geary Blvd, Suite 201, San Francisco, CA 94118<br>
+                    <strong>Phone:</strong> (415) 696-2922
+                </div>
+            </div>
+        </div>
+
+        <div class="premium-product-band">
+            <div class="form-title">ALL-ON-8 ROBUST</div>
+            <div class="form-label">Most Advanced Biomechanical Dental Implants Protocol</div>
+        </div>
+        
+        <div class="title-band">
+            <div class="form-title">Informed Consent for Laser Dental Procedures</div>
+        </div>
+
+        <div class="body">
+
+            <section>
+                <div class="part-header">
+                    <span class="part-number">Part 1</span>
+                    <span class="part-rule"></span>
+                </div>
+                <p>It is important that you understand the following information:</p>
+                <p>The goal of the laser procedures we use is to eliminate or remove gum tissue to either improve the appearance of the smile or gain access to a tooth that has not erupted. Generally, laser treatment results in improvement in the intended condition but occasionally the procedure will need to be repeated to get the desired outcome.</p>
+
+                <h3>Alternatives:</h3>
+                <p>There are alternatives to using the dental laser. Those could include more conventional scalpel surgery in the office of another dental professional at an additional fee. Frequently those procedures will involve sedation which may be helpful in a very apprehensive patient. If you would rather pursue an alternative treatment, please let Dr. Gupta or Dr. Jain know and they would be happy to discuss those alternatives with you. There is always the option of having no treatment performed though it may compromise the final treatment result.</p>
+            </section>
+
+            <section>
+                <div class="part-header">
+                    <span class="part-number">Part 2</span>
+                    <span class="part-rule"></span>
+                </div>
+                <h3>Possible Intraoperative Complications:</h3>
+                <p><strong>Burns</strong> – There is a risk of accidental injury by the laser energy which could cause permanent scarring; however, this is very unlikely because the laser energy is carefully metered and contained.</p>
+                <p><strong>Eye Damage</strong> – Injury of the eyes is possible if you look into the laser beam. We will provide eye protection that will prevent this but it must be in place at all times when the laser is in operation.</p>
+
+                <h3>Possible Short-Term Effects of Laser Dental Treatment:</h3>
+                <ul>
+                    <li>Pain or a burning/itching sensation may occur for a few days after treatment.</li>
+                    <li>A topical anesthetic and occasionally a local anesthetic will be used to block discomfort during the procedure but occasionally you may still notice discomfort during the procedure. Let Dr. Gupta or Dr. Jain know and they can administer more anesthetic if needed.</li>
+                    <li>The numbing effects of the anesthetic may continue to be felt after the procedure so be careful to avoid lip or cheek biting.</li>
+                    <li>Redness/Inflammation/Swelling of the tissue will likely be noticed for the first few days.</li>
+                    <li>The tissue surrounding the sight of the procedure may feel “tight”.</li>
+                    <li>Wound Healing – Oozing of the tissue in the treated area will usually persist for a short time.</li>
+                    <li>Allergies – You may experience an allergic reaction to the anesthetics used. If so, please contact Dr. Gupta or Dr. Jain.</li>
+                    <li>You may have a recurrence of a “fever blister” or Herpes Simplex Dermatitis.</li>
+                    <li>Tissue Hyperpigmentation – You may experience a transient darkening of the tissue in the area especially in dark skinned people.</li>
+                    <li>Tissue Hypopigmentation – You may experience lightening of the skin in the area – which can be permanent.</li>
+                </ul>
+            </section>
+
+            <section>
+                <div class="part-header">
+                    <span class="part-number">Part 3</span>
+                    <span class="part-rule"></span>
+                </div>
+                <h3>Possible Long-Term Complications of Laser Dental Treatment:</h3>
+                <p><strong>Scarring</strong> – The risk of scarring exists. It is variable and often related to genetic makeup. It can be minimized by carefully following appropriate aftercare instructions.</p>
+                <p><strong>Tissue Pigment Changes</strong> – Soft tissue color and texture changes may occur. At the junction of treated and untreated areas, a difference in color, texture, and/or thickness may appear.</p>
+                <p><strong>Infection</strong> – There is a risk of infection common to all surgical procedures. It can be minimized by proper post-operative care.</p>
+
+                <h3>Anesthetics Employed:</h3>
+                <p>We will be using a topical anesthetic either alone or occasionally in combination with an injected local anesthetic. Because of this, certain precautions must be taken:</p>
+                <ul>
+                    <li>The patient must be careful to avoid biting or chewing on the tongue, lip, cheek, or other parts of the mouth when they are numb.</li>
+                    <li>The anesthetic may make swallowing seem more difficult though the sensation will improve after the effect wears off.</li>
+                    <li>Let Dr. Gupta or Dr. Jain know if you have ever had an adverse or allergic reaction to anesthetics used in a dental office.</li>
+                    <li>Let Dr. Gupta or Dr. Jain know if you are or suspect you are pregnant or are breastfeeding.</li>
+                </ul>
+            </section>
+
+            <section>
+                <div class="part-header">
+                    <span class="part-number">Part 4</span>
+                    <span class="part-rule"></span>
+                </div>
+                <h3>Patient Consent:</h3>
+                <p>I understand that:</p>
+                <ul>
+                    <li>Any application of excess heat to the treated area must be avoided for 2-3 days to minimize bleeding and promote healing</li>
+                    <li>This is an elective procedure and the treatment is not reversible.</li>
+                    <li>More procedures may be needed to achieve the optimal obtainable result.</li>
+                    <li>The practice of dentistry and surgery is not an exact science and I acknowledge that no guarantees have been made to me concerning the results of the procedure.</li>
+                    <li>It is not possible to state every complication that may occur because of laser dental surgery.</li>
+                    <li>Complications or a poor outcome may manifest weeks, months, or even years after the surgery.</li>
+                </ul>
+                <p>I understand this explanation of laser dental surgery and its risks, benefits, and alternatives. I have had an opportunity to have my questions answered regarding the proposed procedure. I therefore give consent to having the laser dental surgery.</p>
+            </section>
+
+            <section class="signature-section">
+                <div class="sig-row">
+                    <div class="sig-block">
+                        <div class="sig-blank"></div>
+                        <div class="sig-field">
+                            <div class="sig-field-label">Patient Name (print)</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sig-row">
+                    <div class="sig-block">
+                        <div class="sig-blank"></div>
+                        <div class="sig-field">
+                            <div class="sig-field-label">Patient/Parent Signature</div>
+                        </div>
+                    </div>
+                    <div class="sig-block narrow">
+                        <div class="sig-blank"></div>
+                        <div class="sig-field">
+                            <div class="sig-field-label">Date</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sig-row">
+                    <div class="sig-block" style="flex: 0 0 4in;">
+                        <p>I have been offered a copy of this consent form (initial) <span class="underline-box" style="min-width: 1in;"></span></p>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('downloadPdfBtn').addEventListener('click', function () {
+            const element = document.getElementById('pdf-content');
+            document.fonts.ready.then(function() {
+                const opt = {
+                    margin: [0.5, 0.5, 0.5, 0.5],
+                    filename: 'Laser_Procedure_Consent.pdf',
+                    image: { type: 'jpeg', quality: 1.0 },
+                    html2canvas: { scale: 4, useCORS: true, letterRendering: true, scrollY: 0 },
+                    jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' },
+                    pagebreak: { mode: ['css', 'legacy'] }
+                };
+
+                html2pdf().set(opt).from(element).save();
+            });
+        });
+    </script>
+</body>
+</html>

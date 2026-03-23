@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>General Informed Consent | All-On-8 Robust</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap"
+        rel="stylesheet">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+    <style>
+        :root {
+            --black: #000000;
+            --gray-dark: #222222;
+            --gray-mid: #555555;
+            --gray-light: #999999;
+            --gray-border: #cccccc;
+            --white: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'EB Garamond', serif;
+            background: #f4f4f4;
+            color: var(--black);
+            font-size: 10.5pt;
+            line-height: 1.4;
+            padding: 2rem 1rem;
+        }
+                .masthead-right .doctors {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 13pt;
+            font-weight: 700;
+            color: var(--black);
+            margin-bottom: 0.8rem; 
+            line-height: 1.2;
+        }
+
+        .document {
+            max-width: 8.5in;
+            margin: 0 auto;
+            background: var(--white);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, .1);
+            position: relative;
+        }
+
+        /* ─── MASTHEAD ─────────────────────────────────────── */
+        .masthead {
+            padding: 2rem 3rem 1rem; 
+            display: flex;
+            justify-content: space-between;
+            align-items: center; 
+            gap: 2rem;
+        }
+
+        .brand-logo img {
+            width: 210px; 
+            max-width: 100%;
+            height: auto; 
+            filter: grayscale(100%);
+        }
+
+        .masthead-right {
+            text-align: right;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 7.5pt;
+            color: var(--gray-dark);
+            line-height: 1.4;
+        }
+
+        .masthead-right .clinic-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 12pt;
+            font-weight: 700;
+            color: var(--black);
+            margin-bottom: 0.4rem; 
+        }
+
+        /* ─── PREMIUM BRANDING ─────────────────────────────── */
+        .premium-product-band {
+            margin: 0.5rem 3rem 1.2rem; 
+            padding: 1rem 0;
+            text-align: center;
+            border-top: 6px double var(--black);
+            border-bottom: 6px double var(--black);
+        }
+
+        .premium-product-band .form-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 28pt; 
+            font-weight: 700;
+            letter-spacing: 4px; 
+            line-height: 1;
+        }
+
+        .premium-product-band .form-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 8pt;
+            font-weight: 700;
+            letter-spacing: 6px; 
+            text-transform: uppercase;
+        }
+
+        .title-band {
+            padding: 1rem 3rem;
+            text-align: center;
+        }
+
+        .title-band .form-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 18pt; 
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        /* ─── BODY ───────────────────────────────────────────── */
+        .body {
+            padding: 0 3rem 2rem;
+        }
+
+        section {
+            margin-bottom: 1.2rem;
+        }
+
+        .part-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .part-number {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 7pt;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border: 1px solid var(--black);
+            padding: 0.2rem 0.5rem;
+            flex-shrink: 0;
+        }
+
+        .part-rule {
+            flex-grow: 1;
+            height: 1px;
+            background: var(--black);
+        }
+
+        h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 8.5pt;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin: 1.2rem 0 0.6rem;
+            border-bottom: 1px solid var(--gray-border);
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .initial-tag {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 7pt;
+            font-weight: 600;
+            text-transform: none;
+            color: var(--gray-mid);
+        }
+
+        p {
+            margin-bottom: 0.6rem;
+            text-align: justify;
+        }
+
+        /* ─── FORM FIELDS ─────────────────────────────────── */
+        .field-row {
+            display: flex;
+            align-items: flex-end;
+            margin-bottom: 0.8rem;
+            gap: 0.8rem;
+        }
+
+        .field-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 8pt;
+            font-weight: 700;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        .field-line {
+            border-bottom: 1px solid var(--black);
+            flex-grow: 1;
+            min-height: 1.2rem;
+        }
+
+        /* ─── SIGNATURE ELEMENTS ─────────────────────────────── */
+        .sig-section {
+            page-break-inside: avoid;
+            margin-top: 2rem;
+        }
+
+        .sig-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+
+        .sig-block {
+            border-top: 1px solid var(--black);
+            padding-top: 0.4rem;
+        }
+
+        .sig-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 7pt;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        /* ─── DOWNLOAD BUTTON ────────────────────────────────── */
+        .fab {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--black);
+            color: var(--white);
+            padding: 0.8rem 1.4rem;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 8pt;
+            text-transform: uppercase;
+            cursor: pointer;
+            z-index: 1000;
+            border: none;
+        }
+
+        @media print {
+            .fab { display: none !important; }
+            body { background: white; padding: 0; }
+            .document { box-shadow: none; border: none; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <button id="downloadPdfBtn" class="fab">Download PDF</button>
+
+    <div class="document" id="pdf-content">
+
+        <div class="masthead">
+            <div class="masthead-left">
+                <div class="brand-logo"><img src="logo.svg" alt="Logo"></div>
+            </div>
+            <div class="masthead-right">
+                <div class="doctors">
+                    Dr. Sambhav Jain <span>DMD, MS</span><br>
+                    Dr. Arpana Gupta <span>DDS, MDS</span>
+                </div>
+                
+                <div class="contact-block">
+                    <strong>Email:</strong> info@bayareaimplantdentistry.com<br>
+                    <strong>Website:</strong> www.bayareaimplantdentistry.com
+                </div>
+                
+                <div class="contact-block">
+                    <strong>Main Office:</strong> 3381 Walnut Ave, Fremont, CA 94538<br>
+                    <strong>Phone:</strong> (510) 574-0496
+                </div>
+                
+                <div class="contact-block">
+                    <strong>SF Office:</strong> 4318 Geary Blvd, Suite 201, San Francisco, CA 94118<br>
+                    <strong>Phone:</strong> (415) 696-2922
+                </div>
+            </div>
+        </div>
+
+        <div class="premium-product-band">
+            <div class="form-title">ALL-ON-8 ROBUST</div>
+            <div class="form-label">Most Advanced Biomechanical Dental Implants Protocol</div>
+        </div>
+        
+        <div class="title-band">
+            <div class="form-title">INFORMED CONSENT</div>
+        </div>
+
+        <div class="body">
+
+            <div class="field-row" style="margin-bottom: 2rem;">
+                <span class="field-label">Patient Name:</span><div class="field-line"></div>
+                <span class="field-label">Chart #</span><div class="field-line" style="flex-grow:0; width: 100px;"></div>
+                <span class="field-label">Date:</span><div class="field-line" style="flex-grow:0; width: 120px;"></div>
+            </div>
+
+            <section>
+                <h3>TREATMENT TO BE DONE: <span class="initial-tag">(Initials ____)</span></h3>
+                <p>I understand that I will be receiving an examination that includes a sufficient number of dental x-rays that may be necessary to complete my dental examination and treatment plan. I also understand that if there was a need for a referral to a specialist deemed necessary by my dentist, then the cost of the referral would be my responsibility.</p>
+
+                <h3>DRUGS AND MEDICATIONS: <span class="initial-tag">(Initials ____)</span></h3>
+                <p>I understand that antibiotics, analgesics and other medication can cause allergic reactions reaction manifesting clinical symptoms such as redness, swelling of tissue, pain, itching, vomiting, and/or anaphylactic shock (severe allergic reaction). I understand that it is my responsibility to inform my dentist of any allergy to specific medication to avoid possible adverse effects from medication that my dentist will prescribe.</p>
+
+                <h3>LOCAL ANESTHETICS: <span class="initial-tag">(Initials ____)</span></h3>
+                <p>The local anesthetic I am receiving may contain epinephrine that can cause a slight Increase in the heart rate but will return to normal. Common complications that can occur from local anesthetic but are not limited to are pain, swelling, and bruising. Rare serious complications may occur that can include but are not limited to permanent numbness, abnormal sensation, transient blindness and even death.</p>
+
+                <h3>CHANGES IN TREATMENT PLAN: <span class="initial-tag">(Initials ____)</span></h3>
+                <p>I understand that during treatment, it my be necessary to change or add procedures Due to conditions found while working on the teeth that were not discovered during examination, the most common being Root Canal Therapy following routine restorative procedures. I give my permission to the dentist to make any/all changes and additions as necessary once I have been informed of these changes and consented to them. I also understand that by not following my dentists recommendation, delayed treatment can lead to but not limited to more discomfort, increase the complexity of the treatment outcome, or eventual lost of teeth.</p>
+            </section>
+
+            <section>
+                <div class="part-header">
+                    <span class="part-number">EXTRACTIONS (Removal of Teeth)</span>
+                    <span class="part-rule"></span>
+                </div>
+                <div class="field-row">
+                    <p>I give my consent for the doctor to perform the extraction/surgery to treat and possibly correct my diseased oral tissue, or other procedure deemed necessary or advisable as necessary to complete the planned operation/extraction. If left untreated, risk to my health may include, but are not limited to swelling, pain, infection, cyst formation, gum diseases, dental decay, malocclusion premature loss of teeth and/ or bone.</p>
+                    <div style="flex-shrink:0; text-align:right; font-size: 8pt; font-family: Montserrat;">
+                        (Initials ____)<br>
+                        (Tooth #s____)<br>
+                        (Date:_______)
+                    </div>
+                </div>
+                <p>My potential risks include, but are not limited to the following: Post-operative discomfort; stretching of the corners of the mouth, with resultant cracking and bruising; swelling; prolonged bleeding; tooth sensitivity to hot or cold; gum shrinkage (possibly exposing crown margins); tooth looseness; delayed healing (dry socket) and/or infection (requiring prescription or additional treatment, i.e. surgery). Injury to adjacent teeth, prosthesis, and/or restorations which may require additional treatment or injury to other tissues not within the described surgical area. Limitations of opening; stiffness of facial and/or neck muscle; change in bite or tempromandibular joint (jaw joint) difficulty (possibly requiring physical therapy or surgery). Residual root fragments or bones spicules left when complete removal would require extensive surgery, or needless surgical complications. Possible bone, and/or jaw fracture, or opening of the maxillary sinus requiring additional Surgery. Injury to the nerve underlying the teeth resulting in itching, numbness, or burning of the lip, chin, Gums, cheek, teeth and/or tongue which may be temporary or permanent.</p>
+                <p>If any unforeseen condition should arise in the course of the operation/extraction, calling for the doctors judgment or for procedures in addition to or different from those now contemplated, I request and authorize the doctor to do whatever (s)he may deem advisable, including referral to another dentist or specialist.</p>
+            </section>
+
+            <section>
+                <div class="part-header">
+                    <span class="part-number">CROWNS, BRIDGES AND CAPS</span>
+                    <span class="part-rule"></span>
+                </div>
+                <div class="field-row">
+                    <p>I understand sometimes it is not possible to match the color of natural teeth exactly with artificial teeth. I further understand I may be wearing temporary crowns, which may come off easily and could be aspirated and I must be careful to ensure that they are kept on until the permanent crowns are delivered. I understand that if my temporary crowns come off, then it is my responsibility to return to my dentist to have it re-cemented. I realize the final opportunity to make changes in my new crown, bridge or cap (including shape, fit, size & color) will be before cementation. I understand if I do not return for my scheduled appointment for delivery of my crowns or bridge, it may not fit properly and I will be responsible for any lab fees.</p>
+                    <div style="flex-shrink:0; text-align:right; font-size: 8pt; font-family: Montserrat;">
+                        (Initials ____)<br>
+                        (Tooth #s____)<br>
+                        (Date:_______)
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h3>DENTURES-COMPLETE OR PARTIAL: <span class="initial-tag">(Initials ______)</span></h3>
+                <p>I realize full or partial dentures are artificial, constructed of plastic, metal and/or porcelain. The problem of wearing these appliances have been explained to me, including looseness, soreness and possible breakage. I realize the final opportunity to make changes in my new denture (including shape, fit, placement and color) will be the teeth in wax try-in visit. I understand most dentures require relining approximately three to six months after initial placement and yearly thereafter. The cost for these relines is not included in the initial denture fee. I further understand that due to bone loss, lack of alveolar ridge support, muscle attachments and/or other complication factors, I may never be able to wear dentures to my satisfaction.</p>
+            </section>
+
+            <section>
+                <div class="part-header">
+                    <span class="part-number">ENDODONTIC TREATMENT (ROOT CANAL)</span>
+                    <span class="part-rule"></span>
+                </div>
+                <div class="field-row">
+                    <p>The purpose and method of root canal therapy have been explained to me as well as consequences of non-treatment and reasonable alternative treatments. I understand the following root canal therapy to my tooth will be brittle and must be protected against fracture by placement of a final restoration usually a crown (cap) over the tooth. I also understand that sometimes root canal therapy may fail and further treatment may be necessary that might include but not limited to retreatment, apicoectomy, or extraction. I understand that treatment risks can include but are not limited to the following: Post treatment discomfort, infection, restricted jaw opening, swelling of the gum area in the vicinity of the treated tooth or facial swelling, separation of root canal instruments during treatment, which may in the judgment of the dentist be left in the treated root canal or bone as part of the filing material; or it may require surgery for removal. Perforation of the root canal which may require additional surgical treatment, or premature tooth loss (extraction), Risk of temporary or permanent numbness in treatment vicinity. The root canal filing material may be overfilled or under filled, which may or may not affect the success/outcome of the treatment.</p>
+                    <div style="flex-shrink:0; text-align:right; font-size: 8pt; font-family: Montserrat;">
+                        (Initials ____)<br>
+                        (Tooth #s____)<br>
+                        (Date:_______)
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h3>PERIODONTAL LOSS (TISSUE & BONE): <span class="initial-tag">(Initials _______)</span></h3>
+                <p>I understand that the long term success of treatment and status of my oral condition depends on my efforts at proper oral Hygiene (i.e. brushing and flossing) and maintaining regular recall and maintenance visits. I understand that I have a serious condition causing gum and bone inflammation and/or tooth loss that can lead to loss of my teeth and other related systemic complications. The various treatment plans have been explained to me, including non-surgical scaling and root planning followed by local irrigation with oral medicaments and local delivery of antibiotic, or gum surgery, or replacement and/or extractions. I also understand that although these treatments have a high degree of success, they cannot be guaranteed. I understand that after following approved periodontal treatment there may still be a need for a referral to a Periodontist.</p>
+            </section>
+
+            <section>
+                <h3>FILLINGS: <span class="initial-tag">(Initials _______)</span></h3>
+                <p>I have been advised of the need for filling, either silver or composite (plastic). In cases where very little tooth structure remains or existing tooth structure fractures off, I may need to receive more extensive treatment (such as root canal therapy, post and build-up, and crowns), which would necessitate a separate charge. I understand that my recently placed fillings may cause some sensitivity and discomfort for duration and may be alleviated with time. However, I understand that if the symptom and sensitivity worsen, then I might need a RCT.</p>
+            </section>
+
+            <section>
+                <h3>PEDODONTICS: <span class="initial-tag">(Initials _______)</span></h3>
+                <p>I understand the following procedures are routinely used in conjunction with pediatric dentistry, as well as being accepted procedures in the dental profession. As the parent or authorized caregiver, I understand and Give consent that the following procedures can be used on my child:</p>
+                <p><strong>POSITIVE REINFORCEMENT:</strong> Rewarding the child who portrays desirable behavior, by use of compliments, verbal praises or toys.</p>
+                <p><strong>VOICE CONTROL:</strong> The attention of a disruptive child is gained by changing the tone or increasing the volume of the doctors voice.</p>
+                <p><strong>PHYSICAL RESTRAINT:</strong> As a parent or authorized caregiver, I have been informed in advance and have given consent as it may be deemed necessary to restrain the child. Restraining the childs disruptive hand or arm, or by use of a special devise (referred to as a papoose board).</p>
+                <p>I understand that with the use of local anesthetic for dental purpose, the possibility exists that the child may inadvertently bite their lip, tongue and check causing injury to occur.</p>
+            </section>
+
+            <section>
+                <p>I understand that dentistry is not an exact science and that therefore, practitioners cannot guarantee results. I acknowledge that no guarantee or assurance has been made by anyone regarding dental treatment, which I have requested and authorized. I have read and clearly understood the consent form language, and by signing below I acknowledge this understanding and give my consent to Sambhav Jain DDS or his Designee to perform the above-indicated procedure[s]. Sambhav Jain, DDS or his Designee has encouraged me to ask questions. I have had the opportunity to ask questions and any and all of my questions have been answered to my satisfaction.</p>
+            </section>
+
+            <section class="sig-section">
+                <div class="sig-grid">
+                    <div class="sig-block"><span class="sig-label">Signature</span></div>
+                    <div class="sig-block"><span class="sig-label">Date</span></div>
+                    <div class="sig-block"><span class="sig-label">Print Name</span></div>
+                    <div class="sig-block"><span class="sig-label">Relationship to patient</span></div>
+                    <div class="sig-block"><span class="sig-label">Doctor</span></div>
+                    <div class="sig-block"><span class="sig-label">Witness</span></div>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('downloadPdfBtn').addEventListener('click', function () {
+            const element = document.getElementById('pdf-content');
+            document.fonts.ready.then(function() {
+                const opt = {
+                    margin: [0.3, 0.3, 0.3, 0.3],
+                    filename: 'Informed_Consent_General.pdf',
+                    image: { type: 'jpeg', quality: 1.0 },
+                    html2canvas: { scale: 3, useCORS: true, letterRendering: true, scrollY: 0 },
+                    jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' },
+                    pagebreak: { mode: ['css', 'legacy'] }
+                };
+                html2pdf().set(opt).from(element).save();
+            });
+        });
+    </script>
+</body>
+</html>

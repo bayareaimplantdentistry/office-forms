@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IV Sedation Consent | All-On-8 Robust</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap"
+        rel="stylesheet">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+    <style>
+        :root {
+            --black: #000000;
+            --gray-dark: #222222;
+            --gray-mid: #555555;
+            --gray-light: #999999;
+            --gray-border: #cccccc;
+            --white: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'EB Garamond', serif;
+            background: #f4f4f4;
+            color: var(--black);
+            font-size: 11pt;
+            line-height: 1.35; 
+            padding: 1rem; 
+        }
+
+        /* ─── DOCUMENT SHELL ─────────────────────────────────── */
+        .document {
+            max-width: 8.5in;
+            margin: 0 auto;
+            background: var(--white);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, .1);
+            position: relative;
+        }
+
+        /* ─── MASTHEAD (LETTERHEAD) ──────────────────────────── */
+        .masthead {
+            padding: 1.5rem 2.5rem 0.5rem; 
+            display: flex;
+            justify-content: space-between;
+            align-items: center; 
+            gap: 1rem;
+        }
+
+        .masthead-left {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            flex: 1; 
+        }
+
+        .brand-logo img {
+            width: 190px; 
+            max-width: 100%;
+            height: auto; 
+            object-fit: contain;
+            object-position: left center;
+            filter: grayscale(100%);
+        }
+
+        .masthead-right {
+            text-align: right;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 7.5pt;
+            color: var(--gray-dark);
+            line-height: 1.3;
+            flex-shrink: 0;
+        }
+
+        .masthead-right .doctors {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 12pt;
+            font-weight: 700;
+            color: var(--black);
+            margin-bottom: 0.3rem; 
+            line-height: 1.1;
+        }
+
+        .masthead-right .doctors span {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 7pt;
+            font-weight: 500;
+            color: var(--gray-mid);
+            letter-spacing: 1px;
+            margin-left: 4px;
+        }
+
+        .masthead-right .contact-block {
+            margin-bottom: 0.2rem; 
+        }
+        
+        .masthead-right .contact-block:last-child {
+            margin-bottom: 0;
+        }
+
+        .masthead-right strong {
+            color: var(--black);
+            font-weight: 600;
+        }
+
+        /* ─── PREMIUM PRODUCT SHOWCASE ───────────────────────── */
+        .premium-product-band {
+            margin: 0.25rem 2.5rem 0.5rem; 
+            padding: 0.5rem 0; 
+            text-align: center;
+            background: transparent;
+            page-break-inside: avoid;
+            border-top: 4px double var(--black); 
+            border-bottom: 4px double var(--black); 
+        }
+
+        .premium-product-band .form-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 22pt; 
+            font-weight: 700;
+            color: var(--black); 
+            letter-spacing: 3px; 
+            line-height: 1;
+            margin-bottom: 0.2rem;
+        }
+
+        .premium-product-band .bold-hyphen {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            margin: 0 4px; 
+        }
+
+        .premium-product-band .form-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 7.5pt;
+            font-weight: 700;
+            letter-spacing: 4px; 
+            text-transform: uppercase;
+            color: var(--black); 
+        }
+
+        /* ─── DOCUMENT TITLE BAND ────────────────────────────── */
+        .title-band {
+            padding: 0.5rem 2.5rem 0.5rem; 
+            text-align: center;
+        }
+
+        .title-band .form-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 18pt; 
+            font-weight: 700;
+            color: var(--black);
+            letter-spacing: 0.5px;
+            line-height: 1.2;
+            text-transform: uppercase;
+        }
+
+        /* ─── BODY ───────────────────────────────────────────── */
+        .body {
+            padding: 0 2.5rem 1rem; 
+        }
+
+        /* ─── SECTIONS & TEXT ────────────────────────────────── */
+        section {
+            page-break-inside: auto; 
+            margin-bottom: 1rem;
+        }
+
+        .part-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 0.5rem;
+            margin-top: 1.5rem;
+            page-break-after: avoid;
+            page-break-inside: avoid;
+        }
+
+        .part-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 13pt;
+            font-weight: 700;
+            color: var(--black);
+            letter-spacing: 0.5px;
+            flex-shrink: 0;
+            text-transform: uppercase;
+        }
+
+        .part-rule {
+            flex-grow: 1;
+            height: 1px;
+            background: var(--black);
+        }
+
+        h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 8.5pt;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--black);
+            margin: 1.2rem 0 0.4rem;
+            padding-bottom: 0.1rem;
+            border-bottom: 1px dashed var(--gray-border);
+            page-break-after: avoid; 
+        }
+
+        p {
+            font-size: 11pt;
+            color: var(--gray-dark);
+            margin-bottom: 0.5rem;
+            text-align: justify;
+            page-break-inside: auto;
+        }
+
+        ul {
+            padding-left: 1.5rem;
+            margin-top: 0.2rem;
+            margin-bottom: 0.8rem;
+            font-size: 10.5pt;
+        }
+
+        ul > li {
+            margin-bottom: 0.3rem; 
+            text-align: justify;
+            page-break-inside: avoid; 
+        }
+
+        ul > li::marker {
+            font-weight: 700;
+            color: var(--black);
+        }
+
+        .important-box {
+            border: 2px solid var(--black);
+            padding: 0.8rem 1.2rem;
+            margin: 1rem 0;
+            background-color: #fafafa;
+            page-break-inside: avoid;
+        }
+
+        .important-box p {
+            margin-bottom: 0.4rem;
+        }
+
+        .important-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        .important-text {
+            font-weight: 700;
+            color: var(--black);
+        }
+
+        /* ─── SIGNATURE SECTION ──────────────────────────────── */
+        .signature-section {
+            page-break-inside: avoid; 
+            margin-top: 2rem;
+        }
+
+        .sig-row {
+            display: flex;
+            gap: 3rem;
+            margin-bottom: 1.5rem;
+            align-items: flex-end;
+        }
+        
+        .sig-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .sig-block {
+            flex: 1;
+        }
+        
+        .sig-block.narrow {
+            flex: 0 0 2in;
+        }
+
+        .sig-field {
+            border-top: 1px solid var(--black);
+            padding-top: 0.4rem;
+            text-align: left;
+        }
+
+        .sig-field-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 7.5pt;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--black);
+        }
+
+        .sig-blank {
+            min-height: 2.5rem;
+        }
+        
+        .inline-blank-long {
+            display: block;
+            border-bottom: 1px solid var(--black);
+            width: 100%;
+            min-height: 1.5rem;
+            margin-top: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* ─── FOOTER ─────────────────────────────────────────── */
+        .doc-footer {
+            border-top: 2px solid var(--black);
+            margin: 0 2.5rem;
+            padding: 0.8rem 0 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-left {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 7.5pt;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--black);
+        }
+
+        .footer-right {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 7.5pt;
+            color: var(--gray-dark);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* ─── DOWNLOAD BUTTON ────────────────────────────────── */
+        .fab {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--black);
+            color: var(--white);
+            border: 2px solid var(--black);
+            padding: 0.9rem 1.6rem;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 8pt;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            transition: all 0.2s;
+            z-index: 1000;
+        }
+
+        .fab:hover {
+            background: var(--white);
+            color: var(--black);
+        }
+
+        .fab svg {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+            flex-shrink: 0;
+        }
+
+        /* ─── PRINT ──────────────────────────────────────────── */
+        @media print {
+            body {
+                background: var(--white);
+                padding: 0;
+            }
+
+            .document {
+                box-shadow: none;
+                max-width: 100%;
+                border: none;
+            }
+
+            .fab {
+                display: none !important;
+            }
+
+            .body {
+                padding: 0 2.5rem;
+            }
+
+            .doc-footer {
+                margin: 0 2.5rem;
+            }
+
+            .masthead {
+                padding: 1.5rem 2.5rem 0.5rem;
+            }
+
+            .brand-logo img {
+                filter: grayscale(100%);
+                -webkit-filter: grayscale(100%);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <button id="downloadPdfBtn" class="fab">
+        <svg viewBox="0 0 24 24">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z" />
+        </svg>
+        Download PDF
+    </button>
+
+    <div class="document" id="pdf-content">
+
+        <div class="masthead">
+            <div class="masthead-left">
+                <div class="brand-logo">
+                    <img src="logo.svg" alt="Center for Implant Dentistry" onerror="this.outerHTML='<h2 style=\'font-family: Montserrat; font-weight: 700; color: #000; letter-spacing: 1px; font-size: 14pt; margin: 0;\'>CENTER FOR IMPLANT DENTISTRY</h2>'">
+                </div>
+            </div>
+
+            <div class="masthead-right">
+                <div class="doctors">
+                    Dr. Sambhav Jain <span>DMD, MS</span><br>
+                    Dr. Arpana Gupta <span>DDS, MDS</span>
+                </div>
+                
+                <div class="contact-block">
+                    <strong>Email:</strong> info@bayareaimplantdentistry.com<br>
+                    <strong>Website:</strong> www.bayareaimplantdentistry.com
+                </div>
+                
+                <div class="contact-block">
+                    <strong>Main Office:</strong> 3381 Walnut Ave, Fremont, CA 94538<br>
+                    <strong>Phone:</strong> (510) 574-0496
+                </div>
+                
+                <div class="contact-block">
+                    <strong>SF Office:</strong> 4318 Geary Blvd, Suite 201, San Francisco, CA 94118<br>
+                    <strong>Phone:</strong> (415) 696-2922
+                </div>
+            </div>
+        </div>
+
+        <div class="premium-product-band">
+            <div class="form-title">ALL<span class="bold-hyphen">-</span>ON<span class="bold-hyphen">-</span>8 ROBUST</div>
+            <div class="form-label">Most Advanced Biomechanical Dental Implants Protocol</div>
+        </div>
+        
+        <div class="title-band">
+            <div class="form-title">Consent &amp; Pre-op Instructions for Intravenous (IV) Sedation</div>
+        </div>
+
+        <div class="body">
+
+            <section>
+                <p>The purpose of IV sedation is to more comfortably receive your dental care. Sedation is not required to provide your dental care. Sedation is achieved by placing an IV needle in a vein and administering sedation medications, usually a benzodiazepine (diazepam, lorazepam or midazolam) and narcotic (Demerol, fentanyl, morphine or nalbuphine).</p>
+                
+                <p>Other medications may be used, as well. Sometimes oral medications are also given before the dental appointment and may also involve administering nitrous oxide (laughing gas) during my dental appointment. Sedation is a drug-induced state of reduced awareness, reduced ability to respond and to make decisions. The effects of the sedation medications should wear off before the end of the day of the dental appointment.</p>
+                
+                <p>I have had the opportunity to ask questions about my dental treatment, about the sedation medications, and about the effects of the sedation medications. I can also ask questions about sedation and my dental treatment later, but not after taking any oral or IV sedation medications.</p>
+                
+                <p>I have given Dr. Sambhav Jain, DMD and/or his designee a complete medical history and told him of all medications and over the counter medications, herbs, and other supplements I take. I have told Dr. Sambhav Jain, DMD and/or is designee about all drug, latex, and other allergies or sensitivities. I have also disclosed any recreational use of legal or illegal drugs I have taken within the last 3 weeks, including but not limited to: heroin, crack, cocaine, methadone, opium, methamphetamine, Percodan, Vicodin, OxyContin, and marijuana.</p>
+                
+                <p>I will be accompanied by a responsible adult who will drive me to and from my surgery, and who will stay with me for the remainder of the day and until I have recovered sufficiently to care for myself. I will not drive, operate machinery, cook, watch children, or make any important or legal decisions for 24 hours after my dental appointment is finished, regardless of how “good” I feel.</p>
+                
+                <p>I will not give any oral sedation medications/pills (if given) to anyone else. If I do not take them as directed I will return the medications to Dr. Sambhav Jain’s office. I will follow Dr. Sambhav Jain’s and/or his designee’s instructions. I will use ABSOLUTELY NO RECREATIONAL DRUGS OR ALCOHOL for 24 hours before or after treatment or with prescribed sedation or pain medications and pills.</p>
+
+                <h3>Nutritional Supplements</h3>
+                <ul>
+                    <li><strong>St. John’s Wort:</strong> discontinue 5 days before and restart 4 days after surgery</li>
+                    <li><strong>Kava Kava:</strong> discontinue 14 days before and restart 4 days after surgery</li>
+                    <li><strong>Valerian and Gotu Kola:</strong> discontinue 1 day before surgery and restart 4 days after surgery</li>
+                    <li><strong>Echinacea:</strong> discontinue 4 weeks before surgery, as it delays healing, and restart 4 weeks after surgery</li>
+                </ul>
+
+                <h3>Females</h3>
+                <p>I am not pregnant. Pregnant women are not candidate for elective sedation. Women who are breastfeeding need to prepare for feedings post appointment; pump and discard for a minimum of 24 hrs after being sedated.</p>
+                
+                <p>I understand that the sedation medications may not work as intended. The effects of local anesthetics or sedative medications may cause prolonged drowsiness, dizziness, headache, blurry vision, and amnesia. Nausea and vomiting, although not common, are potential side effects of anesthesia. Bed rest and medications may be required for relief.</p>
+                
+                <p>If I develop a cold, flu, sore throat, cough or any other illness, I will advise Dr. Sambhav Jain and/or his designee prior to my appointment.</p>
+                
+                <p>Dental treatment with sedation methods are considered quite safe. Nevertheless, I understand that there are risks or limitations to taking any medications, including but not limited to, local anesthetic shots, pills or IV medications. Allergic reactions may occur. Discomfort, swelling, or bruising can occur at the site where the drugs are placed into a vein, which may include vein irritation, called phlebitis. Rarely, complications could require medical care, further medications or hospitalization, including very rare potential of brain damage, stroke, heart attack, or death.</p>
+            </section>
+
+            <div class="important-box">
+                <p class="important-text">You MUST have completely empty stomach. It is vital that you have NOTHING TO EAT OR DRINK for six (6) hours prior to your sedation, except clear liquids up to 2 hours prior to your sedation. TO DO OTHERWISE MAY BE LIFE-THREATENING!</p>
+                <p>Take regular medications or prescriptions prescribed by your physicians or Dr. Sambhav Jain and/or his designee. With clear unless told to do otherwise. You may drink clear liquids up to 2 hours prior to your appointment, I recommend a small glass of cold, clear liquid about 2 to 3 hours before your appointment. It helps empty your stomach.</p>
+                <p><strong>What is a clear liquid?</strong> Put it in a glass and hold it up to a light bulb. You should see the light thru it with no pulp. Water, black coffee, tea, Gatorade, cranberry, grape or apple juice, 7-up, ginger ale, Coke, Pepsi are clear liquids. Milk, orange, pineapple and grapefruit juices, coffee or tea with milk cream are not clear liquids.</p>
+            </div>
+
+            <section>
+                <p>I give Dr. Sambhav Jain and/or his designee and his staff permissions to discuss my dental procedures, port-op instructions and any pertinent information for caring for me to my ride/chaperone/caregiver, including in person, by telephone email, etc. as I may not remember what Dr. Sambhav Jain and/or his designee and his staff told me after I take the medications or be in a good state of mind to care for myself for the rest of the day.</p>
+
+                <p class="important-text">If during the procedure, a change in treatment is required, I authorize the doctor and his staff to make whatever change they deem in their professional judgment is necessary. I also have the right to designate another individual who will make such a decision for me if they are present here in the office at the time or easily reached by telephone. If they cannot be reached, then the doctor and his staff can make the decision.</p>
+
+                <p>Arrive 10-15 minutes early for your appointment. Use the restroom before going back to the dental operatory. Wear loose fitting clothing with short sleeves above the elbow. This will allow you to be comfortable during your procedure, allow ease of breathing, and access for monitoring equipment. Remove contact lenses. Remove fingernail polish &amp; artificial nails on at least one finger on each hand.</p>
+
+                <p>I have been given the 3-page instruction sheet for oral pre-operative sedation medications and agree to read it thoroughly before I take any pre-operative oral sedation medications. If I have any questions about it, I will ask the doctor before I take any of the medications I will tell the doctor if I take any medicines on the instruction sheet that interfere with me taking the sedation medications before I take them. I will read this consent over again and any other instruction sheets completely and thoroughly, as it tells how to take the pre-operative oral sedation medications, precautions and contra-indications regarding taking these sedation medications, medicines and herbals that oral and IV sedation medications should not be taken with, and important before &amp; after sedation/oral surgery instructions.</p>
+                
+                <p>I give consent to sedation in conjunction with my dental care. I fully understand the risks involved. I certify that I speak, read and write English.</p>
+            </section>
+
+            <section class="signature-section">
+                
+                <div class="sig-row">
+                    <div class="sig-block">
+                        <div class="sig-blank"></div>
+                        <div class="sig-field">
+                            <div class="sig-field-label">Print Patient Name</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sig-row">
+                    <div class="sig-block">
+                        <div class="sig-blank"></div>
+                        <div class="sig-field">
+                            <div class="sig-field-label">Signature of Patient/Guardian</div>
+                        </div>
+                    </div>
+                    <div class="sig-block narrow">
+                        <div class="sig-blank"></div>
+                        <div class="sig-field">
+                            <div class="sig-field-label">Date</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sig-row">
+                    <div class="sig-block">
+                        <div class="sig-blank"></div>
+                        <div class="sig-field">
+                            <div class="sig-field-label">Witness Signature</div>
+                        </div>
+                    </div>
+                    <div class="sig-block narrow">
+                        <div class="sig-blank"></div>
+                        <div class="sig-field">
+                            <div class="sig-field-label">Date</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sig-row">
+                    <div class="sig-block">
+                        <div class="sig-blank"></div>
+                        <div class="sig-field">
+                            <div class="sig-field-label">Doctor Signature</div>
+                        </div>
+                    </div>
+                    <div class="sig-block narrow">
+                        <div class="sig-blank"></div>
+                        <div class="sig-field">
+                            <div class="sig-field-label">Date</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+    </div>
+    <script>
+        document.getElementById('downloadPdfBtn').addEventListener('click', function () {
+            const element = document.getElementById('pdf-content');
+
+            const btn = this;
+            btn.innerHTML = `<svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg> Generating…`;
+            btn.style.pointerEvents = 'none';
+
+            document.fonts.ready.then(function() {
+                const opt = {
+                    margin: [0.5, 0.5, 0.65, 0.5],
+                    filename: 'IV_Sedation_Consent.pdf',
+                    image: { type: 'jpeg', quality: 1.0 },
+                    html2canvas: {
+                        scale: 4, 
+                        useCORS: true,
+                        letterRendering: true,
+                        scrollY: 0
+                    },
+                    jsPDF: {
+                        unit: 'in',
+                        format: 'letter',
+                        orientation: 'portrait'
+                    },
+                    pagebreak: { mode: ['css', 'legacy'] }
+                };
+
+                const webFooter = document.querySelector('.doc-footer');
+                if(webFooter) webFooter.style.display = 'none';
+
+                html2pdf().set(opt).from(element).toPdf().get('pdf').then(function (pdf) {
+                    var totalPages = pdf.internal.getNumberOfPages();
+                    var pageWidth = pdf.internal.pageSize.getWidth();
+                    var pageHeight = pdf.internal.pageSize.getHeight();
+
+                    for (var i = 1; i <= totalPages; i++) {
+                        pdf.setPage(i);
+
+                        var pageStr = 'Page ' + i + ' of ' + totalPages;
+                        pdf.setFontSize(7); 
+                        pdf.setTextColor(85, 85, 85); 
+                        pdf.setFont('helvetica', 'normal');
+                        var tw = pdf.getStringUnitWidth(pageStr) * 7 / 72;
+                        pdf.text(pageStr, pageWidth - tw - 0.5, pageHeight - 0.35);
+                    }
+                }).save().then(function () {
+                    if(webFooter) webFooter.style.display = 'flex';
+                    btn.innerHTML = `<svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg> Download PDF`;
+                    btn.style.pointerEvents = 'auto';
+                });
+            });
+        });
+    </script>
+</body>
+</html>

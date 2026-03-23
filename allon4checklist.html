@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All on 4 Checklist | All-On-8 Robust</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap"
+        rel="stylesheet">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+    <style>
+        :root {
+            --black: #000000;
+            --gray-dark: #222222;
+            --gray-mid: #555555;
+            --gray-light: #999999;
+            --gray-border: #cccccc;
+            --white: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'EB Garamond', serif;
+            background: #f4f4f4;
+            color: var(--black);
+            font-size: 11pt;
+            line-height: 1.4;
+            padding: 2rem 1rem;
+        }
+
+        .document {
+            max-width: 8.5in;
+            margin: 0 auto;
+            background: var(--white);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, .1);
+            position: relative;
+        }
+
+        /* ─── MASTHEAD ─────────────────────────────────────── */
+        .masthead {
+            padding: 2.5rem 3rem 1rem; 
+            display: flex;
+            justify-content: space-between;
+            align-items: center; 
+            gap: 2rem;
+        }
+
+        .brand-logo img {
+            width: 210px; 
+            max-width: 100%;
+            height: auto; 
+            filter: grayscale(100%);
+        }
+
+        .masthead-right {
+            text-align: right;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 7.5pt;
+            color: var(--gray-dark);
+            line-height: 1.5;
+        }
+
+        .masthead-right .doctors {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 13pt;
+            font-weight: 700;
+            color: var(--black);
+            margin-bottom: 0.8rem; 
+            line-height: 1.2;
+        }
+
+        .masthead-right .doctors span {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 7pt;
+            font-weight: 500;
+            color: var(--gray-mid);
+            letter-spacing: 1px;
+            margin-left: 4px;
+        }
+
+        /* ─── PREMIUM BRANDING ─────────────────────────────── */
+        .premium-product-band {
+            margin: 0.5rem 3rem 1.5rem; 
+            padding: 1.2rem 0;
+            text-align: center;
+            border-top: 6px double var(--black);
+            border-bottom: 6px double var(--black);
+        }
+
+        .premium-product-band .form-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 30pt; 
+            font-weight: 700;
+            letter-spacing: 4px; 
+            line-height: 1;
+        }
+
+        .premium-product-band .form-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 8pt;
+            font-weight: 700;
+            letter-spacing: 6px; 
+            text-transform: uppercase;
+        }
+
+        .title-band {
+            padding: 1rem 3rem;
+            text-align: center;
+        }
+
+        .title-band .form-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 20pt; 
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        /* ─── BODY ───────────────────────────────────────────── */
+        .body {
+            padding: 0 3rem 2.5rem;
+        }
+
+        .patient-header-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 8.5pt;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .header-item {
+            display: flex;
+            align-items: flex-end;
+            flex-grow: 1;
+        }
+
+        .underlined-value {
+            border-bottom: 1px solid var(--black);
+            margin-left: 8px;
+            flex-grow: 1;
+            min-height: 1.4rem;
+        }
+
+        /* ─── TABLE ────────────────────────────────────────── */
+        .checklist-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 2rem;
+        }
+
+        .checklist-table th, .checklist-table td {
+            border: 1px solid var(--black);
+            padding: 0.6rem 1rem;
+            text-align: left;
+        }
+
+        .checklist-table th {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 8.5pt;
+            font-weight: 700;
+            text-transform: uppercase;
+            background: #fafafa;
+        }
+
+        .checklist-table td {
+            font-family: 'EB Garamond', serif;
+            font-size: 11pt;
+        }
+
+        .shade-group {
+            display: flex;
+            gap: 2rem;
+            padding: 1rem 0;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 8.5pt;
+            font-weight: 700;
+        }
+
+        /* ─── NOTES & DOCTOR SIG ───────────────────────────── */
+        .notes-area {
+            margin-top: 2rem;
+            page-break-inside: avoid;
+        }
+
+        .notes-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 8.5pt;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .notes-line {
+            border-bottom: 1px solid var(--black);
+            height: 2.5rem;
+            width: 100%;
+        }
+
+        .doctor-signature-section {
+            margin-top: 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            page-break-inside: avoid;
+        }
+
+        .sig-box {
+            width: 60%;
+            border-top: 1px solid var(--black);
+            padding-top: 0.5rem;
+        }
+
+        .date-box {
+            width: 30%;
+            border-top: 1px solid var(--black);
+            padding-top: 0.5rem;
+        }
+
+        .sig-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 8pt;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        /* ─── BUTTON ───────────────────────────────────────── */
+        .fab {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--black);
+            color: var(--white);
+            border: 2px solid var(--black);
+            padding: 0.9rem 1.6rem;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 8pt;
+            text-transform: uppercase;
+            cursor: pointer;
+            z-index: 1000;
+        }
+
+        @media print {
+            .fab { display: none !important; }
+            body { background: white; padding: 0; }
+            .document { box-shadow: none; max-width: 100%; border: none; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <button id="downloadPdfBtn" class="fab">Download PDF</button>
+
+    <div class="document" id="pdf-content">
+
+        <div class="masthead">
+            <div class="masthead-left">
+                <div class="brand-logo"><img src="logo.svg" alt="Logo"></div>
+            </div>
+            <div class="masthead-right">
+                <div class="doctors">
+                    Dr. Sambhav Jain <span>DMD, MS</span><br>
+                    Dr. Arpana Gupta <span>DDS, MDS</span>
+                </div>
+                
+                <div class="contact-block">
+                    <strong>Email:</strong> info@bayareaimplantdentistry.com<br>
+                    <strong>Website:</strong> www.bayareaimplantdentistry.com
+                </div>
+                
+                <div class="contact-block">
+                    <strong>Main Office:</strong> 3381 Walnut Ave, Fremont, CA 94538<br>
+                    <strong>Phone:</strong> (510) 574-0496
+                </div>
+                
+                <div class="contact-block">
+                    <strong>SF Office:</strong> 4318 Geary Blvd, Suite 201, San Francisco, CA 94118<br>
+                    <strong>Phone:</strong> (415) 696-2922
+                </div>
+
+            </div>
+        </div>
+
+        <div class="premium-product-band">
+            <div class="form-title">ALL<span class="bold-hyphen">-</span>ON<span class="bold-hyphen">-</span>8 ROBUST</div>
+            <div class="form-label">Most Advanced Biomechanical Dental Implants Protocol</div>
+        </div>
+        
+        <div class="title-band">
+            <div class="form-title">ALL-ON-4 CHECKLIST</div>
+        </div>
+
+        <div class="body">
+
+            <div class="patient-header-row">
+                <div class="header-item">Patient Name: <div class="underlined-value"></div></div>
+                <div class="header-item" style="flex-grow:0; width: 1.8in;">Date: <div class="underlined-value"></div></div>
+                <div class="header-item" style="flex-grow:0; width: 1.5in;">Chart #: <div class="underlined-value"></div></div>
+            </div>
+
+            <table class="checklist-table">
+                <thead>
+                    <tr>
+                        <th style="width: 65%;">PROCEDURES</th>
+                        <th style="width: 35%;">ASSISTANT SIGNATURE</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>CT SCAN</td><td></td></tr>
+                    <tr><td>FINANCES</td><td></td></tr>
+                    <tr><td>CONSENT FORMS</td><td></td></tr>
+                    <tr><td>RX</td><td></td></tr>
+                    <tr><td>PRE-OP & POST-OP INSTRUCTIONS</td><td></td></tr>
+                    <tr><td>INTRODUCTION VIDEO & PICTURES</td><td></td></tr>
+                    <tr><td>CHARTING</td><td></td></tr>
+                    <tr><td>VITALS</td><td></td></tr>
+                    <tr><td>FMX</td><td></td></tr>
+                    <tr><td>TRIOS SCAN</td><td></td></tr>
+                    <tr>
+                        <td colspan="2">
+                            <div class="shade-group">
+                                <div class="header-item">TOOTH SHADE: <div class="underlined-value"></div></div>
+                                <div class="header-item">GUM SHADE: <div class="underlined-value"></div></div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr><td>TRIOS / FACE SCAN / CT SCAN (WITH DOTS)</td><td></td></tr>
+                    <tr><td>TMJ</td><td></td></tr>
+                    <tr><td>HEALTH ALERT</td><td></td></tr>
+                    <tr><td>MEDICAL RELEASE</td><td></td></tr>
+                    <tr><td>IV SEDATION INSTRACTION PRE & POST GIVEN</td><td></td></tr>
+                    <tr>
+                        <td>LAST TEETH IN TITANIUM</td>
+                        <td style="text-align: center; font-family: 'Montserrat', sans-serif; font-size: 8.5pt; font-weight: 700;">YES / NO</td>
+                    </tr>
+                    <tr><td>BRING ALL THE MEDICATION SURGERY DAY</td><td></td></tr>
+                </tbody>
+            </table>
+
+            <div class="notes-area">
+                <div class="notes-title">NOTES:</div>
+                <div class="notes-line"></div>
+                <div class="notes-line"></div>
+                <div class="notes-line"></div>
+            </div>
+
+            <div class="doctor-signature-section">
+                <div class="sig-box">
+                    <div class="sig-label">Doctor Signature</div>
+                </div>
+                <div class="date-box">
+                    <div class="sig-label">Date</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('downloadPdfBtn').addEventListener('click', function () {
+            const element = document.getElementById('pdf-content');
+            document.fonts.ready.then(function() {
+                const opt = {
+                    margin: [0.5, 0.5, 0.65, 0.5],
+                    filename: 'All_On_4_Checklist.pdf',
+                    image: { type: 'jpeg', quality: 1.0 },
+                    html2canvas: { scale: 4, useCORS: true, letterRendering: true, scrollY: 0 },
+                    jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+                };
+                html2pdf().set(opt).from(element).save();
+            });
+        });
+    </script>
+</body>
+</html>
