@@ -1,0 +1,455 @@
+:root {
+    --black: #000000;
+    --gray-dark: #222222;
+    --gray-mid: #555555;
+    --gray-light: #555555;
+    --gray-border: #000000;
+    --white: #ffffff;
+    --page-gutter: 2.15rem;
+    --page-bottom: 1.55rem;
+    --copy-size: 10.75pt;
+    --copy-leading: 1.38;
+}
+
+html {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+}
+
+body {
+    font-family: 'EB Garamond', serif !important;
+    font-size: var(--copy-size) !important;
+    line-height: var(--copy-leading) !important;
+    color: var(--black) !important;
+    background: var(--white) !important;
+    text-rendering: optimizeLegibility;
+    padding: 0.6rem !important;
+}
+
+.document {
+    background: var(--white) !important;
+    box-shadow: none !important;
+    border: none !important;
+}
+
+/* FIX: Changed align-items to center and ensured display: flex */
+.masthead {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important; 
+    padding: 1.3rem var(--page-gutter) 0.7rem !important;
+    gap: 1.35rem !important;
+    page-break-inside: avoid !important;
+}
+
+/* FIX: Changed align-items to center */
+.masthead-left {
+    display: flex !important;
+    flex: 1 1 auto !important;
+    align-items: center !important;
+}
+
+/* FIX: Added display: block to remove baseline spacing */
+.brand-logo img {
+    display: block !important;
+    width: 192px !important;
+    max-width: 100% !important;
+    height: auto !important;
+    object-fit: contain !important;
+    filter: grayscale(100%) !important;
+}
+
+.office-logo-fallback {
+    width: 192px;
+    min-height: 54px;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    color: var(--black);
+}
+
+.office-logo-fallback-eyebrow {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 7.4pt;
+    font-weight: 700;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    line-height: 1.1;
+}
+
+.office-logo-fallback-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18pt;
+    font-weight: 700;
+    line-height: 0.95;
+    letter-spacing: 0.02em;
+}
+
+.masthead-right {
+    max-width: 3.55in !important;
+    text-align: right !important;
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 7.35pt !important;
+    line-height: 1.35 !important;
+    color: var(--gray-dark) !important;
+}
+
+.masthead-right .doctors {
+    font-family: 'Cormorant Garamond', serif !important;
+    font-size: 12.4pt !important;
+    line-height: 1.08 !important;
+    font-weight: 700 !important;
+    color: var(--black) !important;
+    margin-bottom: 0.45rem !important;
+}
+
+.masthead-right .doctors span {
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 7.15pt !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.08em !important;
+    text-transform: uppercase !important;
+}
+
+.masthead-right .contact-block {
+    margin-bottom: 0.32rem !important;
+}
+
+.masthead-right .contact-block:last-child {
+    margin-bottom: 0 !important;
+}
+
+.masthead-right strong {
+    color: var(--black) !important;
+    font-weight: 700 !important;
+}
+
+.premium-product-band {
+    margin: 0 var(--page-gutter) 0.65rem !important;
+    padding: 0.55rem 0 0.5rem !important;
+    text-align: center !important;
+    border-top: 4px double var(--black) !important;
+    border-bottom: 4px double var(--black) !important;
+    color: var(--black) !important;
+    page-break-inside: avoid !important;
+}
+
+.premium-product-band .form-title {
+    font-family: 'Cormorant Garamond', serif !important;
+    font-size: 16.5pt !important;
+    font-weight: 700 !important;
+    line-height: 1 !important;
+    letter-spacing: 0.12em !important;
+    text-transform: uppercase !important;
+    color: var(--black) !important;
+}
+
+.bold-hyphen {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    margin: 0 4px;
+}
+
+.premium-product-band .form-label {
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 6.65pt !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.22em !important;
+    text-transform: uppercase !important;
+    color: var(--gray-mid) !important;
+    margin-top: 0.22rem !important;
+}
+
+.title-band {
+    padding: 0.85rem var(--page-gutter) 0.65rem !important;
+    text-align: center !important;
+    page-break-inside: avoid !important;
+}
+
+.title-band.sub-title {
+    padding-top: 0 !important;
+    margin-top: 0.2rem !important;
+}
+
+.title-band .form-label,
+.field-label,
+.part-number,
+.sig-field-label,
+.sig-label,
+h3,
+th {
+    font-family: 'Montserrat', sans-serif !important;
+}
+
+.title-band .form-label {
+    font-size: 6.8pt !important;
+    letter-spacing: 0.22em !important;
+    color: var(--gray-mid) !important;
+    margin-bottom: 0.18rem !important;
+    text-transform: uppercase !important;
+}
+
+.title-band .form-title {
+    font-family: 'Cormorant Garamond', serif !important;
+    font-size: 17.6pt !important;
+    line-height: 1.08 !important;
+    color: var(--black) !important;
+    letter-spacing: 0.02em !important;
+}
+
+.body {
+    padding: 0 var(--page-gutter) var(--page-bottom) !important;
+}
+
+section {
+    margin-bottom: 1rem !important;
+    page-break-inside: auto !important;
+}
+
+.part-header {
+    margin-top: 1.5rem !important;
+    margin-bottom: 0.7rem !important;
+    page-break-inside: avoid !important;
+    page-break-after: avoid !important;
+}
+
+.part-number {
+    font-size: 7pt !important;
+    letter-spacing: 0.16em !important;
+    padding: 0.2rem 0.45rem !important;
+    border: 1px solid var(--black) !important;
+    color: var(--black) !important;
+}
+
+.part-title {
+    font-family: 'Cormorant Garamond', serif !important;
+    font-size: 13.4pt !important;
+    line-height: 1.08 !important;
+    color: var(--black) !important;
+}
+
+.part-rule {
+    background: var(--black) !important;
+    height: 1px !important;
+}
+
+h3 {
+    font-size: 7.75pt !important;
+    letter-spacing: 0.16em !important;
+    line-height: 1.25 !important;
+    color: var(--black) !important;
+    margin: 1.5rem 0 0.4rem !important;
+    padding-bottom: 0.14rem !important;
+    border-bottom: 1px solid var(--black) !important;
+    page-break-after: avoid !important;
+}
+
+p,
+li {
+    font-family: 'EB Garamond', serif !important;
+    font-size: 10.75pt !important;
+    line-height: 1.38 !important;
+    color: var(--gray-dark) !important;
+    margin-bottom: 0.45rem !important;
+    page-break-inside: avoid !important;
+}
+
+ul,
+ol {
+    margin-bottom: 0.55rem !important;
+    padding-left: 1.25rem !important;
+}
+
+li::marker {
+    color: var(--black) !important;
+    font-weight: 700;
+}
+
+.info-grid,
+.conditions-container {
+    border: 1px solid var(--black) !important;
+    padding: 0.9rem !important;
+    margin: 0.8rem 0 !important;
+    page-break-inside: avoid !important;
+}
+
+.field-row {
+    display: flex !important;
+    margin-bottom: 0.8rem !important;
+    gap: 0.6rem !important;
+    page-break-inside: avoid !important;
+}
+
+.field-row:last-child {
+    margin-bottom: 0 !important;
+}
+
+.field-label {
+    font-size: 7.3pt !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.08em !important;
+    color: var(--black) !important;
+    text-transform: uppercase !important;
+}
+
+.field-value,
+.field-line,
+.fill-line,
+.relationship-line,
+.fact-sheet-line,
+.initial-line,
+.inline-blank,
+.ruled-line {
+    border-color: var(--black) !important;
+}
+
+.field-value {
+    min-height: 1.15rem !important;
+    padding: 0 0.22rem 0.08rem !important;
+    font-size: 10.75pt !important;
+    color: var(--black) !important;
+    border-bottom: 1px solid var(--black) !important;
+}
+
+.field-line,
+.fill-line,
+.relationship-line,
+.fact-sheet-line,
+.initial-line,
+.inline-blank {
+    display: inline-block;
+    min-height: 1.05rem !important;
+    border-bottom: 1px solid var(--black) !important;
+}
+
+.inline-blank {
+    min-width: 1.35in !important;
+    vertical-align: baseline !important;
+}
+
+.ruled-line {
+    border-bottom: 1px solid var(--black) !important;
+    height: 1.1rem !important;
+    margin: 0.08rem 0 !important;
+}
+
+.signature-section,
+.sig-section,
+.office-print-avoid,
+.sig-row,
+.doc-footer {
+    page-break-inside: avoid !important;
+}
+
+.sig-row {
+    display: flex !important;
+    gap: 1.4rem !important;
+    margin-bottom: 1rem !important;
+    align-items: flex-end !important;
+}
+
+.sig-block,
+.sig-field {
+    flex: 1 !important;
+    border-top: 1px solid var(--black) !important;
+    padding-top: 0.32rem !important;
+}
+
+.sig-field-label,
+.sig-label {
+    font-size: 7pt !important;
+    letter-spacing: 0.1em !important;
+    color: var(--black) !important;
+    text-transform: uppercase !important;
+}
+
+.sig-blank {
+    min-height: 2.5rem !important;
+}
+
+.doc-footer {
+    border-top: 1px solid var(--black) !important;
+    margin: 0 var(--page-gutter) !important;
+    padding: 0.7rem 0 1rem !important;
+    color: var(--gray-mid) !important;
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 7pt !important;
+    line-height: 1.3 !important;
+}
+
+.fab {
+    position: fixed !important;
+    right: 1rem !important;
+    bottom: 1rem !important;
+    z-index: 1000 !important;
+    padding: 0.75rem 1rem !important;
+    border: 1px solid var(--black) !important;
+    background: var(--black) !important;
+    color: var(--white) !important;
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 7.7pt !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.08em !important;
+    text-transform: uppercase !important;
+    box-shadow: none !important;
+    cursor: pointer !important;
+}
+
+.fab[disabled],
+.office-forms-exporting .fab {
+    opacity: 0.78 !important;
+    pointer-events: none !important;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    page-break-inside: auto !important;
+}
+
+th,
+td {
+    color: var(--gray-dark) !important;
+}
+
+input,
+textarea,
+select {
+    font-family: 'EB Garamond', serif !important;
+    font-size: 10.5pt !important;
+    color: var(--black) !important;
+}
+
+input[type="checkbox"] {
+    accent-color: #000000;
+}
+
+@page {
+    size: letter;
+    margin: 0.35in;
+}
+
+@media screen {
+    .document {
+        margin: 0 auto !important;
+    }
+}
+
+@media print {
+    body {
+        padding: 0 !important;
+        background: #ffffff !important;
+    }
+
+    .document {
+        max-width: none !important;
+        width: auto !important;
+        margin: 0 !important;
+        box-shadow: none !important;
+    }
+
+    .fab {
+        display: none !important;
+    }
+}
