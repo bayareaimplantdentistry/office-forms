@@ -14,6 +14,25 @@
         '<div class="form-label">Most Advanced Biomechanical Dental Implants Protocol</div>'
     ].join('');
 
+    const PATIENT_META_HTML = [
+        '<div class="patient-meta-item patient-meta-item-name">',
+        '<div class="patient-meta-label">Patient Name</div>',
+        '<div class="patient-meta-surface"></div>',
+        '</div>',
+        '<div class="patient-meta-item patient-meta-item-date">',
+        '<div class="patient-meta-label">Date</div>',
+        '<div class="patient-meta-surface"></div>',
+        '</div>',
+        '<div class="patient-meta-item patient-meta-item-chart">',
+        '<div class="patient-meta-label">Chart Number</div>',
+        '<div class="patient-meta-surface"></div>',
+        '</div>',
+        '<div class="patient-meta-item patient-meta-item-gender">',
+        '<div class="patient-meta-label">Gender · M/F</div>',
+        '<div class="patient-meta-surface"></div>',
+        '</div>'
+    ].join('');
+
     let logoDataUriPromise = null;
     const PDF_PAGE_SIZE_IN = {
         a4: { width: 8.2677, height: 11.6929 },
@@ -105,9 +124,25 @@
         }
     }
 
+    function ensurePatientMetaBand() {
+        const premiumBand = document.querySelector('.premium-product-band');
+        if (!premiumBand) {
+            return;
+        }
+
+        let patientMetaBand = document.querySelector('.patient-meta-band');
+        if (!patientMetaBand) {
+            patientMetaBand = document.createElement('div');
+            patientMetaBand.className = 'patient-meta-band office-print-avoid';
+            premiumBand.insertAdjacentElement('afterend', patientMetaBand);
+        }
+
+        patientMetaBand.innerHTML = PATIENT_META_HTML;
+    }
+
     function markAvoidBreaks() {
         document
-            .querySelectorAll('.signature-section, .sig-section, .sig-row, .sig-block, .doc-footer')
+            .querySelectorAll('.signature-section, .sig-section, .sig-row, .sig-block, .doc-footer, .patient-meta-band')
             .forEach(function (node) {
                 node.classList.add('office-print-avoid');
             });
@@ -499,6 +534,7 @@
         document.body.dataset.officeFormsEnhanced = 'true';
         standardizeMasthead();
         standardizePremiumBand();
+        ensurePatientMetaBand();
         markAvoidBreaks();
         ensureLogoDataUri();
 
