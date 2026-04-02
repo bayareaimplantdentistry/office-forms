@@ -279,10 +279,19 @@ li::marker {
     margin-bottom: 0.8rem !important;
     gap: 0.6rem !important;
     page-break-inside: avoid !important;
+    break-inside: avoid-page !important;
 }
 
 .field-row:last-child {
     margin-bottom: 0 !important;
+}
+
+.form-row,
+.checkbox-item,
+.option-row,
+.checkbox-grid {
+    page-break-inside: avoid !important;
+    break-inside: avoid-page !important;
 }
 
 .field-label {
@@ -340,6 +349,12 @@ li::marker {
 .sig-row,
 .doc-footer {
     page-break-inside: avoid !important;
+    break-inside: avoid-page !important;
+}
+
+.office-print-break-before {
+    page-break-before: always !important;
+    break-before: page !important;
 }
 
 .sig-row {

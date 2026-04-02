@@ -109,6 +109,170 @@
             });
     }
 
+    function isVisibleForPagination(node) {
+        if (!node || !node.getBoundingClientRect) {
+            return false;
+        }
+
+        const style = window.getComputedStyle(node);
+        if (style.display === 'none' || style.visibility === 'hidden') {
+            return false;
+        }
+
+        const rect = node.getBoundingClientRect();
+        return rect.width > 0 && rect.height > 0;
+    }
+
+    function resolvePdfMargins(margin) {
+        if (Array.isArray(margin)) {
+            if (margin.length === 2) {
+                return {
+                    top: margin[0],
+                    right: margin[1],
+                    bottom: margin[0],
+                    left: margin[1]
+                };
+            }
+
+            if (margin.length === 4) {
+                return {
+                    top: margin[0],
+                    right: margin[1],
+                    bottom: margin[2],
+                    left: margin[3]
+                };
+            }
+        }
+
+        const uniform = typeof margin === 'number' ? margin : 0;
+        return {
+            top: uniform,
+            right: uniform,
+            bottom: uniform,
+            left: uniform
+        };
+    }
+
+    function getBreakTarget(node) {
+        let target = node;
+        const previousElement = node.previousElementSibling;
+
+        if (
+            previousElement &&
+            (
+                previousElement.classList.contains('part-header') ||
+                previousElement.matches('h3')
+            )
+        ) {
+            target = previousElement;
+        }
+
+        return target;
+    }
+
+    function preparePagination(root, pdfOptions) {
+        const cleanupNodes = [];
+        const margins = resolvePdfMargins(pdfOptions.margin);
+        const printableWidthIn = 8.5 - margins.left - margins.right;
+        const printableHeightIn = 11 - margins.top - margins.bottom;
+        const rootRect = root.getBoundingClientRect();
+        const contentWidthPx = root.scrollWidth || rootRect.width;
+        const pageHeightPx = printableWidthIn > 0
+            ? (contentWidthPx * printableHeightIn) / printableWidthIn
+            : 0;
+
+        if (!pageHeightPx || !Number.isFinite(pageHeightPx)) {
+            return function restorePagination() {
+                return undefined;
+            };
+        }
+
+        root.querySelectorAll('.office-print-break-before').forEach(function (node) {
+            node.classList.remove('office-print-break-before');
+        });
+
+        root.querySelectorAll('.body > section, .body > div, .signature-section, .sig-section, .doc-footer').forEach(function (node) {
+            if (!isVisibleForPagination(node)) {
+                return;
+            }
+
+            if (
+                node.getBoundingClientRect().height < pageHeightPx * 0.92 &&
+                !node.classList.contains('office-print-avoid')
+            ) {
+                node.classList.add('office-print-avoid');
+                cleanupNodes.push({ node: node, className: 'office-print-avoid' });
+            }
+        });
+
+        const candidateSelector = [
+            '.body > section',
+            '.body > div',
+            '.part-header',
+            'h3',
+            'p',
+            'li',
+            '.field-row',
+            '.form-row',
+            '.checkbox-item',
+            '.option-row',
+            '.info-grid',
+            '.conditions-container',
+            '.signature-section',
+            '.sig-section',
+            '.sig-row',
+            '.doc-footer',
+            'table',
+            'tr',
+            '.delivery-note'
+        ].join(', ');
+
+        for (let pass = 0; pass < 12; pass += 1) {
+            const pageTop = root.getBoundingClientRect().top;
+            let changed = false;
+
+            root.querySelectorAll(candidateSelector).forEach(function (node) {
+                if (changed || !isVisibleForPagination(node)) {
+                    return;
+                }
+
+                const rect = node.getBoundingClientRect();
+                const top = rect.top - pageTop;
+                const bottom = rect.bottom - pageTop;
+                const height = rect.height;
+
+                if (height >= pageHeightPx * 0.94 || top <= 8) {
+                    return;
+                }
+
+                const currentPage = Math.floor(top / pageHeightPx);
+                const currentPageTop = currentPage * pageHeightPx;
+                const currentPageBottom = currentPageTop + pageHeightPx;
+
+                if (bottom <= currentPageBottom - 4 || top <= currentPageTop + 8) {
+                    return;
+                }
+
+                const breakTarget = getBreakTarget(node);
+                if (!breakTarget.classList.contains('office-print-break-before')) {
+                    breakTarget.classList.add('office-print-break-before');
+                    cleanupNodes.push({ node: breakTarget, className: 'office-print-break-before' });
+                    changed = true;
+                }
+            });
+
+            if (!changed) {
+                break;
+            }
+        }
+
+        return function restorePagination() {
+            cleanupNodes.forEach(function (entry) {
+                entry.node.classList.remove(entry.className);
+            });
+        };
+    }
+
     function normalizeDownloadButton() {
         let button = document.getElementById('downloadPdfBtn');
 
@@ -169,7 +333,19 @@
             },
             pagebreak: {
                 mode: ['css', 'legacy'],
-                avoid: ['.office-print-avoid', '.field-row', '.part-header', 'h3', '.checkbox-grid', '.conditions-container']
+                avoid: [
+                    '.office-print-avoid',
+                    '.field-row',
+                    '.form-row',
+                    '.checkbox-item',
+                    '.option-row',
+                    '.part-header',
+                    'h3',
+                    '.checkbox-grid',
+                    '.conditions-container',
+                    '.sig-row',
+                    '.doc-footer'
+                ]
             }
         };
     }
@@ -258,6 +434,7 @@
 
         const originalLabel = button.textContent;
         const filename = filenameFromTitle();
+        const pdfOptions = buildPdfOptions(filename);
 
         button.disabled = true;
         button.textContent = 'Preparing PDF';
@@ -278,8 +455,9 @@
                 return prepareExportResources(root);
             })
             .then(function (restoreResources) {
+                const restorePagination = preparePagination(root, pdfOptions);
                 const worker = html2pdf()
-                    .set(buildPdfOptions(filename))
+                    .set(pdfOptions)
                     .from(root)
                     .toPdf()
                     .get('pdf')
@@ -290,10 +468,12 @@
                 return worker
                     .save()
                     .then(function () {
+                        restorePagination();
                         restoreButton(restoreResources);
                     })
                     .catch(function (error) {
                         console.error('PDF export failed', error);
+                        restorePagination();
                         restoreButton(restoreResources);
                     });
             })
