@@ -5,10 +5,10 @@
     --gray-light: #555555;
     --gray-border: #000000;
     --white: #ffffff;
-    --page-gutter: 2.15rem;
-    --page-bottom: 1.55rem;
-    --copy-size: 10.75pt;
-    --copy-leading: 1.38;
+    --page-gutter: 1.7rem;
+    --page-bottom: 0.95rem;
+    --copy-size: 10.4pt;
+    --copy-leading: 1.33;
 }
 
 html {
@@ -30,6 +30,7 @@ body {
     background: var(--white) !important;
     box-shadow: none !important;
     border: none !important;
+    width: 100% !important;
 }
 
 /* FIX: Changed align-items to center and ensured display: flex */
@@ -203,8 +204,9 @@ th {
 }
 
 section {
-    margin-bottom: 1rem !important;
+    margin-bottom: 0.82rem !important;
     page-break-inside: auto !important;
+    break-inside: auto !important;
 }
 
 .part-header {
@@ -248,11 +250,14 @@ h3 {
 p,
 li {
     font-family: 'EB Garamond', serif !important;
-    font-size: 10.75pt !important;
-    line-height: 1.38 !important;
+    font-size: var(--copy-size) !important;
+    line-height: var(--copy-leading) !important;
     color: var(--gray-dark) !important;
-    margin-bottom: 0.45rem !important;
-    page-break-inside: avoid !important;
+    margin-bottom: 0.4rem !important;
+    page-break-inside: auto !important;
+    break-inside: auto !important;
+    orphans: 3;
+    widows: 3;
 }
 
 ul,
@@ -421,11 +426,34 @@ table {
     width: 100%;
     border-collapse: collapse;
     page-break-inside: auto !important;
+    break-inside: auto !important;
+}
+
+thead {
+    display: table-header-group !important;
+}
+
+tfoot {
+    display: table-footer-group !important;
+}
+
+tbody {
+    page-break-inside: auto !important;
+    break-inside: auto !important;
+}
+
+tr {
+    page-break-inside: avoid !important;
+    break-inside: avoid-page !important;
 }
 
 th,
 td {
     color: var(--gray-dark) !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid-page !important;
+    overflow-wrap: break-word !important;
+    word-break: normal !important;
 }
 
 input,
@@ -441,8 +469,8 @@ input[type="checkbox"] {
 }
 
 @page {
-    size: letter;
-    margin: 0.35in;
+    size: A4;
+    margin: 0.22in;
 }
 
 @media screen {
@@ -467,4 +495,10 @@ input[type="checkbox"] {
     .fab {
         display: none !important;
     }
+}
+
+body.office-forms-exporting .document {
+    max-width: var(--office-export-width, 7.83in) !important;
+    width: var(--office-export-width, 7.83in) !important;
+    margin: 0 auto !important;
 }

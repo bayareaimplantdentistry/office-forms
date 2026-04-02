@@ -15,6 +15,10 @@
     ].join('');
 
     let logoDataUriPromise = null;
+    const PDF_PAGE_SIZE_IN = {
+        a4: { width: 8.2677, height: 11.6929 },
+        letter: { width: 8.5, height: 11 }
+    };
 
     function createLogoFallback() {
         const fallback = document.createElement('div');
@@ -153,6 +157,19 @@
         };
     }
 
+    function resolvePdfPageSize(pdfOptions) {
+        const jsPdfOptions = (pdfOptions && pdfOptions.jsPDF) || {};
+        const format = String(jsPdfOptions.format || 'letter').toLowerCase();
+        const orientation = String(jsPdfOptions.orientation || 'portrait').toLowerCase();
+        const baseSize = PDF_PAGE_SIZE_IN[format] || PDF_PAGE_SIZE_IN.letter;
+        const isLandscape = orientation === 'landscape';
+
+        return {
+            width: isLandscape ? baseSize.height : baseSize.width,
+            height: isLandscape ? baseSize.width : baseSize.height
+        };
+    }
+
     function getBreakTarget(node) {
         let target = node;
         const previousElement = node.previousElementSibling;
@@ -173,8 +190,9 @@
     function preparePagination(root, pdfOptions) {
         const cleanupNodes = [];
         const margins = resolvePdfMargins(pdfOptions.margin);
-        const printableWidthIn = 8.5 - margins.left - margins.right;
-        const printableHeightIn = 11 - margins.top - margins.bottom;
+        const pageSize = resolvePdfPageSize(pdfOptions);
+        const printableWidthIn = pageSize.width - margins.left - margins.right;
+        const printableHeightIn = pageSize.height - margins.top - margins.bottom;
         const rootRect = root.getBoundingClientRect();
         const contentWidthPx = root.scrollWidth || rootRect.width;
         const pageHeightPx = printableWidthIn > 0
@@ -187,43 +205,29 @@
             };
         }
 
+        document.documentElement.style.setProperty('--office-export-width', printableWidthIn.toFixed(4) + 'in');
+        cleanupNodes.push({
+            node: document.documentElement,
+            className: '--office-export-width'
+        });
+
         root.querySelectorAll('.office-print-break-before').forEach(function (node) {
             node.classList.remove('office-print-break-before');
         });
 
-        root.querySelectorAll('.body > section, .body > div, .signature-section, .sig-section, .doc-footer').forEach(function (node) {
-            if (!isVisibleForPagination(node)) {
-                return;
-            }
-
-            if (
-                node.getBoundingClientRect().height < pageHeightPx * 0.92 &&
-                !node.classList.contains('office-print-avoid')
-            ) {
-                node.classList.add('office-print-avoid');
-                cleanupNodes.push({ node: node, className: 'office-print-avoid' });
-            }
-        });
-
         const candidateSelector = [
-            '.body > section',
-            '.body > div',
             '.part-header',
-            'h3',
-            'p',
-            'li',
             '.field-row',
             '.form-row',
             '.checkbox-item',
             '.option-row',
+            '.checkbox-grid',
             '.info-grid',
             '.conditions-container',
             '.signature-section',
             '.sig-section',
             '.sig-row',
             '.doc-footer',
-            'table',
-            'tr',
             '.delivery-note'
         ].join(', ');
 
@@ -268,6 +272,10 @@
 
         return function restorePagination() {
             cleanupNodes.forEach(function (entry) {
+                if (entry.className === '--office-export-width') {
+                    entry.node.style.removeProperty('--office-export-width');
+                    return;
+                }
                 entry.node.classList.remove(entry.className);
             });
         };
@@ -305,7 +313,7 @@
 
         for (let page = 1; page <= pageCount; page += 1) {
             pdf.setPage(page);
-            pdf.text('Page ' + page + ' of ' + pageCount, pageWidth - 0.35, pageHeight - 0.17, {
+            pdf.text('Page ' + page + ' of ' + pageCount, pageWidth - 0.22, pageHeight - 0.12, {
                 align: 'right'
             });
         }
@@ -313,11 +321,11 @@
 
     function buildPdfOptions(filename) {
         return {
-            margin: [0.35, 0.35, 0.45, 0.35],
+            margin: [0.22, 0.22, 0.28, 0.22],
             filename: filename + '.pdf',
             image: { type: 'jpeg', quality: 1 },
             html2canvas: {
-                scale: Math.min(3, Math.max(2.5, window.devicePixelRatio || 1)),
+                scale: Math.min(2.6, Math.max(2.1, window.devicePixelRatio || 1)),
                 useCORS: true,
                 backgroundColor: '#ffffff',
                 letterRendering: true,
@@ -327,12 +335,12 @@
             },
             jsPDF: {
                 unit: 'in',
-                format: 'letter',
+                format: 'a4',
                 orientation: 'portrait',
                 compress: true
             },
             pagebreak: {
-                mode: ['css', 'legacy'],
+                mode: ['css'],
                 avoid: [
                     '.office-print-avoid',
                     '.field-row',
