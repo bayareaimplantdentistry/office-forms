@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consent: Bisphosphonates Medications | All-On-8 Robust</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap"
+        rel="stylesheet">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+    <style>
+        :root {
+            --black: #000000;
+            --gray-dark: #222222;
+            --gray-mid: #555555;
+            --gray-light: #999999;
+            --gray-border: #cccccc;
+            --white: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'EB Garamond', serif;
+            background: #f4f4f4;
+            color: var(--black);
+            font-size: 11pt;
+            line-height: 1.55;
+            padding: 2rem 1rem;
+        }
+
+        .document {
+            max-width: 8.5in;
+            margin: 0 auto;
+            background: var(--white);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .masthead {
+            padding: 2.5rem 3rem 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .brand-logo img {
+            width: 210px;
+            max-width: 100%;
+            height: auto;
+            filter: grayscale(100%);
+        }
+
+        .masthead-right {
+            text-align: right;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 7.5pt;
+            color: var(--gray-dark);
+            line-height: 1.45;
+        }
+
+        .masthead-right .doctors {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 13pt;
+            font-weight: 700;
+            color: var(--black);
+            margin-bottom: 0.8rem;
+        }
+
+        .title-band {
+            padding: 1.3rem 3rem 1.05rem;
+            text-align: center;
+        }
+
+        .title-band .form-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 7pt;
+            font-weight: 700;
+            letter-spacing: 0.28em;
+            text-transform: uppercase;
+            color: var(--gray-mid);
+            margin-bottom: 0.45rem;
+        }
+
+        .title-band .form-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 20pt;
+            font-weight: 700;
+            color: var(--black);
+            line-height: 1.1;
+        }
+
+        .body {
+            padding: 0 3rem 2.5rem;
+        }
+
+        section {
+            margin-bottom: 1.55rem;
+            page-break-inside: avoid;
+        }
+
+        .part-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin: 2rem 0 1rem;
+        }
+
+        .part-number {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 7pt;
+            font-weight: 700;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--black);
+            border: 1px solid var(--black);
+            padding: 0.28rem 0.62rem;
+            flex-shrink: 0;
+        }
+
+        .part-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 15pt;
+            font-weight: 700;
+            color: var(--black);
+            line-height: 1.1;
+            flex-shrink: 0;
+        }
+
+        .part-rule {
+            flex-grow: 1;
+            height: 1px;
+            background: var(--black);
+        }
+
+        p {
+            font-size: 11pt;
+            color: var(--gray-dark);
+            margin-bottom: 0.8rem;
+            text-align: left;
+        }
+
+        .intro-copy {
+            font-size: 11.3pt;
+        }
+
+        h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 8pt;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--black);
+            margin: 1.1rem 0 0.55rem;
+            padding-bottom: 0.24rem;
+            border-bottom: 1px solid var(--gray-border);
+        }
+
+        ul {
+            padding-left: 1.35rem;
+            margin-bottom: 0.95rem;
+        }
+
+        li {
+            font-size: 11pt;
+            color: var(--gray-dark);
+            margin-bottom: 0.45rem;
+        }
+
+        li::marker {
+            color: var(--black);
+        }
+
+        .continuation-note {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 7pt;
+            font-weight: 700;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--gray-mid);
+            border-top: 1px solid var(--gray-border);
+            border-bottom: 1px solid var(--gray-border);
+            padding: 0.42rem 0;
+            margin: 1.75rem 0 0.9rem;
+        }
+
+        .consent-callout {
+            border: 1.5px solid var(--black);
+            padding: 1rem 1.1rem;
+            margin-top: 1rem;
+        }
+
+        .consent-callout p:last-child {
+            margin-bottom: 0;
+        }
+
+        .signature-section {
+            margin-top: 2.5rem;
+            page-break-inside: avoid;
+        }
+
+        .sig-row {
+            display: flex;
+            gap: 2.25rem;
+            margin-bottom: 1.7rem;
+            align-items: flex-end;
+        }
+
+        .sig-block {
+            flex: 1;
+        }
+
+        .sig-block.narrow {
+            flex: 0 0 2.1in;
+        }
+
+        .sig-blank {
+            min-height: 2.15rem;
+        }
+
+        .sig-field {
+            border-top: 1px solid var(--black);
+            padding-top: 0.38rem;
+        }
+
+        .sig-field-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 7.2pt;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--black);
+        }
+
+        .fab {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--black);
+            color: var(--white);
+            border: 2px solid var(--black);
+            padding: 0.9rem 1.6rem;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 8pt;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            cursor: pointer;
+            z-index: 1000;
+        }
+
+        @media print {
+            body {
+                background: var(--white);
+                padding: 0;
+            }
+
+            .document {
+                box-shadow: none;
+                border: none;
+            }
+
+            .fab {
+                display: none !important;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="forms-print.css">
+</head>
+
+<body>
+    <div class="document" id="pdf-content">
+        <div class="masthead">
+            <div class="masthead-left">
+                <div class="brand-logo">
+                    <img src="logo.svg" alt="Bay Area Implant Dentistry">
+                </div>
+            </div>
+
+            <div class="masthead-right">
+                <div class="doctors">
+                    Dr. Sambhav Jain <span>DMD, MS</span><br>
+                    Dr. Arpana Gupta <span>DDS, MDS</span>
+                </div>
+
+                <div class="contact-block">
+                    <strong>Email:</strong> info@bayareaimplantdentistry.com
+                </div>
+
+                <div class="contact-block">
+                    <strong>Main Office:</strong> 3381 Walnut Ave, Fremont, CA 94538<br>
+                    <strong>Phone:</strong> (510) 574-0496
+                </div>
+
+                <div class="contact-block">
+                    <strong>SF Office:</strong> 4318 Geary Blvd, Suite 201, San Francisco, CA 94118<br>
+                    <strong>Phone:</strong> (415) 696-2922
+                </div>
+            </div>
+        </div>
+
+        <div class="title-band">
+            <div class="form-label">Medication Risk Consent</div>
+            <div class="form-title">Bisphosphonates Medications Informed Consent Form</div>
+        </div>
+
+        <div class="body">
+            <section>
+                <div class="part-header">
+                    <span class="part-number">Overview</span>
+                    <span class="part-title">Introduction</span>
+                    <span class="part-rule"></span>
+                </div>
+
+                <p class="intro-copy">This consent form is designed to ensure that you fully understand the specific risks, benefits, and potential complications associated with dental implant or bone graft surgery, particularly as they relate to your present or past use of Bisphosphonate Medications. It is important that you read this form carefully, ask any questions you may have, and acknowledge your full understanding and acceptance of these risks.</p>
+            </section>
+
+            <section>
+                <div class="part-header">
+                    <span class="part-number">Section 1</span>
+                    <span class="part-title">Risks Specific to Bisphosphonates Medications</span>
+                    <span class="part-rule"></span>
+                </div>
+
+                <p>Bisphosphonate Medications are commonly prescribed for conditions such as rheumatoid arthritis, osteoporosis, cancer, and autoimmune diseases. While they are effective in treating these conditions, they can also interfere with bone healing and increase the risk of osteonecrosis of the jaw.</p>
+
+                <h3>Increased Risks Include</h3>
+                <ul>
+                    <li>Osteonecrosis of the Jaw (ONJ): A serious condition where the jawbone fails to heal after minor trauma, leading to exposed bone, infection, and chronic pain.</li>
+                    <li>Delayed Bone Healing: The medications can impair bone remodeling and healing, leading to a higher risk of implant failure.</li>
+                    <li>Infection: A compromised healing process can increase the risk of infection at the implant site.</li>
+                    <li>Implant Failure: The impaired healing may prevent the implant from integrating with the bone, necessitating its removal.</li>
+                </ul>
+            </section>
+
+            <section>
+                <div class="part-header">
+                    <span class="part-number">Section 2</span>
+                    <span class="part-title">Alternative Treatment Options</span>
+                    <span class="part-rule"></span>
+                </div>
+
+                <p>Given the risks associated with your medications, alternative treatments to dental implants have been discussed, including:</p>
+                <ul>
+                    <li>No Treatment: Not recommended</li>
+                    <li>Removable Dentures: Prosthetic devices that do not require surgery and carry no risk of ONJ.</li>
+                    <li>Fixed Bridges: Supported by adjacent teeth, these do not involve direct placement into the jawbone.</li>
+                    <li>Delaying Surgery: Postponing the implant procedure until the risk of ONJ has been minimized, possibly by adjusting your medication in consultation with your healthcare provider.</li>
+                </ul>
+            </section>
+
+
+            <section>
+                <div class="part-header">
+                    <span class="part-number">Section 3</span>
+                    <span class="part-title">Consultation with Your Healthcare Provider</span>
+                    <span class="part-rule"></span>
+                </div>
+
+                <p>Before proceeding with dental implant surgery, it is essential to consult with the healthcare provider who manages your biologic or monoclonal antibody therapy. In some clinical situations, your physician may adjust your medication regimen to minimize risks by temporarily discontinuing the medication, altering the dosage, or other measures. However, NEVER alter your medication protocol unless instructed by your physician.</p>
+            </section>
+
+            <section>
+                <div class="part-header">
+                    <span class="part-number">Section 4</span>
+                    <span class="part-title">Your Responsibilities</span>
+                    <span class="part-rule"></span>
+                </div>
+
+                <ul>
+                    <li>Preoperative: You agree to follow preoperative instructions, including consulting with your healthcare provider regarding your medication regimen.</li>
+                    <li>Postoperative: You commit to adhering to all postoperative care instructions, including attending all follow-up visits.</li>
+                    <li>Disclosure: You must inform our office of any changes in your medication, health status, or any new symptoms.</li>
+                </ul>
+            </section>
+
+            <section>
+                <div class="part-header">
+                    <span class="part-number">Section 5</span>
+                    <span class="part-title">Acknowledgment of Understanding</span>
+                    <span class="part-rule"></span>
+                </div>
+
+                <p>By signing this form, you acknowledge that:</p>
+                <ul>
+                    <li>I have been informed of the specific risks these medications pose to the success of dental implant surgery.</li>
+                    <li>I have had the opportunity to ask questions about the procedure, the risks, benefits, and alternative treatments, and all your questions have been answered to your satisfaction.</li>
+                    <li>I understand that despite the best efforts of the dental team, complications related to these medications may still occur, and there is no guarantee of a successful outcome.</li>
+                </ul>
+            </section>
+
+            <section>
+                <div class="part-header">
+                    <span class="part-number">Section 6</span>
+                    <span class="part-title">Financial Considerations</span>
+                    <span class="part-rule"></span>
+                </div>
+
+                <ul>
+                    <li>Costs of Additional Treatments: If complications arise that are specific to these medications, additional treatments or surgeries may be necessary. These treatments may incur additional costs, which will be your responsibility.</li>
+                </ul>
+            </section>
+
+            <section>
+                <div class="part-header">
+                    <span class="part-number">Section 7</span>
+                    <span class="part-title">Consent to Proceed</span>
+                    <span class="part-rule"></span>
+                </div>
+
+                <div class="consent-callout office-print-avoid">
+                    <p>I acknowledge that I understand the risks, benefits, and alternatives, and I accept the potential outcomes associated with use of these medications.</p>
+                </div>
+            </section>
+
+            <section class="signature-section">
+                <div class="sig-row">
+                    <div class="sig-block">
+                        <div class="sig-blank"></div>
+                        <div class="sig-field">
+                            <div class="sig-field-label">Patient Signature</div>
+                        </div>
+                    </div>
+                    <div class="sig-block narrow">
+                        <div class="sig-blank"></div>
+                        <div class="sig-field">
+                            <div class="sig-field-label">Date</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sig-row">
+                    <div class="sig-block">
+                        <div class="sig-blank"></div>
+                        <div class="sig-field">
+                            <div class="sig-field-label">Witness Signature</div>
+                        </div>
+                    </div>
+                    <div class="sig-block narrow">
+                        <div class="sig-blank"></div>
+                        <div class="sig-field">
+                            <div class="sig-field-label">Date</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sig-row" style="margin-bottom: 0;">
+                    <div class="sig-block">
+                        <div class="sig-blank"></div>
+                        <div class="sig-field">
+                            <div class="sig-field-label">Clinician Signature</div>
+                        </div>
+                    </div>
+                    <div class="sig-block narrow">
+                        <div class="sig-blank"></div>
+                        <div class="sig-field">
+                            <div class="sig-field-label">Date</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script src="forms-print.js"></script>
+</body>
+
+</html>
