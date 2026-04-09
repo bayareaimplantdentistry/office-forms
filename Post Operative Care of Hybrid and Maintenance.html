@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post Operative Care of Hybrid and Maintenance | All-On-8 Robust</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap"
+        rel="stylesheet">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+    <style>
+        :root {
+            --black: #000000;
+            --gray-dark: #222222;
+            --gray-mid: #555555;
+            --gray-light: #999999;
+            --gray-border: #cccccc;
+            --white: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'EB Garamond', serif;
+            background: #f4f4f4;
+            color: var(--black);
+            font-size: 8.5pt;
+            line-height: 1.28;
+            padding: 1.5rem 1rem;
+        }
+
+        .document {
+            max-width: 8.5in;
+            margin: 0 auto;
+            background: var(--white);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, .1);
+            position: relative;
+        }
+
+        /* ─── MASTHEAD ─────────────────────────────────────── */
+        .masthead {
+            padding: 0.8rem 2.3rem 0.4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .brand-logo img {
+            width: 195px;
+            max-width: 100%;
+            height: auto;
+            filter: grayscale(100%);
+        }
+
+        .masthead-right {
+            text-align: right;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 7.3pt;
+            color: var(--gray-dark);
+            line-height: 1.45;
+        }
+
+        .masthead-right .doctors {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 12.2pt;
+            font-weight: 700;
+            color: var(--black);
+            margin-bottom: 0.55rem;
+        }
+
+        /* ─── PREMIUM BRANDING ─────────────────────────────── */
+        .premium-product-band {
+            margin: 0.2rem 2.3rem 0.4rem;
+            padding: 0.5rem 0;
+            text-align: center;
+            border-top: 5px double var(--black);
+            border-bottom: 5px double var(--black);
+        }
+
+        .premium-product-band .form-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 20pt;
+            font-weight: 700;
+            letter-spacing: 3px;
+            line-height: 1;
+        }
+
+        .premium-product-band .form-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 7pt;
+            font-weight: 700;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            margin-top: 0.2rem;
+        }
+
+        /* ─── TITLE BAND ───────────────────────────────────── */
+        .title-band {
+            padding: 0.3rem 2.3rem 0.4rem;
+            text-align: center;
+        }
+
+        .title-band .form-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 14pt;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+        }
+
+        /* ─── BODY & SECTIONS ────────────────────────────────── */
+        .body {
+            padding: 0 2.3rem 0.8rem;
+        }
+
+        section {
+            margin-bottom: 0.35rem;
+        }
+
+        .part-header {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            margin-bottom: 0.25rem;
+            margin-top: 0.4rem;
+        }
+
+        .part-number {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 6pt;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border: 1px solid var(--black);
+            padding: 0.15rem 0.4rem;
+            flex-shrink: 0;
+        }
+
+        .part-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 11pt;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            flex-shrink: 0;
+        }
+
+        .part-rule {
+            flex-grow: 1;
+            height: 1px;
+            background: var(--black);
+        }
+
+        h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 7.5pt;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 0.3rem 0 0.15rem;
+        }
+
+        p {
+            font-size: 8.5pt;
+            color: var(--gray-dark);
+            margin-bottom: 0.2rem;
+        }
+
+        ul {
+            margin: 0.1rem 0 0.25rem 1.2rem;
+        }
+
+        li {
+            font-size: 8.5pt;
+            color: var(--gray-dark);
+            margin-bottom: 0.06rem;
+        }
+
+        .important-text {
+            font-weight: 700;
+            color: var(--black);
+        }
+
+        .intro-copy {
+            font-size: 8.5pt;
+            color: var(--gray-dark);
+            margin-bottom: 0.15rem;
+        }
+
+        /* ─── TWO-COLUMN LAYOUT ──────────────────────────────── */
+        .two-col {
+            display: flex;
+            gap: 0.3in;
+        }
+
+        .two-col > .col {
+            flex: 1;
+        }
+
+        /* ─── SIGNATURE SECTION ──────────────────────────────── */
+        .signature-section {
+            page-break-inside: avoid;
+        }
+
+        .sig-row {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 0.5rem;
+            align-items: flex-end;
+        }
+
+        .sig-block {
+            flex: 1;
+        }
+
+        .sig-block.narrow {
+            flex: 0 0 1.8in;
+        }
+
+        .sig-blank {
+            min-height: 1.2rem;
+            border-bottom: 1px solid var(--black);
+        }
+
+        .sig-field-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 6.5pt;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-top: 0.15rem;
+        }
+
+        /* ─── FOOTER ─────────────────────────────────────────── */
+        .doc-footer {
+            border-top: 2px solid var(--black);
+            margin: 0 2.3rem;
+            padding: 0.8rem 0 1.4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 7.3pt;
+        }
+
+        /* ─── DOWNLOAD BUTTON ────────────────────────────────── */
+        .fab {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--black);
+            color: var(--white);
+            border: 2px solid var(--black);
+            padding: 0.9rem 1.6rem;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 8pt;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            z-index: 1000;
+        }
+
+        .fab:hover { background: var(--white); color: var(--black); }
+
+        @media print {
+            .fab { display: none !important; }
+            body { background: white; padding: 0; }
+            .document { box-shadow: none; border: none; }
+        }
+    </style>
+    <link rel="stylesheet" href="forms-print.css">
+</head>
+
+<body>
+
+    <button id="downloadPdfBtn" class="fab">
+        <svg viewBox="0 0 24 24" width="16" height="16">
+            <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" fill="currentColor"/>
+        </svg>
+        Download PDF
+    </button>
+
+    <div class="document" id="pdf-content">
+
+        <div class="masthead">
+            <div class="masthead-left">
+                <div class="brand-logo"><img src="logo.svg" alt="Logo"></div>
+            </div>
+        </div>
+
+        <div class="premium-product-band">
+            <div class="form-title">Post Operative Care of Hybrid and Maintainance</div>
+            <div class="form-label">Patient Instructions</div>
+        </div>
+        <div class="title-band sub-title">
+            <div class="form-title"> POST OPERATIVE CARE OF HYBRID AND MAINTAINANCE</div>
+        </div>
+
+        <div class="body">
+
+            <section>
+                <p class="important-text" style="text-align:center; font-size:9pt;">YOU WILL BE ON A SOFT DIET FOR 3-4 MONTHS AS IMPLANTS ARE HEALING</p>
+                <p style="text-align:center;">Treat your dental implants like you would take care of your natural teeth.</p>
+            </section>
+
+            <div class="two-col">
+
+                <div class="col">
+                    <section>
+                        <div class="part-header">
+                            <span class="part-number">Part 1</span>
+                            <span class="part-title">Acceptable Foods to Eat</span>
+                            <span class="part-rule"></span>
+                        </div>
+
+                        <h3>Fruits/Vegetables</h3>
+                        <p>DO NOT &ndash; bite or chew on any hard stuff. Cut them into pieces and have it.</p>
+                        <p>DO NOT &ndash; crush ice</p>
+                        <p>DO NOT &ndash; eat nuts</p>
+
+                        <p class="important-text" style="margin-top:0.2rem;">CAN EAT &ndash;</p>
+                        <ul>
+                            <li>Apple Sauce</li>
+                            <li>Cooked Fruits or Ripe Fruits</li>
+                            <li>Canned fruits without skin or seeds</li>
+                            <li>Well-cooked soft vegetables</li>
+                        </ul>
+
+                        <h3>Meats and Other Proteins</h3>
+                        <p class="intro-copy">They have to be very tender and not chewy</p>
+                        <ul>
+                            <li>Broiled Fish</li>
+                            <li>Roasted/ Stewed Chicken</li>
+                            <li>Soups with small soft pieces of vegetables and meat</li>
+                            <li>Tofu</li>
+                        </ul>
+
+                        <h3>Breads/Pasta/Rice</h3>
+                        <ul>
+                            <li>Soft loaf bread &ndash; cut them into pieces and have it</li>
+                            <li>Pancakes/Muffins/Waffles</li>
+                            <li>Macaroni/Rice Pasta/Pasta</li>
+                            <li>Oatmeal/ Cooked Cereal/ Cream of Wheat</li>
+                            <li>Mashed Potatoes</li>
+                        </ul>
+
+                        <h3>Other</h3>
+                        <ul>
+                            <li>Pudding/Jell-O/ Yogurt/ Ice Cream/Protein Shakes</li>
+                            <li>Hamburger, Pizza, Bagel &ndash; cut into small pieces and have it</li>
+                        </ul>
+                    </section>
+                </div>
+
+                <div class="col">
+                    <section>
+                        <div class="part-header">
+                            <span class="part-number">Part 2</span>
+                            <span class="part-title">Oral Hygiene Care</span>
+                            <span class="part-rule"></span>
+                        </div>
+
+                        <ul>
+                            <li>You can brush your teeth with the gum part of your hybrid very gently with any paste from the next morning.</li>
+                            <li>You can use a manual or electric toothbrush, whichever is convenient for you.</li>
+                            <li>We recommend usage of Oral-B electric round toothbrush &ndash; Its good for cleaning hybrids.</li>
+                            <li>Start using a WATERPIK AFTER ONE WEEK OF RECEIVING YOUR HYBRID BRIDGE.</li>
+                            <li>Use the waterpik under your bridges with very slow pressure by lifting your lip and cheek with slightly closed mouth.</li>
+                            <li>Cleaning under the hybrid is more necessary to clean than the original teeth.</li>
+                            <li>Keep in mind if you don&rsquo;t waterpik, food will accumulate under your bridges causing plaque buildup and tarter on your implants and abutments.</li>
+                            <li>Use your waterpik after each meal, if possible if not make sure to use it at nighttime before bed.</li>
+                            <li>Other accessories to clean under the hybrid after one month of gum healing &ndash; you can use interdental angled brushes &ndash; Tepe Brushes</li>
+                            <li>Super Floss if that is convenient for you to do.</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <div class="part-header">
+                            <span class="part-number">Part 3</span>
+                            <span class="part-title">Maintenance Schedule</span>
+                            <span class="part-rule"></span>
+                        </div>
+
+                        <p><strong>1st hybrid cleaning will be after 6 months of hybrid delivery!</strong></p>
+                        <p>Keep in mind that you should get the periodic cleaning and maintenance done by experienced dentist who is familiar with ALL-ON-4 complete implant solution techniques. An ideal maintenance schedule would be twice a year or a thorough cleaning of bridges. It ensures that they last long, and it also provides the stability of your implants.</p>
+                    </section>
+                </div>
+
+            </div>
+
+            <section class="signature-section" style="margin-top: 0.3rem;">
+                <div class="part-header">
+                    <span class="part-number">Part 4</span>
+                    <span class="part-title">Acknowledgment &amp; Signatures</span>
+                    <span class="part-rule"></span>
+                </div>
+
+                <p>I acknowledge that I have received and understood the above post-operative care instructions for my hybrid bridge.</p>
+
+                <div class="sig-row" style="margin-top:0.4rem;">
+                    <div class="sig-block">
+                        <div class="sig-blank"></div>
+                        <div class="sig-field-label">Print Patient Name</div>
+                    </div>
+                    <div class="sig-block narrow">
+                        <div class="sig-blank"></div>
+                        <div class="sig-field-label">Date</div>
+                    </div>
+                </div>
+
+                <div class="sig-row">
+                    <div class="sig-block">
+                        <div class="sig-blank"></div>
+                        <div class="sig-field-label">Patient Signature (parent if minor)</div>
+                    </div>
+                    <div class="sig-block">
+                        <div class="sig-blank"></div>
+                        <div class="sig-field-label">Witness</div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+    </div>
+
+    <script src="forms-print.js"></script>
+</body>
+</html>
