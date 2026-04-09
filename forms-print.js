@@ -1,39 +1,7 @@
 (function () {
-    const CONTACT_HTML = [
-        '<div class="doctors">',
-        'Dr. Sambhav Jain <span>DMD, MS</span><br>',
-        'Dr. Arpana Gupta <span>DDS, MDS</span>',
-        '</div>',
-        '<div class="contact-block"><strong>Email:</strong> info@bayareaimplantdentistry.com</div>',
-        '<div class="contact-block"><strong>Main Office:</strong> 3381 Walnut Ave, Fremont, CA 94538<br><strong>Phone:</strong> (510) 574-0496</div>',
-        '<div class="contact-block"><strong>SF Office:</strong> 4318 Geary Blvd, Suite 201, San Francisco, CA 94118<br><strong>Phone:</strong> (415) 696-2922</div>'
-    ].join('');
-
-    const PREMIUM_BAND_HTML = [
-        '<div class="form-title">ALL<span class="bold-hyphen">-</span>ON<span class="bold-hyphen">-</span>8 ROBUST</div>',
-        '<div class="form-label">Most Advanced Biomechanical Dental Implants Protocol</div>'
-    ].join('');
-
-    const PATIENT_META_HTML = [
-        '<div class="patient-meta-item patient-meta-item-name">',
-        '<div class="patient-meta-label">Patient Name</div>',
-        '<div class="patient-meta-surface"></div>',
-        '</div>',
-        '<div class="patient-meta-item patient-meta-item-date">',
-        '<div class="patient-meta-label">Date</div>',
-        '<div class="patient-meta-surface"></div>',
-        '</div>',
-        '<div class="patient-meta-item patient-meta-item-chart">',
-        '<div class="patient-meta-label">Chart Number</div>',
-        '<div class="patient-meta-surface"></div>',
-        '</div>',
-        '<div class="patient-meta-item patient-meta-item-gender">',
-        '<div class="patient-meta-label">Gender · M/F</div>',
-        '<div class="patient-meta-surface"></div>',
-        '</div>'
-    ].join('');
-
     let logoDataUriPromise = null;
+    const monochromeLogoCache = new Map();
+
     const PDF_PAGE_SIZE_IN = {
         a4: { width: 8.2677, height: 11.6929 },
         letter: { width: 8.5, height: 11 }
@@ -79,9 +47,23 @@
         return logoDataUriPromise;
     }
 
+    function normalizeWhitespace(text) {
+        return String(text || '')
+            .replace(/\s+/g, ' ')
+            .trim();
+    }
+
+    function readDocumentTitle() {
+        const visibleTitle = document.querySelector('.title-band .form-title');
+        if (visibleTitle) {
+            return normalizeWhitespace(visibleTitle.textContent);
+        }
+
+        return normalizeWhitespace(document.title).replace(/\s*\|\s*All-On-8 Robust\s*$/i, '');
+    }
+
     function filenameFromTitle() {
-        const cleanedTitle = (document.title || 'office-form')
-            .replace(/\s*\|\s*All-On-8 Robust\s*$/i, '')
+        const cleanedTitle = readDocumentTitle()
             .replace(/[<>:"/\\|?*\u0000-\u001f]/g, '')
             .trim()
             .replace(/\s+/g, '-')
@@ -91,61 +73,65 @@
         return cleanedTitle || 'office-form';
     }
 
-    function standardizeMasthead() {
+    function normalizeMasthead() {
         const masthead = document.querySelector('.masthead');
         if (!masthead) {
             return;
         }
 
-        const mastheadRight = masthead.querySelector('.masthead-right');
-        if (mastheadRight) {
-            mastheadRight.innerHTML = CONTACT_HTML;
-        }
+        masthead.classList.add('office-print-avoid');
 
         const logo = masthead.querySelector('.brand-logo img, img[src$="logo.svg"], img[src*="logo"]');
         if (logo) {
-            logo.setAttribute('alt', 'Bay Area Implant Dentistry');
-            logo.style.filter = 'grayscale(100%)';
+            logo.setAttribute('alt', logo.getAttribute('alt') || 'Bay Area Implant Dentistry');
+            logo.style.filter = 'grayscale(100%) contrast(136%) brightness(0.88)';
         }
     }
 
-    function standardizePremiumBand() {
-        const masthead = document.querySelector('.masthead');
-        let premiumBand = document.querySelector('.premium-product-band');
-
-        if (!premiumBand && masthead) {
-            premiumBand = document.createElement('div');
-            premiumBand.className = 'premium-product-band';
-            masthead.insertAdjacentElement('afterend', premiumBand);
-        }
-
-        if (premiumBand) {
-            premiumBand.innerHTML = PREMIUM_BAND_HTML;
-        }
-    }
-
-    function ensurePatientMetaBand() {
-        const premiumBand = document.querySelector('.premium-product-band');
-        if (!premiumBand) {
+    function inlinePrimaryTitleBand() {
+        const masthead = document.querySelector('.document > .masthead, .masthead');
+        if (!masthead) {
             return;
         }
 
-        let patientMetaBand = document.querySelector('.patient-meta-band');
-        if (!patientMetaBand) {
-            patientMetaBand = document.createElement('div');
-            patientMetaBand.className = 'patient-meta-band office-print-avoid';
-            premiumBand.insertAdjacentElement('afterend', patientMetaBand);
+        const titleBand = masthead.nextElementSibling;
+        if (!titleBand || !titleBand.classList.contains('title-band')) {
+            return;
         }
 
-        patientMetaBand.innerHTML = PATIENT_META_HTML;
+        if (!titleBand.querySelector('.form-title') || titleBand.classList.contains('office-inline-title')) {
+            return;
+        }
+
+        masthead.classList.add('has-inline-title');
+        titleBand.classList.add('office-inline-title');
+        masthead.appendChild(titleBand);
+    }
+
+    function removeLegacyArtifacts() {
+        document.querySelectorAll('.masthead-right, .premium-product-band, .doc-footer, .page-break').forEach(function (node) {
+            node.remove();
+        });
     }
 
     function markAvoidBreaks() {
-        document
-            .querySelectorAll('.signature-section, .sig-section, .sig-row, .sig-block, .doc-footer, .patient-meta-band')
-            .forEach(function (node) {
-                node.classList.add('office-print-avoid');
-            });
+        const selectors = [
+            '.premium-product-band',
+            '.title-band',
+            '.hhs-header',
+            '.patient-header-row',
+            '.signature-section',
+            '.sig-section',
+            '.patient-meta-band',
+            '.important-box',
+            '.consent-callout',
+            '.notes-area',
+            '.delivery-note'
+        ].join(', ');
+
+        document.querySelectorAll(selectors).forEach(function (node) {
+            node.classList.add('office-print-avoid');
+        });
     }
 
     function isVisibleForPagination(node) {
@@ -252,21 +238,12 @@
 
         const candidateSelector = [
             '.part-header',
-            '.field-row',
-            '.form-row',
-            '.checkbox-item',
-            '.option-row',
-            '.checkbox-grid',
-            '.info-grid',
-            '.conditions-container',
-            '.signature-section',
-            '.sig-section',
-            '.sig-row',
-            '.doc-footer',
+            'h3',
+            '.notes-area',
             '.delivery-note'
         ].join(', ');
 
-        for (let pass = 0; pass < 12; pass += 1) {
+        for (let pass = 0; pass < 6; pass += 1) {
             const pageTop = root.getBoundingClientRect().top;
             let changed = false;
 
@@ -280,15 +257,33 @@
                 const bottom = rect.bottom - pageTop;
                 const height = rect.height;
 
-                if (height >= pageHeightPx * 0.94 || top <= 8) {
+                if (height >= pageHeightPx * 0.92 || top <= 8) {
                     return;
                 }
 
                 const currentPage = Math.floor(top / pageHeightPx);
                 const currentPageTop = currentPage * pageHeightPx;
                 const currentPageBottom = currentPageTop + pageHeightPx;
+                const remainingSpace = currentPageBottom - top;
 
                 if (bottom <= currentPageBottom - 4 || top <= currentPageTop + 8) {
+                    return;
+                }
+
+                const isHeading = node.matches('.part-header, h3');
+                if (isHeading && node.closest('.signature-section, .sig-section')) {
+                    return;
+                }
+
+                const isCompactBlock = isHeading || node.matches('.notes-area, .delivery-note');
+                const headingThreshold = Math.min(pageHeightPx * 0.14, 96);
+                const blockThreshold = Math.min(pageHeightPx * 0.24, 180);
+
+                if (isHeading && remainingSpace > headingThreshold) {
+                    return;
+                }
+
+                if (!isHeading && (!isCompactBlock || height >= pageHeightPx * 0.45 || remainingSpace > Math.max(height + 16, blockThreshold))) {
                     return;
                 }
 
@@ -337,30 +332,13 @@
         return cleanButton;
     }
 
-    function addPageNumbers(pdf) {
-        const pageCount = pdf.internal.getNumberOfPages();
-        const pageWidth = pdf.internal.pageSize.getWidth();
-        const pageHeight = pdf.internal.pageSize.getHeight();
-
-        pdf.setTextColor(0, 0, 0);
-        pdf.setFont('times', 'normal');
-        pdf.setFontSize(9);
-
-        for (let page = 1; page <= pageCount; page += 1) {
-            pdf.setPage(page);
-            pdf.text('Page ' + page + ' of ' + pageCount, pageWidth - 0.22, pageHeight - 0.12, {
-                align: 'right'
-            });
-        }
-    }
-
     function buildPdfOptions(filename) {
         return {
-            margin: [0.22, 0.22, 0.28, 0.22],
+            margin: [0.24, 0.24, 0.24, 0.24],
             filename: filename + '.pdf',
             image: { type: 'jpeg', quality: 1 },
             html2canvas: {
-                scale: Math.min(2.6, Math.max(2.1, window.devicePixelRatio || 1)),
+                scale: Math.min(3.4, Math.max(2.8, window.devicePixelRatio || 1)),
                 useCORS: true,
                 backgroundColor: '#ffffff',
                 letterRendering: true,
@@ -370,7 +348,7 @@
             },
             jsPDF: {
                 unit: 'in',
-                format: 'a4',
+                format: 'letter',
                 orientation: 'portrait',
                 compress: true
             },
@@ -378,16 +356,12 @@
                 mode: ['css'],
                 avoid: [
                     '.office-print-avoid',
-                    '.field-row',
-                    '.form-row',
-                    '.checkbox-item',
-                    '.option-row',
                     '.part-header',
                     'h3',
-                    '.checkbox-grid',
-                    '.conditions-container',
-                    '.sig-row',
-                    '.doc-footer'
+                    '.signature-section',
+                    '.sig-section',
+                    '.notes-area',
+                    '.delivery-note'
                 ]
             }
         };
@@ -417,42 +391,141 @@
         });
     }
 
+    function buildMonochromeLogoDataUri(src) {
+        if (!src) {
+            return Promise.resolve('');
+        }
+
+        if (monochromeLogoCache.has(src)) {
+            return Promise.resolve(monochromeLogoCache.get(src));
+        }
+
+        return new Promise(function (resolve) {
+            const image = new Image();
+            image.crossOrigin = 'anonymous';
+
+            image.onload = function () {
+                try {
+                    const width = image.naturalWidth || image.width;
+                    const height = image.naturalHeight || image.height;
+
+                    if (!width || !height) {
+                        monochromeLogoCache.set(src, '');
+                        resolve('');
+                        return;
+                    }
+
+                    const canvas = document.createElement('canvas');
+                    const upscale = Math.max(1, width < 1600 ? 2 : 1.5);
+                    canvas.width = Math.round(width * upscale);
+                    canvas.height = Math.round(height * upscale);
+
+                    const context = canvas.getContext('2d');
+                    if (!context) {
+                        monochromeLogoCache.set(src, '');
+                        resolve('');
+                        return;
+                    }
+
+                    context.imageSmoothingEnabled = true;
+                    context.imageSmoothingQuality = 'high';
+                    context.drawImage(image, 0, 0, canvas.width, canvas.height);
+
+                    const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
+                    const pixels = imageData.data;
+
+                    for (let index = 0; index < pixels.length; index += 4) {
+                        const alpha = pixels[index + 3];
+                        if (!alpha) {
+                            continue;
+                        }
+
+                        const luminance = Math.round(
+                            (pixels[index] * 0.2126) +
+                            (pixels[index + 1] * 0.7152) +
+                            (pixels[index + 2] * 0.0722)
+                        );
+
+                        const adjusted = luminance > 245
+                            ? 255
+                            : Math.max(0, Math.min(255, Math.round(luminance * 0.35)));
+
+                        pixels[index] = adjusted;
+                        pixels[index + 1] = adjusted;
+                        pixels[index + 2] = adjusted;
+                    }
+
+                    context.putImageData(imageData, 0, 0);
+
+                    const dataUri = canvas.toDataURL('image/png');
+                    monochromeLogoCache.set(src, dataUri);
+                    resolve(dataUri);
+                } catch (error) {
+                    monochromeLogoCache.set(src, '');
+                    resolve('');
+                }
+            };
+
+            image.onerror = function () {
+                monochromeLogoCache.set(src, '');
+                resolve('');
+            };
+
+            image.src = src;
+        });
+    }
+
     function prepareExportResources(root) {
         const restorers = [];
         const pending = [];
 
         if (window.location.protocol === 'file:') {
             const inlineLogo = window.OFFICE_FORMS_LOGO_DATA_URI || '';
+            const logoSelector = '.masthead .brand-logo img, .masthead img[src$="logo.svg"], .masthead img[src*="logo"]';
 
-            root.querySelectorAll('img').forEach(function (image) {
+            root.querySelectorAll(logoSelector).forEach(function (image) {
                 const parent = image.parentNode;
                 if (!parent) {
                     return;
                 }
 
-                if (inlineLogo) {
-                    const originalSrc = image.getAttribute('src');
-                    image.setAttribute('src', inlineLogo);
-                    pending.push(waitForImageReady(image));
+                const originalSrc = image.getAttribute('src') || '';
+                const preferredSrc = inlineLogo || originalSrc;
 
-                    restorers.push(function () {
-                        image.setAttribute('src', originalSrc);
-                    });
-                    return;
-                }
+                pending.push(
+                    buildMonochromeLogoDataUri(preferredSrc).then(function (monochromeSrc) {
+                        if (monochromeSrc) {
+                            image.setAttribute('src', monochromeSrc);
+                            return waitForImageReady(image).then(function () {
+                                restorers.push(function () {
+                                    image.setAttribute('src', originalSrc);
+                                });
+                            });
+                        }
 
-                const fallback = createLogoFallback();
-                const nextSibling = image.nextSibling;
-                parent.replaceChild(fallback, image);
+                        if (inlineLogo) {
+                            image.setAttribute('src', inlineLogo);
+                            return waitForImageReady(image).then(function () {
+                                restorers.push(function () {
+                                    image.setAttribute('src', originalSrc);
+                                });
+                            });
+                        }
 
-                restorers.push(function () {
-                    if (nextSibling && nextSibling.parentNode === parent) {
-                        parent.insertBefore(image, nextSibling);
-                    } else {
-                        parent.appendChild(image);
-                    }
-                    fallback.remove();
-                });
+                        const fallback = createLogoFallback();
+                        const nextSibling = image.nextSibling;
+                        parent.replaceChild(fallback, image);
+
+                        restorers.push(function () {
+                            if (nextSibling && nextSibling.parentNode === parent) {
+                                parent.insertBefore(image, nextSibling);
+                            } else {
+                                parent.appendChild(image);
+                            }
+                            fallback.remove();
+                        });
+                    })
+                );
             });
         }
 
@@ -502,14 +575,9 @@
                 const worker = html2pdf()
                     .set(pdfOptions)
                     .from(root)
-                    .toPdf()
-                    .get('pdf')
-                    .then(function (pdf) {
-                        addPageNumbers(pdf);
-                    });
+                    .save();
 
                 return worker
-                    .save()
                     .then(function () {
                         restorePagination();
                         restoreButton(restoreResources);
@@ -532,9 +600,9 @@
         }
 
         document.body.dataset.officeFormsEnhanced = 'true';
-        standardizeMasthead();
-        standardizePremiumBand();
-        ensurePatientMetaBand();
+        removeLegacyArtifacts();
+        inlinePrimaryTitleBand();
+        normalizeMasthead();
         markAvoidBreaks();
         ensureLogoDataUri();
 

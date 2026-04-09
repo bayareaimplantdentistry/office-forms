@@ -261,34 +261,7 @@
         <div class="masthead">
             <div class="masthead-left">
                 <div class="brand-logo"><img src="logo.svg" alt="Logo"></div>
-            </div>
-            <div class="masthead-right">
-                <div class="doctors">
-                    Dr. Sambhav Jain <span>DMD, MS</span><br>
-                    Dr. Arpana Gupta <span>DDS, MDS</span>
-                </div>
-                
-                <div class="contact-block">
-                    <strong>Email:</strong> info@bayareaimplantdentistry.com<br>
-                    <strong>Website:</strong> www.bayareaimplantdentistry.com
-                </div>
-                
-                <div class="contact-block">
-                    <strong>Main Office:</strong> 3381 Walnut Ave, Fremont, CA 94538<br>
-                    <strong>Phone:</strong> (510) 574-0496
-                </div>
-                
-                <div class="contact-block">
-                    <strong>SF Office:</strong> 4318 Geary Blvd, Suite 201, San Francisco, CA 94118<br>
-                    <strong>Phone:</strong> (415) 696-2922
-                </div>
-            </div>
-        </div>
-
-        <div class="premium-product-band">
-            <div class="form-title">ALL<span class="bold-hyphen">-</span>ON<span class="bold-hyphen">-</span>8 ROBUST</div>
-            <div class="form-label">Most Advanced Biomechanical Dental Implants Protocol</div>
-        </div>
+            </div>        </div>
         
         <div class="title-band">
             <div class="form-title">Medical Clearance for Dental Treatment</div>
@@ -394,27 +367,6 @@
         </div>
     </div>
 
-    <script>
-        document.getElementById('downloadPdfBtn').addEventListener('click', function () {
-            const element = document.getElementById('pdf-content');
-            document.fonts.ready.then(() => {
-                const opt = {
-                    margin: [0.35, 0.35, 0.35, 0.35],
-                    filename: 'All-On-8_Medical_Clearance_Form.pdf',
-                    image: { type: 'jpeg', quality: 0.98 },
-                    html2canvas: { 
-                        scale: 3, 
-                        useCORS: true, 
-                        letterRendering: true,
-                        scrollX: 0,
-                        scrollY: 0
-                    },
-                    jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
-                };
-                html2pdf().set(opt).from(element).save();
-            });
-        });
-    </script>
     <script src="forms-print.js"></script>
 </body>
 </html>

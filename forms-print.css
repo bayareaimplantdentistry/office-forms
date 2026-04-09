@@ -1,14 +1,19 @@
 :root {
-    --black: #000000;
-    --gray-dark: #222222;
-    --gray-mid: #555555;
-    --gray-light: #555555;
-    --gray-border: #000000;
-    --white: #ffffff;
-    --page-gutter: 1.7rem;
-    --page-bottom: 0.95rem;
-    --copy-size: 10.4pt;
-    --copy-leading: 1.33;
+    --office-ink: #111111;
+    --office-copy: #202020;
+    --office-muted: #595959;
+    --office-rule: #7b7b7b;
+    --office-rule-strong: #262626;
+    --office-fill: #f3f3f3;
+    --office-paper: #ffffff;
+    --page-inline: 0.3in;
+    --page-bottom: 0.24in;
+    --copy-size: 9pt;
+    --copy-leading: 1.26;
+    --label-size: 6.95pt;
+    --small-size: 7.15pt;
+    --title-size: 14.2pt;
+    --logo-width: 1.5in;
 }
 
 html {
@@ -16,157 +21,196 @@ html {
     print-color-adjust: exact;
 }
 
+* {
+    box-sizing: border-box;
+}
+
 body {
-    font-family: 'EB Garamond', serif !important;
+    font-family: Arial, Helvetica, sans-serif !important;
     font-size: var(--copy-size) !important;
     line-height: var(--copy-leading) !important;
-    color: var(--black) !important;
-    background: var(--white) !important;
+    color: var(--office-copy) !important;
+    background: #ececec !important;
     text-rendering: optimizeLegibility;
     padding: 0.6rem !important;
 }
 
-.document {
-    background: var(--white) !important;
-    box-shadow: none !important;
-    border: none !important;
-    width: 100% !important;
+body,
+button,
+input,
+textarea,
+select {
+    font-family: Arial, Helvetica, sans-serif !important;
 }
 
-/* FIX: Changed align-items to center and ensured display: flex */
+.document {
+    width: 100% !important;
+    max-width: 8.5in !important;
+    margin: 0 auto !important;
+    background: var(--office-paper) !important;
+    border: 1px solid #d7d7d7 !important;
+    box-shadow: 0 2px 14px rgba(0, 0, 0, 0.08) !important;
+}
+
 .masthead {
     display: flex !important;
-    justify-content: space-between !important;
-    align-items: center !important; 
-    padding: 1.3rem var(--page-gutter) 0.7rem !important;
-    gap: 1.35rem !important;
+    justify-content: flex-start !important;
+    align-items: flex-start !important;
+    gap: 0.16in !important;
+    padding: 0.14in var(--page-inline) 0.07in !important;
+    margin-bottom: 0.01in !important;
+    border-bottom: 1.25px solid var(--office-rule-strong) !important;
     page-break-inside: avoid !important;
+    break-inside: avoid-page !important;
 }
 
-/* FIX: Changed align-items to center */
 .masthead-left {
     display: flex !important;
-    flex: 1 1 auto !important;
-    align-items: center !important;
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+    flex: 0 0 auto !important;
 }
 
-/* FIX: Added display: block to remove baseline spacing */
+.masthead.has-inline-title {
+    align-items: center !important;
+    gap: 0.18in !important;
+}
+
+.masthead.has-inline-title .masthead-left {
+    align-self: flex-start !important;
+}
+
 .brand-logo img {
     display: block !important;
-    width: 192px !important;
+    width: var(--logo-width) !important;
     max-width: 100% !important;
+    max-height: 0.84in !important;
     height: auto !important;
     object-fit: contain !important;
-    filter: grayscale(100%) !important;
+    object-position: left center !important;
+    filter: grayscale(100%) contrast(136%) brightness(0.88) !important;
+    image-rendering: crisp-edges !important;
+    image-rendering: -webkit-optimize-contrast !important;
+    image-rendering: optimizeQuality !important;
 }
 
 .office-logo-fallback {
-    width: 192px;
-    min-height: 54px;
-    display: inline-flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    color: var(--black);
+    width: var(--logo-width) !important;
+    min-height: 0.56in !important;
+    display: inline-flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: flex-start !important;
+    color: var(--office-ink) !important;
 }
 
 .office-logo-fallback-eyebrow {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 7.4pt;
-    font-weight: 700;
-    letter-spacing: 0.24em;
-    text-transform: uppercase;
-    line-height: 1.1;
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-size: 6.6pt !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.14em !important;
+    text-transform: uppercase !important;
+    line-height: 1.15 !important;
 }
 
 .office-logo-fallback-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 18pt;
-    font-weight: 700;
-    line-height: 0.95;
-    letter-spacing: 0.02em;
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-size: 11.75pt !important;
+    font-weight: 700 !important;
+    line-height: 1 !important;
+    letter-spacing: 0.01em !important;
+}
+
+.masthead-right,
+.masthead-right * {
+    font-family: Arial, Helvetica, sans-serif !important;
 }
 
 .masthead-right {
-    max-width: 3.55in !important;
+    margin-left: auto !important;
+    max-width: 3.6in !important;
     text-align: right !important;
-    font-family: 'Montserrat', sans-serif !important;
-    font-size: 7.35pt !important;
-    line-height: 1.35 !important;
-    color: var(--gray-dark) !important;
+    font-size: var(--small-size) !important;
+    line-height: 1.34 !important;
+    color: var(--office-copy) !important;
 }
 
-.masthead-right .doctors {
-    font-family: 'Cormorant Garamond', serif !important;
-    font-size: 12.4pt !important;
-    line-height: 1.08 !important;
+.masthead-right .doctors,
+.masthead-right .clinic-title {
+    font-size: 8.1pt !important;
+    line-height: 1.28 !important;
     font-weight: 700 !important;
-    color: var(--black) !important;
-    margin-bottom: 0.45rem !important;
+    letter-spacing: 0.02em !important;
+    color: var(--office-ink) !important;
+    margin-bottom: 0.08in !important;
 }
 
 .masthead-right .doctors span {
-    font-family: 'Montserrat', sans-serif !important;
-    font-size: 7.15pt !important;
+    font-size: 6.45pt !important;
     font-weight: 700 !important;
     letter-spacing: 0.08em !important;
     text-transform: uppercase !important;
 }
 
-.masthead-right .contact-block {
-    margin-bottom: 0.32rem !important;
+.masthead-right .contact-block,
+.header-item {
+    margin-bottom: 0.035in !important;
 }
 
-.masthead-right .contact-block:last-child {
+.masthead-right .contact-block:last-child,
+.header-item:last-child {
     margin-bottom: 0 !important;
 }
 
 .masthead-right strong {
-    color: var(--black) !important;
+    color: var(--office-ink) !important;
     font-weight: 700 !important;
 }
 
 .premium-product-band {
-    margin: 0 var(--page-gutter) 0.65rem !important;
-    padding: 0.55rem 0 0.5rem !important;
-    text-align: center !important;
-    border-top: 4px double var(--black) !important;
-    border-bottom: 4px double var(--black) !important;
-    color: var(--black) !important;
+    margin: 0 var(--page-inline) 0.1in !important;
+    padding: 0.03in 0 0.08in !important;
+    border: 0 !important;
+    border-bottom: 1px solid var(--office-rule) !important;
+    text-align: left !important;
+    color: var(--office-ink) !important;
+    background: transparent !important;
     page-break-inside: avoid !important;
+    break-inside: avoid-page !important;
 }
 
 .premium-product-band .form-title {
-    font-family: 'Cormorant Garamond', serif !important;
-    font-size: 16.5pt !important;
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-size: 8.9pt !important;
     font-weight: 700 !important;
-    line-height: 1 !important;
-    letter-spacing: 0.12em !important;
+    line-height: 1.2 !important;
+    letter-spacing: 0.09em !important;
     text-transform: uppercase !important;
-    color: var(--black) !important;
+    color: var(--office-ink) !important;
 }
 
-.bold-hyphen {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 700;
-    margin: 0 4px;
+.premium-product-band .bold-hyphen {
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-weight: 700 !important;
+    margin: 0 1px !important;
 }
 
 .premium-product-band .form-label {
-    font-family: 'Montserrat', sans-serif !important;
-    font-size: 6.65pt !important;
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-size: 6.45pt !important;
     font-weight: 700 !important;
-    letter-spacing: 0.22em !important;
+    line-height: 1.2 !important;
+    letter-spacing: 0.07em !important;
     text-transform: uppercase !important;
-    color: var(--gray-mid) !important;
-    margin-top: 0.22rem !important;
+    color: var(--office-muted) !important;
+    margin-top: 0.03in !important;
 }
 
 .patient-meta-band {
     display: grid !important;
-    grid-template-columns: minmax(0, 2.2fr) minmax(0, 1fr) minmax(0, 1.15fr) minmax(0, 0.7fr);
-    gap: 0.82rem !important;
-    margin: 0 var(--page-gutter) 0.72rem !important;
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    gap: 0.12in !important;
+    margin: 0 var(--page-inline) 0.1in !important;
     align-items: end !important;
     page-break-inside: avoid !important;
     break-inside: avoid-page !important;
@@ -174,36 +218,54 @@ body {
 
 .patient-meta-item {
     min-width: 0 !important;
-    display: block !important;
 }
 
 .patient-meta-label {
-    font-family: 'Montserrat', sans-serif !important;
-    font-size: 6.3pt !important;
+    display: block !important;
+    margin-bottom: 0.04in !important;
+    font-size: var(--label-size) !important;
     font-weight: 700 !important;
-    letter-spacing: 0.14em !important;
+    letter-spacing: 0.04em !important;
     text-transform: uppercase !important;
-    color: var(--gray-mid) !important;
-    margin-bottom: 0.26rem !important;
+    color: var(--office-muted) !important;
     white-space: nowrap !important;
 }
 
 .patient-meta-surface {
-    height: 1.22rem !important;
-    border: 1px solid rgba(0, 0, 0, 0.74) !important;
-    border-radius: 0.12rem !important;
-    background: #ffffff !important;
+    min-height: 0.26in !important;
+    border: 1px solid var(--office-rule) !important;
+    background: var(--office-paper) !important;
 }
 
 .title-band {
-    padding: 0.85rem var(--page-gutter) 0.65rem !important;
-    text-align: center !important;
+    padding: 0.04in var(--page-inline) 0.08in !important;
+    margin-bottom: 0.03in !important;
+    border-bottom: 1px solid #cfcfcf !important;
+    text-align: left !important;
     page-break-inside: avoid !important;
+    break-inside: avoid-page !important;
 }
 
 .title-band.sub-title {
     padding-top: 0 !important;
-    margin-top: 0.2rem !important;
+    margin-top: 0 !important;
+}
+
+.office-inline-title {
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    text-align: left !important;
+}
+
+.office-inline-title .form-label {
+    margin-bottom: 0.02in !important;
+}
+
+.masthead.has-inline-title .office-inline-title .form-title {
+    line-height: 1.02 !important;
 }
 
 .title-band .form-label,
@@ -212,252 +274,474 @@ body {
 .sig-field-label,
 .sig-label,
 h3,
-th {
-    font-family: 'Montserrat', sans-serif !important;
+th,
+.notes-title,
+.footer-right {
+    font-family: Arial, Helvetica, sans-serif !important;
 }
 
 .title-band .form-label {
-    font-size: 6.8pt !important;
-    letter-spacing: 0.22em !important;
-    color: var(--gray-mid) !important;
-    margin-bottom: 0.18rem !important;
+    font-size: 7pt !important;
+    font-weight: 700 !important;
+    line-height: 1.2 !important;
+    letter-spacing: 0.09em !important;
     text-transform: uppercase !important;
+    color: var(--office-muted) !important;
+    margin-bottom: 0.03in !important;
 }
 
-.title-band .form-title {
-    font-family: 'Cormorant Garamond', serif !important;
-    font-size: 17.6pt !important;
+.title-band .form-title,
+.article-title {
+    font-family: "Times New Roman", Georgia, serif !important;
+    font-size: var(--title-size) !important;
     line-height: 1.08 !important;
-    color: var(--black) !important;
-    letter-spacing: 0.02em !important;
+    font-weight: 700 !important;
+    letter-spacing: 0 !important;
+    color: var(--office-ink) !important;
 }
 
 .body {
-    padding: 0 var(--page-gutter) var(--page-bottom) !important;
+    padding: 0 var(--page-inline) var(--page-bottom) !important;
 }
 
 section {
-    margin-bottom: 0.82rem !important;
+    margin-bottom: 0.11in !important;
     page-break-inside: auto !important;
     break-inside: auto !important;
 }
 
 .part-header {
-    margin-top: 1.5rem !important;
-    margin-bottom: 0.7rem !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.1in !important;
+    margin: 0.11in 0 0.045in !important;
+    padding-bottom: 0.03in !important;
+    border-bottom: 1px solid var(--office-rule) !important;
     page-break-inside: avoid !important;
+    break-inside: avoid-page !important;
     page-break-after: avoid !important;
 }
 
 .part-number {
-    font-size: 7pt !important;
-    letter-spacing: 0.16em !important;
-    padding: 0.2rem 0.45rem !important;
-    border: 1px solid var(--black) !important;
-    color: var(--black) !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-height: 0.18in !important;
+    padding: 0.025in 0.08in !important;
+    border: 0 !important;
+    background: var(--office-fill) !important;
+    font-size: 6.55pt !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.08em !important;
+    text-transform: uppercase !important;
+    color: var(--office-ink) !important;
 }
 
 .part-title {
-    font-family: 'Cormorant Garamond', serif !important;
-    font-size: 13.4pt !important;
-    line-height: 1.08 !important;
-    color: var(--black) !important;
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-size: 9.2pt !important;
+    line-height: 1.18 !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.01em !important;
+    color: var(--office-ink) !important;
 }
 
 .part-rule {
-    background: var(--black) !important;
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
     height: 1px !important;
+    background: transparent !important;
 }
 
 h3 {
-    font-size: 7.75pt !important;
-    letter-spacing: 0.16em !important;
+    font-size: 7.1pt !important;
     line-height: 1.25 !important;
-    color: var(--black) !important;
-    margin: 1.5rem 0 0.4rem !important;
-    padding-bottom: 0.14rem !important;
-    border-bottom: 1px solid var(--black) !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.08em !important;
+    text-transform: uppercase !important;
+    color: var(--office-ink) !important;
+    margin: 0.12in 0 0.04in !important;
+    padding-bottom: 0.02in !important;
+    border-bottom: 1px solid #bdbdbd !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid-page !important;
     page-break-after: avoid !important;
 }
 
 p,
-li {
-    font-family: 'EB Garamond', serif !important;
+li,
+td,
+label,
+.question-text,
+.option-text,
+.checkbox-text,
+.intro-copy,
+.important-text,
+.header-info {
+    font-family: Arial, Helvetica, sans-serif !important;
     font-size: var(--copy-size) !important;
     line-height: var(--copy-leading) !important;
-    color: var(--gray-dark) !important;
-    margin-bottom: 0.4rem !important;
-    page-break-inside: auto !important;
-    break-inside: auto !important;
+    color: var(--office-copy) !important;
+}
+
+p,
+li {
+    margin-bottom: 0.04in !important;
     orphans: 3;
     widows: 3;
 }
 
 ul,
 ol {
-    margin-bottom: 0.55rem !important;
-    padding-left: 1.25rem !important;
+    margin: 0 0 0.05in !important;
+    padding-left: 0.16in !important;
 }
 
 li::marker {
-    color: var(--black) !important;
-    font-weight: 700;
+    color: var(--office-ink) !important;
+}
+
+strong,
+.uppercase-bold-center {
+    color: var(--office-ink) !important;
+    font-weight: 700 !important;
+}
+
+.uppercase-bold-center {
+    text-transform: uppercase !important;
+    text-align: center !important;
 }
 
 .info-grid,
-.conditions-container {
-    border: 1px solid var(--black) !important;
-    padding: 0.9rem !important;
-    margin: 0.8rem 0 !important;
-    page-break-inside: avoid !important;
+.conditions-container,
+.important-box,
+.consent-callout,
+.hhs-header,
+.treatment-grid,
+.patient-header-row,
+.considerations-section {
+    border: 1px solid var(--office-rule) !important;
+    background: var(--office-paper) !important;
+    padding: 0.08in 0.09in !important;
+    margin: 0.06in 0 !important;
+    page-break-inside: auto !important;
+    break-inside: auto !important;
 }
 
-.field-row {
+.hhs-header,
+.important-box,
+.consent-callout {
+    background: #fafafa !important;
+}
+
+.field-row,
+.form-row,
+.relationship-row,
+.option-row,
+.consideration-row,
+.header-info,
+.flex-row,
+.doctor-signature-section,
+.shade-group {
     display: flex !important;
-    margin-bottom: 0.8rem !important;
-    gap: 0.6rem !important;
+    align-items: flex-end !important;
+    gap: 0.06in !important;
+    margin-bottom: 0.07in !important;
     page-break-inside: avoid !important;
     break-inside: avoid-page !important;
 }
 
-.field-row:last-child {
+.field-row > *,
+.form-row > *,
+.relationship-row > *,
+.option-row > *,
+.consideration-row > *,
+.header-info > *,
+.flex-row > *,
+.shade-group > * {
+    min-width: 0 !important;
+}
+
+.field-row:last-child,
+.form-row:last-child,
+.relationship-row:last-child,
+.option-row:last-child,
+.consideration-row:last-child,
+.flex-row:last-child,
+.doctor-signature-section:last-child,
+.shade-group:last-child {
     margin-bottom: 0 !important;
 }
 
-.form-row,
-.checkbox-item,
-.option-row,
-.checkbox-grid {
-    page-break-inside: avoid !important;
-    break-inside: avoid-page !important;
+.wide {
+    flex: 1 1 0 !important;
+    min-width: 0 !important;
 }
 
-.field-label {
-    font-size: 7.3pt !important;
+.narrow {
+    flex: 0 0 auto !important;
+}
+
+.info-grid .field-row,
+.conditions-container .field-row,
+.important-box .field-row,
+.consent-callout .field-row {
+    padding-bottom: 0.08in !important;
+    border-bottom: 1px solid #d8d8d8 !important;
+}
+
+.info-grid .field-row:last-child,
+.conditions-container .field-row:last-child,
+.important-box .field-row:last-child,
+.consent-callout .field-row:last-child {
+    padding-bottom: 0 !important;
+    border-bottom: 0 !important;
+}
+
+.field-label,
+.relationship-label,
+.notes-title,
+.conditions-header {
+    font-size: var(--label-size) !important;
+    line-height: 1.2 !important;
     font-weight: 700 !important;
-    letter-spacing: 0.08em !important;
-    color: var(--black) !important;
+    letter-spacing: 0.05em !important;
     text-transform: uppercase !important;
+    color: var(--office-ink) !important;
+    flex: 0 0 auto !important;
+}
+
+.conditions-header {
+    display: block !important;
+    margin-bottom: 0.08in !important;
 }
 
 .field-value,
+.underlined-value {
+    flex: 1 1 1.25in !important;
+    min-height: 0.16in !important;
+    padding: 0 0.03in 0.02in !important;
+    border: 0 !important;
+    border-bottom: 1px solid var(--office-rule-strong) !important;
+    font-size: var(--copy-size) !important;
+    line-height: 1.25 !important;
+    color: var(--office-ink) !important;
+}
+
 .field-line,
 .fill-line,
 .relationship-line,
 .fact-sheet-line,
 .initial-line,
 .inline-blank,
-.ruled-line {
-    border-color: var(--black) !important;
-}
-
-.field-value {
-    min-height: 1.15rem !important;
-    padding: 0 0.22rem 0.08rem !important;
-    font-size: 10.75pt !important;
-    color: var(--black) !important;
-    border-bottom: 1px solid var(--black) !important;
-}
-
-.field-line,
-.fill-line,
-.relationship-line,
-.fact-sheet-line,
-.initial-line,
-.inline-blank {
-    display: inline-block;
-    min-height: 1.05rem !important;
-    border-bottom: 1px solid var(--black) !important;
-}
-
-.inline-blank {
-    min-width: 1.35in !important;
+.inline-blank-long,
+.ruled-line,
+.option-line,
+.notes-line,
+.sig-line,
+.text-area-line,
+.underline-box {
+    display: inline-block !important;
+    flex: 1 1 auto !important;
+    min-height: 0.16in !important;
+    border: 0 !important;
+    border-bottom: 1px solid var(--office-rule-strong) !important;
+    background: transparent !important;
     vertical-align: baseline !important;
 }
 
-.ruled-line {
-    border-bottom: 1px solid var(--black) !important;
-    height: 1.1rem !important;
-    margin: 0.08rem 0 !important;
+.inline-blank {
+    min-width: 1.15in !important;
 }
 
-.signature-section,
-.sig-section,
-.office-print-avoid,
-.sig-row,
-.doc-footer {
+.inline-blank-long {
+    min-width: 1.8in !important;
+}
+
+.ruled-line,
+.text-area-line {
+    display: block !important;
+    width: 100% !important;
+    min-height: 0.18in !important;
+    margin: 0.03in 0 !important;
+}
+
+.notes-area,
+.dentist-note,
+.delivery-note {
+    min-height: 0.48in !important;
+    border: 1px solid var(--office-rule) !important;
+    background:
+        repeating-linear-gradient(
+            to bottom,
+            transparent,
+            transparent 0.19in,
+            #d8d8d8 0.19in,
+            #d8d8d8 calc(0.19in + 1px)
+        ) !important;
+    padding: 0.06in 0.07in !important;
     page-break-inside: avoid !important;
     break-inside: avoid-page !important;
 }
 
-.office-print-break-before {
-    page-break-before: always !important;
-    break-before: page !important;
+.underline-text {
+    display: inline-block !important;
+    min-width: 1.25in !important;
+    min-height: 0.16in !important;
+    border-bottom: 1px solid var(--office-rule-strong) !important;
+    vertical-align: baseline !important;
 }
 
-.sig-row {
-    display: flex !important;
-    gap: 1.4rem !important;
-    margin-bottom: 1rem !important;
-    align-items: flex-end !important;
+.question-block {
+    display: grid !important;
+    grid-template-columns: auto minmax(0, 1fr) auto !important;
+    gap: 0.09in !important;
+    align-items: start !important;
+    padding: 0.04in 0 !important;
+    border-bottom: 1px solid #e1e1e1 !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid-page !important;
 }
 
-.sig-block,
-.sig-field {
-    flex: 1 !important;
-    border-top: 1px solid var(--black) !important;
-    padding-top: 0.32rem !important;
+.question-block:last-child {
+    border-bottom: 0 !important;
 }
 
-.sig-field-label,
-.sig-label {
-    font-size: 7pt !important;
-    letter-spacing: 0.1em !important;
-    color: var(--black) !important;
-    text-transform: uppercase !important;
-}
-
-.sig-blank {
-    min-height: 2.5rem !important;
-}
-
-.doc-footer {
-    border-top: 1px solid var(--black) !important;
-    margin: 0 var(--page-gutter) !important;
-    padding: 0.7rem 0 1rem !important;
-    color: var(--gray-mid) !important;
-    font-family: 'Montserrat', sans-serif !important;
-    font-size: 7pt !important;
-    line-height: 1.3 !important;
-}
-
-.fab {
-    position: fixed !important;
-    right: 1rem !important;
-    bottom: 1rem !important;
-    z-index: 1000 !important;
-    padding: 0.75rem 1rem !important;
-    border: 1px solid var(--black) !important;
-    background: var(--black) !important;
-    color: var(--white) !important;
-    font-family: 'Montserrat', sans-serif !important;
-    font-size: 7.7pt !important;
+.q-num {
+    min-width: 0.24in !important;
+    font-size: var(--copy-size) !important;
+    line-height: var(--copy-leading) !important;
     font-weight: 700 !important;
-    letter-spacing: 0.08em !important;
-    text-transform: uppercase !important;
-    box-shadow: none !important;
-    cursor: pointer !important;
+    color: var(--office-ink) !important;
 }
 
-.fab[disabled],
-.office-forms-exporting .fab {
-    opacity: 0.78 !important;
-    pointer-events: none !important;
+.checkbox-grid,
+.checkbox-list,
+.checkbox-row,
+.checkbox-group,
+.options-grid,
+.conditions-grid,
+.treatment-grid,
+.header-info {
+    gap: 0.08in 0.16in !important;
+}
+
+.checkbox-grid,
+.options-grid,
+.conditions-grid,
+.treatment-grid {
+    display: grid !important;
+}
+
+.checkbox-grid,
+.options-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+}
+
+.conditions-grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+}
+
+.treatment-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+}
+
+.condition-item,
+.checkbox-item,
+.option-item,
+.yn-item,
+.doctor-signature-section,
+.dentist-confirmation {
+    page-break-inside: avoid !important;
+    break-inside: avoid-page !important;
+}
+
+.checkbox-item,
+.option-item,
+.yn-item,
+.checkbox-row,
+.checkbox-group,
+.yn-group,
+.condition-item {
+    display: flex !important;
+    align-items: flex-start !important;
+    gap: 0.08in !important;
+    line-height: 1.32 !important;
+}
+
+.checkbox-square,
+.checkbox-box,
+.square-box,
+.selection-box-marker {
+    width: 0.13in !important;
+    height: 0.13in !important;
+    flex: 0 0 0.13in !important;
+    border: 1px solid var(--office-rule-strong) !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+}
+
+.selection-box {
+    display: inline-flex !important;
+    align-items: flex-end !important;
+    min-width: 1in !important;
+    min-height: 0.16in !important;
+    padding: 0 0.03in 0.02in !important;
+    border: 0 !important;
+    border-bottom: 1px solid var(--office-rule-strong) !important;
+    background: transparent !important;
+    line-height: 1.25 !important;
+    white-space: nowrap !important;
+}
+
+.sig-box,
+.date-box {
+    flex: 1 1 0 !important;
+    min-height: 0.34in !important;
+    padding-top: 0 !important;
+    border: 0 !important;
+    border-bottom: 1px solid var(--office-rule-strong) !important;
+    background: transparent !important;
+}
+
+.date-box {
+    flex: 0 0 1.25in !important;
+    max-width: 1.25in !important;
+}
+
+.yn-box,
+.yn-group {
+    display: inline-flex !important;
+    flex-wrap: wrap !important;
+    align-items: center !important;
+    gap: 0.08in !important;
+}
+
+.question-block .yn-box {
+    justify-content: flex-end !important;
+}
+
+input,
+textarea,
+select {
+    font-size: var(--copy-size) !important;
+    color: var(--office-ink) !important;
+}
+
+input[type="checkbox"] {
+    width: 0.13in !important;
+    height: 0.13in !important;
+    appearance: auto !important;
+    -webkit-appearance: checkbox !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    accent-color: #000000 !important;
 }
 
 table {
-    width: 100%;
-    border-collapse: collapse;
+    width: 100% !important;
+    border-collapse: collapse !important;
     page-break-inside: auto !important;
     break-inside: auto !important;
 }
@@ -482,28 +766,238 @@ tr {
 
 th,
 td {
-    color: var(--gray-dark) !important;
-    page-break-inside: avoid !important;
-    break-inside: avoid-page !important;
+    padding: 0.055in 0.06in !important;
+    border: 1px solid var(--office-rule) !important;
+    vertical-align: top !important;
     overflow-wrap: break-word !important;
     word-break: normal !important;
 }
 
-input,
-textarea,
-select {
-    font-family: 'EB Garamond', serif !important;
-    font-size: 10.5pt !important;
-    color: var(--black) !important;
+th {
+    background: var(--office-fill) !important;
+    font-size: 7.15pt !important;
+    line-height: 1.2 !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.06em !important;
+    text-transform: uppercase !important;
+    color: var(--office-ink) !important;
+    text-align: left !important;
 }
 
-input[type="checkbox"] {
-    accent-color: #000000;
+td {
+    color: var(--office-copy) !important;
+}
+
+.office-table,
+.question-table,
+.checklist-table,
+.sticker-table,
+.log-table {
+    margin-top: 0.08in !important;
+}
+
+.question-table td.num-cell,
+.num-cell {
+    width: 0.5in !important;
+    text-align: center !important;
+    font-weight: 700 !important;
+}
+
+.question-table td.checkbox-cell,
+.checkbox-cell {
+    width: 0.9in !important;
+    text-align: center !important;
+}
+
+.question-table td.date-cell,
+.date-cell {
+    width: 1.2in !important;
+}
+
+.question-cell {
+    text-align: left !important;
+    vertical-align: top !important;
+}
+
+.options-cell {
+    text-align: center !important;
+    font-size: 7.2pt !important;
+    line-height: 1.25 !important;
+}
+
+.sticker-cell {
+    min-height: 0.66in !important;
+}
+
+.col-4 {
+    width: 25% !important;
+}
+
+.header-info {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    align-items: end !important;
+    gap: 0.06in 0.14in !important;
+}
+
+.header-info > .field-row:last-child {
+    grid-column: 1 / -1 !important;
+    justify-content: center !important;
+}
+
+.header-item {
+    display: flex !important;
+    align-items: flex-end !important;
+    gap: 0.08in !important;
+    flex: 1 1 0 !important;
+}
+
+.sticker-table th,
+.sticker-table td,
+.checklist-table th,
+.checklist-table td {
+    text-align: center !important;
+}
+
+.sticker-table td:first-child,
+.checklist-table td:first-child,
+.checklist-table th:first-child {
+    text-align: left !important;
+}
+
+.fact-sheet-row,
+.initial-row {
+    display: flex !important;
+    align-items: flex-end !important;
+    gap: 0.12in !important;
+    margin: 0.08in 0 !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid-page !important;
+}
+
+.initial-tag {
+    font-size: var(--label-size) !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.05em !important;
+    text-transform: uppercase !important;
+    color: var(--office-ink) !important;
+}
+
+.signature-section,
+.sig-section,
+.office-print-avoid,
+.sig-row,
+.sig-grid,
+.doc-footer,
+.doctor-signature-section,
+.dentist-confirmation {
+    page-break-inside: avoid !important;
+    break-inside: avoid-page !important;
+}
+
+.office-print-break-before {
+    page-break-before: always !important;
+    break-before: page !important;
+}
+
+.sig-row,
+.sig-grid {
+    display: flex !important;
+    gap: 0.14in !important;
+    margin: 0.1in 0 0.06in !important;
+    align-items: flex-end !important;
+}
+
+.sig-grid {
+    flex-wrap: wrap !important;
+}
+
+.sig-block,
+.sig-field {
+    flex: 1 1 0 !important;
+}
+
+.sig-blank,
+.sig-box {
+    min-height: 0.22in !important;
+    border: 0 !important;
+    border-bottom: 1px solid var(--office-rule-strong) !important;
+    background: transparent !important;
+}
+
+.sig-field,
+.sig-block {
+    border-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+.sig-section > div:last-child {
+    margin-top: 0.08in !important;
+}
+
+.sig-section .notes-area {
+    min-height: 0.22in !important;
+    padding: 0.04in 0.06in !important;
+}
+
+.sig-field-label,
+.sig-label {
+    display: block !important;
+    margin-top: 0.03in !important;
+    font-size: 6.75pt !important;
+    line-height: 1.2 !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.06em !important;
+    text-transform: uppercase !important;
+    color: var(--office-muted) !important;
+}
+
+.doc-footer {
+    display: none !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 0.1in !important;
+    min-height: 0.22in !important;
+    margin: 0 var(--page-inline) !important;
+    padding: 0.08in 0 0.12in !important;
+    border-top: 1px solid var(--office-rule-strong) !important;
+    color: var(--office-muted) !important;
+    font-size: 6.9pt !important;
+    line-height: 1.3 !important;
+}
+
+.footer-left,
+.footer-right {
+    min-width: 0 !important;
+}
+
+.fab {
+    position: fixed !important;
+    right: 1rem !important;
+    bottom: 1rem !important;
+    z-index: 1000 !important;
+    padding: 0.68rem 0.92rem !important;
+    border: 1px solid var(--office-rule-strong) !important;
+    background: #ffffff !important;
+    color: var(--office-ink) !important;
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-size: 7.2pt !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.08em !important;
+    text-transform: uppercase !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.14) !important;
+    cursor: pointer !important;
+}
+
+.fab[disabled],
+.office-forms-exporting .fab {
+    opacity: 0.72 !important;
+    pointer-events: none !important;
 }
 
 @page {
-    size: A4;
-    margin: 0.22in;
+    size: letter;
+    margin: 0.24in 0.24in 0.24in;
 }
 
 @media screen {
@@ -512,9 +1006,62 @@ input[type="checkbox"] {
     }
 }
 
-@media screen and (max-width: 820px) {
-    .patient-meta-band {
+@media screen and (max-width: 900px) {
+    body {
+        padding: 0.35rem !important;
+    }
+
+    .masthead,
+    .masthead.has-inline-title {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+    }
+
+    .office-inline-title {
+        width: 100% !important;
+    }
+
+    .masthead-right {
+        max-width: 100% !important;
+        text-align: left !important;
+        margin-left: 0 !important;
+    }
+
+    .patient-meta-band,
+    .checkbox-grid,
+    .options-grid,
+    .treatment-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .patient-meta-band,
+    .checkbox-grid,
+    .options-grid,
+    .treatment-grid {
+        grid-template-columns: minmax(0, 1fr) !important;
+    }
+
+    .question-block {
+        grid-template-columns: auto minmax(0, 1fr) !important;
+    }
+
+    .question-block .yn-box {
+        grid-column: 1 / -1 !important;
+        justify-content: flex-start !important;
+    }
+
+    .sig-row,
+    .sig-grid {
+        flex-direction: column !important;
+    }
+
+    .doctor-signature-section,
+    .flex-row,
+    .shade-group {
+        flex-direction: column !important;
+        align-items: stretch !important;
     }
 }
 
@@ -528,6 +1075,7 @@ input[type="checkbox"] {
         max-width: none !important;
         width: auto !important;
         margin: 0 !important;
+        border: 0 !important;
         box-shadow: none !important;
     }
 
@@ -537,7 +1085,25 @@ input[type="checkbox"] {
 }
 
 body.office-forms-exporting .document {
-    max-width: var(--office-export-width, 7.83in) !important;
-    width: var(--office-export-width, 7.83in) !important;
+    max-width: var(--office-export-width, 7.82in) !important;
+    width: var(--office-export-width, 7.82in) !important;
     margin: 0 auto !important;
+    border: 0 !important;
+    box-shadow: none !important;
+}
+
+.page-break {
+    display: block !important;
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    page-break-before: always !important;
+    break-before: page !important;
+}
+
+@media screen {
+    .page-break {
+        display: none !important;
+    }
 }

@@ -361,33 +361,6 @@
             <div class="masthead-left">
                 <div class="brand-logo"><img src="logo.svg" alt="Logo"></div>
             </div>
-
-            <div class="masthead-right">
-                <div class="doctors">
-                    Dr. Sambhav Jain <span>DMD, MS</span><br>
-                    Dr. Arpana Gupta <span>DDS, MDS</span>
-                </div>
-                
-                <div class="contact-block">
-                    <strong>Email:</strong> info@bayareaimplantdentistry.com<br>
-                    <strong>Website:</strong> www.bayareaimplantdentistry.com
-                </div>
-                
-                <div class="contact-block">
-                    <strong>Main Office:</strong> 3381 Walnut Ave, Fremont, CA 94538<br>
-                    <strong>Phone:</strong> (510) 574-0496
-                </div>
-                
-                <div class="contact-block">
-                    <strong>SF Office:</strong> 4318 Geary Blvd, Suite 201, San Francisco, CA 94118<br>
-                    <strong>Phone:</strong> (415) 696-2922
-                </div>
-            </div>
-        </div>
-
-        <div class="premium-product-band">
-            <div class="form-title">ALL<span class="bold-hyphen">-</span>ON<span class="bold-hyphen">-</span>8 ROBUST</div>
-            <div class="form-label">Most Advanced Biomechanical Dental Implants Protocol</div>
         </div>
         
         <div class="title-band">
@@ -513,47 +486,8 @@
                 </div>
             </section>
 
-        </div>
-        <div class="doc-footer">
-            <div class="footer-left">Consent for Gingival Grafting Surgery</div>
-        </div>
-    </div>
+        </div>    </div>
 
-    <script>
-        document.getElementById('downloadPdfBtn').addEventListener('click', function () {
-            const element = document.getElementById('pdf-content');
-            document.fonts.ready.then(function() {
-                const opt = {
-                    margin: [0.5, 0.5, 0.5, 0.5],
-                    filename: 'Gingival_Grafting_Consent.pdf',
-                    image: { type: 'jpeg', quality: 1.0 },
-                    html2canvas: { scale: 4, useCORS: true, letterRendering: true, scrollY: 0 },
-                    jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' },
-                    pagebreak: { mode: ['css', 'legacy'] }
-                };
-
-                const webFooter = document.querySelector('.doc-footer');
-                if(webFooter) webFooter.style.display = 'none';
-
-                html2pdf().set(opt).from(element).toPdf().get('pdf').then(function (pdf) {
-                    var totalPages = pdf.internal.getNumberOfPages();
-                    var pageWidth = pdf.internal.pageSize.getWidth();
-                    var pageHeight = pdf.internal.pageSize.getHeight();
-                    for (var i = 1; i <= totalPages; i++) {
-                        pdf.setPage(i);
-                        var pageStr = 'Page ' + i + ' of ' + totalPages;
-                        pdf.setFontSize(7); 
-                        pdf.setTextColor(85, 85, 85); 
-                        pdf.setFont('helvetica', 'normal');
-                        var tw = pdf.getStringUnitWidth(pageStr) * 7 / 72;
-                        pdf.text(pageStr, pageWidth - tw - 0.5, pageHeight - 0.35);
-                    }
-                }).save().then(function () {
-                    if(webFooter) webFooter.style.display = 'flex';
-                });
-            });
-        });
-    </script>
     <script src="forms-print.js"></script>
 </body>
 </html>
