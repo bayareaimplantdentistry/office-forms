@@ -82,8 +82,8 @@ select {
 
 .brand-logo img {
     display: block !important;
-    width: auto !important;
-    max-width: var(--logo-width) !important;
+    width: var(--logo-width) !important;
+    max-width: 100% !important;
     max-height: 0.84in !important;
     height: auto !important;
     object-fit: contain !important;
@@ -970,19 +970,11 @@ td {
     min-width: 0 !important;
 }
 
-.office-export-toolbar {
+.fab {
     position: fixed !important;
     right: 1rem !important;
     bottom: 1rem !important;
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 0.42rem !important;
-    align-items: stretch !important;
     z-index: 1000 !important;
-}
-
-.fab {
-    position: static !important;
     padding: 0.68rem 0.92rem !important;
     border: 1px solid var(--office-rule-strong) !important;
     background: #ffffff !important;
@@ -994,24 +986,6 @@ td {
     text-transform: uppercase !important;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.14) !important;
     cursor: pointer !important;
-    min-width: 1.72in !important;
-}
-
-.fab-secondary {
-    background: var(--office-ink) !important;
-    color: #ffffff !important;
-}
-
-.office-export-frame {
-    position: fixed !important;
-    top: 0 !important;
-    left: -200vw !important;
-    width: 920px !important;
-    height: 1300px !important;
-    border: 0 !important;
-    opacity: 0 !important;
-    pointer-events: none !important;
-    z-index: -1 !important;
 }
 
 .fab[disabled],
@@ -1032,11 +1006,6 @@ td {
 }
 
 @media screen and (max-width: 900px) {
-    .office-export-toolbar {
-        right: 0.75rem !important;
-        bottom: 0.75rem !important;
-    }
-
     body {
         padding: 0.35rem !important;
     }
@@ -1109,8 +1078,6 @@ td {
         box-shadow: none !important;
     }
 
-    .office-export-toolbar,
-    .office-export-frame,
     .fab {
         display: none !important;
     }
