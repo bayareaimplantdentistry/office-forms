@@ -6,14 +6,14 @@
     --office-rule-strong: #262626;
     --office-fill: #f3f3f3;
     --office-paper: #ffffff;
-    --page-inline: 0.3in;
-    --page-bottom: 0.24in;
-    --copy-size: 9pt;
-    --copy-leading: 1.26;
-    --label-size: 6.95pt;
-    --small-size: 7.15pt;
-    --title-size: 14.2pt;
-    --logo-width: 1.5in;
+    --page-inline: 0.26in;
+    --page-bottom: 0.18in;
+    --copy-size: 8.7pt;
+    --copy-leading: 1.21;
+    --label-size: 6.7pt;
+    --small-size: 6.95pt;
+    --title-size: 13.35pt;
+    --logo-width: 1.42in;
 }
 
 html {
@@ -32,7 +32,7 @@ body {
     color: var(--office-copy) !important;
     background: #ececec !important;
     text-rendering: optimizeLegibility;
-    padding: 0.6rem !important;
+    padding: 0.45rem !important;
 }
 
 body,
@@ -45,7 +45,7 @@ select {
 
 .document {
     width: 100% !important;
-    max-width: 8.5in !important;
+    max-width: 8.2677in !important;
     margin: 0 auto !important;
     background: var(--office-paper) !important;
     border: 1px solid #d7d7d7 !important;
@@ -56,8 +56,8 @@ select {
     display: flex !important;
     justify-content: flex-start !important;
     align-items: flex-start !important;
-    gap: 0.16in !important;
-    padding: 0.14in var(--page-inline) 0.07in !important;
+    gap: 0.14in !important;
+    padding: 0.11in var(--page-inline) 0.05in !important;
     margin-bottom: 0.01in !important;
     border-bottom: 1.25px solid var(--office-rule-strong) !important;
     page-break-inside: avoid !important;
@@ -128,10 +128,10 @@ select {
 
 .masthead-right {
     margin-left: auto !important;
-    max-width: 3.6in !important;
+    max-width: 3.3in !important;
     text-align: right !important;
     font-size: var(--small-size) !important;
-    line-height: 1.34 !important;
+    line-height: 1.3 !important;
     color: var(--office-copy) !important;
 }
 
@@ -154,7 +154,7 @@ select {
 
 .masthead-right .contact-block,
 .header-item {
-    margin-bottom: 0.035in !important;
+    margin-bottom: 0.03in !important;
 }
 
 .masthead-right .contact-block:last-child,
@@ -208,8 +208,8 @@ select {
 .patient-meta-band {
     display: grid !important;
     grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
-    gap: 0.12in !important;
-    margin: 0 var(--page-inline) 0.1in !important;
+    gap: 0.1in !important;
+    margin: 0 var(--page-inline) 0.08in !important;
     align-items: end !important;
     page-break-inside: avoid !important;
     break-inside: avoid-page !important;
@@ -237,8 +237,8 @@ select {
 }
 
 .title-band {
-    padding: 0.04in var(--page-inline) 0.08in !important;
-    margin-bottom: 0.03in !important;
+    padding: 0.03in var(--page-inline) 0.06in !important;
+    margin-bottom: 0.02in !important;
     border-bottom: 0 !important;
     text-align: left !important;
     page-break-inside: avoid !important;
@@ -304,7 +304,7 @@ th,
 }
 
 section {
-    margin-bottom: 0.11in !important;
+    margin-bottom: 0.095in !important;
     page-break-inside: auto !important;
     break-inside: auto !important;
 }
@@ -313,7 +313,7 @@ section {
     display: flex !important;
     align-items: center !important;
     gap: 0.1in !important;
-    margin: 0.11in 0 0.045in !important;
+    margin: 0.095in 0 0.04in !important;
     padding-bottom: 0.03in !important;
     border-bottom: 0 !important;
     page-break-inside: avoid !important;
@@ -325,8 +325,8 @@ section {
     display: inline-flex !important;
     align-items: center !important;
     justify-content: center !important;
-    min-height: 0.18in !important;
-    padding: 0.025in 0.08in !important;
+    min-height: 0.17in !important;
+    padding: 0.02in 0.07in !important;
     border: 0 !important;
     background: var(--office-fill) !important;
     font-size: 6.55pt !important;
@@ -338,8 +338,8 @@ section {
 
 .part-title {
     font-family: Arial, Helvetica, sans-serif !important;
-    font-size: 9.2pt !important;
-    line-height: 1.18 !important;
+    font-size: 8.95pt !important;
+    line-height: 1.16 !important;
     font-weight: 700 !important;
     letter-spacing: 0.01em !important;
     color: var(--office-ink) !important;
@@ -353,14 +353,14 @@ section {
 }
 
 h3 {
-    font-size: 7.1pt !important;
-    line-height: 1.25 !important;
+    font-size: 6.95pt !important;
+    line-height: 1.2 !important;
     font-weight: 700 !important;
     letter-spacing: 0.08em !important;
     text-transform: uppercase !important;
     color: var(--office-ink) !important;
-    margin: 0.12in 0 0.04in !important;
-    padding-bottom: 0.02in !important;
+    margin: 0.09in 0 0.03in !important;
+    padding-bottom: 0.015in !important;
     border-bottom: 0 !important;
     page-break-inside: avoid !important;
     break-inside: avoid-page !important;
@@ -385,15 +385,15 @@ label,
 
 p,
 li {
-    margin-bottom: 0.04in !important;
+    margin-bottom: 0.03in !important;
     orphans: 3;
     widows: 3;
 }
 
 ul,
 ol {
-    margin: 0 0 0.05in !important;
-    padding-left: 0.16in !important;
+    margin: 0 0 0.04in !important;
+    padding-left: 0.15in !important;
 }
 
 li::marker {
@@ -421,8 +421,8 @@ strong,
 .considerations-section {
     border: 1px solid var(--office-rule) !important;
     background: var(--office-paper) !important;
-    padding: 0.08in 0.09in !important;
-    margin: 0.06in 0 !important;
+    padding: 0.07in 0.08in !important;
+    margin: 0.045in 0 !important;
     page-break-inside: auto !important;
     break-inside: auto !important;
 }
@@ -444,8 +444,8 @@ strong,
 .shade-group {
     display: flex !important;
     align-items: flex-end !important;
-    gap: 0.06in !important;
-    margin-bottom: 0.07in !important;
+    gap: 0.05in !important;
+    margin-bottom: 0.055in !important;
     page-break-inside: avoid !important;
     break-inside: avoid-page !important;
 }
@@ -485,7 +485,7 @@ strong,
 .conditions-container .field-row,
 .important-box .field-row,
 .consent-callout .field-row {
-    padding-bottom: 0.08in !important;
+    padding-bottom: 0.06in !important;
     border-bottom: 1px solid #d8d8d8 !important;
 }
 
@@ -518,8 +518,8 @@ strong,
 .field-value,
 .underlined-value {
     flex: 1 1 1.25in !important;
-    min-height: 0.16in !important;
-    padding: 0 0.03in 0.02in !important;
+    min-height: 0.145in !important;
+    padding: 0 0.025in 0.015in !important;
     border: 0 !important;
     border-bottom: 1px solid var(--office-rule-strong) !important;
     font-size: var(--copy-size) !important;
@@ -542,7 +542,7 @@ strong,
 .underline-box {
     display: inline-block !important;
     flex: 1 1 auto !important;
-    min-height: 0.16in !important;
+    min-height: 0.145in !important;
     border: 0 !important;
     border-bottom: 1px solid var(--office-rule-strong) !important;
     background: transparent !important;
@@ -550,19 +550,19 @@ strong,
 }
 
 .inline-blank {
-    min-width: 1.15in !important;
+    min-width: 0.95in !important;
 }
 
 .inline-blank-long {
-    min-width: 1.8in !important;
+    min-width: 1.5in !important;
 }
 
 .ruled-line,
 .text-area-line {
     display: block !important;
     width: 100% !important;
-    min-height: 0.18in !important;
-    margin: 0.03in 0 !important;
+    min-height: 0.16in !important;
+    margin: 0.025in 0 !important;
 }
 
 .notes-area,
@@ -594,9 +594,9 @@ strong,
 .question-block {
     display: grid !important;
     grid-template-columns: auto minmax(0, 1fr) auto !important;
-    gap: 0.09in !important;
+    gap: 0.06in !important;
     align-items: start !important;
-    padding: 0.04in 0 !important;
+    padding: 0.03in 0 !important;
     border-bottom: 1px solid #e1e1e1 !important;
     page-break-inside: avoid !important;
     break-inside: avoid-page !important;
@@ -622,7 +622,7 @@ strong,
 .conditions-grid,
 .treatment-grid,
 .header-info {
-    gap: 0.08in 0.16in !important;
+    gap: 0.05in 0.1in !important;
 }
 
 .checkbox-grid,
@@ -672,9 +672,9 @@ strong,
 .checkbox-box,
 .square-box,
 .selection-box-marker {
-    width: 0.13in !important;
-    height: 0.13in !important;
-    flex: 0 0 0.13in !important;
+    width: 0.11in !important;
+    height: 0.11in !important;
+    flex: 0 0 0.11in !important;
     border: 1px solid var(--office-rule-strong) !important;
     border-radius: 0 !important;
     background: transparent !important;
@@ -683,9 +683,9 @@ strong,
 .selection-box {
     display: inline-flex !important;
     align-items: flex-end !important;
-    min-width: 1in !important;
-    min-height: 0.16in !important;
-    padding: 0 0.03in 0.02in !important;
+    min-width: 0.85in !important;
+    min-height: 0.145in !important;
+    padding: 0 0.025in 0.015in !important;
     border: 0 !important;
     border-bottom: 1px solid var(--office-rule-strong) !important;
     background: transparent !important;
@@ -696,7 +696,7 @@ strong,
 .sig-box,
 .date-box {
     flex: 1 1 0 !important;
-    min-height: 0.34in !important;
+    min-height: 0.29in !important;
     padding-top: 0 !important;
     border: 0 !important;
     border-bottom: 1px solid var(--office-rule-strong) !important;
@@ -728,8 +728,8 @@ select {
 }
 
 input[type="checkbox"] {
-    width: 0.13in !important;
-    height: 0.13in !important;
+    width: 0.11in !important;
+    height: 0.11in !important;
     appearance: auto !important;
     -webkit-appearance: checkbox !important;
     border: 0 !important;
@@ -765,7 +765,7 @@ tr {
 
 th,
 td {
-    padding: 0.055in 0.06in !important;
+    padding: 0.04in 0.045in !important;
     border: 1px solid var(--office-rule) !important;
     vertical-align: top !important;
     overflow-wrap: break-word !important;
@@ -797,20 +797,20 @@ td {
 
 .question-table td.num-cell,
 .num-cell {
-    width: 0.5in !important;
+    width: 0.38in !important;
     text-align: center !important;
     font-weight: 700 !important;
 }
 
 .question-table td.checkbox-cell,
 .checkbox-cell {
-    width: 0.9in !important;
+    width: 0.56in !important;
     text-align: center !important;
 }
 
 .question-table td.date-cell,
 .date-cell {
-    width: 1.2in !important;
+    width: 1in !important;
 }
 
 .question-cell {
@@ -820,7 +820,7 @@ td {
 
 .options-cell {
     text-align: center !important;
-    font-size: 7.2pt !important;
+    font-size: 7pt !important;
     line-height: 1.25 !important;
 }
 
@@ -902,8 +902,8 @@ td {
 .sig-row,
 .sig-grid {
     display: flex !important;
-    gap: 0.14in !important;
-    margin: 0.1in 0 0.06in !important;
+    gap: 0.11in !important;
+    margin: 0.07in 0 0.045in !important;
     align-items: flex-end !important;
 }
 
@@ -918,7 +918,7 @@ td {
 
 .sig-blank,
 .sig-box {
-    min-height: 0.22in !important;
+    min-height: 0.18in !important;
     border: 0 !important;
     border-bottom: 1px solid var(--office-rule-strong) !important;
     background: transparent !important;
@@ -931,18 +931,18 @@ td {
 }
 
 .sig-section > div:last-child {
-    margin-top: 0.08in !important;
+    margin-top: 0.06in !important;
 }
 
 .sig-section .notes-area {
-    min-height: 0.22in !important;
-    padding: 0.04in 0.06in !important;
+    min-height: 0.18in !important;
+    padding: 0.03in 0.05in !important;
 }
 
 .sig-field-label,
 .sig-label {
     display: block !important;
-    margin-top: 0.03in !important;
+    margin-top: 0.02in !important;
     font-size: 6.75pt !important;
     line-height: 1.2 !important;
     font-weight: 700 !important;
@@ -995,8 +995,8 @@ td {
 }
 
 @page {
-    size: letter;
-    margin: 0.24in 0.24in 0.24in;
+    size: A4;
+    margin: 0.18in;
 }
 
 @media screen {
@@ -1105,4 +1105,320 @@ body.office-forms-exporting .document {
     .page-break {
         display: none !important;
     }
+}
+
+.body > section:last-of-type,
+.body > .signature-section:last-of-type,
+.body > .sig-section:last-of-type {
+    margin-bottom: 0 !important;
+}
+
+body.office-form--confidential-health-history {
+    --copy-size: 8.7pt;
+    --copy-leading: 1.2;
+    --label-size: 6.55pt;
+    --small-size: 6.85pt;
+}
+
+body.office-form--confidential-health-history .body,
+body.office-form--covid-19-health-screening-form .body,
+body.office-form--dental-registration-form .body,
+body.office-form--medical-health-questionnaire .body,
+body.office-form--consent-form-guided-tissue-augmentation .body,
+body.office-form--consent-form-sinus-elevation-with-immediate-implant-placement .body {
+    padding-bottom: 0.12in !important;
+}
+
+body.office-form--confidential-health-history section {
+    margin-bottom: 0.085in !important;
+}
+
+body.office-form--confidential-health-history .info-grid,
+body.office-form--medical-health-questionnaire .conditions-container {
+    padding: 0.07in 0.08in !important;
+}
+
+body.office-form--confidential-health-history .checkbox-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 0.055in 0.12in !important;
+}
+
+body.office-form--confidential-health-history .checkbox-grid.col-4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+}
+
+body.office-form--confidential-health-history .checkbox-grid .yn-item {
+    display: grid !important;
+    grid-template-columns: auto auto minmax(0, 1fr) !important;
+    gap: 0.035in 0.045in !important;
+    align-items: start !important;
+}
+
+body.office-form--confidential-health-history .checkbox-grid .yn-box {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 0.025in !important;
+    color: var(--office-ink) !important;
+    white-space: nowrap !important;
+}
+
+body.office-form--confidential-health-history .checkbox-grid .yn-item > span {
+    min-width: 0 !important;
+    line-height: 1.16 !important;
+}
+
+body.office-form--confidential-health-history section:first-of-type .info-grid > .field-row {
+    display: grid !important;
+    grid-template-columns: minmax(0, 2.2in) auto max-content minmax(0, 1fr) !important;
+    align-items: end !important;
+    gap: 0.04in !important;
+}
+
+body.office-form--confidential-health-history section:first-of-type .info-grid > .field-row > .field-label:first-child {
+    margin-right: 0 !important;
+    white-space: normal !important;
+}
+
+body.office-form--confidential-health-history section:first-of-type .info-grid > .field-row > .field-label:nth-of-type(2) {
+    margin-right: 0 !important;
+    white-space: nowrap !important;
+}
+
+body.office-form--confidential-health-history section:first-of-type .info-grid > .field-row > div {
+    display: inline-flex !important;
+    gap: 0.05in !important;
+    margin-right: 0 !important;
+}
+
+body.office-form--confidential-health-history section:nth-of-type(3) {
+    page-break-before: always !important;
+    break-before: page !important;
+}
+
+body.office-form--confidential-health-history section:nth-of-type(4) .checkbox-grid {
+    gap: 0.04in 0.14in !important;
+}
+
+body.office-form--confidential-health-history section:nth-of-type(4) .checkbox-grid.col-4 {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 0.04in !important;
+}
+
+body.office-form--confidential-health-history section:nth-of-type(4) .checkbox-grid.col-4 .yn-item[style*="grid-column: span 2"] {
+    grid-column: auto !important;
+}
+
+body.office-form--confidential-health-history .sig-row,
+body.office-form--dental-registration-form .sig-row,
+body.office-form--consent-form-guided-tissue-augmentation .sig-row,
+body.office-form--consent-form-sinus-elevation-with-immediate-implant-placement .sig-row {
+    gap: 0.09in !important;
+    margin: 0.05in 0 !important;
+}
+
+body.office-form--confidential-health-history .sig-blank,
+body.office-form--dental-registration-form .sig-blank,
+body.office-form--consent-form-guided-tissue-augmentation .sig-blank,
+body.office-form--consent-form-sinus-elevation-with-immediate-implant-placement .sig-blank,
+body.office-form--covid-19-health-screening-form .sig-blank,
+body.office-form--smoking-and-dental-implants .sig-blank {
+    min-height: 0.14in !important;
+}
+
+body.office-form--covid-19-health-screening-form {
+    --copy-size: 8.35pt;
+    --copy-leading: 1.15;
+}
+
+body.office-form--covid-19-health-screening-form section {
+    margin-bottom: 0.07in !important;
+}
+
+body.office-form--covid-19-health-screening-form .question-table {
+    margin-top: 0.05in !important;
+    table-layout: fixed !important;
+}
+
+body.office-form--covid-19-health-screening-form .question-table th,
+body.office-form--covid-19-health-screening-form .question-table td {
+    padding: 0.03in 0.035in !important;
+}
+
+body.office-form--covid-19-health-screening-form .question-table td.num-cell {
+    width: 0.32in !important;
+}
+
+body.office-form--covid-19-health-screening-form .question-table th:nth-child(1) {
+    width: 0.32in !important;
+}
+
+body.office-form--covid-19-health-screening-form .question-table th:nth-child(3),
+body.office-form--covid-19-health-screening-form .question-table th:nth-child(4) {
+    width: 0.36in !important;
+}
+
+body.office-form--covid-19-health-screening-form .question-table th:nth-child(2),
+body.office-form--covid-19-health-screening-form .question-table td.question-cell {
+    width: auto !important;
+}
+
+body.office-form--covid-19-health-screening-form .question-table td.checkbox-cell {
+    width: 0.36in !important;
+    font-size: 8.6pt !important;
+}
+
+body.office-form--covid-19-health-screening-form .question-table td.question-cell,
+body.office-form--covid-19-health-screening-form .question-table td.date-cell {
+    line-height: 1.13 !important;
+}
+
+body.office-form--covid-19-health-screening-form .question-table td.date-cell {
+    width: 0.72in !important;
+}
+
+body.office-form--dental-registration-form {
+    --copy-size: 8.5pt;
+    --copy-leading: 1.16;
+}
+
+body.office-form--dental-registration-form section {
+    margin-bottom: 0.075in !important;
+}
+
+body.office-form--dental-registration-form .checkbox-grid {
+    gap: 0.04in 0.08in !important;
+    padding-left: 0 !important;
+}
+
+body.office-form--dental-registration-form .signature-section {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+body.office-form--medical-health-questionnaire {
+    --copy-size: 8.25pt;
+    --copy-leading: 1.14;
+    --label-size: 6.35pt;
+}
+
+body.office-form--medical-health-questionnaire section {
+    margin-bottom: 0.07in !important;
+}
+
+body.office-form--medical-health-questionnaire .conditions-grid {
+    gap: 0.03in 0.09in !important;
+}
+
+body.office-form--medical-health-questionnaire .condition-item {
+    padding: 0.02in 0 !important;
+    font-size: 8pt !important;
+    line-height: 1.12 !important;
+}
+
+body.office-form--medical-health-questionnaire .yn-box {
+    gap: 0.04in !important;
+}
+
+body.office-form--consent-form-guided-tissue-augmentation,
+body.office-form--consent-form-sinus-elevation-with-immediate-implant-placement {
+    --copy-size: 8.55pt;
+    --copy-leading: 1.16;
+}
+
+body.office-form--consent-form-guided-tissue-augmentation section,
+body.office-form--consent-form-sinus-elevation-with-immediate-implant-placement section {
+    margin-bottom: 0.075in !important;
+}
+
+body.office-form--consent-form-guided-tissue-augmentation .underline-box {
+    min-width: 1.8in !important;
+}
+
+body.office-form--consent-form-guided-tissue-augmentation .signature-section,
+body.office-form--consent-form-sinus-elevation-with-immediate-implant-placement .signature-section,
+body.office-form--dental-registration-form .signature-section {
+    margin-top: 0.03in !important;
+}
+
+body.office-form--post-operative-care-of-hybrid-and-maintainance {
+    --copy-size: 8.15pt;
+    --copy-leading: 1.12;
+    --title-size: 12.5pt;
+}
+
+body.office-form--post-operative-care-of-hybrid-and-maintainance .body {
+    padding-bottom: 0.08in !important;
+}
+
+body.office-form--post-operative-care-of-hybrid-and-maintainance .two-col {
+    display: flex !important;
+    gap: 0.16in !important;
+    align-items: flex-start !important;
+}
+
+body.office-form--post-operative-care-of-hybrid-and-maintainance .two-col .col {
+    min-width: 0 !important;
+}
+
+body.office-form--post-operative-care-of-hybrid-and-maintainance .two-col section,
+body.office-form--post-operative-care-of-hybrid-and-maintainance .signature-section {
+    margin-bottom: 0.04in !important;
+}
+
+body.office-form--post-operative-care-of-hybrid-and-maintainance .sig-row {
+    margin: 0.035in 0 !important;
+}
+
+body.office-form--post-operative-instructions-for-implants {
+    --copy-size: 8.25pt;
+    --copy-leading: 1.13;
+    --title-size: 12.7pt;
+}
+
+body.office-form--post-operative-instructions-for-implants .body {
+    columns: 2 !important;
+    column-gap: 0.18in !important;
+    column-fill: balance !important;
+    padding-bottom: 0.1in !important;
+}
+
+body.office-form--post-operative-instructions-for-implants .body > section {
+    break-inside: avoid-column !important;
+    margin-bottom: 0.06in !important;
+}
+
+body.office-form--post-operative-instructions-for-implants .body > section:first-of-type {
+    margin-top: 0 !important;
+}
+
+body.office-form--post-operative-instructions-for-implants ul {
+    padding-left: 0.13in !important;
+}
+
+body.office-form--post-operative-instructions-for-implants li {
+    margin-bottom: 0.02in !important;
+}
+
+body.office-form--smoking-and-dental-implants {
+    --copy-size: 8.55pt;
+    --copy-leading: 1.18;
+}
+
+body.office-form--smoking-and-dental-implants section {
+    margin-bottom: 0.08in !important;
+}
+
+body.office-form--smoking-and-dental-implants ol {
+    padding-left: 0.18in !important;
+}
+
+body.office-form--smoking-and-dental-implants ol li {
+    font-size: 7.95pt !important;
+    line-height: 1.15 !important;
+    margin-bottom: 0.025in !important;
+}
+
+body.office-form--smoking-and-dental-implants .article-title {
+    font-size: 8.5pt !important;
+    line-height: 1.2 !important;
 }

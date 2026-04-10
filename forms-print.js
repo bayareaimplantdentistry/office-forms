@@ -73,6 +73,30 @@
         return cleanedTitle || 'office-form';
     }
 
+    function formClassFromTitle() {
+        const className = readDocumentTitle()
+            .replace(/&/g, ' and ')
+            .replace(/[^a-z0-9]+/gi, '-')
+            .replace(/-+/g, '-')
+            .replace(/^-|-$/g, '')
+            .toLowerCase();
+
+        return className || 'office-form';
+    }
+
+    function markFormIdentity() {
+        const root = document.getElementById('pdf-content') || document.querySelector('.document');
+        const formClass = formClassFromTitle();
+
+        document.body.classList.add('office-form', 'office-form--' + formClass);
+        document.body.dataset.officeForm = formClass;
+
+        if (root) {
+            root.classList.add('office-form-document', 'office-form-document--' + formClass);
+            root.dataset.officeForm = formClass;
+        }
+    }
+
     function normalizeMasthead() {
         const masthead = document.querySelector('.masthead');
         if (!masthead) {
@@ -334,7 +358,7 @@
 
     function buildPdfOptions(filename) {
         return {
-            margin: [0.24, 0.24, 0.24, 0.24],
+            margin: [0.18, 0.18, 0.18, 0.18],
             filename: filename + '.pdf',
             image: { type: 'jpeg', quality: 1 },
             html2canvas: {
@@ -348,7 +372,7 @@
             },
             jsPDF: {
                 unit: 'in',
-                format: 'letter',
+                format: 'a4',
                 orientation: 'portrait',
                 compress: true
             },
@@ -600,6 +624,7 @@
         }
 
         document.body.dataset.officeFormsEnhanced = 'true';
+        markFormIdentity();
         removeLegacyArtifacts();
         inlinePrimaryTitleBand();
         normalizeMasthead();
