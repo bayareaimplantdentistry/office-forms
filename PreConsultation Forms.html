@@ -40,8 +40,7 @@
         }
 
         .document {
-            width: 8.5in;
-            max-width: 100%;
+            max-width: 8.5in;
             margin: 0 auto;
             background: var(--white);
             box-shadow: 0 4px 12px rgba(0, 0, 0, .1);
@@ -131,28 +130,10 @@
             padding: 0 2.3rem 1.6rem;
         }
 
-        .intro-panel {
-            border: 1px solid var(--gray-border);
-            background: #fbfbfb;
-            padding: 0.7rem 0.85rem;
-            margin-bottom: 0.75rem;
-        }
-
-        .intro-panel p {
-            margin: 0;
-            color: var(--gray-dark);
-        }
-
-        .patient-strip {
-            display: grid;
-            grid-template-columns: minmax(0, 1.8fr) minmax(0, 1fr);
-            gap: 0.85rem;
-            margin-bottom: 0.7rem;
-        }
-
         .field-row {
             display: flex;
             align-items: flex-end;
+            margin-bottom: 0.85rem;
             gap: 0.7rem;
         }
 
@@ -167,110 +148,63 @@
         .field-line {
             border-bottom: 1px solid var(--black);
             flex-grow: 1;
-            min-height: 1.1rem;
+            min-height: 1.15rem;
         }
 
-        .section-shell {
-            margin-bottom: 0.75rem;
+        .question-block {
+            margin-bottom: 1.1rem;
         }
 
-        .section-heading {
+        .question-text {
             font-family: 'Montserrat', sans-serif;
-            font-size: 7.7pt;
+            font-size: 9.8pt;
             font-weight: 700;
-            letter-spacing: 1.7px;
-            text-transform: uppercase;
-            color: var(--gray-mid);
-            margin-bottom: 0.4rem;
-        }
-
-        .question-grid {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 0.55rem;
-        }
-
-        .question-card,
-        .consult-notes-panel {
-            border: 1px solid var(--gray-border);
-            padding: 0.65rem 0.75rem;
-            break-inside: avoid;
-            page-break-inside: avoid;
-        }
-
-        .question-card.full-width,
-        .consult-notes-panel {
-            grid-column: 1 / -1;
-        }
-
-        .question-prompt {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 8.35pt;
-            font-weight: 700;
-            line-height: 1.28;
+            margin-bottom: 0.65rem;
             color: var(--black);
-            margin-bottom: 0.42rem;
         }
 
-        .choice-list {
+        .options-grid {
             display: grid;
-            gap: 0.28rem;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.55rem 1.4rem;
         }
 
-        .choice-item {
+        .checkbox-item {
             display: flex;
             align-items: flex-start;
-            gap: 0.45rem;
-            font-size: 8.85pt;
-            line-height: 1.26;
-            color: var(--gray-dark);
+            gap: 0.65rem;
+            font-size: 10.4pt;
         }
 
-        .choice-mark {
-            width: 13px;
-            height: 13px;
+        .checkbox-box {
+            width: 14px;
+            height: 14px;
             border: 1px solid var(--black);
-            flex: 0 0 13px;
+            flex-shrink: 0;
             margin-top: 2px;
         }
 
-        .notes-prompt {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 8.2pt;
-            font-weight: 700;
-            margin-bottom: 0.35rem;
-            color: var(--black);
-        }
-
-        .consult-notes-area {
-            height: 1.55rem;
-            border: 1px solid var(--gray-border);
-            background:
-                repeating-linear-gradient(
-                    to bottom,
-                    transparent,
-                    transparent 1.3rem,
-                    #e4e4e4 1.3rem,
-                    #e4e4e4 calc(1.3rem + 1px)
-                );
+        .text-area-line {
+            border-bottom: 1px solid var(--gray-border);
+            height: 1.35rem;
+            margin-top: 0.9rem;
         }
 
         /* ─── SIGNATURE ──────────────────────────────────────── */
         .sig-section {
-            margin-top: 0.75rem;
+            margin-top: 1.8rem;
             page-break-inside: avoid;
-            display: grid;
-            grid-template-columns: minmax(0, 1fr) 2in;
-            gap: 1.2rem;
+            display: flex;
+            gap: 2rem;
         }
 
         .sig-block {
-            padding-top: 1.45rem;
+            flex: 1;
         }
 
         .sig-line {
             border-top: 1px solid var(--black);
-            padding-top: 0.28rem;
+            padding-top: 0.3rem;
         }
 
         .sig-label {
@@ -279,14 +213,6 @@
             font-weight: 700;
             letter-spacing: 1.4px;
             text-transform: uppercase;
-        }
-
-        @media screen and (max-width: 860px) {
-            .patient-strip,
-            .question-grid,
-            .sig-section {
-                grid-template-columns: 1fr;
-            }
         }
 
         /* ─── DOWNLOAD BUTTON ────────────────────────────────── */
@@ -335,117 +261,122 @@
 
         <div class="body">
 
-            <div class="intro-panel">
-                <p>Thank you for sharing a little about what matters most to you. Your answers help us make today’s visit more personal, comfortable, and useful.</p>
+            <div class="field-row">
+                <span class="field-label">Patient Name:</span>
+                <div class="field-line"></div>
             </div>
 
-            <div class="patient-strip">
-                <div class="field-row">
-                    <span class="field-label">Patient Name</span>
-                    <div class="field-line"></div>
+            <div class="question-block">
+                <p class="question-text">What brings you to explore Center for Implant Dentistry today?</p>
+                <div class="options-grid">
+                    <div class="checkbox-item"><div class="checkbox-box"></div> I'm ready to move forward with a permanent dental implant solution</div>
+                    <div class="checkbox-item"><div class="checkbox-box"></div> I've been researching and comparing my options</div>
+                    <div class="checkbox-item"><div class="checkbox-box"></div> My dentist recommended I explore implants</div>
+                    <div class="checkbox-item"><div class="checkbox-box"></div> I'd like to learn what's possible for my situation</div>
                 </div>
             </div>
 
-            <section class="section-shell">
-                <div class="section-heading">About Your Visit</div>
-                <div class="question-grid">
-                    <div class="question-card">
-                        <p class="question-prompt">What brings you in today?</p>
-                        <div class="choice-list">
-                            <div class="choice-item"><span class="choice-mark"></span><span>I want to explore a long-term solution</span></div>
-                            <div class="choice-item"><span class="choice-mark"></span><span>I’d like to understand my options better</span></div>
-                            <div class="choice-item"><span class="choice-mark"></span><span>I was referred here by my dentist or another doctor</span></div>
-                            <div class="choice-item"><span class="choice-mark"></span><span>I’d like guidance for my situation</span></div>
-                        </div>
-                    </div>
-
-                    <div class="question-card">
-                        <p class="question-prompt">What matters most to you as you think about treatment?</p>
-                        <div class="choice-list">
-                            <div class="choice-item"><span class="choice-mark"></span><span>Feeling confident in my smile</span></div>
-                            <div class="choice-item"><span class="choice-mark"></span><span>Chewing comfortably and enjoying food again</span></div>
-                            <div class="choice-item"><span class="choice-mark"></span><span>Choosing a solution that feels dependable</span></div>
-                            <div class="choice-item"><span class="choice-mark"></span><span>Understanding a plan that feels manageable</span></div>
-                        </div>
-                    </div>
-
-                    <div class="question-card">
-                        <p class="question-prompt">What would you like to learn more about today?</p>
-                        <div class="choice-list">
-                            <div class="choice-item"><span class="choice-mark"></span><span>A full-arch implant solution</span></div>
-                            <div class="choice-item"><span class="choice-mark"></span><span>Replacing several missing or damaged teeth</span></div>
-                            <div class="choice-item"><span class="choice-mark"></span><span>Replacing one or a few specific teeth</span></div>
-                            <div class="choice-item"><span class="choice-mark"></span><span>I’m not sure yet and would value the doctor’s guidance</span></div>
-                        </div>
-                    </div>
-
-                    <div class="question-card">
-                        <p class="question-prompt">If a full-arch solution is recommended, how would you like us to guide you?</p>
-                        <div class="choice-list">
-                            <div class="choice-item"><span class="choice-mark"></span><span>Please show me the most straightforward option</span></div>
-                            <div class="choice-item"><span class="choice-mark"></span><span>Please compare the full-arch options for me</span></div>
-                            <div class="choice-item"><span class="choice-mark"></span><span>I’m interested in the strongest long-term option</span></div>
-                            <div class="choice-item"><span class="choice-mark"></span><span>I’d prefer to decide after I understand the pros and cons</span></div>
-                        </div>
-                    </div>
+            <div class="question-block">
+                <p class="question-text">What matters most to you in your dental restoration? (Check all that apply)</p>
+                <div class="options-grid">
+                    <div class="checkbox-item"><div class="checkbox-box"></div> Natural appearance and confidence</div>
+                    <div class="checkbox-item"><div class="checkbox-box"></div> Eating comfort and function</div>
+                    <div class="checkbox-item"><div class="checkbox-box"></div> Long-term value and durability</div>
+                    <div class="checkbox-item"><div class="checkbox-box"></div> Quick treatment completion</div>
+                    <div class="checkbox-item"><div class="checkbox-box"></div> Minimal maintenance required</div>
                 </div>
-            </section>
+            </div>
 
-            <section class="section-shell">
-                <div class="section-heading">Planning Ahead</div>
-                <div class="question-grid">
-                    <div class="question-card">
-                        <p class="question-prompt">What timing feels best for you if treatment is a good fit?</p>
-                        <div class="choice-list">
-                            <div class="choice-item"><span class="choice-mark"></span><span>As soon as possible</span></div>
-                            <div class="choice-item"><span class="choice-mark"></span><span>Within the next 1-3 months</span></div>
-                            <div class="choice-item"><span class="choice-mark"></span><span>Within the next 3-6 months</span></div>
-                            <div class="choice-item"><span class="choice-mark"></span><span>I’m gathering information for now</span></div>
-                        </div>
-                    </div>
+            <div class="question-block">
+                <p class="question-text">Which treatment approach sounds most appealing to you?</p>
+                <div class="checkbox-item" style="margin-bottom:0.4rem;"><div class="checkbox-box"></div> Comprehensive full-arch solution (All-on-X)</div>
+                <div class="checkbox-item" style="margin-bottom:0.4rem;"><div class="checkbox-box"></div> Targeted replacement of specific teeth</div>
+                <div class="checkbox-item"><div class="checkbox-box"></div> I'd value the doctor's recommendation based on my needs</div>
+            </div>
 
-                    <div class="question-card">
-                        <p class="question-prompt">What would help you feel most comfortable moving forward?</p>
-                        <div class="choice-list">
-                            <div class="choice-item"><span class="choice-mark"></span><span>A clear explanation of the recommendation</span></div>
-                            <div class="choice-item"><span class="choice-mark"></span><span>Understanding healing time and recovery</span></div>
-                            <div class="choice-item"><span class="choice-mark"></span><span>Talking through payment or financing options</span></div>
-                            <div class="choice-item"><span class="choice-mark"></span><span>Time to think things over with someone I trust</span></div>
-                        </div>
-                    </div>
+            <div class="question-block">
+                <p class="question-text">If considering a full-arch treatment, which level of treatment best fits your priorities?</p>
+                <div class="checkbox-item" style="margin-bottom:0.4rem;"><div class="checkbox-box"></div> Essential restoration (All-on-4) – efficient and reliable</div>
+                <div class="checkbox-item" style="margin-bottom:0.4rem;"><div class="checkbox-box"></div> Enhanced stability (All-on-6) – added support and strength</div>
+                <div class="checkbox-item" style="margin-bottom:0.4rem;"><div class="checkbox-box"></div> Premium support (All-on-8) – maximum durability and longevity</div>
+                <div class="checkbox-item"><div class="checkbox-box"></div> I would like to understand the differences before deciding</div>
+            </div>
 
-                    <div class="question-card">
-                        <p class="question-prompt">How would you prefer to talk about the financial side of treatment?</p>
-                        <div class="choice-list">
-                            <div class="choice-item"><span class="choice-mark"></span><span>I’d like to first understand the doctor’s recommendation</span></div>
-                            <div class="choice-item"><span class="choice-mark"></span><span>I’d like to review options that balance value and cost</span></div>
-                            <div class="choice-item"><span class="choice-mark"></span><span>I’d like to learn about monthly payment options</span></div>
-                            <div class="choice-item"><span class="choice-mark"></span><span>I’m open to different approaches depending on the plan</span></div>
-                        </div>
-                    </div>
-
-                    <div class="question-card">
-                        <p class="question-prompt">If financing may be helpful, how would you like us to support that conversation?</p>
-                        <div class="choice-list">
-                            <div class="choice-item"><span class="choice-mark"></span><span>Please review financing options with me</span></div>
-                            <div class="choice-item"><span class="choice-mark"></span><span>I may want to include a spouse, family member, or trusted partner</span></div>
-                            <div class="choice-item"><span class="choice-mark"></span><span>I’d rather talk about this later, after I’ve met with the doctor</span></div>
-                        </div>
-                    </div>
-
-                    <div class="consult-notes-panel">
-                        <div class="notes-prompt">What questions would you like us to be sure we answer today?</div>
-                        <div class="consult-notes-area"></div>
-                    </div>
+            <div class="question-block">
+                <p class="question-text">When would be ideal for you to complete your treatment?</p>
+                <div class="options-grid">
+                    <div class="checkbox-item"><div class="checkbox-box"></div> As soon as possible – I'm ready</div>
+                    <div class="checkbox-item"><div class="checkbox-box"></div> Within the next 1-2 months</div>
+                    <div class="checkbox-item"><div class="checkbox-box"></div> Within 3-6 months</div>
+                    <div class="checkbox-item"><div class="checkbox-box"></div> I'm planning ahead for next year</div>
                 </div>
-            </section>
+            </div>
+
+            <div class="question-block">
+                <p class="question-text">To help us present the most relevant options, which investment range feels comfortable for your dental health? (Per arch)</p>
+                <div class="options-grid">
+                    <div class="checkbox-item"><div class="checkbox-box"></div> I'm exploring what's possible</div>
+                    <div class="checkbox-item"><div class="checkbox-box"></div> Up to $15,000</div>
+                    <div class="checkbox-item"><div class="checkbox-box"></div> $15,000 – $20,000</div>
+                    <div class="checkbox-item"><div class="checkbox-box"></div> $20,000 – $25,000</div>
+                    <div class="checkbox-item"><div class="checkbox-box"></div> Quality is my priority over cost</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <p class="question-text">Have you consulted with other implant specialists?</p>
+                <div class="options-grid">
+                    <div class="checkbox-item"><div class="checkbox-box"></div> You're my first consultation</div>
+                    <div class="checkbox-item"><div class="checkbox-box"></div> I've had 1-2 other consultations</div>
+                    <div class="checkbox-item"><div class="checkbox-box"></div> I've researched multiple options</div>
+                </div>
+                <div class="field-row" style="margin-top:0.9rem;">
+                    <span class="field-label" style="text-transform:none; font-weight:500;">If yes, what was most helpful about those consultations?</span>
+                </div>
+                <div class="text-area-line"></div>
+            </div>
+
+            <div class="question-block">
+                <p class="question-text">How do you plan to pay for your treatment?</p>
+                <div class="options-grid">
+                    <div class="checkbox-item"><div class="checkbox-box"></div> Pay in full</div>
+                    <div class="checkbox-item"><div class="checkbox-box"></div> Partial payment + financing</div>
+                    <div class="checkbox-item"><div class="checkbox-box"></div> Full financing / monthly payments</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <p class="question-text">Do you have a co-signer who can assist if needed?</p>
+                <div style="display:flex; gap:1.4rem; margin-top:0.4rem;">
+                    <div class="checkbox-item"><div class="checkbox-box"></div> Yes</div>
+                    <div class="checkbox-item"><div class="checkbox-box"></div> No</div>
+                    <div class="checkbox-item"><div class="checkbox-box"></div> Possibly</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <p class="question-text">What's your estimated credit score range?</p>
+                <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(110px,1fr)); gap:0.55rem 1.2rem; margin-top:0.4rem;">
+                    <div class="checkbox-item"><div class="checkbox-box"></div> Below 600</div>
+                    <div class="checkbox-item"><div class="checkbox-box"></div> 600-649</div>
+                    <div class="checkbox-item"><div class="checkbox-box"></div> 650-699</div>
+                    <div class="checkbox-item"><div class="checkbox-box"></div> 700-749</div>
+                    <div class="checkbox-item"><div class="checkbox-box"></div> 750+</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <p class="question-text">Do you have any specific concerns, expectations, or questions for the doctor?</p>
+                <div class="text-area-line"></div>
+                <div class="text-area-line"></div>
+            </div>
 
             <div class="sig-section">
                 <div class="sig-block">
                     <div class="sig-line"></div>
                     <span class="sig-label">Patient Signature</span>
                 </div>
-                <div class="sig-block">
+                <div class="sig-block" style="flex:0 0 2in;">
                     <div class="sig-line"></div>
                     <span class="sig-label">Date</span>
                 </div>
