@@ -6,14 +6,20 @@
     --office-rule-strong: #262626;
     --office-fill: #f3f3f3;
     --office-paper: #ffffff;
-    --page-inline: 0.3in;
-    --page-bottom: 0.24in;
-    --copy-size: 9pt;
-    --copy-leading: 1.26;
-    --label-size: 6.95pt;
-    --small-size: 7.15pt;
-    --title-size: 14.2pt;
-    --logo-width: 1.5in;
+    --page-width: 8.2677in;
+    --page-height: 11.6929in;
+    --page-inline: 0.22in;
+    --page-top: 0.16in;
+    --page-bottom: 0.22in;
+    --copy-size: 9.1pt;
+    --copy-leading: 1.28;
+    --label-size: 7.1pt;
+    --small-size: 7.6pt;
+    --title-size: 13.6pt;
+    --section-size: 10.2pt;
+    --table-size: 8.65pt;
+    --logo-width: 1.34in;
+    --button-radius: 6px;
 }
 
 html {
@@ -30,9 +36,9 @@ body {
     font-size: var(--copy-size) !important;
     line-height: var(--copy-leading) !important;
     color: var(--office-copy) !important;
-    background: #ececec !important;
+    background: #efefef !important;
     text-rendering: optimizeLegibility;
-    padding: 0.6rem !important;
+    padding: 0.5rem !important;
 }
 
 body,
@@ -45,21 +51,22 @@ select {
 
 .document {
     width: 100% !important;
-    max-width: 8.5in !important;
+    max-width: var(--page-width) !important;
+    min-height: 0 !important;
     margin: 0 auto !important;
     background: var(--office-paper) !important;
-    border: 1px solid #d7d7d7 !important;
-    box-shadow: 0 2px 14px rgba(0, 0, 0, 0.08) !important;
+    border: 1px solid #d2d2d2 !important;
+    box-shadow: 0 3px 18px rgba(0, 0, 0, 0.08) !important;
 }
 
 .masthead {
     display: flex !important;
     justify-content: flex-start !important;
-    align-items: flex-start !important;
-    gap: 0.16in !important;
-    padding: 0.14in var(--page-inline) 0.07in !important;
-    margin-bottom: 0.01in !important;
-    border-bottom: 1.25px solid var(--office-rule-strong) !important;
+    align-items: center !important;
+    gap: 0.12in !important;
+    padding: var(--page-top) var(--page-inline) 0.05in !important;
+    margin-bottom: 0 !important;
+    border-bottom: 0 !important;
     page-break-inside: avoid !important;
     break-inside: avoid-page !important;
 }
@@ -68,30 +75,34 @@ select {
     display: flex !important;
     align-items: flex-start !important;
     justify-content: flex-start !important;
-    flex: 0 0 auto !important;
+    flex: 1 1 auto !important;
 }
 
 .masthead.has-inline-title {
+    display: grid !important;
+    grid-template-columns: auto minmax(0, 1fr) auto !important;
     align-items: center !important;
-    gap: 0.18in !important;
+    column-gap: 0.14in !important;
+    row-gap: 0 !important;
+    padding-bottom: 0.08in !important;
+    border-bottom: 1px solid var(--office-rule-strong) !important;
 }
 
 .masthead.has-inline-title .masthead-left {
-    align-self: flex-start !important;
+    grid-column: 1 !important;
+    align-self: center !important;
 }
 
 .brand-logo img {
     display: block !important;
     width: var(--logo-width) !important;
     max-width: 100% !important;
-    max-height: 0.84in !important;
+    max-height: 0.54in !important;
     height: auto !important;
     object-fit: contain !important;
     object-position: left center !important;
-    filter: grayscale(100%) contrast(136%) brightness(0.88) !important;
-    image-rendering: crisp-edges !important;
-    image-rendering: -webkit-optimize-contrast !important;
-    image-rendering: optimizeQuality !important;
+    filter: none !important;
+    image-rendering: auto !important;
 }
 
 .office-logo-fallback {
@@ -128,25 +139,30 @@ select {
 
 .masthead-right {
     margin-left: auto !important;
-    max-width: 3.6in !important;
+    max-width: 2.55in !important;
     text-align: right !important;
     font-size: var(--small-size) !important;
-    line-height: 1.34 !important;
+    line-height: 1.24 !important;
     color: var(--office-copy) !important;
+}
+
+.masthead.has-inline-title .masthead-right {
+    grid-column: 3 !important;
+    margin-left: 0 !important;
 }
 
 .masthead-right .doctors,
 .masthead-right .clinic-title {
-    font-size: 8.1pt !important;
-    line-height: 1.28 !important;
+    font-size: 7.55pt !important;
+    line-height: 1.18 !important;
     font-weight: 700 !important;
     letter-spacing: 0.02em !important;
     color: var(--office-ink) !important;
-    margin-bottom: 0.08in !important;
+    margin-bottom: 0.04in !important;
 }
 
 .masthead-right .doctors span {
-    font-size: 6.45pt !important;
+    font-size: 6.05pt !important;
     font-weight: 700 !important;
     letter-spacing: 0.08em !important;
     text-transform: uppercase !important;
@@ -154,7 +170,7 @@ select {
 
 .masthead-right .contact-block,
 .header-item {
-    margin-bottom: 0.035in !important;
+    margin-bottom: 0.02in !important;
 }
 
 .masthead-right .contact-block:last-child,
@@ -168,9 +184,9 @@ select {
 }
 
 .premium-product-band {
-    margin: 0 var(--page-inline) 0.1in !important;
-    padding: 0.03in 0 0.08in !important;
-    border: 0 !important;
+    margin: 0 var(--page-inline) 0.04in !important;
+    padding: 0.03in 0 0.04in !important;
+    border-bottom: 1px solid #d8d8d8 !important;
     text-align: left !important;
     color: var(--office-ink) !important;
     background: transparent !important;
@@ -180,11 +196,11 @@ select {
 
 .premium-product-band .form-title {
     font-family: Arial, Helvetica, sans-serif !important;
-    font-size: 8.9pt !important;
+    font-size: 9.35pt !important;
     font-weight: 700 !important;
-    line-height: 1.2 !important;
-    letter-spacing: 0.09em !important;
-    text-transform: uppercase !important;
+    line-height: 1.12 !important;
+    letter-spacing: 0.02em !important;
+    text-transform: none !important;
     color: var(--office-ink) !important;
 }
 
@@ -196,13 +212,13 @@ select {
 
 .premium-product-band .form-label {
     font-family: Arial, Helvetica, sans-serif !important;
-    font-size: 6.45pt !important;
+    font-size: 7.05pt !important;
     font-weight: 700 !important;
-    line-height: 1.2 !important;
-    letter-spacing: 0.07em !important;
-    text-transform: uppercase !important;
+    line-height: 1.14 !important;
+    letter-spacing: 0.04em !important;
+    text-transform: none !important;
     color: var(--office-muted) !important;
-    margin-top: 0.03in !important;
+    margin-top: 0.02in !important;
 }
 
 .patient-meta-band {
@@ -225,7 +241,7 @@ select {
     font-size: var(--label-size) !important;
     font-weight: 700 !important;
     letter-spacing: 0.04em !important;
-    text-transform: uppercase !important;
+    text-transform: none !important;
     color: var(--office-muted) !important;
     white-space: nowrap !important;
 }
@@ -238,8 +254,8 @@ select {
 
 .title-band {
     padding: 0.04in var(--page-inline) 0.08in !important;
-    margin-bottom: 0.03in !important;
-    border-bottom: 0 !important;
+    margin-bottom: 0.05in !important;
+    border-bottom: 1px solid #dddddd !important;
     text-align: left !important;
     page-break-inside: avoid !important;
     break-inside: avoid-page !important;
@@ -254,17 +270,23 @@ select {
     flex: 1 1 auto !important;
     min-width: 0 !important;
     margin: 0 !important;
-    padding: 0 !important;
+    padding: 0 0.08in 0 0.04in !important;
     border: 0 !important;
-    text-align: left !important;
+    text-align: center !important;
+    align-self: center !important;
 }
 
 .office-inline-title .form-label {
-    margin-bottom: 0.02in !important;
+    margin-bottom: 0.01in !important;
 }
 
 .masthead.has-inline-title .office-inline-title .form-title {
-    line-height: 1.02 !important;
+    line-height: 1.04 !important;
+}
+
+.masthead.has-inline-title .office-inline-title .form-label,
+.masthead.has-inline-title .office-inline-title .form-title {
+    text-align: center !important;
 }
 
 .title-band .form-label,
@@ -280,23 +302,35 @@ th,
 }
 
 .title-band .form-label {
-    font-size: 7pt !important;
+    font-size: 7.25pt !important;
     font-weight: 700 !important;
-    line-height: 1.2 !important;
-    letter-spacing: 0.09em !important;
-    text-transform: uppercase !important;
+    line-height: 1.14 !important;
+    letter-spacing: 0.03em !important;
+    text-transform: none !important;
     color: var(--office-muted) !important;
-    margin-bottom: 0.03in !important;
+    margin-bottom: 0.025in !important;
 }
 
-.title-band .form-title,
-.article-title {
-    font-family: "Times New Roman", Georgia, serif !important;
+.title-band .form-title {
+    font-family: Arial, Helvetica, sans-serif !important;
     font-size: var(--title-size) !important;
     line-height: 1.08 !important;
     font-weight: 700 !important;
     letter-spacing: 0 !important;
     color: var(--office-ink) !important;
+}
+
+.title-band.sub-title .form-title {
+    font-size: calc(var(--title-size) - 0.8pt) !important;
+}
+
+.article-title {
+    font-family: inherit !important;
+    font-size: inherit !important;
+    line-height: inherit !important;
+    font-weight: 700 !important;
+    letter-spacing: 0 !important;
+    color: inherit !important;
 }
 
 .body {
@@ -312,10 +346,10 @@ section {
 .part-header {
     display: flex !important;
     align-items: center !important;
-    gap: 0.1in !important;
-    margin: 0.11in 0 0.045in !important;
+    gap: 0.11in !important;
+    margin: 0.12in 0 0.05in !important;
     padding-bottom: 0.03in !important;
-    border-bottom: 0 !important;
+    border-bottom: 1px solid #dddddd !important;
     page-break-inside: avoid !important;
     break-inside: avoid-page !important;
     page-break-after: avoid !important;
@@ -325,21 +359,21 @@ section {
     display: inline-flex !important;
     align-items: center !important;
     justify-content: center !important;
-    min-height: 0.18in !important;
-    padding: 0.025in 0.08in !important;
+    min-height: 0.22in !important;
+    padding: 0.04in 0.1in !important;
     border: 0 !important;
     background: var(--office-fill) !important;
-    font-size: 6.55pt !important;
+    font-size: 7.2pt !important;
     font-weight: 700 !important;
-    letter-spacing: 0.08em !important;
-    text-transform: uppercase !important;
+    letter-spacing: 0.03em !important;
+    text-transform: none !important;
     color: var(--office-ink) !important;
 }
 
 .part-title {
     font-family: Arial, Helvetica, sans-serif !important;
-    font-size: 9.2pt !important;
-    line-height: 1.18 !important;
+    font-size: var(--section-size) !important;
+    line-height: 1.25 !important;
     font-weight: 700 !important;
     letter-spacing: 0.01em !important;
     color: var(--office-ink) !important;
@@ -349,19 +383,19 @@ section {
     flex: 1 1 auto !important;
     min-width: 0 !important;
     height: 1px !important;
-    background: transparent !important;
+    background: #d8d8d8 !important;
 }
 
 h3 {
-    font-size: 7.1pt !important;
-    line-height: 1.25 !important;
+    font-size: var(--section-size) !important;
+    line-height: 1.2 !important;
     font-weight: 700 !important;
-    letter-spacing: 0.08em !important;
-    text-transform: uppercase !important;
+    letter-spacing: 0.01em !important;
+    text-transform: none !important;
     color: var(--office-ink) !important;
-    margin: 0.12in 0 0.04in !important;
-    padding-bottom: 0.02in !important;
-    border-bottom: 0 !important;
+    margin: 0.11in 0 0.04in !important;
+    padding-bottom: 0.025in !important;
+    border-bottom: 1px solid #e2e2e2 !important;
     page-break-inside: avoid !important;
     break-inside: avoid-page !important;
     page-break-after: avoid !important;
@@ -381,6 +415,7 @@ label,
     font-size: var(--copy-size) !important;
     line-height: var(--copy-leading) !important;
     color: var(--office-copy) !important;
+    overflow-wrap: anywhere !important;
 }
 
 p,
@@ -393,7 +428,7 @@ li {
 ul,
 ol {
     margin: 0 0 0.05in !important;
-    padding-left: 0.16in !important;
+    padding-left: 0.18in !important;
 }
 
 li::marker {
@@ -444,8 +479,8 @@ strong,
 .shade-group {
     display: flex !important;
     align-items: flex-end !important;
-    gap: 0.06in !important;
-    margin-bottom: 0.07in !important;
+    gap: 0.05in !important;
+    margin-bottom: 0.055in !important;
     page-break-inside: avoid !important;
     break-inside: avoid-page !important;
 }
@@ -485,7 +520,7 @@ strong,
 .conditions-container .field-row,
 .important-box .field-row,
 .consent-callout .field-row {
-    padding-bottom: 0.08in !important;
+    padding-bottom: 0.06in !important;
     border-bottom: 1px solid #d8d8d8 !important;
 }
 
@@ -502,10 +537,10 @@ strong,
 .notes-title,
 .conditions-header {
     font-size: var(--label-size) !important;
-    line-height: 1.2 !important;
+    line-height: 1.25 !important;
     font-weight: 700 !important;
-    letter-spacing: 0.05em !important;
-    text-transform: uppercase !important;
+    letter-spacing: 0.03em !important;
+    text-transform: none !important;
     color: var(--office-ink) !important;
     flex: 0 0 auto !important;
 }
@@ -561,24 +596,24 @@ strong,
 .text-area-line {
     display: block !important;
     width: 100% !important;
-    min-height: 0.18in !important;
-    margin: 0.03in 0 !important;
+    min-height: 0.16in !important;
+    margin: 0.025in 0 !important;
 }
 
 .notes-area,
 .dentist-note,
 .delivery-note {
-    min-height: 0.48in !important;
+    min-height: 0.42in !important;
     border: 1px solid var(--office-rule) !important;
     background:
         repeating-linear-gradient(
             to bottom,
             transparent,
-            transparent 0.19in,
-            #d8d8d8 0.19in,
-            #d8d8d8 calc(0.19in + 1px)
+            transparent 0.16in,
+            #d8d8d8 0.16in,
+            #d8d8d8 calc(0.16in + 1px)
         ) !important;
-    padding: 0.06in 0.07in !important;
+    padding: 0.05in 0.06in !important;
     page-break-inside: avoid !important;
     break-inside: avoid-page !important;
 }
@@ -594,9 +629,9 @@ strong,
 .question-block {
     display: grid !important;
     grid-template-columns: auto minmax(0, 1fr) auto !important;
-    gap: 0.09in !important;
+    gap: 0.07in !important;
     align-items: start !important;
-    padding: 0.04in 0 !important;
+    padding: 0.03in 0 !important;
     border-bottom: 1px solid #e1e1e1 !important;
     page-break-inside: avoid !important;
     break-inside: avoid-page !important;
@@ -622,7 +657,7 @@ strong,
 .conditions-grid,
 .treatment-grid,
 .header-info {
-    gap: 0.08in 0.16in !important;
+    gap: 0.06in 0.12in !important;
 }
 
 .checkbox-grid,
@@ -630,19 +665,6 @@ strong,
 .conditions-grid,
 .treatment-grid {
     display: grid !important;
-}
-
-.checkbox-grid,
-.options-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-}
-
-.conditions-grid {
-    grid-template-columns: minmax(0, 1fr) !important;
-}
-
-.treatment-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
 }
 
 .condition-item,
@@ -664,17 +686,17 @@ strong,
 .condition-item {
     display: flex !important;
     align-items: flex-start !important;
-    gap: 0.08in !important;
-    line-height: 1.32 !important;
+    gap: 0.06in !important;
+    line-height: 1.22 !important;
 }
 
 .checkbox-square,
 .checkbox-box,
 .square-box,
 .selection-box-marker {
-    width: 0.13in !important;
-    height: 0.13in !important;
-    flex: 0 0 0.13in !important;
+    width: 0.12in !important;
+    height: 0.12in !important;
+    flex: 0 0 0.12in !important;
     border: 1px solid var(--office-rule-strong) !important;
     border-radius: 0 !important;
     background: transparent !important;
@@ -683,7 +705,7 @@ strong,
 .selection-box {
     display: inline-flex !important;
     align-items: flex-end !important;
-    min-width: 1in !important;
+    min-width: 0.86in !important;
     min-height: 0.16in !important;
     padding: 0 0.03in 0.02in !important;
     border: 0 !important;
@@ -696,7 +718,7 @@ strong,
 .sig-box,
 .date-box {
     flex: 1 1 0 !important;
-    min-height: 0.34in !important;
+    min-height: 0.28in !important;
     padding-top: 0 !important;
     border: 0 !important;
     border-bottom: 1px solid var(--office-rule-strong) !important;
@@ -713,7 +735,7 @@ strong,
     display: inline-flex !important;
     flex-wrap: wrap !important;
     align-items: center !important;
-    gap: 0.08in !important;
+    gap: 0.06in !important;
 }
 
 .question-block .yn-box {
@@ -728,8 +750,8 @@ select {
 }
 
 input[type="checkbox"] {
-    width: 0.13in !important;
-    height: 0.13in !important;
+    width: 0.12in !important;
+    height: 0.12in !important;
     appearance: auto !important;
     -webkit-appearance: checkbox !important;
     border: 0 !important;
@@ -765,7 +787,7 @@ tr {
 
 th,
 td {
-    padding: 0.055in 0.06in !important;
+    padding: 0.05in 0.055in !important;
     border: 1px solid var(--office-rule) !important;
     vertical-align: top !important;
     overflow-wrap: break-word !important;
@@ -774,17 +796,19 @@ td {
 
 th {
     background: var(--office-fill) !important;
-    font-size: 7.15pt !important;
-    line-height: 1.2 !important;
+    font-size: var(--table-size) !important;
+    line-height: 1.24 !important;
     font-weight: 700 !important;
-    letter-spacing: 0.06em !important;
-    text-transform: uppercase !important;
+    letter-spacing: 0.02em !important;
+    text-transform: none !important;
     color: var(--office-ink) !important;
     text-align: left !important;
 }
 
 td {
     color: var(--office-copy) !important;
+    font-size: var(--table-size) !important;
+    line-height: 1.3 !important;
 }
 
 .office-table,
@@ -804,13 +828,13 @@ td {
 
 .question-table td.checkbox-cell,
 .checkbox-cell {
-    width: 0.9in !important;
+    width: 0.78in !important;
     text-align: center !important;
 }
 
 .question-table td.date-cell,
 .date-cell {
-    width: 1.2in !important;
+    width: 1in !important;
 }
 
 .question-cell {
@@ -868,8 +892,8 @@ td {
 .initial-row {
     display: flex !important;
     align-items: flex-end !important;
-    gap: 0.12in !important;
-    margin: 0.08in 0 !important;
+    gap: 0.08in !important;
+    margin: 0.05in 0 !important;
     page-break-inside: avoid !important;
     break-inside: avoid-page !important;
 }
@@ -878,7 +902,7 @@ td {
     font-size: var(--label-size) !important;
     font-weight: 700 !important;
     letter-spacing: 0.05em !important;
-    text-transform: uppercase !important;
+    text-transform: none !important;
     color: var(--office-ink) !important;
 }
 
@@ -902,8 +926,8 @@ td {
 .sig-row,
 .sig-grid {
     display: flex !important;
-    gap: 0.14in !important;
-    margin: 0.1in 0 0.06in !important;
+    gap: 0.1in !important;
+    margin: 0.08in 0 0.04in !important;
     align-items: flex-end !important;
 }
 
@@ -918,7 +942,7 @@ td {
 
 .sig-blank,
 .sig-box {
-    min-height: 0.22in !important;
+    min-height: 0.18in !important;
     border: 0 !important;
     border-bottom: 1px solid var(--office-rule-strong) !important;
     background: transparent !important;
@@ -935,7 +959,7 @@ td {
 }
 
 .sig-section .notes-area {
-    min-height: 0.22in !important;
+    min-height: 0.18in !important;
     padding: 0.04in 0.06in !important;
 }
 
@@ -947,21 +971,21 @@ td {
     line-height: 1.2 !important;
     font-weight: 700 !important;
     letter-spacing: 0.06em !important;
-    text-transform: uppercase !important;
+    text-transform: none !important;
     color: var(--office-muted) !important;
 }
 
 .doc-footer {
-    display: none !important;
+    display: flex !important;
     align-items: center !important;
     justify-content: space-between !important;
     gap: 0.1in !important;
     min-height: 0.22in !important;
     margin: 0 var(--page-inline) !important;
-    padding: 0.08in 0 0.12in !important;
-    border-top: 1px solid var(--office-rule-strong) !important;
+    padding: 0.06in 0 0.09in !important;
+    border-top: 1px solid #dddddd !important;
     color: var(--office-muted) !important;
-    font-size: 6.9pt !important;
+    font-size: 7.2pt !important;
     line-height: 1.3 !important;
 }
 
@@ -970,22 +994,43 @@ td {
     min-width: 0 !important;
 }
 
-.fab {
+.office-export-actions {
     position: fixed !important;
     right: 1rem !important;
     bottom: 1rem !important;
     z-index: 1000 !important;
-    padding: 0.68rem 0.92rem !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0.45rem !important;
+    align-items: stretch !important;
+}
+
+.fab {
+    position: static !important;
+    min-width: 9rem !important;
+    padding: 0.72rem 1rem !important;
     border: 1px solid var(--office-rule-strong) !important;
+    border-radius: var(--button-radius) !important;
     background: #ffffff !important;
     color: var(--office-ink) !important;
     font-family: Arial, Helvetica, sans-serif !important;
-    font-size: 7.2pt !important;
+    font-size: 7.35pt !important;
     font-weight: 700 !important;
-    letter-spacing: 0.08em !important;
-    text-transform: uppercase !important;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.14) !important;
+    letter-spacing: 0.06em !important;
+    text-transform: none !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12) !important;
     cursor: pointer !important;
+    text-align: center !important;
+}
+
+.office-export-frame {
+    position: fixed !important;
+    inset: 0 !important;
+    width: 0 !important;
+    height: 0 !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    border: 0 !important;
 }
 
 .fab[disabled],
@@ -995,13 +1040,151 @@ td {
 }
 
 @page {
-    size: letter;
-    margin: 0.24in 0.24in 0.24in;
+    size: a4;
+    margin: 0.14in 0.14in 0.18in;
+}
+
+body.office-form-dense {
+    --page-inline: 0.18in;
+    --page-top: 0.12in;
+    --page-bottom: 0.18in;
+    --copy-size: 8.55pt;
+    --copy-leading: 1.22;
+    --label-size: 6.7pt;
+    --small-size: 7.05pt;
+    --title-size: 12.9pt;
+    --section-size: 9.35pt;
+    --table-size: 8.1pt;
+    --logo-width: 1.2in;
+}
+
+body.office-form-xdense {
+    --page-inline: 0.16in;
+    --page-top: 0.11in;
+    --page-bottom: 0.17in;
+    --copy-size: 8.15pt;
+    --copy-leading: 1.18;
+    --label-size: 6.45pt;
+    --small-size: 6.85pt;
+    --title-size: 12.35pt;
+    --section-size: 8.95pt;
+    --table-size: 7.75pt;
+    --logo-width: 1.14in;
+}
+
+body.office-form-dense section,
+body.office-form-xdense section {
+    margin-bottom: 0.08in !important;
+}
+
+body.office-form-dense .part-header,
+body.office-form-xdense .part-header {
+    margin: 0.1in 0 0.04in !important;
+    padding-bottom: 0.02in !important;
+}
+
+body.office-form-dense .question-block,
+body.office-form-xdense .question-block {
+    gap: 0.05in !important;
+    padding: 0.02in 0 !important;
+}
+
+body.office-form-dense .field-row,
+body.office-form-dense .form-row,
+body.office-form-dense .flex-row,
+body.office-form-xdense .field-row,
+body.office-form-xdense .form-row,
+body.office-form-xdense .flex-row {
+    gap: 0.04in !important;
+    margin-bottom: 0.045in !important;
+}
+
+body.office-form-dense .info-grid,
+body.office-form-dense .conditions-container,
+body.office-form-xdense .info-grid,
+body.office-form-xdense .conditions-container {
+    padding: 0.06in 0.07in !important;
+}
+
+body.office-form-dense .notes-area,
+body.office-form-dense .delivery-note,
+body.office-form-xdense .notes-area,
+body.office-form-xdense .delivery-note {
+    min-height: 0.32in !important;
+}
+
+body.office-form-cfid-impression-form .body {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 0.08in 0.12in !important;
+}
+
+body.office-form-cfid-impression-form .body > section {
+    margin-bottom: 0 !important;
+}
+
+body.office-form-cfid-impression-form .body > .sig-section {
+    grid-column: 1 / -1 !important;
+}
+
+body.office-form-cfid-impression-form .checkbox-item,
+body.office-form-cfid-impression-form .form-row {
+    margin-bottom: 0.04in !important;
+}
+
+body.office-form-health-history .conditions-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 0.03in 0.12in !important;
+}
+
+body.office-form-health-history .condition-item {
+    padding: 0.015in 0 !important;
+    font-size: 7.55pt !important;
+}
+
+body.office-form-health-history .question-block {
+    grid-template-columns: 0.18in minmax(0, 1fr) auto !important;
+}
+
+body.office-form-health-history .question-block[style*="margin-left"],
+body.office-form-health-history .field-row[style*="margin-left"] {
+    margin-left: 0.12in !important;
+}
+
+body.office-form-health-history .conditions-container,
+body.office-form-health-history .sig-section {
+    margin-top: 0.04in !important;
+}
+
+body.office-form-confidential-health-history .checkbox-grid,
+body.office-form-confidential-health-history .checkbox-grid.col-4 {
+    gap: 0.04in 0.08in !important;
+}
+
+body.office-form-confidential-health-history .field-value {
+    min-height: 0.14in !important;
+}
+
+body.office-form-preconsultation-forms .question-block,
+body.office-form-patient_registration .question-block {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 0.04in !important;
+}
+
+body.office-form-preconsultation-forms .options-grid,
+body.office-form-patient_registration .checkbox-grid {
+    gap: 0.04in 0.08in !important;
+}
+
+body.office-form-allon4checklist .notes-area,
+body.office-form-upper-hybrid-prophylaxis-checklist .notes-area {
+    min-height: 0.26in !important;
 }
 
 @media screen {
     .document {
         margin: 0 auto !important;
+        min-height: var(--page-height) !important;
     }
 }
 
@@ -1031,6 +1214,11 @@ td {
     .options-grid,
     .treatment-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    }
+
+    .office-export-actions {
+        right: 0.6rem !important;
+        bottom: 0.6rem !important;
     }
 }
 
@@ -1062,6 +1250,16 @@ td {
         flex-direction: column !important;
         align-items: stretch !important;
     }
+
+    .office-export-actions {
+        left: 0.5rem !important;
+        right: 0.5rem !important;
+    }
+
+    .fab {
+        min-width: 0 !important;
+        width: 100% !important;
+    }
 }
 
 @media print {
@@ -1078,31 +1276,82 @@ td {
         box-shadow: none !important;
     }
 
+    .office-export-actions,
     .fab {
         display: none !important;
+    }
+
+    p,
+    li,
+    tr,
+    .field-row,
+    .form-row,
+    .question-block,
+    .checkbox-item {
+        break-inside: avoid-page !important;
+        page-break-inside: avoid !important;
     }
 }
 
 body.office-forms-exporting .document {
-    max-width: var(--office-export-width, 7.82in) !important;
-    width: var(--office-export-width, 7.82in) !important;
+    max-width: var(--office-export-width, calc(var(--page-width) - 0.28in)) !important;
+    width: var(--office-export-width, calc(var(--page-width) - 0.28in)) !important;
     margin: 0 auto !important;
     border: 0 !important;
     box-shadow: none !important;
 }
 
+body.office-forms-exporting p,
+body.office-forms-exporting li,
+body.office-forms-exporting tr,
+body.office-forms-exporting .field-row,
+body.office-forms-exporting .form-row,
+body.office-forms-exporting .question-block,
+body.office-forms-exporting .checkbox-item {
+    break-inside: avoid-page !important;
+    page-break-inside: avoid !important;
+}
+
 .page-break {
-    display: block !important;
+    display: none !important;
     height: 0 !important;
     margin: 0 !important;
     padding: 0 !important;
     border: 0 !important;
-    page-break-before: always !important;
-    break-before: page !important;
+    page-break-before: auto !important;
+    break-before: auto !important;
 }
 
 @media screen {
     .page-break {
         display: none !important;
     }
+}
+
+.office-manual-page-break {
+    display: none !important;
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    page-break-before: auto !important;
+    break-before: auto !important;
+}
+
+body.office-form-consent-guided-tissue .signature-section {
+    page-break-inside: auto !important;
+    break-inside: auto !important;
+}
+
+body.office-form-consent-guided-tissue .signature-section .sig-row {
+    margin: 0.04in 0 !important;
+}
+
+body.office-form-consent-guided-tissue .signature-section .sig-blank {
+    min-height: 0.1in !important;
+}
+
+body.office-form-consent-guided-tissue .signature-section p[style*="margin-top: 2rem"],
+body.office-form-consent-guided-tissue .signature-section p[style*="margin-top:2rem"] {
+    margin-top: 0.06in !important;
 }
