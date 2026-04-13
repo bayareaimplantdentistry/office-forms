@@ -84,8 +84,9 @@ select {
     align-items: center !important;
     column-gap: 0.14in !important;
     row-gap: 0 !important;
-    padding-bottom: 0 !important;
-    border-bottom: 0 !important;
+    padding-bottom: 0.05in !important;
+    margin-bottom: 0.045in !important;
+    border-bottom: 1px solid #d8d8d8 !important;
 }
 
 .masthead.has-inline-title .masthead-left {
@@ -253,9 +254,9 @@ select {
 }
 
 .title-band {
-    padding: 0.04in var(--page-inline) 0.08in !important;
-    margin-bottom: 0.05in !important;
-    border-bottom: 0 !important;
+    padding: 0.035in var(--page-inline) 0.05in !important;
+    margin-bottom: 0.075in !important;
+    border-bottom: 1px solid #d8d8d8 !important;
     text-align: left !important;
     page-break-inside: avoid !important;
     break-inside: avoid-page !important;
@@ -274,6 +275,12 @@ select {
     border: 0 !important;
     text-align: center !important;
     align-self: center !important;
+}
+
+.masthead.has-inline-title .office-inline-title {
+    border-bottom: 0 !important;
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
 }
 
 .office-inline-title .form-label {
@@ -338,7 +345,7 @@ th,
 }
 
 section {
-    margin-bottom: 0.11in !important;
+    margin-bottom: 0.09in !important;
     page-break-inside: auto !important;
     break-inside: auto !important;
 }
@@ -347,7 +354,7 @@ section {
     display: flex !important;
     align-items: center !important;
     gap: 0.11in !important;
-    margin: 0.12in 0 0.05in !important;
+    margin: 0.1in 0 0.04in !important;
     padding-bottom: 0 !important;
     border-bottom: 0 !important;
     page-break-inside: avoid !important;
@@ -390,7 +397,7 @@ h3 {
     letter-spacing: 0.01em !important;
     text-transform: none !important;
     color: var(--office-ink) !important;
-    margin: 0.11in 0 0.04in !important;
+    margin: 0.08in 0 0.03in !important;
     padding-bottom: 0 !important;
     border-bottom: 0 !important;
     page-break-inside: avoid !important;
@@ -417,7 +424,7 @@ label,
 
 p,
 li {
-    margin-bottom: 0.04in !important;
+    margin-bottom: 0.03in !important;
     orphans: 3;
     widows: 3;
 }
@@ -453,8 +460,8 @@ strong,
 .considerations-section {
     border: 1px solid var(--office-rule) !important;
     background: var(--office-paper) !important;
-    padding: 0.08in 0.09in !important;
-    margin: 0.06in 0 !important;
+    padding: 0.065in 0.075in !important;
+    margin: 0.05in 0 !important;
     page-break-inside: auto !important;
     break-inside: auto !important;
 }
@@ -476,8 +483,8 @@ strong,
 .shade-group {
     display: flex !important;
     align-items: flex-end !important;
-    gap: 0.05in !important;
-    margin-bottom: 0.055in !important;
+    gap: 0.045in !important;
+    margin-bottom: 0.045in !important;
     page-break-inside: avoid !important;
     break-inside: avoid-page !important;
 }
@@ -654,7 +661,7 @@ strong,
 .conditions-grid,
 .treatment-grid,
 .header-info {
-    gap: 0.06in 0.12in !important;
+    gap: 0.045in 0.09in !important;
 }
 
 .checkbox-grid,
@@ -784,7 +791,7 @@ tr {
 
 th,
 td {
-    padding: 0.05in 0.055in !important;
+    padding: 0.04in 0.045in !important;
     border: 1px solid var(--office-rule) !important;
     vertical-align: top !important;
     overflow-wrap: break-word !important;
@@ -889,8 +896,8 @@ td {
 .initial-row {
     display: flex !important;
     align-items: flex-end !important;
-    gap: 0.08in !important;
-    margin: 0.05in 0 !important;
+    gap: 0.06in !important;
+    margin: 0.04in 0 !important;
     page-break-inside: avoid !important;
     break-inside: avoid-page !important;
 }
@@ -923,8 +930,8 @@ td {
 .sig-row,
 .sig-grid {
     display: flex !important;
-    gap: 0.1in !important;
-    margin: 0.08in 0 0.04in !important;
+    gap: 0.08in !important;
+    margin: 0.05in 0 0.025in !important;
     align-items: flex-end !important;
 }
 
@@ -939,7 +946,7 @@ td {
 
 .sig-blank,
 .sig-box {
-    min-height: 0.18in !important;
+    min-height: 0.14in !important;
     border: 0 !important;
     border-bottom: 1px solid var(--office-rule-strong) !important;
     background: transparent !important;
@@ -952,7 +959,7 @@ td {
 }
 
 .sig-section > div:last-child {
-    margin-top: 0.08in !important;
+    margin-top: 0.04in !important;
 }
 
 .sig-section .notes-area {
@@ -963,7 +970,7 @@ td {
 .sig-field-label,
 .sig-label {
     display: block !important;
-    margin-top: 0.03in !important;
+    margin-top: 0.02in !important;
     font-size: 6.75pt !important;
     line-height: 1.2 !important;
     font-weight: 700 !important;
@@ -979,7 +986,7 @@ td {
     gap: 0.1in !important;
     min-height: 0.22in !important;
     margin: 0 var(--page-inline) !important;
-    padding: 0.06in 0 0.09in !important;
+    padding: 0.04in 0 0.06in !important;
     border-top: 1px solid #dddddd !important;
     color: var(--office-muted) !important;
     font-size: 7.2pt !important;
@@ -1071,19 +1078,19 @@ body.office-form-xdense {
 
 body.office-form-dense section,
 body.office-form-xdense section {
-    margin-bottom: 0.08in !important;
+    margin-bottom: 0.06in !important;
 }
 
 body.office-form-dense .part-header,
 body.office-form-xdense .part-header {
-    margin: 0.1in 0 0.04in !important;
+    margin: 0.07in 0 0.03in !important;
     padding-bottom: 0 !important;
 }
 
 body.office-form-dense .question-block,
 body.office-form-xdense .question-block {
     gap: 0.05in !important;
-    padding: 0.02in 0 !important;
+    padding: 0.015in 0 !important;
 }
 
 body.office-form-dense .field-row,
@@ -1100,14 +1107,87 @@ body.office-form-dense .info-grid,
 body.office-form-dense .conditions-container,
 body.office-form-xdense .info-grid,
 body.office-form-xdense .conditions-container {
-    padding: 0.06in 0.07in !important;
+    padding: 0.05in 0.06in !important;
 }
 
 body.office-form-dense .notes-area,
 body.office-form-dense .delivery-note,
 body.office-form-xdense .notes-area,
 body.office-form-xdense .delivery-note {
-    min-height: 0.32in !important;
+    min-height: 0.26in !important;
+}
+
+body.office-form-dense p,
+body.office-form-dense li,
+body.office-form-xdense p,
+body.office-form-xdense li {
+    margin-bottom: 0.025in !important;
+}
+
+body.office-form-dense h3,
+body.office-form-xdense h3 {
+    margin: 0.06in 0 0.02in !important;
+}
+
+body.office-form-dense th,
+body.office-form-dense td,
+body.office-form-xdense th,
+body.office-form-xdense td {
+    padding: 0.032in 0.038in !important;
+}
+
+body.office-form-dense .checkbox-grid,
+body.office-form-dense .options-grid,
+body.office-form-dense .conditions-grid,
+body.office-form-dense .treatment-grid,
+body.office-form-xdense .checkbox-grid,
+body.office-form-xdense .options-grid,
+body.office-form-xdense .conditions-grid,
+body.office-form-xdense .treatment-grid {
+    gap: 0.035in 0.075in !important;
+}
+
+body.office-form-dense .signature-section,
+body.office-form-dense .sig-section,
+body.office-form-xdense .signature-section,
+body.office-form-xdense .sig-section {
+    margin-top: 0.05in !important;
+}
+
+body.office-form-dense .signature-section[style*="margin-top"],
+body.office-form-dense .sig-section[style*="margin-top"],
+body.office-form-xdense .signature-section[style*="margin-top"],
+body.office-form-xdense .sig-section[style*="margin-top"] {
+    margin-top: 0.05in !important;
+}
+
+body.office-form-dense .sig-row,
+body.office-form-dense .sig-grid,
+body.office-form-xdense .sig-row,
+body.office-form-xdense .sig-grid {
+    gap: 0.06in !important;
+    margin: 0.035in 0 0.02in !important;
+}
+
+body.office-form-dense .sig-row[style*="margin-top"],
+body.office-form-dense .sig-grid[style*="margin-top"],
+body.office-form-xdense .sig-row[style*="margin-top"],
+body.office-form-xdense .sig-grid[style*="margin-top"] {
+    margin-top: 0.035in !important;
+}
+
+body.office-form-dense .sig-blank,
+body.office-form-dense .sig-box,
+body.office-form-xdense .sig-blank,
+body.office-form-xdense .sig-box {
+    min-height: 0.11in !important;
+}
+
+body.office-form-dense .field-value,
+body.office-form-dense .underlined-value,
+body.office-form-xdense .field-value,
+body.office-form-xdense .underlined-value {
+    min-height: 0.13in !important;
 }
 
 body.office-form-cfid-impression-form .body {
@@ -1155,11 +1235,50 @@ body.office-form-health-history .sig-section {
 
 body.office-form-confidential-health-history .checkbox-grid,
 body.office-form-confidential-health-history .checkbox-grid.col-4 {
-    gap: 0.04in 0.08in !important;
+    gap: 0.03in 0.06in !important;
+}
+
+body.office-form-confidential-health-history .checkbox-grid.compact-halves {
+    display: block !important;
+    columns: 2;
+    column-gap: 0.16in;
+}
+
+body.office-form-confidential-health-history .checkbox-grid.compact-halves .yn-item {
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.045in !important;
+    margin: 0 0 0.03in !important;
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+}
+
+body.office-form-confidential-health-history .checkbox-grid.compact-halves .yn-item > span {
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+}
+
+body.office-form-confidential-health-history .checkbox-grid.compact-halves .yn-box {
+    gap: 0.03in !important;
+    margin-right: 0.04in !important;
 }
 
 body.office-form-confidential-health-history .field-value {
     min-height: 0.14in !important;
+}
+
+body.office-form-confidential-health-history .signature-section .part-header {
+    margin-top: 0.06in !important;
+}
+
+body.office-form-confidential-health-history .signature-section .sig-row[style*="margin-top"] {
+    margin-top: 0.04in !important;
+}
+
+body.office-form-confidential-health-history .signature-section > div[style*="background: #fafafa"] {
+    margin: 0.06in 0 0.05in !important;
+    padding: 0.07in 0.08in !important;
+    border-left-width: 3px !important;
 }
 
 body.office-form-preconsultation-forms .question-block,
@@ -1351,4 +1470,40 @@ body.office-form-consent-guided-tissue .signature-section .sig-blank {
 body.office-form-consent-guided-tissue .signature-section p[style*="margin-top: 2rem"],
 body.office-form-consent-guided-tissue .signature-section p[style*="margin-top:2rem"] {
     margin-top: 0.06in !important;
+}
+
+body.office-form-consent-bisphosphonates-medications section {
+    margin-bottom: 0.04in !important;
+}
+
+body.office-form-consent-bisphosphonates-medications .part-header {
+    margin: 0.045in 0 0.025in !important;
+}
+
+body.office-form-consent-bisphosphonates-medications .consent-callout {
+    padding: 0.06in 0.08in !important;
+    margin-top: 0.04in !important;
+}
+
+body.office-form-consent-bisphosphonates-medications .signature-section {
+    margin-top: 0.04in !important;
+}
+
+body.office-form-consent-bisphosphonates-medications .signature-section .sig-row {
+    gap: 0.05in !important;
+    margin: 0.03in 0 0 !important;
+}
+
+body.office-form-consent-bisphosphonates-medications .signature-section .sig-blank {
+    min-height: 0.08in !important;
+}
+
+body.office-form-consent-bisphosphonates-medications .signature-section .sig-field-label {
+    margin-top: 0.015in !important;
+}
+
+body.office-form-implants-sticker .premium-product-band {
+    border-bottom: 1px solid #d8d8d8 !important;
+    padding-bottom: 0.05in !important;
+    margin-bottom: 0.075in !important;
 }

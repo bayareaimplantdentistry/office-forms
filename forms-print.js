@@ -61,6 +61,7 @@
         'patient_registration.html',
         'teeth whitening.html'
     ];
+    const OFFICE_FORM_FILE_SET = new Set(OFFICE_FORM_FILES);
     const DENSE_FORM_FILES = new Set([
         '3 COVID-Screening-Form.html',
         'Implants Sticker.html',
@@ -72,6 +73,7 @@
     const XDENSE_FORM_FILES = new Set([
         'CFID-Impression-Form.html',
         'Confidential Health History.html',
+        'Consent - Bisphosphonates Medications.html',
         'Health History.html',
         'patient_registration.html',
         'PreConsultation Forms.html'
@@ -223,11 +225,11 @@
             root.classList.add('office-form-' + formSlug);
         }
 
-        if (DENSE_FORM_FILES.has(currentHtmlFile)) {
+        if (OFFICE_FORM_FILE_SET.has(currentHtmlFile)) {
             document.body.classList.add('office-form-dense');
         }
 
-        if (XDENSE_FORM_FILES.has(currentHtmlFile)) {
+        if (DENSE_FORM_FILES.has(currentHtmlFile) || XDENSE_FORM_FILES.has(currentHtmlFile)) {
             document.body.classList.add('office-form-xdense');
         }
 
