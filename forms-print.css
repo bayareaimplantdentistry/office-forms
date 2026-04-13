@@ -84,8 +84,8 @@ select {
     align-items: center !important;
     column-gap: 0.14in !important;
     row-gap: 0 !important;
-    padding-bottom: 0.08in !important;
-    border-bottom: 1px solid var(--office-rule-strong) !important;
+    padding-bottom: 0 !important;
+    border-bottom: 0 !important;
 }
 
 .masthead.has-inline-title .masthead-left {
@@ -186,7 +186,7 @@ select {
 .premium-product-band {
     margin: 0 var(--page-inline) 0.04in !important;
     padding: 0.03in 0 0.04in !important;
-    border-bottom: 1px solid #d8d8d8 !important;
+    border-bottom: 0 !important;
     text-align: left !important;
     color: var(--office-ink) !important;
     background: transparent !important;
@@ -255,7 +255,7 @@ select {
 .title-band {
     padding: 0.04in var(--page-inline) 0.08in !important;
     margin-bottom: 0.05in !important;
-    border-bottom: 1px solid #dddddd !important;
+    border-bottom: 0 !important;
     text-align: left !important;
     page-break-inside: avoid !important;
     break-inside: avoid-page !important;
@@ -348,8 +348,8 @@ section {
     align-items: center !important;
     gap: 0.11in !important;
     margin: 0.12in 0 0.05in !important;
-    padding-bottom: 0.03in !important;
-    border-bottom: 1px solid #dddddd !important;
+    padding-bottom: 0 !important;
+    border-bottom: 0 !important;
     page-break-inside: avoid !important;
     break-inside: avoid-page !important;
     page-break-after: avoid !important;
@@ -380,10 +380,7 @@ section {
 }
 
 .part-rule {
-    flex: 1 1 auto !important;
-    min-width: 0 !important;
-    height: 1px !important;
-    background: #d8d8d8 !important;
+    display: none !important;
 }
 
 h3 {
@@ -394,8 +391,8 @@ h3 {
     text-transform: none !important;
     color: var(--office-ink) !important;
     margin: 0.11in 0 0.04in !important;
-    padding-bottom: 0.025in !important;
-    border-bottom: 1px solid #e2e2e2 !important;
+    padding-bottom: 0 !important;
+    border-bottom: 0 !important;
     page-break-inside: avoid !important;
     break-inside: avoid-page !important;
     page-break-after: avoid !important;
@@ -520,8 +517,8 @@ strong,
 .conditions-container .field-row,
 .important-box .field-row,
 .consent-callout .field-row {
-    padding-bottom: 0.06in !important;
-    border-bottom: 1px solid #d8d8d8 !important;
+    padding-bottom: 0 !important;
+    border-bottom: 0 !important;
 }
 
 .info-grid .field-row:last-child,
@@ -632,7 +629,7 @@ strong,
     gap: 0.07in !important;
     align-items: start !important;
     padding: 0.03in 0 !important;
-    border-bottom: 1px solid #e1e1e1 !important;
+    border-bottom: 0 !important;
     page-break-inside: avoid !important;
     break-inside: avoid-page !important;
 }
@@ -1080,7 +1077,7 @@ body.office-form-xdense section {
 body.office-form-dense .part-header,
 body.office-form-xdense .part-header {
     margin: 0.1in 0 0.04in !important;
-    padding-bottom: 0.02in !important;
+    padding-bottom: 0 !important;
 }
 
 body.office-form-dense .question-block,
