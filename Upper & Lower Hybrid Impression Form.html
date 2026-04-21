@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upper &amp; Lower Hybrid Impression Form | All-On-8 Robust</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap"
+        rel="stylesheet">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+    <style>
+        :root {
+            --black: #000000;
+            --gray-dark: #222222;
+            --gray-mid: #555555;
+            --gray-border: #cccccc;
+            --white: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'EB Garamond', serif;
+            background: #f4f4f4;
+            color: var(--black);
+            font-size: 11pt;
+            line-height: 1.45;
+            padding: 2rem 1rem;
+        }
+
+        .document {
+            max-width: 8.5in;
+            margin: 0 auto;
+            background: var(--white);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, .1);
+            position: relative;
+        }
+
+        .masthead {
+            padding: 2.5rem 3rem 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .brand-logo img {
+            width: 210px;
+            max-width: 100%;
+            height: auto;
+            filter: grayscale(100%);
+        }
+
+        .title-band {
+            padding: 1rem 3rem;
+            text-align: center;
+        }
+
+        .title-band .form-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 18pt;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .body {
+            padding: 0 3rem 2.5rem;
+        }
+
+        section {
+            margin-bottom: 1.2rem;
+        }
+
+        .part-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            margin-top: 1.2rem;
+        }
+
+        .part-number {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 7pt;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border: 1px solid var(--black);
+            padding: 0.3rem 0.6rem;
+        }
+
+        .part-rule {
+            flex-grow: 1;
+            height: 1px;
+            background: var(--black);
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.55rem;
+            margin-bottom: 0.46rem;
+        }
+
+        .checkbox-square {
+            width: 14px;
+            height: 14px;
+            border: 1px solid var(--black);
+            flex-shrink: 0;
+            margin-top: 0.08rem;
+        }
+
+        .checkbox-text {
+            font-size: 10.6pt;
+            color: var(--gray-dark);
+        }
+
+        .inline-blank {
+            display: inline-block;
+            min-width: 0.42in;
+            border-bottom: 1px solid var(--black);
+            min-height: 0.85rem;
+            vertical-align: baseline;
+        }
+
+        .sig-row {
+            display: flex;
+            gap: 3rem;
+            margin-top: 1.4rem;
+            align-items: flex-end;
+        }
+
+        .sig-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 7.5pt;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .fab {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--black);
+            color: var(--white);
+            border: 2px solid var(--black);
+            padding: 0.9rem 1.6rem;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 8pt;
+            text-transform: uppercase;
+            cursor: pointer;
+            z-index: 1000;
+        }
+
+        @media print {
+            .fab { display: none !important; }
+            body { background: white; padding: 0; }
+            .document { box-shadow: none; max-width: 100%; border: none; }
+        }
+    </style>
+    <link rel="stylesheet" href="forms-print.css">
+    <style>
+        body.upper-lower-hybrid-impression-form {
+            --copy-size: 12pt;
+            --label-size: 9pt;
+            --title-size: 13pt;
+        }
+
+        body.upper-lower-hybrid-impression-form .title-band .form-title {
+            font-size: 13pt !important;
+        }
+
+        body.upper-lower-hybrid-impression-form .field-label,
+        body.upper-lower-hybrid-impression-form .patient-meta-label {
+            font-size: 9pt !important;
+        }
+
+        body.upper-lower-hybrid-impression-form .sig-label {
+            font-size: 9pt !important;
+        }
+
+        body.upper-lower-hybrid-impression-form .part-number {
+            font-size: 9pt !important;
+        }
+
+        body.upper-lower-hybrid-impression-form .plain-notes-row {
+            display: flex !important;
+            align-items: flex-end !important;
+            gap: 0.08in !important;
+            margin: 0.04in 0 0.08in !important;
+        }
+
+        body.upper-lower-hybrid-impression-form .plain-notes-row .field-label {
+            flex: 0 0 auto !important;
+            margin: 0 !important;
+        }
+
+        body.upper-lower-hybrid-impression-form .plain-line {
+            display: block !important;
+            flex: 1 1 auto !important;
+            min-height: 0.22in !important;
+            border: 0 !important;
+            border-bottom: 1px solid var(--office-rule-strong) !important;
+            background: transparent !important;
+        }
+
+        body.upper-lower-hybrid-impression-form .plain-signatures {
+            gap: 0.5in !important;
+            margin-top: 0.2in !important;
+        }
+
+        body.upper-lower-hybrid-impression-form .plain-signature {
+            flex: 1 1 0 !important;
+        }
+
+        body.upper-lower-hybrid-impression-form .plain-signature .plain-line {
+            margin-bottom: 0.04in !important;
+        }
+    </style>
+</head>
+
+<body class="upper-lower-hybrid-impression-form">
+
+    <button id="downloadPdfBtn" class="fab">Download PDF</button>
+
+    <div class="document" id="pdf-content">
+
+        <div class="masthead">
+            <div class="masthead-left">
+                <div class="brand-logo"><img src="logo.svg" alt="Logo"></div>
+            </div>
+        </div>
+
+        <div class="title-band">
+            <div class="form-title">Upper &amp; Lower Hybrid Impression Form</div>
+        </div>
+
+        <div class="patient-meta-band">
+            <div class="patient-meta-item">
+                <span class="patient-meta-label">Name</span>
+                <div class="patient-meta-surface"></div>
+            </div>
+            <div class="patient-meta-item">
+                <span class="patient-meta-label">Chart #</span>
+                <div class="patient-meta-surface"></div>
+            </div>
+            <div class="patient-meta-item">
+                <span class="patient-meta-label">Date</span>
+                <div class="patient-meta-surface"></div>
+            </div>
+            <div class="patient-meta-item">
+                <span class="patient-meta-label">Sex</span>
+                <div class="patient-meta-surface"></div>
+            </div>
+        </div>
+
+        <div class="body">
+
+            <section>
+                <div class="part-header">
+                    <span class="part-number">Checklist</span>
+                    <span class="part-rule"></span>
+                </div>
+
+                <div class="checkbox-item"><div class="checkbox-square"></div><span class="checkbox-text">Soft tissue healing WNL</span></div>
+                <div class="checkbox-item"><div class="checkbox-square"></div><span class="checkbox-text">Paraesthesia checked, none / mild / moderate / severe</span></div>
+                <div class="checkbox-item"><div class="checkbox-square"></div><span class="checkbox-text">Swelling mild / moderate / severe</span></div>
+                <div class="checkbox-item"><div class="checkbox-square"></div><span class="checkbox-text">Soreness, pain mild / moderate / severe</span></div>
+                <div class="checkbox-item"><div class="checkbox-square"></div><span class="checkbox-text">Healing collars taken out.</span></div>
+                <div class="checkbox-item"><div class="checkbox-square"></div><span class="checkbox-text">Topical anesthesia applied all over the abutment 4/5/6/7.</span></div>
+                <div class="checkbox-item">
+                    <div class="checkbox-square"></div>
+                    <span class="checkbox-text">
+                        Anesthesia given <span class="inline-blank"></span> 2% lidocaine with 1:100,000 epi administered BI/LI# <span class="inline-blank"></span> IAN
+                        <br><span class="inline-blank"></span> 4% septocaine with 1:100,000 epi administered BI/LI# <span class="inline-blank"></span> IAN
+                    </span>
+                </div>
+                <div class="checkbox-item"><div class="checkbox-square"></div><span class="checkbox-text">Impression coping placed with long screw. Tight to 15N.</span></div>
+                <div class="checkbox-item"><div class="checkbox-square"></div><span class="checkbox-text">X-ray taken to verify the seating of sleeves.</span></div>
+                <div class="checkbox-item"><div class="checkbox-square"></div><span class="checkbox-text">Upper/Lower implants joined together with primotec resin and cured.</span></div>
+                <div class="checkbox-item"><div class="checkbox-square"></div><span class="checkbox-text">Upper/Lower open tray impression taken with heavy body and mira tray.</span></div>
+                <div class="checkbox-item"><div class="checkbox-square"></div><span class="checkbox-text">Upper/Lower impression removed.</span></div>
+                <div class="checkbox-item"><div class="checkbox-square"></div><span class="checkbox-text">Upper/Lower bite jig placed.</span></div>
+                <div class="checkbox-item"><div class="checkbox-square"></div><span class="checkbox-text">Upper/Lower X-rays taken to confirm seating of jig.</span></div>
+                <div class="checkbox-item"><div class="checkbox-square"></div><span class="checkbox-text">Bite added with blue moose.</span></div>
+                <div class="checkbox-item"><div class="checkbox-square"></div><span class="checkbox-text">Face scan taken.</span></div>
+                <div class="checkbox-item"><div class="checkbox-square"></div><span class="checkbox-text">Upper/Lower jig removed, bite removed.</span></div>
+                <div class="checkbox-item"><div class="checkbox-square"></div><span class="checkbox-text">Upper/Lower healing collars placed back tight to 15N / hand tight.</span></div>
+                <div class="checkbox-item"><div class="checkbox-square"></div><span class="checkbox-text">Next visit, Upper/Lower hybrid bridge delivery.</span></div>
+            </section>
+
+            <section class="sig-section">
+                <div class="plain-notes-row">
+                    <div class="field-label">Notes:</div>
+                    <div class="plain-line"></div>
+                </div>
+                <div class="plain-line"></div>
+
+                <div class="sig-row plain-signatures">
+                    <div class="plain-signature">
+                        <div class="plain-line"></div>
+                        <div class="sig-label">Doctor</div>
+                    </div>
+                    <div class="plain-signature">
+                        <div class="plain-line"></div>
+                        <div class="sig-label">Assistant</div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <script src="forms-print.js"></script>
+</body>
+
+</html>

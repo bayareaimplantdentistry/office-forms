@@ -38,6 +38,7 @@
         'Consent- SinusLift BoneGraft.html',
         'Exam Denial Consent.html',
         'Health History.html',
+        'Upper & Lower Hybrid Impression Form.html',
         'INFORMED CONSENT DISCUSSION FOR LASER ASSISTED NEW ATTACHMENT PROCEDURE.html',
         'Immediate Implant Placement.html',
         'Implant Crown & Hybrid Denture Consent Form.html',
