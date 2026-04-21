@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab Form | All-On-8 Robust</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap"
+        rel="stylesheet">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+    <style>
+        :root {
+            --black: #000000;
+            --gray-dark: #222222;
+            --white: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'EB Garamond', serif;
+            background: #f4f4f4;
+            color: var(--black);
+            font-size: 11pt;
+            line-height: 1.45;
+            padding: 2rem 1rem;
+        }
+
+        .document {
+            max-width: 8.5in;
+            margin: 0 auto;
+            background: var(--white);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, .1);
+            position: relative;
+        }
+
+        .masthead {
+            padding: 2.5rem 3rem 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .brand-logo img {
+            width: 210px;
+            max-width: 100%;
+            height: auto;
+            filter: grayscale(100%);
+        }
+
+        .title-band {
+            padding: 1rem 3rem;
+            text-align: center;
+        }
+
+        .title-band .form-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 18pt;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .body {
+            padding: 0 3rem 2.5rem;
+        }
+
+        .fab {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--black);
+            color: var(--white);
+            border: 2px solid var(--black);
+            padding: 0.9rem 1.6rem;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 8pt;
+            text-transform: uppercase;
+            cursor: pointer;
+            z-index: 1000;
+        }
+
+        @media print {
+            .fab { display: none !important; }
+            body { background: white; padding: 0; }
+            .document { box-shadow: none; max-width: 100%; border: none; }
+        }
+    </style>
+    <link rel="stylesheet" href="forms-print.css">
+    <style>
+        body.lab-form-page {
+            --copy-size: 12pt;
+            --copy-leading: 1.2;
+            --label-size: 9pt;
+            --title-size: 13pt;
+        }
+
+        body.lab-form-page .title-band .form-title {
+            font-size: 13pt !important;
+        }
+
+        body.lab-form-page .body {
+            padding-bottom: 0.18in !important;
+        }
+
+        body.lab-form-page .lab-slip {
+            padding: 0.1in 0 0.16in !important;
+            border-bottom: 1px solid var(--office-rule) !important;
+            break-inside: avoid !important;
+            page-break-inside: avoid !important;
+        }
+
+        body.lab-form-page .lab-slip + .lab-slip {
+            margin-top: 0.16in !important;
+        }
+
+        body.lab-form-page .lab-slip:last-child {
+            border-bottom: 0 !important;
+            padding-bottom: 0 !important;
+        }
+
+        body.lab-form-page .lab-office-title {
+            font-family: Arial, Helvetica, sans-serif !important;
+            font-size: 12pt !important;
+            font-weight: 700 !important;
+            letter-spacing: 0.02em !important;
+            color: var(--office-ink) !important;
+            margin-bottom: 0.08in !important;
+        }
+
+        body.lab-form-page .lab-date-box {
+            border: 1px solid var(--office-rule-strong) !important;
+            padding: 0.09in 0.11in 0.08in !important;
+            margin-bottom: 0.12in !important;
+        }
+
+        body.lab-form-page .field-row {
+            display: flex !important;
+            align-items: flex-end !important;
+            gap: 0.08in !important;
+            margin-bottom: 0.07in !important;
+        }
+
+        body.lab-form-page .field-row:last-child {
+            margin-bottom: 0 !important;
+        }
+
+        body.lab-form-page .field-label {
+            font-size: 9pt !important;
+        }
+
+        body.lab-form-page .sig-label {
+            font-size: 12pt !important;
+        }
+
+        body.lab-form-page .part-number {
+            font-size: 12pt !important;
+        }
+
+        body.lab-form-page .field-line,
+        body.lab-form-page .plain-line {
+            min-height: 0.19in !important;
+            border-bottom: 1px solid var(--office-rule-strong) !important;
+        }
+
+        body.lab-form-page .lab-contact-row {
+            display: grid !important;
+            grid-template-columns: auto minmax(0, 1.35fr) auto minmax(0, 0.95fr) !important;
+            gap: 0.08in !important;
+            align-items: end !important;
+            margin-bottom: 0.09in !important;
+        }
+
+        body.lab-form-page .shade-row {
+            display: flex !important;
+            align-items: baseline !important;
+            gap: 0.18in !important;
+            margin-bottom: 0.1in !important;
+            white-space: nowrap !important;
+        }
+
+        body.lab-form-page .shade-options {
+            display: flex !important;
+            flex-wrap: wrap !important;
+            gap: 0.18in !important;
+            font-family: Arial, Helvetica, sans-serif !important;
+            font-size: var(--copy-size) !important;
+            color: var(--office-copy) !important;
+        }
+
+        body.lab-form-page .notes-row {
+            display: grid !important;
+            grid-template-columns: auto minmax(0, 1fr) !important;
+            gap: 0.08in !important;
+            align-items: start !important;
+            margin-bottom: 0.08in !important;
+        }
+
+        body.lab-form-page .notes-lines {
+            display: grid !important;
+            gap: 0.07in !important;
+            min-height: 1.05in !important;
+        }
+
+        body.lab-form-page .lab-options {
+            display: flex !important;
+            justify-content: space-between !important;
+            align-items: center !important;
+            gap: 0.12in !important;
+            margin-top: 0.12in !important;
+            padding-top: 0.04in !important;
+            font-family: Arial, Helvetica, sans-serif !important;
+            font-size: var(--copy-size) !important;
+            color: var(--office-copy) !important;
+        }
+    </style>
+</head>
+
+<body class="lab-form-page">
+
+    <button id="downloadPdfBtn" class="fab">Download PDF</button>
+
+    <div class="document" id="pdf-content">
+
+        <div class="masthead">
+            <div class="masthead-left">
+                <div class="brand-logo"><img src="logo.svg" alt="Logo"></div>
+            </div>
+        </div>
+
+        <div class="title-band">
+            <div class="form-title">Lab Form</div>
+        </div>
+
+        <div class="body">
+            <section class="lab-slip">
+
+                <div class="lab-date-box">
+                    <div class="field-row">
+                        <span class="field-label">NAME:</span>
+                        <span class="field-line"></span>
+                    </div>
+                    <div class="field-row">
+                        <span class="field-label">Date:</span>
+                        <span class="field-line"></span>
+                    </div>
+                </div>
+
+
+
+
+
+                <div class="lab-options">
+                    <span>ALL-ON-8</span>
+                    <span>UPPER</span>
+                    <span>LOWER</span>
+                    <span>BOTH</span>
+                                        <span></span>
+                                                            <span></span>
+
+
+                </div>
+
+
+                                <div class="lab-options">
+                    <span>ALL-ON-6</span>
+                    <span>UPPER</span>
+                    <span>LOWER</span>
+                    <span>BOTH</span>
+                                        <span></span>
+                                                            <span></span>
+
+
+                </div>
+
+
+                                              <div class="lab-options">
+                    <span>SINGLE CROWN IMPLANTS/ NATURAL TEETH</span>
+                    <span>BRIDGE #</span>
+                    <span></span>
+                </div>
+            </section>
+
+            <section class="lab-slip">
+
+                <div class="lab-date-box">
+                    <div class="field-row">
+                        <span class="field-label">Date of Impression:</span>
+                        <span class="field-line"></span>
+                    </div>
+                    <div class="field-row">
+                        <span class="field-label">Date of Delivery:</span>
+                        <span class="field-line"></span>
+                    </div>
+                </div>
+
+                <div class="lab-contact-row">
+                    <span class="field-label">Px Name:</span>
+                    <span class="field-line"></span>
+                    <span class="field-label">Tel No.</span>
+                    <span class="field-line"></span>
+                </div>
+
+                <div class="shade-row">
+                    <span class="field-label">Shade:</span>
+                    <span class="shade-options">
+                        <span>ML/STML/UTML</span>
+                        <span>H B1</span>
+                        <span>IVOCAD A1</span>
+                        <span>H A1</span>
+                    </span>
+                </div>
+
+                <div class="notes-row">
+                    <span class="field-label">Notes:</span>
+                    <div class="notes-lines">
+                        <span class="plain-line"></span>
+                        <span class="plain-line"></span>
+                        <span class="plain-line"></span>
+                    </div>
+                </div>
+
+                <div class="lab-options">
+                    <span>ALL-ON-4/6/8</span>
+                    <span>/</span>
+                    <span>FCZSRC</span>
+                    <span>/</span>
+                    <span>FCZ on Custom-Abut.</span>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script src="forms-print.js"></script>
+</body>
+
+</html>

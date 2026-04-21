@@ -44,6 +44,7 @@
         'Implant Crown & Hybrid Denture Consent Form.html',
         'Implant Surgery Post Op instructions.html',
         'Implants Sticker.html',
+        'Lab Form.html',
         'Informed Consent for Laser Dental Procedures.html',
         'Informed Consent.html',
         'Post Operative Care of Hybrid and Maintenance.html',
