@@ -101,56 +101,69 @@
     <link rel="stylesheet" href="forms-print.css">
     <style>
         body.lab-form-page {
-            --copy-size: 12pt;
-            --copy-leading: 1.2;
-            --label-size: 9pt;
-            --title-size: 13pt;
+            --copy-size: 6.6pt;
+            --copy-leading: 1.14;
+            --label-size: 6.2pt;
+            --title-size: 9pt;
+            --page-inline: 0.16in;
+            --page-top: 0.1in;
+            --page-bottom: 0.16in;
+            --logo-width: 0.9in;
         }
 
         body.lab-form-page .title-band .form-title {
-            font-size: 13pt !important;
+            font-size: 9pt !important;
+        }
+
+        body.lab-form-page .masthead.has-inline-title {
+            column-gap: 0.08in !important;
+            padding-bottom: 0.035in !important;
+            margin-bottom: 0.045in !important;
         }
 
         body.lab-form-page .body {
+            display: grid !important;
+            grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+            gap: 0.14in 0.16in !important;
             padding-bottom: 0.18in !important;
         }
 
         body.lab-form-page .lab-slip {
-            padding: 0.1in 0 0.16in !important;
-            border-bottom: 1px solid var(--office-rule) !important;
+            min-height: 5.1in !important;
+            padding: 0.075in 0.08in !important;
+            border: 1px solid var(--office-rule) !important;
             break-inside: avoid !important;
             page-break-inside: avoid !important;
         }
 
         body.lab-form-page .lab-slip + .lab-slip {
-            margin-top: 0.16in !important;
+            margin-top: 0 !important;
         }
 
         body.lab-form-page .lab-slip:last-child {
-            border-bottom: 0 !important;
             padding-bottom: 0 !important;
         }
 
         body.lab-form-page .lab-office-title {
             font-family: Arial, Helvetica, sans-serif !important;
-            font-size: 12pt !important;
+            font-size: 8.2pt !important;
             font-weight: 700 !important;
             letter-spacing: 0.02em !important;
             color: var(--office-ink) !important;
-            margin-bottom: 0.08in !important;
+            margin-bottom: 0.065in !important;
         }
 
         body.lab-form-page .lab-date-box {
             border: 1px solid var(--office-rule-strong) !important;
-            padding: 0.09in 0.11in 0.08in !important;
-            margin-bottom: 0.12in !important;
+            padding: 0.055in 0.06in 0.05in !important;
+            margin-bottom: 0.075in !important;
         }
 
         body.lab-form-page .field-row {
             display: flex !important;
             align-items: flex-end !important;
-            gap: 0.08in !important;
-            margin-bottom: 0.07in !important;
+            gap: 0.045in !important;
+            margin-bottom: 0.04in !important;
         }
 
         body.lab-form-page .field-row:last-child {
@@ -158,43 +171,43 @@
         }
 
         body.lab-form-page .field-label {
-            font-size: 9pt !important;
+            font-size: var(--label-size) !important;
         }
 
         body.lab-form-page .sig-label {
-            font-size: 12pt !important;
+            font-size: var(--copy-size) !important;
         }
 
         body.lab-form-page .part-number {
-            font-size: 12pt !important;
+            font-size: var(--copy-size) !important;
         }
 
         body.lab-form-page .field-line,
         body.lab-form-page .plain-line {
-            min-height: 0.19in !important;
+            min-height: 0.13in !important;
             border-bottom: 1px solid var(--office-rule-strong) !important;
         }
 
         body.lab-form-page .lab-contact-row {
             display: grid !important;
             grid-template-columns: auto minmax(0, 1.35fr) auto minmax(0, 0.95fr) !important;
-            gap: 0.08in !important;
+            gap: 0.045in !important;
             align-items: end !important;
-            margin-bottom: 0.09in !important;
+            margin-bottom: 0.06in !important;
         }
 
         body.lab-form-page .shade-row {
             display: flex !important;
             align-items: baseline !important;
-            gap: 0.18in !important;
-            margin-bottom: 0.1in !important;
-            white-space: nowrap !important;
+            gap: 0.08in !important;
+            margin-bottom: 0.06in !important;
+            white-space: normal !important;
         }
 
         body.lab-form-page .shade-options {
             display: flex !important;
             flex-wrap: wrap !important;
-            gap: 0.18in !important;
+            gap: 0.08in !important;
             font-family: Arial, Helvetica, sans-serif !important;
             font-size: var(--copy-size) !important;
             color: var(--office-copy) !important;
@@ -203,27 +216,32 @@
         body.lab-form-page .notes-row {
             display: grid !important;
             grid-template-columns: auto minmax(0, 1fr) !important;
-            gap: 0.08in !important;
+            gap: 0.05in !important;
             align-items: start !important;
-            margin-bottom: 0.08in !important;
+            margin-bottom: 0.06in !important;
         }
 
         body.lab-form-page .notes-lines {
             display: grid !important;
-            gap: 0.07in !important;
-            min-height: 1.05in !important;
+            gap: 0.045in !important;
+            min-height: 0.82in !important;
         }
 
         body.lab-form-page .lab-options {
             display: flex !important;
             justify-content: space-between !important;
             align-items: center !important;
-            gap: 0.12in !important;
-            margin-top: 0.12in !important;
-            padding-top: 0.04in !important;
+            gap: 0.06in !important;
+            margin-top: 0.065in !important;
+            padding-top: 0.025in !important;
             font-family: Arial, Helvetica, sans-serif !important;
             font-size: var(--copy-size) !important;
             color: var(--office-copy) !important;
+            line-height: var(--copy-leading) !important;
+        }
+
+        body.lab-form-page .lab-options span {
+            white-space: nowrap !important;
         }
     </style>
 </head>

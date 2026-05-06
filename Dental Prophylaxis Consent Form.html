@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dental Prophylaxis Consent Form | All-On-8 Robust</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap"
+        rel="stylesheet">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+    <style>
+        :root {
+            --black: #000000;
+            --gray-dark: #222222;
+            --gray-mid: #555555;
+            --gray-light: #999999;
+            --gray-border: #cccccc;
+            --white: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'EB Garamond', serif;
+            background: #f4f4f4;
+            color: var(--black);
+            font-size: 10.75pt;
+            line-height: 1.42;
+            padding: 2rem 1rem;
+        }
+
+        .document {
+            max-width: 8.5in;
+            margin: 0 auto;
+            background: var(--white);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, .1);
+            position: relative;
+        }
+
+        .masthead {
+            padding: 2rem 3rem 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .brand-logo img {
+            width: 210px;
+            max-width: 100%;
+            height: auto;
+            filter: grayscale(100%);
+        }
+
+        .title-band {
+            padding: 1rem 3rem;
+            text-align: center;
+        }
+
+        .title-band .form-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 18pt;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .body {
+            padding: 0 3rem 2rem;
+        }
+
+        section {
+            margin-bottom: 1rem;
+        }
+
+        h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 8.5pt;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin: 1rem 0 0.5rem;
+            border-bottom: 1px solid var(--gray-border);
+        }
+
+        p {
+            margin-bottom: 0.55rem;
+            text-align: left;
+        }
+
+        ul {
+            padding-left: 1.2rem;
+            margin-bottom: 0.7rem;
+        }
+
+        li {
+            margin-bottom: 0.35rem;
+        }
+
+        .fab {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--black);
+            color: var(--white);
+            padding: 0.8rem 1.4rem;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 8pt;
+            text-transform: uppercase;
+            cursor: pointer;
+            z-index: 1000;
+            border: none;
+        }
+
+        @media print {
+            .fab { display: none !important; }
+            body { background: white; padding: 0; }
+            .document { box-shadow: none; border: none; }
+        }
+    </style>
+    <link rel="stylesheet" href="forms-print.css">
+    <style>
+        body.dental-prophylaxis-consent-form ul {
+            padding-left: 1rem !important;
+            margin: 0.03in 0 0.05in 0.15in !important;
+        }
+
+        body.dental-prophylaxis-consent-form li {
+            margin-bottom: 0.025in !important;
+        }
+
+        body.dental-prophylaxis-consent-form .consent-callout {
+            margin-top: 0.04in !important;
+        }
+
+        body.dental-prophylaxis-consent-form .sig-section {
+            margin-top: 0.08in !important;
+        }
+    </style>
+</head>
+
+<body class="dental-prophylaxis-consent-form">
+
+    <button id="downloadPdfBtn" class="fab">Download PDF</button>
+
+    <div class="document" id="pdf-content">
+
+        <div class="masthead">
+            <div class="masthead-left">
+                <div class="brand-logo"><img src="logo.svg" alt="Logo"></div>
+            </div>
+        </div>
+
+        <div class="title-band">
+            <div class="form-title">Dental Prophylaxis (Routine Cleaning) Consent Form</div>
+        </div>
+
+        <div class="patient-meta-band">
+            <div class="patient-meta-item">
+                <span class="patient-meta-label">Patient Name</span>
+                <div class="patient-meta-surface"></div>
+            </div>
+            <div class="patient-meta-item">
+                <span class="patient-meta-label">DOB</span>
+                <div class="patient-meta-surface"></div>
+            </div>
+            <div class="patient-meta-item">
+                <span class="patient-meta-label">Date</span>
+                <div class="patient-meta-surface"></div>
+            </div>
+            <div class="patient-meta-item">
+                <span class="patient-meta-label">Procedure</span>
+                <div class="patient-meta-surface" style="padding: 0.04in 0.05in;">Dental Prophylaxis (Routine Cleaning)</div>
+            </div>
+        </div>
+
+        <div class="body">
+            <section class="consent-callout">
+                <div class="field-row">
+                    <span class="field-label">Procedure</span>
+                    <span class="field-value">Dental Prophylaxis (Routine Cleaning)</span>
+                </div>
+            </section>
+
+            <section>
+                <h3>Description</h3>
+                <p>A dental prophylaxis is a preventive procedure performed to remove plaque, calculus (tartar), and stains from the teeth. It may include scaling, polishing, flossing, and oral hygiene instruction.</p>
+
+                <h3>Benefits</h3>
+                <ul>
+                    <li>Helps prevent cavities and gum disease</li>
+                    <li>Promotes overall oral health</li>
+                    <li>Removes surface stains for a cleaner appearance</li>
+                </ul>
+
+                <h3>Possible Risks &amp; Side Effects</h3>
+                <ul>
+                    <li>Temporary gum tenderness or minor bleeding</li>
+                    <li>Tooth sensitivity to temperature or pressure</li>
+                    <li>Rarely, infection or irritation of gum tissues</li>
+                </ul>
+
+                <h3>Alternatives</h3>
+                <ul>
+                    <li>Delaying or declining treatment (may increase risk of dental disease)</li>
+                    <li>More extensive periodontal treatment if indicated</li>
+                </ul>
+            </section>
+
+            <section>
+                <h3>Consent</h3>
+                <p>I have had the opportunity to ask questions about this procedure, and my questions have been answered to my satisfaction. I understand the nature, purpose, benefits, and potential risks of dental prophylaxis. I acknowledge that no guarantees have been made regarding the outcome.</p>
+                <p>I authorize the dental provider and staff to perform the dental prophylaxis as deemed necessary.</p>
+            </section>
+
+            <section class="sig-section">
+                <div class="sig-row">
+                    <div class="sig-block">
+                        <div class="sig-blank"></div>
+                        <div class="sig-field"><div class="sig-field-label">Patient / Guardian Signature</div></div>
+                    </div>
+                    <div class="sig-block narrow">
+                        <div class="sig-blank"></div>
+                        <div class="sig-field"><div class="sig-field-label">Date</div></div>
+                    </div>
+                </div>
+
+                <div class="sig-row">
+                    <div class="sig-block">
+                        <div class="sig-blank"></div>
+                        <div class="sig-field"><div class="sig-field-label">Provider Signature</div></div>
+                    </div>
+                    <div class="sig-block narrow">
+                        <div class="sig-blank"></div>
+                        <div class="sig-field"><div class="sig-field-label">Date</div></div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script src="forms-print.js"></script>
+</body>
+
+</html>

@@ -36,6 +36,7 @@
         'Consent for Frenectomy.html',
         'Consent- Single Implants.html',
         'Consent- SinusLift BoneGraft.html',
+        'Dental Prophylaxis Consent Form.html',
         'Exam Denial Consent.html',
         'Health History.html',
         'Upper & Lower Hybrid Impression Form.html',
